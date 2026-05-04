@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="menu_dishes">Nuestros Platos - La ReviRa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/img/logo3.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <header>
+        <div class="menu-icon" id="menuBtn">
+            <span class="material-icons">menu</span>
+        </div>
+
+        <nav id="navMenu">
+            <a data-i18n="menu_home" href="index.html">Inicio</a>
+            <a data-i18n="menu_dishes" href="platos.html" class="active">Nuestros platos</a>
+            <a data-i18n="menu_cart" href="carta.html" class="active">Carta</a>
+            <a data-i18n="menu_about" href="#info">Sobre nosotros</a>
+        </nav>
+
+        <!-- Selector de idioma -->
+        <div id="language-switcher">
+            <div class="flag" data-lang="es">
+                <img src="https://flagcdn.com/es.svg" alt="ES">
+            </div>
+            <div class="flag" data-lang="en">
+                <img src="https://flagcdn.com/gb.svg" alt="EN">
+            </div>
+            <div class="flag" data-lang="fr">
+                <img src="https://flagcdn.com/fr.svg" alt="FR">
+            </div>
+             <div class="flag" data-lang="de">
+                <img src="https://flagcdn.com/de.svg" alt="DE">
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+   <div class="breadcrumb">
+    <span data-i18n="breadcrumb" class="breadcrumb-label">Estás en:</span>
+    <span data-i18n="menu_dishes">Nuestros platos</span>
+</div>
+
+
+    <!-- ANCLAS -->
+    <div class="anchors">
+        <a data-i18n="chacinas" href="#chacinas">Chacinas</a>
+        <a data-i18n="tapas_frias" href="#tapas-frias">Tapas frías</a>
+        <a data-i18n="tapas_calientes" href="#tapas-calientes">Tapas calientes</a>
+        <a data-i18n="panes" href="#panes">Panes de la casa</a>
+        <a data-i18n="montaditos" href="#montaditos">Montaditos</a>
+        <a data-i18n="carnes" href="#carnes">Carnes</a>
+        <a data-i18n="peques" href="#peques">Para los peques</a>
+        <a data-i18n="pescados" href="#pescados">Pescados</a>
+        <a data-i18n="postres" href="#postres">Postres</a>
+    </div>
+
+    <!-- SECCIONES AUTOMÁTICAS -->
+
+    <section id="chacinas" class="platos-section">
+        <h2 data-i18n="chacinas">Chacinas</h2>
+        <div class="plato-carousel" data-folder="chacinas"></div>
+    </section>
+
+    <section id="tapas-frias" class="platos-section">
+        <h2 data-i18n="tapas_frias">Tapas frías</h2>
+        <div class="plato-gallery" data-folder="tapas-frias"></div>
+    </section>
+
+    <section id="tapas-calientes" class="platos-section">
+        <h2 data-i18n="tapas_calientes">Tapas calientes</h2>
+        <div class="plato-carousel" data-folder="tapas-calientes"></div>
+    </section>
+
+    <section id="panes" class="platos-section">
+        <h2 data-i18n="panes">Panes de la casa</h2>
+        <div class="plato-gallery" data-folder="panes"></div>
+    </section>
+
+    <section id="montaditos" class="platos-section">
+        <h2 data-i18n="montaditos">Montaditos</h2>
+        <div class="plato-carousel" data-folder="montaditos"></div>
+    </section>
+
+    <section id="carnes" class="platos-section">
+        <h2 data-i18n="carnes">Carnes</h2>
+        <div class="plato-gallery" data-folder="carnes"></div>
+    </section>
+
+    <section id="peques" class="platos-section">
+        <h2 data-i18n="peques">Para los peques</h2>
+        <div class="plato-carousel" data-folder="peques"></div>
+    </section>
+
+    <section id="pescados" class="platos-section">
+        <h2 data-i18n="pescados">Pescados</h2>
+        <div class="plato-gallery" data-folder="pescados"></div>
+    </section>
+
+    <section id="postres" class="platos-section">
+        <h2 data-i18n="postres">Postres</h2>
+        <div class="plato-carousel" data-folder="postres"></div>
+    </section>
+
+    <!-- BOTÓN FLOTANTE IR ARRIBA -->
+    <button id="btnTop" class="btn-top">
+        <span class="material-icons">arrow_upward</span>
+    </button>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- Columna 1 -->
+            <div class="footer-col">
+                <h3 data-i18n="footer_about_title">La Revirá</h3>
+                <p data-i18n="footer_about_text">
+                    Tradición andaluza reinterpretada con cariño.  
+                    Productos frescos, recetas de siempre y un ambiente que invita a quedarse.  
+                    Somos un rincón donde la buena mesa y la buena compañía se encuentran.
+                </p>
+            </div>
+
+            <!-- Columna 2 -->
+            <div class="footer-col">
+                <h3 data-i18n="footer_info_title">Información</h3>
+                <ul>
+                    <li><strong data-i18n="footer_address">Dirección:</strong> Av. la Cruz, 41440 Lora del Río, Sevilla</li>
+                    <li><strong data-i18n="footer_phone">Teléfono:</strong> 600 000 000</li>
+                    <li><strong data-i18n="footer_email">Email:</strong> contacto@larevira.es</li>
+                    <li><strong data-i18n="footer_reservas">Reservas:</strong> <span data-i18n="footer_reservas_text">Disponible por teléfono</span></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3 -->
+            <div class="footer-col">
+                <h3 data-i18n="footer_follow">Síguenos</h3>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/la_revira_cerveceros/" target="_blank" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/p/La-Revirá-Cerveceros-61552801625227/" target="_blank" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 La Revirá — <span data-i18n="footer_rights">Todos los derechos reservados</span></p>
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img id="lightboxImg" src="">
+    </div>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+
+</body>
+</html>

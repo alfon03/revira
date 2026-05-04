@@ -1,0 +1,981 @@
+/* ============================================================
+   VARIABLES GLOBALES
+============================================================ */
+:root {
+  --ink-black: #000814;
+  --dim-grey: hsl(210, 2%, 38%);
+  --jet-black: #1a1c1f;
+  --school-bus-yellow: #ffc400cb;
+  --gold: #ffd60a;
+  --white: #ffffff;
+  --transition: 0.3s ease;
+}
+
+/* ============================================================
+   RESET GENERAL
+============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  background: var(--ink-black);
+  color: var(--white);
+}
+
+/* ============================================================
+   HEADER + NAVEGACIÓN
+============================================================ */
+
+/* HEADER */
+header {
+  background: var(--school-bus-yellow);
+  padding: 40px 20px;
+  text-align: center;
+  border-bottom: 2px solid var(--dim-grey);
+
+  /* Logo centrado */
+  background-image: url("img/logo.png");
+  background-repeat: no-repeat;
+  background-position: center 40px;
+  background-size: clamp(180px, 40vw, 380px);
+  padding-top: clamp(140px, 30vw, 220px);
+}
+
+/* NAV */
+nav {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: clamp(15px, 5vw, 40px);
+  flex-wrap: wrap;
+}
+
+nav a {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  padding: 10px 18px;
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+nav a:hover {
+  background: var(--ink-black);
+  border-color: var(--dim-grey);
+}
+
+/* ICONO MENÚ RESPONSIVE */
+.menu-icon {
+  display: none;
+  cursor: pointer;
+  font-size: 32px;
+  color: var(--ink-black);
+}
+
+/* ============================================================
+   BREADCRUMB
+============================================================ */
+
+.breadcrumb {
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1200px;
+  font-size: 14px;
+  color: var(--dim-grey);
+}
+
+.breadcrumb span {
+  color: var(--gold);
+}
+
+/* Este span debe mantenerse gris */
+.breadcrumb-label {
+  color: var(--dim-grey) !important;
+  font-weight: inherit;
+}
+
+/* ============================================================
+   CARRUSEL DE IMÁGENES
+============================================================ */
+
+/* Contenedor principal */
+.carousel {
+  position: relative;
+  overflow: hidden;
+  margin-top: 30px;
+  border-radius: 14px;
+}
+
+/* Track */
+.slides {
+  display: flex;
+  transition: transform 0.6s ease;
+}
+
+/* Grupo de imágenes */
+.slide-group {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Cada item */
+.slide-item {
+  flex: 1;
+  max-width: 33%;
+  height: clamp(180px, 30vw, 320px);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Imagen */
+.slide-item img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: scale-down;
+  transition: transform 0.4s ease;
+}
+
+.slide-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Botones del carrusel */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.45);
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* ============================================================
+   SECCIONES GENERALES
+============================================================ */
+.section {
+  padding: clamp(40px, 6vw, 80px) 20px;
+  text-align: center;
+}
+
+/* ============================================================
+   UBICACIÓN Y HORARIOS
+============================================================ */
+
+.location {
+  background: var(--white);
+  padding: clamp(40px, 6vw, 80px) 20px;
+}
+
+.location h2 {
+  color: var(--ink-black);
+}
+
+.location-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+/* Caja de horarios */
+.schedule-box {
+  background: var(--white);
+  padding: 25px 30px;
+  border-radius: 12px;
+  width: 40%;
+  text-align: left;
+  border-left: 6px solid var(--school-bus-yellow);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.schedule-box h3 {
+  color: var(--ink-black);
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.schedule-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.schedule-item:last-child {
+  border-bottom: none;
+}
+
+.schedule-day {
+  font-weight: 600;
+  color: var(--ink-black);
+}
+
+.schedule-hours {
+  color: #444;
+}
+
+/* Mapa */
+.map-box {
+  border-left: 6px solid var(--school-bus-yellow);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  width: 60%;
+  border-radius: 12px;
+}
+
+.map-box iframe {
+  width: 100%;
+  height: 350px;
+  border-radius: 12px;
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+/* ============================================================
+   FOOTER PREMIUM MINIMALISTA
+============================================================ */
+
+.footer {
+  background: var(--ink-black);
+  color: var(--white);
+  padding: 45px 20px 25px 20px;
+  border-top: 1px solid var(--dim-grey);
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 35px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-col h3 {
+  font-size: 1.2rem;
+  color: var(--gold);
+  margin-bottom: 14px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.footer-col p,
+.footer-col ul li {
+  font-size: 0.95rem;
+  color: var(--white);
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-social {
+  display: flex;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.footer-social a {
+  color: var(--white);
+  font-size: 1.4rem;
+  transition: var(--transition);
+}
+
+.footer-social a:hover {
+  color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 18px;
+  border-top: 1px solid var(--dim-grey);
+}
+
+.footer-bottom p {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+
+/* ============================================================
+   PÁGINA DE PLATOS SECCIONES
+============================================================ */
+
+
+/* ============================================================
+   SECCIONES DE PLATOS
+============================================================ */
+
+/* ============================================================
+   ENCABEZADOS DE SECCIÓN
+============================================================ */
+
+.platos-section h2 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 600;
+  color: var(--gold);
+  text-align: center;
+  margin: 45px 0 25px 0;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  font-family: "Playball", cursive;
+  border-bottom: 1px solid var(--dim-grey);
+  padding-bottom: 8px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ============================================================
+   CARRUSEL PREMIUM
+============================================================ */
+.plato-carousel {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  padding: 35px 0;
+  background-color: var(--jet-black);
+  border-top: 1px solid var(--dim-grey);
+  border-bottom: 1px solid var(--dim-grey);
+}
+
+
+
+.plato-carousel .carousel-track {
+  display: flex;
+  gap: 28px;
+  transition: transform 0.5s ease;
+  padding: 10px 40px;
+}
+
+.plato-carousel .carousel-item {
+  min-width: 40%;
+  display: flex;
+  justify-content: center;
+}
+
+.plato-carousel .carousel-item img {
+  width: 100%;
+  height: 320px;
+  border-radius: 14px;
+  object-fit: cover;
+  cursor: zoom-in;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.plato-carousel .carousel-item img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+}
+
+
+
+/* Ocultar botones */
+.plato-carousel .prev,
+.plato-carousel .next {
+  display: none !important;
+}
+
+/* ============================================================
+   FOTOTECA TIPO IPHONE
+============================================================ */
+
+.plato-gallery {
+  width: 100%;
+  padding: 30px 0;
+  background-color: var(--white);
+  border-top: 1px solid var(--dim-grey);
+}
+
+
+/* Móvil: scroll horizontal */
+@media (max-width: 768px) {
+  .plato-gallery {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .plato-gallery .gallery-row {
+    display: inline-flex;
+    gap: 14px;
+    padding: 10px 20px;
+  }
+
+  .plato-gallery .gallery-row img {
+    height: 180px;
+    width: auto;
+    border-radius: 12px;
+    object-fit: cover;
+    cursor: zoom-in;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .plato-gallery .gallery-row img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 14px rgba(0,0,0,0.22);
+  }
+}
+
+
+/* Escritorio: grid tipo iPhone */
+@media (min-width: 769px) {
+  .plato-gallery .gallery-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+    padding: 10px 40px;
+  }
+
+  .plato-gallery .gallery-row img {
+    width: 100%;
+    height: 240px;
+    border-radius: 12px;
+    object-fit: cover;
+    cursor: zoom-in;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .plato-gallery .gallery-row img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+  }
+}
+
+
+/* Ocultar scrollbar */
+.plato-gallery::-webkit-scrollbar {
+  display: none;
+}
+
+/* ============================================================
+   LIGHTBOX PREMIUM
+============================================================ */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  backdrop-filter: blur(4px);
+}
+
+.lightbox img {
+  max-width: 92%;
+  max-height: 92%;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.45);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  font-size: 42px;
+  color: var(--white);
+  cursor: pointer;
+  font-weight: 300;
+  transition: opacity 0.2s ease;
+}
+
+.lightbox-close:hover {
+  opacity: 0.7;
+}
+
+
+/* ============================================================
+   SIN BOTONES EN CARRUSEL DE PLATOS
+============================================================ */
+
+.plato-carousel .prev,
+.plato-carousel .next {
+  display: none !important;
+}
+
+/* ============================================================
+   BOTÓN FLOTANTE IR ARRIBA
+============================================================ */
+.btn-top {
+  position: fixed;
+  bottom: clamp(15px, 4vw, 30px);
+  right: clamp(15px, 4vw, 30px);
+  width: clamp(40px, 8vw, 55px);
+  height: clamp(40px, 8vw, 55px);
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--ink-black);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(20px, 5vw, 30px);
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition), transform var(--transition);
+  z-index: 999;
+}
+
+.btn-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.btn-top:hover {
+  background: var(--school-bus-yellow);
+}
+
+/* ============================================================
+   MEDIA QUERIES — RESPONSIVE GENERAL
+============================================================ */
+
+/* Carrusel */
+@media (max-width: 900px) {
+  .slide-item {
+    max-width: 48%;
+    height: clamp(160px, 35vw, 260px);
+  }
+}
+
+@media (max-width: 600px) {
+  .slide-group {
+    flex-direction: column;
+  }
+
+  .slide-item {
+    max-width: 100%;
+    height: clamp(160px, 45vw, 240px);
+  }
+}
+
+/* Ubicación */
+@media (max-width: 900px) {
+  .location-container {
+    flex-direction: column;
+  }
+
+  .schedule-box,
+  .map-box {
+    width: 100%;
+  }
+
+  .map-box iframe {
+    height: 300px;
+  }
+}
+
+/* Header + menú */
+@media (max-width: 768px) {
+
+  header {
+    padding-top: 90px;
+    background-size: 160px;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background: var(--school-bus-yellow);
+    padding: 20px;
+    border-top: 1px solid var(--jet-black);
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+    position: absolute;
+    top: 25px;
+    right: 25px;
+  }
+
+}
+#language-switcher {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+  padding-right: 15px;
+}
+
+#language-switcher .flag {
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--dim-grey);
+  transition: var(--transition);
+}
+
+#language-switcher .flag img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#language-switcher .flag:hover {
+  transform: translateY(-2px);
+  border-color: var(--gold);
+}
+
+/* Ocultar interfaz de Google */
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-icon,
+.goog-te-gadget-simple {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+/* ============================================================
+   CARTA – CONTENEDOR DE DOS COLUMNAS
+============================================================ */
+
+.carta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 30px; /* ← AIRE LATERAL */
+}
+
+/* Móvil → 1 columna */
+@media (max-width: 900px) {
+    .carta-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   TABLAS – LEGIBLES EN FONDO OSCURO
+============================================================ */
+
+.menu-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-bottom: 30px;
+}
+
+.menu-table thead {
+    background: var(--dim-grey);
+    color: var(--gold);
+}
+
+.menu-table th,
+.menu-table td {
+    padding: 16px 20px;
+    font-size: 16px;
+    color: var(--jet-black);
+}
+
+.menu-table tbody tr:nth-child(even) {
+    background: #f4f4f4;
+}
+
+.menu-table tbody tr:hover {
+    background: rgba(255, 215, 0, 0.25);
+    transition: 0.2s ease;
+}
+
+/* ============================================================
+   TÍTULOS DE SECCIÓN
+============================================================ */
+
+.platos-section h2 {
+    font-family: 'Playball', cursive;
+    font-size: 38px;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* ============================================================
+   BOTÓN DESCARGA PDF
+============================================================ */
+
+.btn-download {
+    padding: 10px 18px;
+    background: var(--gold);
+    color: var(--black);
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    white-space: nowrap;
+    transition: 0.2s ease;
+}
+
+.btn-download:hover {
+    background: var(--black);
+    color: var(--gold);
+}
+
+/* ============================================================
+   NOTA DE ALÉRGENOS
+============================================================ */
+
+.allergen-note {
+    margin-top: 30px;
+    margin-left: 30px;  /* ← AIRE LATERAL */
+    margin-right: 30px; /* ← AIRE LATERAL */
+    font-size: 15px;
+    color: var(--jet-black);
+    background: #fff8d6;
+    padding: 18px;
+    border-left: 5px solid var(--gold);
+    border-radius: 8px;
+}
+
+/* ============================================================
+   ANCLAS
+============================================================ */
+
+
+/* ============================================================
+   SECCIONES
+============================================================ */
+
+.platos-section {
+    margin-bottom: 40px;
+    padding: 0 30px; /* ← AIRE LATERAL PARA TODAS LAS TABLAS */
+}
+
+/* ============================================================
+   RESPONSIVE EXTRA
+============================================================ */
+
+@media (max-width: 600px) {
+    .menu-table th,
+    .menu-table td {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .btn-download {
+        width: 100%;
+        text-align: center;
+    }
+
+    .allergen-note {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
+
+
+
+
+/* ============================================================
+   FILA DE ANCLAS + BOTÓN PDF
+============================================================ */
+
+.anchors-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 40px auto;
+    padding: 0 30px; /* AIRE LATERAL */
+}
+
+/* ============================================================
+   ANCLAS (TU DISEÑO PREMIUM)
+============================================================ */
+
+.anchors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    background-color: var(--jet-black);
+    padding: 18px 30px; /* AIRE LATERAL REAL */
+    border-bottom: 1px solid var(--dim-grey);
+    border-radius: 10px;
+}
+
+/* Botones */
+.anchors a {
+    padding: 8px 16px;
+    background: var(--white);
+    color: var(--jet-black);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: clamp(0.75rem, 2vw, 0.95rem);
+    font-weight: 500;
+    letter-spacing: 0.4px;
+    border: 1px solid var(--dim-grey);
+    transition:
+        background var(--transition),
+        color var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+}
+
+/* Hover profesional */
+.anchors a:hover {
+    background: var(--jet-black);
+    color: var(--school-bus-yellow);
+    border-color: var(--ink-black);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Activo */
+.anchors a.active-anchor {
+    background: var(--school-bus-yellow);
+    color: var(--ink-black);
+    border-color: var(--school-bus-yellow);
+    font-weight: 600;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+
+@media (max-width: 900px) {
+    .anchors-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-download {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* ============================================================
+   ALÉRGENOS
+============================================================ */
+
+/* LEYENDA DE ALÉRGENOS */
+.allergen-legend {
+    margin-top: 40px;
+    padding: 25px 30px;
+    background: #fff8d6;
+    border-left: 5px solid var(--gold);
+    border-radius: 10px;
+    font-size: 16px;
+    color: var(--jet-black);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.allergen-legend h3 {
+    margin-bottom: 18px;
+    font-size: 22px;
+    color: var(--gold);
+    text-align: center;
+}
+
+/* GRID EN DOS COLUMNAS */
+.allergen-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 20px;
+}
+
+/* Ajuste responsive */
+@media (max-width: 500px) {
+    .allergen-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.icon {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    margin-right: 8px;
+    vertical-align: middle;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* GLUTEN */
+.icon.gluten {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23d4a017' stroke-width='2' viewBox='0 0 24 24'><path d='M8 3c-1.5 1.2-3 3.4-3 6 0 3.5 2.5 6 3.5 7'/><path d='M12 3c-1.2 1.3-2.5 3.5-2.5 6 0 3.5 2 6 3 7.5'/><path d='M16 3c-1 1.3-2 3.5-2 6 0 3.5 1.5 6 2.5 7.5'/><path d='M6 20h12'/></svg>");
+}
+
+/* HUEVO */
+.icon.huevo {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23f2c94c' stroke-width='2' viewBox='0 0 24 24'><path d='M12 4c-2.5 0-5 3.5-5 7.5S9 19 12 19s5-2.5 5-7.5S14.5 4 12 4z'/><circle cx='12' cy='12' r='2.2'/></svg>");
+}
+
+/* LÁCTEOS */
+.icon.lacteos {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%234a90e2' stroke-width='2' viewBox='0 0 24 24'><path d='M9 4h6l-1 3v10c0 1.1-.9 2-2 2s-2-.9-2-2V7z'/><path d='M10 7h4'/></svg>");
+}
+
+/* PESCADO */
+.icon.pescado {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%232d9cdb' stroke-width='2' viewBox='0 0 24 24'><path d='M4 12c2.5-2.5 4.5-3.5 7.5-3.5 3 0 5 1 7.5 3.5-2.5 2.5-4.5 3.5-7.5 3.5C8.5 15.5 6.5 14.5 4 12z'/><path d='M5 9.5 3 8v8l2-1.5'/><circle cx='13' cy='11.5' r='0.9'/></svg>");
+}
+
+/* CACAHUETES */
+.icon.cacahuetes {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23a47149' stroke-width='2' viewBox='0 0 24 24'><path d='M9 4c-2 0-3.5 1.7-3.5 3.8 0 3.2 2.5 4.7 2.5 7.2C8 17.8 9.4 19 11 19c2 0 3.5-1.7 3.5-3.8 0-3.2-2.5-4.7-2.5-7.2C12 5.2 10.6 4 9 4z'/><path d='M14.5 5.5c1-.8 2-.5 2.7.3.8 1 .8 2.3.2 3.4-.6 1.1-.7 2.1-.4 3.1'/></svg>");
+}
+
+/* SOJA */
+.icon.soja {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%2327ae60' stroke-width='2' viewBox='0 0 24 24'><path d='M11 5c-2 1-3.5 2.8-3.5 5 0 2.5 1.8 4.5 4.5 5.5 2.7-1 4.5-3 4.5-5.5 0-2.2-1.5-4-3.5-5'/><circle cx='10' cy='11' r='0.9'/><circle cx='13.5' cy='9.5' r='0.9'/><circle cx='13' cy='13' r='0.9'/></svg>");
+}
+
+/* MOSTAZA */
+.icon.mostaza {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23e2b93d' stroke-width='2' viewBox='0 0 24 24'><path d='M10 4h4l-.5 3.5v9c0 1-.8 1.5-1.5 1.5S10 17.5 10 16.5v-9z'/><circle cx='12' cy='11' r='1.1'/></svg>");
+}
+
+/* SÉSAMO */
+.icon.sesamo {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23c9b79c' stroke-width='2' viewBox='0 0 24 24'><path d='M8 6c-.8.7-1.5 1.8-1.5 3 0 1.5.8 2.5 1.5 3'/><path d='M12 5.5c-.9.7-1.7 1.9-1.7 3.2 0 1.6.8 2.7 1.7 3.4'/><path d='M16 6c-.8.7-1.5 1.8-1.5 3 0 1.5.8 2.5 1.5 3'/><path d='M7.5 16.5h9'/></svg>");
+}
+
+/* SULFITOS */
+.icon.sulfitos {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%237f8c8d' stroke-width='2' viewBox='0 0 24 24'><path d='M8 4h8l-1 4c-.5 2-1.8 3.5-3 3.5S9.5 10 9 8z'/><path d='M12 11.5V19'/><path d='M9 19h6'/></svg>");
+}

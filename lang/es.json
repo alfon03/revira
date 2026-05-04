@@ -1,0 +1,30 @@
+{
+  "menu_home": "Inicio",
+  "menu_dishes": "Nuestros platos",
+  "menu_about": "Sobre nosotros",
+
+  "breadcrumb": "Estás en:",
+  
+  "chacinas": "Chacinas",
+  "tapas_frias": "Tapas frías",
+  "tapas_calientes": "Tapas calientes",
+  "panes": "Panes de la casa",
+  "montaditos": "Montaditos",
+  "carnes": "Carnes",
+  "peques": "Para los peques",
+  "pescados": "Pescados",
+  "postres": "Postres",
+
+  "footer_about_title": "La Revirá",
+  "footer_about_text": "Tradición andaluza reinterpretada con cariño. Productos frescos, recetas de siempre y un ambiente que invita a quedarse. Somos un rincón donde la buena mesa y la buena compañía se encuentran.",
+
+  "footer_info_title": "Información",
+  "footer_address": "Dirección",
+  "footer_phone": "Teléfono",
+  "footer_email": "Email",
+  "footer_reservas": "Reservas",
+  "footer_reservas_text": "Disponible por teléfono",
+
+  "footer_follow": "Síguenos",
+  "footer_rights": "Todos los derechos reservados"
+}

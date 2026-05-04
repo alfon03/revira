@@ -1,0 +1,30 @@
+{
+  "menu_home": "Home",
+  "menu_dishes": "Our dishes",
+  "menu_about": "About us",
+
+  "breadcrumb": "You are in:",
+
+  "chacinas": "Cold cuts",
+  "tapas_frias": "Cold tapas",
+  "tapas_calientes": "Hot tapas",
+  "panes": "House breads",
+  "montaditos": "Montaditos",
+  "carnes": "Meats",
+  "peques": "Kids menu",
+  "pescados": "Fish",
+  "postres": "Desserts",
+
+  "footer_about_title": "La Revirá",
+  "footer_about_text": "Andalusian tradition reinterpreted with care. Fresh products, classic recipes and an atmosphere that invites you to stay. A place where good food and good company meet.",
+
+  "footer_info_title": "Information",
+  "footer_address": "Address",
+  "footer_phone": "Phone",
+  "footer_email": "Email",
+  "footer_reservas": "Reservations",
+  "footer_reservas_text": "Available by phone",
+
+  "footer_follow": "Follow us",
+  "footer_rights": "All rights reserved"
+}

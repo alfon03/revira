@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>La ReviRa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/img/logo3.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="menu-icon" id="menuBtn">
+            <span class="material-icons">menu</span>
+        </div>
+
+        <nav id="navMenu">
+            <a href="index.html">Inicio</a>
+            <a href="platos.html">Nuestros platos</a>
+            <a href="#info">Sobre nosotros</a>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        Estás en: <span>Inicio</span>
+    </div>
+
+    <!-- CARRUSEL -->
+    <section class="carousel">
+        <div class="slides" id="slides"></div>
+
+        <button class="prev" id="prevBtn">
+            <span class="material-icons">chevron_left</span>
+        </button>
+
+        <button class="next" id="nextBtn">
+            <span class="material-icons">chevron_right</span>
+        </button>
+    </section>
+    <section class="section">
+        <h1>Bienvenido a La ReviRa</h1>
+        <p>El lugar perfecto para disfrutar, comer y compartir.</p>
+    </section>
+
+    <section class="section location">
+        <h2><span class="material-icons">location_on</span> ¿Dónde estamos?</h2>
+
+        <div class="location-container">
+
+            <div class="schedule-box">
+                <h3>Horario</h3>
+
+                <div class="schedule-item">
+                    <span class="schedule-day">Martes</span>
+                    <span class="schedule-hours">12:30–17:00 / 20:00–Cierre</span>
+                </div>
+
+                <div class="schedule-item">
+                    <span class="schedule-day">Miércoles</span>
+                    <span class="schedule-hours">12:30–17:00 / 20:00–Cierre</span>
+                </div>
+
+                <div class="schedule-item">
+                    <span class="schedule-day">Jueves</span>
+                    <span class="schedule-hours">12:30–17:00 / 20:00–Cierre</span>
+                </div>
+
+                <div class="schedule-item">
+                    <span class="schedule-day">Viernes</span>
+                    <span class="schedule-hours">12:30–17:00 / 20:00–Cierre</span>
+                </div>
+
+                <div class="schedule-item">
+                    <span class="schedule-day">Sábado</span>
+                    <span class="schedule-hours">12:30–17:00 / 20:00–Cierre</span>
+                </div>
+
+                <div class="schedule-item">
+                    <span class="schedule-day">Domingo</span>
+                    <span class="schedule-hours">12:30–17:00</span>
+                </div>
+            </div>
+
+            <div class="map-box">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3158.6429367144765!2d-5.5250937!3d37.6575978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd12ef8e2f49fc83%3A0xf90147c673b99165!2sLa%20Revir%C3%A1!5e0!3m2!1ses!2ses!4v1776873864673!5m2!1ses!2ses"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade" loading="lazy">
+                </iframe>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+    <div class="footer-container">
+
+        <!-- Columna 1: Sobre nosotros -->
+        <div class="footer-col">
+            <h3>La Revirá</h3>
+            <p>
+                Tradición andaluza reinterpretada con cariño.  
+                Productos frescos, recetas de siempre y un ambiente que invita a quedarse.  
+                Somos un rincón donde la buena mesa y la buena compañía se encuentran.
+            </p>
+        </div>
+
+        <!-- Columna 2: Información -->
+        <div class="footer-col">
+            <h3>Información</h3>
+            <ul>
+                <li><strong>Dirección:</strong> Av. la Cruz, 41440 Lora del Río, Sevilla</li>
+                <li><strong>Teléfono:</strong> 600 000 000</li>
+                <li><strong>Email:</strong> contacto@larevira.es</li>
+                <li><strong>Reservas:</strong> Disponible por teléfono</li>
+            </ul>
+        </div>
+
+        <!-- Columna 3: Redes -->
+        <div class="footer-col">
+            <h3>Síguenos</h3>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/la_revira_cerveceros/" target="_blank" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+
+                <a href="https://www.facebook.com/p/La-Revirá-Cerveceros-61552801625227/" target="_blank" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 La Revirá — Todos los derechos reservados</p>
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

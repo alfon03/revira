@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carta - La Revirá</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Iconos / fuentes / estilos -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/img/logo3.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <header>
+        <div class="menu-icon" id="menuBtn">
+            <span class="material-icons">menu</span>
+        </div>
+
+        <nav id="navMenu">
+            <a href="index.html">Inicio</a>
+            <a href="platos.html">Nuestros platos</a>
+            <a href="carta.html" class="active">Carta</a>
+            <a href="#info">Sobre nosotros</a>
+        </nav>
+
+        <div id="language-switcher">
+            <div class="flag" data-lang="es">
+                <img src="https://flagcdn.com/es.svg" alt="ES">
+            </div>
+            <div class="flag" data-lang="en">
+                <img src="https://flagcdn.com/gb.svg" alt="EN">
+            </div>
+            <div class="flag" data-lang="fr">
+                <img src="https://flagcdn.com/fr.svg" alt="FR">
+            </div>
+            <div class="flag" data-lang="de">
+                <img src="https://flagcdn.com/de.svg" alt="DE">
+            </div>
+        </div>
+    </header>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+        <span class="breadcrumb-label">Estás en:</span>
+        <span>Carta</span>
+    </div>
+
+    <!-- ANCLAS CATEGORÍAS -->
+     <div class="anchors-row">
+    <div class="anchors">
+        <a href="#chacinas">Chacinas</a>
+        <a href="#tapas-frias">Tapas frías</a>
+        <a href="#tapas-calientes">Tapas calientes</a>
+        <a href="#panes">Panes de la casa</a>
+        <a href="#montaditos">Montaditos</a>
+        <a href="#carnes">Carnes</a>
+        <a href="#peques">Para los peques</a>
+        <a href="#pescados">Pescados</a>
+        <a href="#postres">Postres</a>
+    </div>
+
+    <!-- BOTÓN DESCARGA PDF -->
+        <a href="pdf/carta.pdf" class="btn-download" download>
+            Descargar carta en PDF
+        </a>
+    </div>
+
+    <div class="carta-grid">
+
+        
+    <!-- PANES DE LA CASA -->
+    <section id="panes" class="platos-section">
+        <h2>Panes de la casa</h2>
+        <table class="menu-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Alérgenos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mejillones</td>
+                    <td>2,00 €/u</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Anchoas</td>
+                    <td>2,50 €/u</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Sardinas</td>
+                    <td>3,00 €/u</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Lomo a la Orza</td>
+                    <td>2,50 €/u</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Tostá de chicharrón de Cádiz con manteca</td>
+                    <td>12,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+   
+    <!-- TAPAS FRÍAS -->
+    <section id="tapas-frias" class="platos-section">
+        <h2>Tapas frías</h2>
+        <table class="menu-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Tapa</th>
+                    <th>Plato</th>
+                    <th>Alérgenos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ensaladilla</td>
+                    <td>4,00 €</td>
+                    <td>8,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Aliño de Pulpo</td>
+                    <td>4,00 €</td>
+                    <td>8,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Patatas Aliñadas</td>
+                    <td>4,00 €</td>
+                    <td>8,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Boquerones en Vinagre</td>
+                    <td>4,00 €</td>
+                    <td>8,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Ensalada de la Casa</td>
+                    <td>-</td>
+                    <td>6,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+<div class="carta-grid">
+    <!-- TAPAS CALIENTES -->
+    <section id="tapas-calientes" class="platos-section">
+        <h2>Tapas calientes</h2>
+        <table class="menu-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Tapa</th>
+                    <th>Plato</th>
+                    <th>Alérgenos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Espinacas con garbanzos</td>
+                    <td>4,50 €</td>
+                    <td>8,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Croquetas de marisco</td>
+                    <td>4,50 €</td>
+                    <td>9,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Croquetas Queso</td>
+                    <td>4,50 €</td>
+                    <td>9,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Croquetas Cocido</td>
+                    <td>4,50 €</td>
+                    <td>9,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Variado Croquetas</td>
+                    <td>-</td>
+                    <td>12,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Carrillera</td>
+                    <td>5,00 €</td>
+                    <td>10,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Pastel de Berenjenas</td>
+                    <td>-</td>
+                    <td>6,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Patatas Gratinadas</td>
+                    <td>-</td>
+                    <td>8,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Patatas Bravas</td>
+                    <td>-</td>
+                    <td>8,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Papas arrieras</td>
+                    <td>-</td>
+                    <td>9,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Berenjenas con miel de caña</td>
+                    <td>-</td>
+                    <td>7,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Gyosaz</td>
+                    <td>-</td>
+                    <td>7,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- MONTADITOS -->
+    <section id="montaditos" class="platos-section">
+        <h2>Montaditos</h2>
+        <table class="menu-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Alérgenos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Melva y Pimientos del Piquillo</td>
+                    <td>4,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Salmón y Queso</td>
+                    <td>5,50 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Cochinito (Queso ó Jamón)</td>
+                    <td>4,50 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Piripi</td>
+                    <td>5,50 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Mechada (Queso ó Jamón)</td>
+                    <td>5,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Serranito (Pollo ó Lomo)</td>
+                    <td>5,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Presa (Queso ó Jamón)</td>
+                    <td>5,50 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Pringá</td>
+                    <td>4,50 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Pan Bao Curri</td>
+                    <td>4,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Pan Bao Carrillá</td>
+                    <td>4,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Gambas alioli</td>
+                    <td>5,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+<div class="carta-grid">
+    
+
+    <!-- CARNES -->
+    <section id="carnes" class="platos-section">
+        <h2>Carnes</h2>
+        <table class="menu-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Tapa</th>
+                    <th>Plato</th>
+                    <th>Alérgenos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Solomillo a la Revira</td>
+                    <td>4,50 €</td>
+                    <td>10,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Solomillo al Whisky</td>
+                    <td>4,50 €</td>
+                    <td>10,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Solomillo a la Pimienta</td>
+                    <td>4,50 €</td>
+                    <td>10,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Solomillo al Roquefort</td>
+                    <td>4,50 €</td>
+                    <td>10,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Hamburguesa Angus</td>
+                    <td>-</td>
+                    <td>14,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Lagartito ibérico</td>
+                    <td>-</td>
+                    <td>15,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Presa ibérica</td>
+                    <td>-</td>
+                    <td>17,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Pechuga de pollo plancha</td>
+                    <td>5,00 €</td>
+                    <td>9,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Pollo frito</td>
+                    <td>-</td>
+                    <td>6,50 €</td>
+                    <td>Consultar</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+     <!-- CHACINAS -->
+    <section id="chacinas" class="platos-section">
+        <h2>Chacinas</h2>
+        <table class="menu-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>1/2 Ración</th>
+                    <th>Ración</th>
+                    <th>Alérgenos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jamón</td>
+                    <td>7,00 €</td>
+                    <td>14,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Queso</td>
+                    <td>8,00 €</td>
+                    <td>14,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Carne Mechá</td>
+                    <td>8,00 €</td>
+                    <td>14,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Caña de Lomo</td>
+                    <td>8,00 €</td>
+                    <td>15,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Chicharrón de Cádiz</td>
+                    <td>8,00 €</td>
+                    <td>14,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Variado</td>
+                    <td>-</td>
+                    <td>22,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+</div>
+<div class="carta-grid">
+    <!-- PARA LOS PEQUES -->
+    <section id="peques" class="platos-section">
+        <h2>Para los peques</h2>
+        <table class="menu-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Tapa</th>
+                    <th>Plato</th>
+                    <th>Alérgenos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Hamburguesa pollo</td>
+                    <td>5,00 €</td>
+                    <td>9,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Lagrimitas</td>
+                    <td>4,00 €</td>
+                    <td>8,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Nuggets</td>
+                    <td>4,00 €</td>
+                    <td>8,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Perrito caliente</td>
+                    <td>4,00 €</td>
+                    <td>-</td>
+                    <td>Consultar</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- PESCADOS -->
+    <section id="pescados" class="platos-section">
+        <h2>Pescados</h2>
+        <table class="menu-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Alérgenos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cartucho de chocos</td>
+                    <td>9,00 €</td>
+                    <td>         <span class="icon pescado"></span>       <span class="icon huevo"></span></td>
+                </tr>
+                <tr>
+                    <td>Cartucho de calamares</td>
+                    <td>8,00 €</td>
+                    <td>        <span class="icon pescado"></span></td>
+                </tr>
+                <tr>
+                    <td>Cartucho de bacalao frito</td>
+                    <td>7,00 €</td>
+                    <td>        <span class="icon gluten"></span></td>
+                </tr>
+                <tr>
+                    <td>Twister de langostino</td>
+                    <td>5,50 €</td>
+                    <td>        <span class="icon gluten"></span></td>
+                </tr>
+                <tr>
+                    <td>Pavía de gambón</td>
+                    <td>7,00 €</td>
+                    <td>        <span class="icon gluten"></span></td>
+                </tr>
+                <tr>
+                    <td>Gambas al ajillo</td>
+                    <td>11,00 €</td>
+                    <td>        <span class="icon gluten"></span>        <span class="icon huevo"></span></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+    <!-- POSTRES -->
+    <section id="postres" class="platos-section">
+        <h2>Postres</h2>
+        <table class="menu-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Alérgenos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tarta de la Abuela</td>
+                    <td>5,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+                <tr>
+                    <td>Tarta de Queso</td>
+                    <td>5,00 €</td>
+                    <td>Consultar</td>
+                </tr>
+            </tbody>
+        </table>
+<div class="allergen-legend">
+    <h3>Alérgenos</h3>
+
+    <div class="allergen-grid">
+        <div><span class="icon gluten"></span> Gluten</div>
+        <div><span class="icon huevo"></span> Huevo</div>
+        <div><span class="icon lacteos"></span> Lácteos</div>
+        <div><span class="icon pescado"></span> Pescado</div>
+        <div><span class="icon cacahuetes"></span> Cacahuetes / Frutos secos</div>
+        <div><span class="icon soja"></span> Soja</div>
+        <div><span class="icon mostaza"></span> Mostaza</div>
+        <div><span class="icon sesamo"></span> Sésamo</div>
+        <div><span class="icon sulfitos"></span> Sulfitos</div>
+    </div>
+</div>
+
+
+        <p class="allergen-note">
+            Por las características de instalación, manipulación y elaboración del establecimiento, todos nuestros productos
+            son susceptibles de contener de manera directa o a través de contaminación cruzada algún tipo de alérgeno.
+            Diríjase a nuestro personal si desea más información al respecto.
+        </p>
+    </section>
+
+    <!-- FOOTER (puedes reutilizar el mismo que en platos.html) -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>La Revirá</h3>
+                <p>
+                    Tradición andaluza reinterpretada con cariño.
+                    Productos frescos, recetas de siempre y un ambiente que invita a quedarse.
+                    Somos un rincón donde la buena mesa y la buena compañía se encuentran.
+                </p>
+            </div>
+            <div class="footer-col">
+                <h3>Información</h3>
+                <ul>
+                    <li><strong>Dirección:</strong> Av. la Cruz, 41440 Lora del Río, Sevilla</li>
+                    <li><strong>Teléfono:</strong> 600 000 000</li>
+                    <li><strong>Email:</strong> contacto@larevira.es</li>
+                    <li><strong>Reservas:</strong> Disponible por teléfono</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Síguenos</h3>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/la_revira_cerveceros/" target="_blank" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://www.facebook.com/p/La-Revirá-Cerveceros-61552801625227/" target="_blank" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 La Revirá — Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
