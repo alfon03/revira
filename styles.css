@@ -817,7 +817,9 @@ body {
 /* ============================================================
    ANCLAS (TU DISEÑO PREMIUM)
 ============================================================ */
-
+/* ================================
+   ANCLAS BASE
+================================ */
 .anchors {
     display: flex;
     flex-wrap: wrap;
@@ -825,12 +827,11 @@ body {
     gap: 14px;
     width: 100%;
     background-color: var(--jet-black);
-    padding: 18px 30px; /* AIRE LATERAL REAL */
+    padding: 18px 30px;
     border-bottom: 1px solid var(--dim-grey);
     border-radius: 10px;
 }
 
-/* Botones */
 .anchors a {
     padding: 8px 16px;
     background: var(--white);
@@ -849,7 +850,6 @@ body {
         border-color var(--transition);
 }
 
-/* Hover profesional */
 .anchors a:hover {
     background: var(--jet-black);
     color: var(--school-bus-yellow);
@@ -858,7 +858,6 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
-/* Activo */
 .anchors a.active-anchor {
     background: var(--school-bus-yellow);
     color: var(--ink-black);
@@ -868,14 +867,19 @@ body {
     box-shadow: 0 3px 8px rgba(0,0,0,0.15);
 }
 
-/* ============================================================
-   RESPONSIVE
-============================================================ */
-
+/* ================================
+   RESPONSIVE — TABLETS (≤ 900px)
+================================ */
 @media (max-width: 900px) {
+    .anchors {
+        padding: 16px 20px;
+        gap: 12px;
+    }
+
     .anchors-row {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
+        gap: 18px;
     }
 
     .btn-download {
@@ -883,6 +887,50 @@ body {
         text-align: center;
     }
 }
+
+/* ================================
+   RESPONSIVE — MÓVILES (≤ 600px)
+================================ */
+@media (max-width: 600px) {
+    .anchors {
+        padding: 14px 16px;
+        gap: 10px;
+    }
+
+    .anchors a {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+    }
+}
+
+/* ================================
+   RESPONSIVE — MÓVILES PEQUEÑOS (≤ 420px)
+   Scroll horizontal suave tipo iPhone
+================================ */
+@media (max-width: 420px) {
+    .anchors {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 12px;
+        padding: 14px 12px;
+
+        /* Scroll suave */
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .anchors a {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        white-space: nowrap;
+    }
+
+    /* Ocultar scrollbar en móviles */
+    .anchors::-webkit-scrollbar {
+        display: none;
+    }
+}
+
 
 /* ============================================================
    ALÉRGENOS
