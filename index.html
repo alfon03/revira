@@ -10,6 +10,12 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/img/logo3.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/img/logo3.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -22,14 +28,29 @@
         </div>
 
         <nav id="navMenu">
-            <a href="index.html">Inicio</a>
-            <a href="platos.html">Nuestros platos</a>
-            <a href="#info">Sobre nosotros</a>
+            <a data-i18n="menu_home" href="index.html">Inicio</a>
+            <a data-i18n="menu_dishes" href="platos.html">Nuestros platos</a>
+            <a data-i18n="menu_about" href="#info">Sobre nosotros</a>
         </nav>
+
+         <div id="language-switcher">
+            <div class="flag" data-lang="es">
+                <img src="https://flagcdn.com/es.svg" alt="ES">
+            </div>
+            <div class="flag" data-lang="en">
+                <img src="https://flagcdn.com/gb.svg" alt="EN">
+            </div>
+            <div class="flag" data-lang="fr">
+                <img src="https://flagcdn.com/fr.svg" alt="FR">
+            </div>
+            <div class="flag" data-lang="de">
+                <img src="https://flagcdn.com/de.svg" alt="DE">
+            </div>
+        </div>
     </header>
 
-    <div class="breadcrumb">
-        Estás en: <span>Inicio</span>
+    <div data-i18n="breadcrumb" class="breadcrumb">
+        Estás en: <span data-i18n="breadcrumb-label">Inicio</span>
     </div>
 
     <!-- CARRUSEL -->
@@ -99,13 +120,18 @@
         </div>
     </section>
 
+    <!-- BOTÓN FLOTANTE IR ARRIBA -->
+    <button id="btnTop" class="btn-top">
+        <span class="material-icons">arrow_upward</span>
+    </button>
+
     <footer class="footer">
     <div class="footer-container">
 
         <!-- Columna 1: Sobre nosotros -->
         <div class="footer-col">
-            <h3>La Revirá</h3>
-            <p>
+            <h3 data-i18n="footer_about_title">La Revirá</h3>
+            <p data-i18n="footer_about_text">
                 Tradición andaluza reinterpretada con cariño.  
                 Productos frescos, recetas de siempre y un ambiente que invita a quedarse.  
                 Somos un rincón donde la buena mesa y la buena compañía se encuentran.
@@ -114,18 +140,18 @@
 
         <!-- Columna 2: Información -->
         <div class="footer-col">
-            <h3>Información</h3>
-            <ul>
-                <li><strong>Dirección:</strong> Av. la Cruz, 41440 Lora del Río, Sevilla</li>
-                <li><strong>Teléfono:</strong> 600 000 000</li>
-                <li><strong>Email:</strong> contacto@larevira.es</li>
-                <li><strong>Reservas:</strong> Disponible por teléfono</li>
-            </ul>
+            <h3 data-i18n="footer_info_title">Información</h3>
+           <ul>
+                    <li><strong data-i18n="footer_address">Dirección:</strong> Av. la Cruz, 41440 Lora del Río, Sevilla</li>
+                    <li><strong data-i18n="footer_phone">Teléfono:</strong> 645 74 02 00</li>
+                    <li><strong data-i18n="footer_email">Email:</strong> contacto@larevira.es</li>
+                    <li><strong data-i18n="footer_reservas">Reservas:</strong> <span data-i18n="footer_reservas_text">Disponible por teléfono</span></li>
+                </ul>
         </div>
 
         <!-- Columna 3: Redes -->
         <div class="footer-col">
-            <h3>Síguenos</h3>
+            <h3 data-i18n="footer_follow">Síguenos</h3>
             <div class="footer-social">
                 <a href="https://www.instagram.com/la_revira_cerveceros/" target="_blank" aria-label="Instagram">
                     <i class="fa-brands fa-instagram"></i>
@@ -140,10 +166,16 @@
     </div>
 
     <div class="footer-bottom">
-        <p>© 2026 La Revirá — Todos los derechos reservados</p>
+        <p data-i18n="footer_rights">© 2026 La Revirá — Todos los derechos reservados</p>
     </div>
+
 </footer>
 
+ <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <img id="lightboxImg" src="">
+    </div>
     <script src="script.js"></script>
 </body>
 

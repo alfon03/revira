@@ -11,6 +11,12 @@
     <link rel="icon" type="image/x-icon" href="/img/logo3.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/img/logo3.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -23,10 +29,11 @@
         </div>
 
         <nav id="navMenu">
-            <a href="index.html">Inicio</a>
-            <a href="platos.html">Nuestros platos</a>
-            <a href="carta.html" class="active">Carta</a>
-            <a href="#info">Sobre nosotros</a>
+             <a data-i18n="menu_home" href="index.html">Inicio</a>
+            <a data-i18n="menu_dishes" href="platos.html">Nuestros platos</a>
+                        <a data-i18n="menu_dishes" href="carta.html">Carta</a>
+
+            <a data-i18n="menu_about" href="#info">Sobre nosotros</a>
         </nav>
 
         <div id="language-switcher">
@@ -46,9 +53,8 @@
     </header>
 
     <!-- BREADCRUMB -->
-    <div class="breadcrumb">
-        <span class="breadcrumb-label">Estás en:</span>
-        <span>Carta</span>
+    <div data-i18n="breadcrumb" class="breadcrumb">
+        Estás en: <span data-i18n="breadcrumb-label">Carta</span>
     </div>
 
     <!-- ANCLAS CATEGORÍAS -->
@@ -538,6 +544,7 @@
         </table>
     </section>
 </div>
+
     <!-- POSTRES -->
     <section id="postres" class="platos-section">
         <h2>Postres</h2>
@@ -562,6 +569,8 @@
                 </tr>
             </tbody>
         </table>
+    </section>
+
 <div class="allergen-legend">
     <h3>Alérgenos</h3>
 
@@ -584,30 +593,29 @@
             son susceptibles de contener de manera directa o a través de contaminación cruzada algún tipo de alérgeno.
             Diríjase a nuestro personal si desea más información al respecto.
         </p>
-    </section>
 
-    <!-- FOOTER (puedes reutilizar el mismo que en platos.html) -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-col">
-                <h3>La Revirá</h3>
-                <p>
+                <h3 data-i18n="footer_about_title">La Revirá</h3>
+                <p data-i18n="footer_about_text">
                     Tradición andaluza reinterpretada con cariño.
                     Productos frescos, recetas de siempre y un ambiente que invita a quedarse.
                     Somos un rincón donde la buena mesa y la buena compañía se encuentran.
                 </p>
             </div>
             <div class="footer-col">
-                <h3>Información</h3>
+                <h3 data-i18n="footer_info_title">Información</h3>
                 <ul>
                     <li><strong>Dirección:</strong> Av. la Cruz, 41440 Lora del Río, Sevilla</li>
-                    <li><strong>Teléfono:</strong> 600 000 000</li>
+                    <li><strong>Teléfono:</strong> 645 74 02 00</li>
                     <li><strong>Email:</strong> contacto@larevira.es</li>
                     <li><strong>Reservas:</strong> Disponible por teléfono</li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h3>Síguenos</h3>
+                <h3data-i18n="footer_follow">Síguenos</h3>
                 <div class="footer-social">
                     <a href="https://www.instagram.com/la_revira_cerveceros/" target="_blank" aria-label="Instagram">
                         <i class="fa-brands fa-instagram"></i>
@@ -620,7 +628,7 @@
         </div>
 
         <div class="footer-bottom">
-            <p>© 2026 La Revirá — Todos los derechos reservados</p>
+            <p data-i18n="footer_rights">© 2026 La Revirá — Todos los derechos reservados</p>
         </div>
     </footer>
 

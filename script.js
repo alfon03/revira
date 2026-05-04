@@ -255,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // LIGHTBOX (ampliar imagen)
 document.addEventListener("click", e => {
-    if (e.target.tagName === "IMG" && e.target.closest(".plato-carousel, .plato-gallery")) {
+    if (e.target.tagName === "IMG" && e.target.closest(".plato-carousel, .plato-gallery, .carousel, .slides")) {
         const lightbox = document.getElementById("lightbox");
         const lightboxImg = document.getElementById("lightboxImg");
 
