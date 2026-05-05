@@ -1,10 +1,28 @@
 {
+  "title": "La ReviRa",
+
   "menu_home": "Inicio",
   "menu_dishes": "Nuestros platos",
+  "menu_menu": "Carta",
   "menu_about": "Sobre nosotros",
 
   "breadcrumb": "Estás en:",
-  
+  "breadcrumb_label_home": "Inicio",
+  "breadcrumb_label_dishes": "Nuestros platos",
+  "breadcrumb_label_menu": "Carta",
+
+  "download_pdf": "Descargar carta en PDF",
+
+  "producto": "Producto",
+  "precio": "Precio",
+  "tapa": "Tapa",
+  "plato": "Plato",
+  "alergenos": "Alérgenos",
+  "consultar": "Consultar",
+
+  "racion": "Ración",
+  "media_racion": "1/2 Ración",
+
   "chacinas": "Chacinas",
   "tapas_frias": "Tapas frías",
   "tapas_calientes": "Tapas calientes",
@@ -15,16 +33,129 @@
   "pescados": "Pescados",
   "postres": "Postres",
 
+  "dish_mejillones": "Mejillones",
+  "dish_anchoas": "Anchoas",
+  "dish_sardinas": "Sardinas",
+  "dish_lomo_orza": "Lomo en orza",
+  "dish_tosta_chicharron": "Tosta de chicharrón de Cádiz",
+
+  "dish_ensaladilla": "Ensaladilla rusa",
+  "dish_pulpo": "Ensalada de pulpo",
+  "dish_patatas_alinadas": "Patatas aliñadas",
+  "dish_boquerones": "Boquerones en vinagre",
+  "dish_ensalada_casa": "Ensalada de la casa",
+
+  "dish_espinacas": "Espinacas con garbanzos",
+  "dish_croquetas_marisco": "Croquetas de marisco",
+  "dish_croquetas_queso": "Croquetas de queso",
+  "dish_croquetas_cocido": "Croquetas de cocido",
+  "dish_variado_croquetas": "Variado de croquetas",
+  "dish_carrillera": "Carrillera",
+  "dish_pastel_berenjena": "Pastel de berenjena",
+  "dish_patatas_gratinadas": "Patatas gratinadas",
+  "dish_patatas_bravas": "Patatas bravas",
+  "dish_papas_arrieras": "Papas arrieras",
+  "dish_berenjenas_miel": "Berenjenas con miel de caña",
+  "dish_gyozas": "Gyozas",
+
+  "dish_melva": "Melva con pimientos",
+  "dish_salmon_queso": "Salmón con queso",
+  "dish_cochinito": "Cochinito (queso o jamón)",
+  "dish_piripi": "Piripi",
+  "dish_mechada": "Carne mechada",
+  "dish_serranito": "Serranito (pollo o lomo)",
+  "dish_presa": "Presa ibérica",
+  "dish_pringa": "Pringá",
+  "dish_bao_curry": "Bao de curry",
+  "dish_bao_carrilla": "Bao de carrillá",
+  "dish_gambas_alioli": "Gambas al alioli",
+
+  "dish_solomillo_revira": "Solomillo a la Revira",
+  "dish_solomillo_whisky": "Solomillo al whisky",
+  "dish_solomillo_pimienta": "Solomillo a la pimienta",
+  "dish_solomillo_roquefort": "Solomillo al roquefort",
+  "dish_hamburguesa_angus": "Hamburguesa Angus",
+  "dish_lagartito": "Lagartito ibérico",
+  "dish_presa_iberica": "Presa ibérica",
+  "dish_pechuga": "Pechuga de pollo a la plancha",
+  "dish_pollo_frito": "Pollo frito",
+
+  "dish_jamon": "Jamón",
+  "dish_queso": "Queso",
+  "dish_carne_mecha": "Carne mechá",
+  "dish_cana_lomo": "Caña de lomo",
+  "dish_chicharron": "Chicharrón de Cádiz",
+  "dish_variado": "Variado",
+
+  "dish_hamburguesa_pollo": "Hamburguesa de pollo",
+  "dish_lagrimitas": "Lagrimitas",
+  "dish_nuggets": "Nuggets",
+  "dish_perrito": "Perrito caliente",
+
+  "dish_chocos": "Cartucho de chocos",
+  "dish_calamares": "Cartucho de calamares",
+  "dish_bacalao": "Cartucho de bacalao frito",
+  "dish_twister": "Twister de langostino",
+  "dish_pavia": "Pavía de gambón",
+  "dish_gambas_ajillo": "Gambas al ajillo",
+
+  "dish_tarta_abuela": "Tarta de la abuela",
+  "dish_tarta_queso": "Tarta de queso",
+
+  "alergeno_gluten": "Gluten",
+  "alergeno_huevo": "Huevo",
+  "alergeno_lacteos": "Lácteos",
+  "alergeno_pescado": "Pescado",
+  "alergeno_cacahuetes": "Cacahuetes / Frutos secos",
+  "alergeno_soja": "Soja",
+  "alergeno_mostaza": "Mostaza",
+  "alergeno_sesamo": "Sésamo",
+  "alergeno_sulfitos": "Sulfitos",
+
+  "alergenos_title": "Alérgenos",
+  "alergenos_nota": "Debido a la manipulación y elaboración, todos nuestros productos pueden contener alérgenos o trazas.",
+
   "footer_about_title": "La Revirá",
   "footer_about_text": "Tradición andaluza reinterpretada con cariño. Productos frescos, recetas de siempre y un ambiente que invita a quedarse. Somos un rincón donde la buena mesa y la buena compañía se encuentran.",
 
   "footer_info_title": "Información",
-  "footer_address": "Dirección",
-  "footer_phone": "Teléfono",
-  "footer_email": "Email",
-  "footer_reservas": "Reservas",
+  "footer_address": "Dirección:",
+  "footer_address_text": "Av. la Cruz, 41440 Lora del Río, Sevilla",
+  "footer_phone": "Teléfono:",
+  "footer_phone_text": "645 74 02 00",
+  "footer_email": "Email:",
+  "footer_email_text": "contacto@larevira.es",
+  "footer_reservas": "Reservas:",
   "footer_reservas_text": "Disponible por teléfono",
-
   "footer_follow": "Síguenos",
-  "footer_rights": "Todos los derechos reservados"
+
+  "footer_copy": "© 2026 La Revirá — Todos los derechos reservados",
+
+  "btn_top": "Subir",
+  "lightbox_close": "×",
+  "map_iframe": "",
+
+  "carousel_prev": "chevron_left",
+  "carousel_next": "chevron_right",
+
+  "home_title": "Bienvenido a La ReviRa",
+  "home_subtitle": "El lugar perfecto para disfrutar, comer y compartir.",
+
+  "location_title": "¿Dónde estamos?",
+
+  "schedule_title": "Horario",
+
+  "day_tuesday": "Martes",
+  "day_wednesday": "Miércoles",
+  "day_thursday": "Jueves",
+  "day_friday": "Viernes",
+  "day_saturday": "Sábado",
+  "day_sunday": "Domingo",
+
+  "hours_tue": "12:30–17:00 / 20:00–Cierre",
+  "hours_wed": "12:30–17:00 / 20:00–Cierre",
+  "hours_thu": "12:30–17:00 / 20:00–Cierre",
+  "hours_fri": "12:30–17:00 / 20:00–Cierre",
+  "hours_sat": "12:30–17:00 / 20:00–Cierre",
+  "hours_sun": "12:30–17:00"
 }

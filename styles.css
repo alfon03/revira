@@ -170,6 +170,25 @@ nav a:hover {
     max-width: 100%;
   }
 }
+@media (max-width: 768px) {
+  .carousel {
+    scroll-snap-type: x mandatory;
+    overflow-x: hidden;
+  }
+
+  #slides {
+    display: flex;
+    scroll-snap-type: x mandatory;
+  }
+
+  .slide-group {
+    scroll-snap-align: center;
+  }
+}
+#slides {
+  transition: transform 0.6s ease;
+}
+
 /* ============================================================
    SECCIONES GENERALES
 ============================================================ */

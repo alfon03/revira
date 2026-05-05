@@ -114,18 +114,23 @@ function createSlide(group) {
 // =========================
 // CARRUSEL
 // =========================
-
 let index = 0;
+let autoPlayInterval = null;
 
 function initCarousel() {
     const totalSlides = slidesContainer.children.length;
-
     if (totalSlides === 0) return;
+
+    // 🧹 limpiar intervalos anteriores
+    if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+    }
 
     function updateSlide() {
         slidesContainer.style.transform = `translateX(-${index * 100}%)`;
     }
 
+    // Botones
     document.getElementById("nextBtn").onclick = () => {
         index = (index + 1) % totalSlides;
         updateSlide();
@@ -136,11 +141,24 @@ function initCarousel() {
         updateSlide();
     };
 
-    setInterval(() => {
+    // ============================
+    // ⏱ VELOCIDAD SEGÚN PANTALLA
+    // ============================
+    let intervalTime = 4500; // escritorio
+
+    if (window.innerWidth <= 768) {
+        intervalTime = 7000; // móvil → más lento
+    } else if (window.innerWidth <= 1024) {
+        intervalTime = 5500; // tablet
+    }
+
+    // autoplay
+    autoPlayInterval = setInterval(() => {
         index = (index + 1) % totalSlides;
         updateSlide();
-    }, 4500);
+    }, intervalTime);
 }
+
 
 
 // BOTÓN IR ARRIBA
