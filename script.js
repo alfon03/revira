@@ -208,6 +208,8 @@ document.addEventListener("DOMContentLoaded", () => {
             loaded++;
             if (loaded === maxImages) callback(images);
         }
+
+        
     }
 
     // ============================================================
@@ -276,6 +278,55 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", () => {
         update();
     });
+
+        // ============================
+    // SWIPE TÁCTIL (MÓVIL)
+    // ============================
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+
+    track.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+
+        // Pausar autoplay
+        clearInterval(container._interval);
+    });
+
+    track.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+
+        currentX = e.touches[0].clientX;
+        const diff = currentX - startX;
+
+        // Mover el carrusel mientras arrastra
+        track.style.transition = "none";
+        track.style.transform = `translateX(calc(-${index * (100 / getImagesPerView())}% + ${diff}px))`;
+    });
+
+    track.addEventListener("touchend", () => {
+        isDragging = false;
+        track.style.transition = "transform 0.5s ease";
+
+        const diff = currentX - startX;
+
+        // Si desliza más de 50px → cambiar de slide
+        if (diff > 50) {
+            index = Math.max(0, index - 1);
+        } else if (diff < -50) {
+            index = Math.min(total - 1, index + 1);
+        }
+
+        update();
+
+        // Reanudar autoplay
+        container._interval = setInterval(() => {
+            index = (index + 1) % total;
+            update();
+        }, intervalTime);
+    });
+
 }
 
 
