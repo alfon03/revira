@@ -418,59 +418,63 @@ nav a:hover {
 
 
 /* Móvil: scroll horizontal */
+/* ============================
+   CARRUSEL — MÓVIL PREMIUM
+============================ */
 @media (max-width: 768px) {
+
+  .plato-carousel {
+    padding: 25px 0;
+    background-color: var(--jet-black);
+  }
+
+  .plato-carousel .carousel-track {
+    gap: 16px;
+    padding: 10px 20px;
+  }
+
+  .plato-carousel .carousel-item {
+    min-width: 70%; /* 1.4 imágenes por vista → efecto premium */
+  }
+
+  .plato-carousel .carousel-item img {
+    height: 200px;        /* Mucho más elegante */
+    width: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+  }
+}
+
+
+
+/* Escritorio: grid tipo iPhone */
+/* ============================
+   GALERÍA — MÓVIL PREMIUM
+============================ */
+@media (max-width: 768px) {
+
   .plato-gallery {
     overflow-x: auto;
     white-space: nowrap;
+    padding: 20px 0;
   }
 
   .plato-gallery .gallery-row {
     display: inline-flex;
     gap: 14px;
-    padding: 10px 20px;
+    padding: 0 20px;
   }
 
   .plato-gallery .gallery-row img {
-    height: 180px;
+    height: 150px;   /* Antes 180 → ahora más elegante */
     width: auto;
     border-radius: 12px;
     object-fit: cover;
-    cursor: zoom-in;
     box-shadow: 0 3px 10px rgba(0,0,0,0.18);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .plato-gallery .gallery-row img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 5px 14px rgba(0,0,0,0.22);
   }
 }
 
-
-/* Escritorio: grid tipo iPhone */
-@media (min-width: 769px) {
-  .plato-gallery .gallery-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 18px;
-    padding: 10px 40px;
-  }
-
-  .plato-gallery .gallery-row img {
-    width: 100%;
-    height: 240px;
-    border-radius: 12px;
-    object-fit: cover;
-    cursor: zoom-in;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
-  }
-
-  .plato-gallery .gallery-row img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.22);
-  }
-}
 
 
 /* Ocultar scrollbar */
