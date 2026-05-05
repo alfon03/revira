@@ -376,17 +376,15 @@ nav a:hover {
    CARRUSEL PREMIUM
 ============================================================ */
 .plato-carousel {
-  width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1400px; /* evita que se haga gigante */
+  margin: 0 auto;
   overflow: hidden;
-  padding: 35px 0;
+  padding: 40px 0;
   background-color: var(--jet-black);
   border-top: 1px solid var(--dim-grey);
   border-bottom: 1px solid var(--dim-grey);
 }
-
-
 
 .plato-carousel .carousel-track {
   display: flex;
@@ -396,16 +394,17 @@ nav a:hover {
 }
 
 .plato-carousel .carousel-item {
-  min-width: 40%;
+  flex: 0 0 30%; /* 3 imágenes por vista */
   display: flex;
   justify-content: center;
 }
 
 .plato-carousel .carousel-item img {
   width: 100%;
-  height: 320px;
-  border-radius: 14px;
+  height: 260px; /* más elegante y controlado */
+  max-height: 260px;
   object-fit: cover;
+  border-radius: 14px;
   cursor: zoom-in;
   box-shadow: 0 4px 14px rgba(0,0,0,0.25);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -444,7 +443,6 @@ nav a:hover {
 
   .plato-carousel {
     padding: 25px 0;
-    background-color: var(--jet-black);
   }
 
   .plato-carousel .carousel-track {
@@ -453,15 +451,26 @@ nav a:hover {
   }
 
   .plato-carousel .carousel-item {
-    min-width: 70%; /* 1.4 imágenes por vista → efecto premium */
+    flex: 0 0 75%; /* 1 imagen por vista con aire */
   }
 
   .plato-carousel .carousel-item img {
-    height: 200px;        /* Mucho más elegante */
-    width: 100%;
-    object-fit: cover;
+    height: 200px;
+    max-height: 200px;
     border-radius: 12px;
     box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .plato-carousel .carousel-item {
+    flex: 0 0 45%; /* 2 imágenes por vista */
+  }
+
+  .plato-carousel .carousel-item img {
+    height: 220px;
+    max-height: 220px;
   }
 }
 
