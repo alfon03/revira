@@ -214,36 +214,70 @@ document.addEventListener("DOMContentLoaded", () => {
     // CARRUSEL (varias imágenes visibles)
     // ============================================================
 
-    function buildCarousel(container, images) {
-        const track = document.createElement("div");
-        track.classList.add("carousel-track");
+   function buildCarousel(container, images) {
+    const track = document.createElement("div");
+    track.classList.add("carousel-track");
 
-        images.forEach(img => {
-            const item = document.createElement("div");
-            item.classList.add("carousel-item");
+    images.forEach(img => {
+        const item = document.createElement("div");
+        item.classList.add("carousel-item");
 
-            const element = document.createElement("img");
-            element.src = img.src;
+        const element = document.createElement("img");
+        element.src = img.src;
 
-            item.appendChild(element);
-            track.appendChild(item);
-        });
+        item.appendChild(element);
+        track.appendChild(item);
+    });
 
-        container.appendChild(track);
+    container.innerHTML = ""; // limpiar carrusel anterior
+    container.appendChild(track);
 
-        let index = 0;
-        const total = images.length;
+    let index = 0;
+    const total = images.length;
 
-        function update() {
-            track.style.transform = `translateX(-${index * 33.33}%)`;
-        }
-
-        // Auto-play
-        setInterval(() => {
-            index = (index + 1) % total;
-            update();
-        }, 3000);
+    // ============================
+    // IMÁGENES POR VISTA SEGÚN PANTALLA
+    // ============================
+    function getImagesPerView() {
+        if (window.innerWidth <= 768) return 1;   // móvil
+        if (window.innerWidth <= 1024) return 2;  // tablet
+        return 3;                                 // escritorio
     }
+
+    function update() {
+        const perView = getImagesPerView();
+        const percentage = 100 / perView;
+        track.style.transform = `translateX(-${index * percentage}%)`;
+    }
+
+    // ============================
+    // AUTOPLAY SEGÚN PANTALLA
+    // ============================
+    let intervalTime = 3000;
+
+    if (window.innerWidth <= 768) intervalTime = 6500;   // móvil → más lento
+    else if (window.innerWidth <= 1024) intervalTime = 4500; // tablet
+
+    // ============================
+    // LIMPIAR INTERVALOS ANTERIORES
+    // ============================
+    if (container._interval) clearInterval(container._interval);
+
+    container._interval = setInterval(() => {
+        index = (index + 1) % total;
+        update();
+    }, intervalTime);
+
+    update();
+
+    // ============================
+    // REAJUSTAR AL REDIMENSIONAR
+    // ============================
+    window.addEventListener("resize", () => {
+        update();
+    });
+}
+
 
     // ============================================================
     // GALERÍA TIPO IPHONE (scroll horizontal)
