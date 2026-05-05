@@ -36,6 +36,7 @@ header {
   padding: 40px 20px;
   text-align: center;
   border-bottom: 2px solid var(--dim-grey);
+  position: relative;
 
   /* Logo centrado */
   background-image: url("img/logo.png");
@@ -164,6 +165,11 @@ nav a:hover {
 .prev { left: 10px; }
 .next { right: 10px; }
 
+@media (max-width: 768px) {
+  .slide-item {
+    max-width: 100%;
+  }
+}
 /* ============================================================
    SECCIONES GENERALES
 ============================================================ */
@@ -618,11 +624,14 @@ nav a:hover {
   }
 
 }
+
 #language-switcher {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+
   display: flex;
   gap: 10px;
-  margin-left: auto;
-  padding-right: 15px;
 }
 
 #language-switcher .flag {
@@ -644,6 +653,20 @@ nav a:hover {
 #language-switcher .flag:hover {
   transform: translateY(-2px);
   border-color: var(--gold);
+}
+
+@media (max-width: 768px) {
+
+  #language-switcher {
+    bottom: 10px;
+    right: 10px;
+    gap: 6px;
+  }
+
+  #language-switcher .flag {
+    width: 24px;
+    height: 18px;
+  }
 }
 
 /* Ocultar interfaz de Google */
@@ -815,11 +838,9 @@ body {
 }
 
 /* ============================================================
-   ANCLAS (TU DISEÑO PREMIUM)
+   ANCLAS 
 ============================================================ */
-/* ================================
-   ANCLAS BASE
-================================ */
+
 .anchors {
     display: flex;
     flex-wrap: wrap;
@@ -827,7 +848,7 @@ body {
     gap: 14px;
     width: 100%;
     background-color: var(--jet-black);
-    padding: 18px 30px;
+    padding: 18px 30px; /* AIRE LATERAL */
     border-bottom: 1px solid var(--dim-grey);
     border-radius: 10px;
 }
@@ -850,6 +871,7 @@ body {
         border-color var(--transition);
 }
 
+/* Hover */
 .anchors a:hover {
     background: var(--jet-black);
     color: var(--school-bus-yellow);
@@ -858,6 +880,7 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
+/* Activo */
 .anchors a.active-anchor {
     background: var(--school-bus-yellow);
     color: var(--ink-black);
@@ -880,32 +903,22 @@ body {
         padding: 8px 14px;
         font-size: 0.9rem;
     }
-
-    .anchors-row {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 18px;
-    }
-
-    .btn-download {
-        width: 100%;
-        text-align: center;
-    }
 }
 
 /* ================================
    MÓVILES (≤ 600px)
-   2 columnas
+   CAMBIO A GRID DE 2 COLUMNAS
 ================================ */
 @media (max-width: 600px) {
     .anchors {
-        justify-content: center;
-        gap: 10px;
+        display: grid; /* 🔥 Cambia de flex a grid */
+        grid-template-columns: repeat(2, 1fr); /* 🔥 SIEMPRE 2 COLUMNAS */
+        gap: 12px 14px;
         padding: 14px 16px;
     }
 
     .anchors a {
-        flex: 0 0 calc(50% - 10px);
+        width: 100%;
         text-align: center;
         padding: 10px 12px;
         font-size: 0.85rem;
@@ -914,25 +927,20 @@ body {
 
 /* ================================
    MÓVILES PEQUEÑOS (≤ 420px)
-   1 columna, centrado
+   SIGUE SIENDO 2 COLUMNAS
 ================================ */
 @media (max-width: 420px) {
     .anchors {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        padding: 14px 12px;
+        grid-template-columns: repeat(2, 1fr); /* 🔥 2 columnas también aquí */
+        gap: 10px 12px;
+        padding: 12px 12px;
     }
 
     .anchors a {
-        width: 100%;
-        max-width: 260px;
-        text-align: center;
-        padding: 10px 14px;
-        font-size: 0.85rem;
+        padding: 10px 10px;
+        font-size: 0.82rem;
     }
 }
-
 
 /* ============================================================
    ALÉRGENOS

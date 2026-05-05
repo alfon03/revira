@@ -1,30 +1,167 @@
 {
+  "title": "La ReviRa",
+
   "menu_home": "Home",
   "menu_dishes": "Our dishes",
+  "menu_menu": "Menu",
   "menu_about": "About us",
 
-  "breadcrumb": "You are in:",
+  "breadcrumb": "You are here:",
+  "breadcrumb_label_home": "Home",
+  "breadcrumb_label_dishes": "Our dishes",
+  "breadcrumb_label_menu": "Menu",
+
+  "download_pdf": "Download menu in PDF",
+
+  "producto": "Product",
+  "precio": "Price",
+  "tapa": "Tapas",
+  "plato": "Dish",
+  "alergenos": "Allergens",
+  "consultar": "Ask staff",
+  
+  "racion": "Portion",
+  "media_racion": "Half portion",
+
+
 
   "chacinas": "Cold cuts",
   "tapas_frias": "Cold tapas",
   "tapas_calientes": "Hot tapas",
   "panes": "House breads",
-  "montaditos": "Montaditos",
+  "montaditos": "Sandwiches",
   "carnes": "Meats",
   "peques": "Kids menu",
   "pescados": "Fish",
   "postres": "Desserts",
 
+  "dish_mejillones": "Mussels",
+  "dish_anchoas": "Anchovies",
+  "dish_sardinas": "Sardines",
+  "dish_lomo_orza": "Pork loin in lard",
+  "dish_tosta_chicharron": "Cádiz pork crackling toast",
+
+  "dish_ensaladilla": "Russian salad",
+  "dish_pulpo": "Octopus salad",
+  "dish_patatas_alinadas": "Seasoned potatoes",
+  "dish_boquerones": "Anchovies in vinegar",
+  "dish_ensalada_casa": "House salad",
+
+  "dish_espinacas": "Spinach with chickpeas",
+  "dish_croquetas_marisco": "Seafood croquettes",
+  "dish_croquetas_queso": "Cheese croquettes",
+  "dish_croquetas_cocido": "Stew croquettes",
+  "dish_variado_croquetas": "Mixed croquettes",
+  "dish_carrillera": "Pork cheek",
+  "dish_pastel_berenjena": "Eggplant pie",
+  "dish_patatas_gratinadas": "Gratin potatoes",
+  "dish_patatas_bravas": "Spicy potatoes",
+  "dish_papas_arrieras": "Arrieras potatoes",
+  "dish_berenjenas_miel": "Eggplant with cane honey",
+  "dish_gyozas": "Gyozas",
+
+  "dish_melva": "Melva with peppers",
+  "dish_salmon_queso": "Salmon with cheese",
+  "dish_cochinito": "Pork sandwich",
+  "dish_piripi": "Piripi sandwich",
+  "dish_mechada": "Marinated pork",
+  "dish_serranito": "Serranito sandwich",
+  "dish_presa": "Iberian pork",
+  "dish_pringa": "Pringá",
+  "dish_bao_curry": "Bao curry",
+  "dish_bao_carrilla": "Bao pork cheek",
+  "dish_gambas_alioli": "Shrimp with aioli",
+
+  "dish_solomillo_revira": "Sirloin Revira style",
+  "dish_solomillo_whisky": "Sirloin with whisky sauce",
+  "dish_solomillo_pimienta": "Pepper sirloin",
+  "dish_solomillo_roquefort": "Roquefort sirloin",
+  "dish_hamburguesa_angus": "Angus burger",
+  "dish_lagartito": "Iberian pork strip",
+  "dish_presa_iberica": "Iberian pork shoulder",
+  "dish_pechuga": "Grilled chicken breast",
+  "dish_pollo_frito": "Fried chicken",
+
+  "dish_jamon": "Ham",
+  "dish_queso": "Cheese",
+  "dish_carne_mecha": "Pulled pork",
+  "dish_cana_lomo": "Cured loin",
+  "dish_chicharron": "Pork crackling",
+  "dish_variado": "Mixed platter",
+
+  "dish_hamburguesa_pollo": "Chicken burger",
+  "dish_lagrimitas": "Chicken strips",
+  "dish_nuggets": "Nuggets",
+  "dish_perrito": "Hot dog",
+
+  "dish_chocos": "Fried cuttlefish",
+  "dish_calamares": "Fried squid",
+  "dish_bacalao": "Fried cod",
+  "dish_twister": "Shrimp twister",
+  "dish_pavia": "Prawn fritter",
+  "dish_gambas_ajillo": "Garlic shrimp",
+
+  "dish_tarta_abuela": "Grandma's cake",
+  "dish_tarta_queso": "Cheesecake",
+
+  
+  "alergeno_gluten": "Gluten",
+  "alergeno_huevo": "Egg",
+  "alergeno_lacteos": "Dairy",
+  "alergeno_pescado": "Fish",
+  "alergeno_cacahuetes": "Peanuts / Nuts",
+  "alergeno_soja": "Soy",
+  "alergeno_mostaza": "Mustard",
+  "alergeno_sesamo": "Sesame",
+  "alergeno_sulfitos": "Sulfites",
+
+
+  "alergenos_title": "Allergens",
+  "alergenos_nota": "All dishes may contain allergens or traces due to preparation.",
+
   "footer_about_title": "La Revirá",
   "footer_about_text": "Andalusian tradition reinterpreted with care. Fresh products, classic recipes and an atmosphere that invites you to stay. A place where good food and good company meet.",
 
   "footer_info_title": "Information",
-  "footer_address": "Address",
-  "footer_phone": "Phone",
-  "footer_email": "Email",
-  "footer_reservas": "Reservations",
+  "footer_address": "Address:",
+  "footer_address_text": "Av. la Cruz, 41440 Lora del Río, Seville",
+  "footer_phone": "Phone:",
+  "footer_phone_text": "645 74 02 00",
+  "footer_email": "Email:",
+  "footer_email_text": "contacto@larevira.es",
+  "footer_reservas": "Reservations:",
   "footer_reservas_text": "Available by phone",
-
   "footer_follow": "Follow us",
-  "footer_rights": "All rights reserved"
+
+  "footer_copy": "© 2026 La Revirá — All rights reserved",
+
+  "btn_top": "arrow_upward",
+  "lightbox_close": "×",
+  "map_iframe": "",
+
+  "carousel_prev": "chevron_left",
+  "carousel_next": "chevron_right",
+
+  "home_title": "Welcome to La ReviRa",
+  "home_subtitle": "The perfect place to enjoy, eat and share.",
+
+  "location_title": "Where are we?",
+
+  "schedule_title": "Opening hours",
+
+  "day_tuesday": "Tuesday",
+  "day_wednesday": "Wednesday",
+  "day_thursday": "Thursday",
+  "day_friday": "Friday",
+  "day_saturday": "Saturday",
+  "day_sunday": "Sunday",
+
+  "hours_tue": "12:30–17:00 / 20:00–Close",
+  "hours_wed": "12:30–17:00 / 20:00–Close",
+  "hours_thu": "12:30–17:00 / 20:00–Close",
+  "hours_fri": "12:30–17:00 / 20:00–Close",
+  "hours_sat": "12:30–17:00 / 20:00–Close",
+  "hours_sun": "12:30–17:00"
+
+
 }

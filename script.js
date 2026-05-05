@@ -37,6 +37,16 @@ for (let i = 1; i <= maxImages; i++) {
     };
 }
 
+function getImagesPerSlide() {
+    if (window.innerWidth <= 768) {
+        return 1; // 📱 móvil → 1 imagen
+    } else if (window.innerWidth <= 1024) {
+        return 2; // tablet → 2 imágenes
+    } else {
+        return 3; // escritorio → 3 imágenes
+    }
+}
+
 function checkFinish() {
     loaded++;
     if (loaded === maxImages) {
@@ -60,7 +70,9 @@ function shuffle(array) {
 // CREAR SLIDES (FIJO)
 // =========================
 function buildCarousel() {
-    const imagesPerSlide = 3;
+    slidesContainer.innerHTML = ""; // limpiar
+
+    const imagesPerSlide = getImagesPerSlide();
     let i = 0;
 
     while (i < images.length) {
@@ -76,7 +88,9 @@ function buildCarousel() {
 
     initCarousel();
 }
-
+window.addEventListener("resize", () => {
+    buildCarousel();
+});
 // =========================
 // CREAR SLIDE
 // =========================
