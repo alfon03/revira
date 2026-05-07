@@ -420,3 +420,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+
+const btn = document.getElementById("theme-toggle");
+const icon = document.getElementById("theme-icon");
+
+btn.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+
+  if (document.body.classList.contains("light-mode")) {
+    icon.textContent = "light_mode"; // ☀️
+  } else {
+    icon.textContent = "dark_mode"; // 🌙
+  }
+});

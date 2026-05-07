@@ -6,15 +6,18 @@
     <title data-i18n="title">La ReviRa</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/img/logo3.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="/img/logo3.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Google Icons -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="/img/logo3.png">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Playball font -->
+<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+
 
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
@@ -24,7 +27,7 @@
 
     <header>
         <div class="menu-icon" id="menuBtn">
-            <span class="material-icons" data-i18n="menu_icon">menu</span>
+            <span class="material-symbols-outlined" data-i18n="menu_icon">menu</span>
         </div>
 
         <nav id="navMenu">
@@ -32,6 +35,12 @@
             <a data-i18n="menu_dishes" href="platos.html">Nuestros platos</a>
             <a data-i18n="menu_about" href="#info">Sobre nosotros</a>
         </nav>
+
+ <button id="theme-toggle">
+  <span id="theme-icon" class="material-symbols-outlined">dark_mode</span>
+</button>
+
+
 
         <div id="language-switcher">
             <div class="flag" data-lang="es">
@@ -60,11 +69,11 @@
         <div class="slides" id="slides"></div>
 
         <button class="prev" id="prevBtn">
-            <span class="material-icons" data-i18n="carousel_prev">chevron_left</span>
+            <span class="material-symbols-outlined" data-i18n="carousel_prev">chevron_left</span>
         </button>
 
         <button class="next" id="nextBtn">
-            <span class="material-icons" data-i18n="carousel_next">chevron_right</span>
+            <span class="material-symbols-outlined" data-i18n="carousel_next">chevron_right</span>
         </button>
     </section>
 
@@ -74,9 +83,8 @@
     <p data-i18n="home_subtitle">El lugar perfecto para disfrutar, comer y compartir.</p>
 </section>
 
-
     <section class="section location">
-        <h2><span class="material-icons">location_on</span> <span data-i18n="location_title">¿Dónde estamos?</span></h2>
+        <h2><span class="material-symbols-outlined">location_on</span> <span data-i18n="location_title">¿Dónde estamos?</span></h2>
 
         <div class="location-container">
 
@@ -128,7 +136,7 @@
 
     <!-- BOTÓN FLOTANTE IR ARRIBA -->
     <button id="btnTop" class="btn-top">
-        <span class="material-icons" data-i18n="btn_top">arrow_upward</span>
+        <span class="material-symbols-outlined">arrow_upward</span>
     </button>
 
     <footer class="footer">
