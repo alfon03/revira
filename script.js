@@ -422,15 +422,26 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-const btn = document.getElementById("theme-toggle");
-const icon = document.getElementById("theme-icon");
+// Botón de cambio de tema
+const themeToggle = document.getElementById("theme-toggle");
 
-btn.addEventListener("click", () => {
-  document.body.classList.toggle("light-mode");
+// Al cargar la página, aplicar el modo guardado
+document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
 
-  if (document.body.classList.contains("light-mode")) {
-    icon.textContent = "light_mode"; // ☀️
-  } else {
-    icon.textContent = "dark_mode"; // 🌙
-  }
+    if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+    }
+});
+
+// Al hacer clic en el botón, cambiar y guardar
+themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+
+    // Guardar el estado
+    if (document.body.classList.contains("light-mode")) {
+        localStorage.setItem("theme", "light");
+    } else {
+        localStorage.setItem("theme", "dark");
+    }
 });
