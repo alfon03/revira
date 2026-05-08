@@ -12,9 +12,7 @@ menuBtn.addEventListener("click", () => {
 // =========================
 // CONFIGURACIÓN
 // =========================
-const element = document.createElement("img");
-element.loading = "lazy";
-element.src = img.src;
+
 
 const imageFolder = "img/carrusel/";
 const maxImages = 50;
