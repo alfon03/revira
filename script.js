@@ -217,165 +217,189 @@ document.addEventListener("DOMContentLoaded", () => {
     // CARRUSEL (varias imágenes visibles)
     // ============================================================
 
-function buildCarousel(container, images) {
+    function buildCarousel(container, images) {
 
-    // ============================
-    // CREAR TRACK
-    // ============================
-    const track = document.createElement("div");
-    track.classList.add("carousel-track");
+        // ============================
+        // CREAR TRACK
+        // ============================
+        const track = document.createElement("div");
+        track.classList.add("carousel-track");
 
-    images.forEach(img => {
-        const item = document.createElement("div");
-        item.classList.add("carousel-item");
+        images.forEach(img => {
+            const item = document.createElement("div");
+            item.classList.add("carousel-item");
 
-        const element = document.createElement("img");
-        element.src = img.src;
+            const element = document.createElement("img");
+            element.src = img.src;
 
-        item.appendChild(element);
-        track.appendChild(item);
-    });
+            item.appendChild(element);
+            track.appendChild(item);
+        });
 
-    container.innerHTML = "";
-    container.appendChild(track);
+        container.innerHTML = "";
+        container.appendChild(track);
 
-    // ============================
-    // DETECTAR MÓVIL
-    // ============================
-    const isMobile = window.innerWidth <= 768;
+        // ============================
+        // DETECTAR MÓVIL
+        // ============================
+        const isMobile = window.innerWidth <= 768;
 
-    // ============================
-    // FLECHAS SOLO EN MÓVIL
-    // ============================
-    let btnPrev, btnNext;
+        // ============================
+        // FLECHAS SOLO EN MÓVIL
+        // ============================
 
-    if (isMobile) {
-        btnPrev = document.createElement("button");
-        btnPrev.classList.add("carousel-prev");
-        btnPrev.innerHTML = "&#10094;"; // <
+        let btnPrev, btnNext;
 
-        btnNext = document.createElement("button");
-        btnNext.classList.add("carousel-next");
-        btnNext.innerHTML = "&#10095;"; // >
+        if (isMobile) {
+            btnPrev = document.createElement("button");
+            btnPrev.classList.add("prev");
+            btnPrev.innerHTML = `
+        <span class="material-symbols-outlined">chevron_left</span>
+    `;
 
-        container.appendChild(btnPrev);
-        container.appendChild(btnNext);
-    }
+            btnNext = document.createElement("button");
+            btnNext.classList.add("next");
+            btnNext.innerHTML = `
+        <span class="material-symbols-outlined">chevron_right</span>
+    `;
 
-    // ============================
-    // VARIABLES
-    // ============================
-    let index = 0;
-    const total = images.length;
+            // MUY IMPORTANTE: añadirlas dentro del contenedor del carrusel
+            container.appendChild(btnPrev);
+            container.appendChild(btnNext);
+        }
 
-    function getImagesPerView() {
-        if (window.innerWidth <= 768) return 1;
-        if (window.innerWidth <= 1024) return 2;
-        return 3;
-    }
+        // Eventos de flechas
+        if (isMobile) {
+            btnPrev.addEventListener("click", () => {
+                index = Math.max(0, index - 1);
+                update();
+            });
 
-    function update() {
-        const perView = getImagesPerView();
-        const percentage = 100 / perView;
-        track.style.transform = `translateX(-${index * percentage}%)`;
-    }
+            btnNext.addEventListener("click", () => {
+                const perView = getImagesPerView();
+                const maxIndex = total - perView;
+                index = Math.min(maxIndex, index + 1);
+                update();
+            });
+        }
 
-    // ============================
-    // AUTOPLAY SOLO EN ESCRITORIO
-    // ============================
-    let intervalTime = 3000;
-    if (window.innerWidth <= 1024 && !isMobile) intervalTime = 4500;
 
-    if (container._interval) clearInterval(container._interval);
 
-    function startAutoplay() {
-        if (isMobile) return; // móvil sin autoplay
 
-        container._interval = setInterval(() => {
+        // ============================
+        // VARIABLES
+        // ============================
+        let index = 0;
+        const total = images.length;
+
+        function getImagesPerView() {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
+        }
+
+        function update() {
+            const perView = getImagesPerView();
+            const percentage = 100 / perView;
+            track.style.transform = `translateX(-${index * percentage}%)`;
+        }
+
+        // ============================
+        // AUTOPLAY SOLO EN ESCRITORIO
+        // ============================
+        let intervalTime = 3000;
+        if (window.innerWidth <= 1024 && !isMobile) intervalTime = 4500;
+
+        if (container._interval) clearInterval(container._interval);
+
+        function startAutoplay() {
+            if (isMobile) return; // móvil sin autoplay
+
+            container._interval = setInterval(() => {
+                const perView = getImagesPerView();
+                const maxIndex = total - perView;
+
+                if (index < maxIndex) index++;
+                else index = 0;
+
+                update();
+            }, intervalTime);
+        }
+
+        startAutoplay();
+        update();
+
+        // ============================
+        // FLECHAS (solo móvil)
+        // ============================
+        if (isMobile) {
+            btnPrev.addEventListener("click", () => {
+                index = Math.max(0, index - 1);
+                update();
+            });
+
+            btnNext.addEventListener("click", () => {
+                const perView = getImagesPerView();
+                const maxIndex = total - perView;
+                index = Math.min(maxIndex, index + 1);
+                update();
+            });
+        }
+
+        // ============================
+        // SWIPE TÁCTIL
+        // ============================
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        track.addEventListener("touchstart", (e) => {
+            startX = e.touches[0].clientX;
+            currentX = startX;
+            isDragging = true;
+
+            clearInterval(container._interval);
+        });
+
+        track.addEventListener("touchmove", (e) => {
+            if (!isDragging) return;
+
+            currentX = e.touches[0].clientX;
+            const diff = currentX - startX;
+
+            track.style.transition = "none";
+            track.style.transform = `translateX(calc(-${index * (100 / getImagesPerView())}% + ${diff}px))`;
+        });
+
+        track.addEventListener("touchend", () => {
+            if (!isDragging) return;
+            isDragging = false;
+            track.style.transition = "transform 0.5s ease";
+
+            const diff = currentX - startX;
             const perView = getImagesPerView();
             const maxIndex = total - perView;
 
-            if (index < maxIndex) index++;
-            else index = 0;
+            if (diff > 50) {
+                index = Math.max(0, index - 1);
+            } else if (diff < -50) {
+                index = Math.min(maxIndex, index + 1);
+            }
 
             update();
-        }, intervalTime);
-    }
 
-    startAutoplay();
-    update();
-
-    // ============================
-    // FLECHAS (solo móvil)
-    // ============================
-    if (isMobile) {
-        btnPrev.addEventListener("click", () => {
-            index = Math.max(0, index - 1);
-            update();
+            if (!isMobile) {
+                setTimeout(() => startAutoplay(), 600);
+            }
         });
 
-        btnNext.addEventListener("click", () => {
-            const perView = getImagesPerView();
-            const maxIndex = total - perView;
-            index = Math.min(maxIndex, index + 1);
+        // ============================
+        // REAJUSTE EN RESIZE
+        // ============================
+        window.addEventListener("resize", () => {
             update();
         });
     }
-
-    // ============================
-    // SWIPE TÁCTIL
-    // ============================
-    let startX = 0;
-    let currentX = 0;
-    let isDragging = false;
-
-    track.addEventListener("touchstart", (e) => {
-        startX = e.touches[0].clientX;
-        currentX = startX;
-        isDragging = true;
-
-        clearInterval(container._interval);
-    });
-
-    track.addEventListener("touchmove", (e) => {
-        if (!isDragging) return;
-
-        currentX = e.touches[0].clientX;
-        const diff = currentX - startX;
-
-        track.style.transition = "none";
-        track.style.transform = `translateX(calc(-${index * (100 / getImagesPerView())}% + ${diff}px))`;
-    });
-
-    track.addEventListener("touchend", () => {
-        if (!isDragging) return;
-        isDragging = false;
-        track.style.transition = "transform 0.5s ease";
-
-        const diff = currentX - startX;
-        const perView = getImagesPerView();
-        const maxIndex = total - perView;
-
-        if (diff > 50) {
-            index = Math.max(0, index - 1);
-        } else if (diff < -50) {
-            index = Math.min(maxIndex, index + 1);
-        }
-
-        update();
-
-        if (!isMobile) {
-            setTimeout(() => startAutoplay(), 600);
-        }
-    });
-
-    // ============================
-    // REAJUSTE EN RESIZE
-    // ============================
-    window.addEventListener("resize", () => {
-        update();
-    });
-}
 
 
     // ============================================================
