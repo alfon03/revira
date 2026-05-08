@@ -589,16 +589,16 @@ body.light-mode .footer-bottom p {
 /* ============================
    CARRUSEL — MÓVIL PREMIUM
 ============================ */
-/* FLECHAS SOLO EN MÓVIL */
+/* FLECHAS SOLO EN MÓVIL PARA CARRUSELES DE PLATOS */
 @media (max-width: 768px) {
 
-  .plato-carousel .prev,
-  .plato-carousel .next {
+  .plato-carousel .plato-prev,
+  .plato-carousel .plato-next {
     display: block !important;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0,0,0,0.45);
     border: none;
     color: white;
     cursor: pointer;
@@ -607,20 +607,14 @@ body.light-mode .footer-bottom p {
     z-index: 20;
   }
 
-  .plato-carousel .prev {
-    left: 10px;
-  }
-
-  .plato-carousel .next {
-    right: 10px;
-  }
+  .plato-carousel .plato-prev { left: 10px; }
+  .plato-carousel .plato-next { right: 10px; }
 }
 
 /* OCULTAR FLECHAS EN ESCRITORIO */
 @media (min-width: 769px) {
-
-  .plato-carousel .prev,
-  .plato-carousel .next {
+  .plato-carousel .plato-prev,
+  .plato-carousel .plato-next {
     display: none !important;
   }
 }

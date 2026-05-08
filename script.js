@@ -247,23 +247,21 @@ document.addEventListener("DOMContentLoaded", () => {
         // ============================
         // FLECHAS SOLO EN MÓVIL
         // ============================
-
         let btnPrev, btnNext;
 
         if (isMobile) {
             btnPrev = document.createElement("button");
-            btnPrev.classList.add("prev");
+            btnPrev.classList.add("plato-prev");
             btnPrev.innerHTML = `
         <span class="material-symbols-outlined">chevron_left</span>
     `;
 
             btnNext = document.createElement("button");
-            btnNext.classList.add("next");
+            btnNext.classList.add("plato-next");
             btnNext.innerHTML = `
         <span class="material-symbols-outlined">chevron_right</span>
     `;
 
-            // MUY IMPORTANTE: añadirlas dentro del contenedor del carrusel
             container.appendChild(btnPrev);
             container.appendChild(btnNext);
         }
@@ -282,9 +280,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 update();
             });
         }
-
-
-
 
         // ============================
         // VARIABLES
