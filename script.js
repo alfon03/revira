@@ -217,124 +217,131 @@ document.addEventListener("DOMContentLoaded", () => {
     // CARRUSEL (varias imágenes visibles)
     // ============================================================
 
-    function buildCarousel(container, images) {
-        const track = document.createElement("div");
-        track.classList.add("carousel-track");
+function buildCarousel(container, images) {
+    const track = document.createElement("div");
+    track.classList.add("carousel-track");
 
-        images.forEach(img => {
-            const item = document.createElement("div");
-            item.classList.add("carousel-item");
+    // Clonar para infinito
+    const fullImages = [
+        images[images.length - 1],   // último → al inicio
+        ...images,
+        images[0]                    // primero → al final
+    ];
 
-            const element = document.createElement("img");
-            element.src = img.src;
+    fullImages.forEach(img => {
+        const item = document.createElement("div");
+        item.classList.add("carousel-item");
 
-            item.appendChild(element);
-            track.appendChild(item);
-        });
+        const element = document.createElement("img");
+        element.src = img.src;
 
-        container.innerHTML = "";
-        container.appendChild(track);
+        item.appendChild(element);
+        track.appendChild(item);
+    });
 
-        let index = 0;
-        const total = images.length;
+    container.innerHTML = "";
+    container.appendChild(track);
 
-        // ============================
-        // IMÁGENES POR VISTA SEGÚN PANTALLA
-        // ============================
-        function getImagesPerView() {
-            if (window.innerWidth <= 768) return 1;
-            if (window.innerWidth <= 1024) return 2;
-            return 3;
-        }
+    let index = 1; // empezamos en la primera imagen real
+    const total = fullImages.length;
 
-        function update() {
-            const perView = getImagesPerView();
-            const percentage = 100 / perView;
-            track.style.transform = `translateX(-${index * percentage}%)`;
-        }
-
-        // ============================
-        // AUTOPLAY SEGÚN PANTALLA
-        // ============================
-        let intervalTime = 3000;
-
-        if (window.innerWidth <= 768) intervalTime = 6500;
-        else if (window.innerWidth <= 1024) intervalTime = 4500;
-
-        // ============================
-        // LIMPIAR INTERVALOS ANTERIORES
-        // ============================
-        if (container._interval) clearInterval(container._interval);
-
-        function startAutoplay() {
-            container._interval = setInterval(() => {
-                const perView = getImagesPerView();
-                const maxIndex = total - perView;
-
-                if (index < maxIndex) index++;
-                else index = 0;
-
-                update();
-            }, intervalTime);
-        }
-
-        startAutoplay();
-        update();
-
-        // ============================
-        // REAJUSTAR AL REDIMENSIONAR
-        // ============================
-        window.addEventListener("resize", () => {
-            update();
-        });
-
-        // ============================
-        // SWIPE TÁCTIL (MÓVIL)
-        // ============================
-        let startX = 0;
-        let currentX = 0;
-        let isDragging = false;
-
-        track.addEventListener("touchstart", (e) => {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-
-            clearInterval(container._interval);
-        });
-
-        track.addEventListener("touchmove", (e) => {
-            if (!isDragging) return;
-
-            currentX = e.touches[0].clientX;
-            const diff = currentX - startX;
-
-            track.style.transition = "none";
-            track.style.transform = `translateX(calc(-${index * (100 / getImagesPerView())}% + ${diff}px))`;
-        });
-
-        track.addEventListener("touchend", () => {
-            isDragging = false;
-            track.style.transition = "transform 0.5s ease";
-
-            const diff = currentX - startX;
-            const perView = getImagesPerView();
-            const maxIndex = total - perView;
-
-            if (diff > 50) {
-                index = Math.max(0, index - 1);
-            } else if (diff < -50) {
-                index = Math.min(maxIndex, index + 1);
-            }
-
-            update();
-
-            // Reanudar autoplay después de la transición
-            setTimeout(() => {
-                startAutoplay();
-            }, 600);
-        });
+    function getImagesPerView() {
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3;
     }
 
+    function update(animate = true) {
+        const perView = getImagesPerView();
+        const percentage = 100 / perView;
+
+        track.style.transition = animate ? "transform 0.5s ease" : "none";
+        track.style.transform = `translateX(-${index * percentage}%)`;
+    }
+
+    update(false);
+
+    // ============================
+    // AUTOPLAY
+    // ============================
+    let intervalTime = 3000;
+    if (window.innerWidth <= 768) intervalTime = 6500;
+    else if (window.innerWidth <= 1024) intervalTime = 4500;
+
+    if (container._interval) clearInterval(container._interval);
+
+    function startAutoplay() {
+        container._interval = setInterval(() => {
+            index++;
+            update();
+
+            const perView = getImagesPerView();
+            const realLast = images.length;
+
+            // Teletransporte invisible
+            setTimeout(() => {
+                if (index === realLast + 1) {
+                    index = 1;
+                    update(false);
+                }
+            }, 510);
+        }, intervalTime);
+    }
+
+    startAutoplay();
+
+    // ============================
+    // SWIPE TÁCTIL
+    // ============================
+    let startX = 0;
+    let currentX = 0;
+    let isDragging = false;
+
+    track.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+        clearInterval(container._interval);
+    });
+
+    track.addEventListener("touchmove", (e) => {
+        if (!isDragging) return;
+
+        currentX = e.touches[0].clientX;
+        const diff = currentX - startX;
+
+        track.style.transition = "none";
+
+        const perView = getImagesPerView();
+        const percentage = 100 / perView;
+
+        track.style.transform = `translateX(calc(-${index * percentage}% + ${diff}px))`;
+    });
+
+    track.addEventListener("touchend", () => {
+        isDragging = false;
+
+        const diff = currentX - startX;
+
+        if (diff > 50) index--;
+        else if (diff < -50) index++;
+
+        update();
+
+        const realLast = images.length;
+
+        setTimeout(() => {
+            if (index === 0) {
+                index = realLast;
+                update(false);
+            } else if (index === realLast + 1) {
+                index = 1;
+                update(false);
+            }
+        }, 510);
+
+        setTimeout(() => startAutoplay(), 600);
+    });
+}
 
     // ============================================================
     // GALERÍA TIPO IPHONE (scroll horizontal)
