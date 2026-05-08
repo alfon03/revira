@@ -232,7 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
             track.appendChild(item);
         });
 
-        container.innerHTML = ""; // limpiar carrusel anterior
+        container.innerHTML = "";
         container.appendChild(track);
 
         let index = 0;
@@ -242,9 +242,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // IMÁGENES POR VISTA SEGÚN PANTALLA
         // ============================
         function getImagesPerView() {
-            if (window.innerWidth <= 768) return 1;   // móvil
-            if (window.innerWidth <= 1024) return 2;  // tablet
-            return 3;                                 // escritorio
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
         }
 
         function update() {
@@ -258,29 +258,27 @@ document.addEventListener("DOMContentLoaded", () => {
         // ============================
         let intervalTime = 3000;
 
-        if (window.innerWidth <= 768) intervalTime = 6500;   // móvil → más lento
-        else if (window.innerWidth <= 1024) intervalTime = 4500; // tablet
+        if (window.innerWidth <= 768) intervalTime = 6500;
+        else if (window.innerWidth <= 1024) intervalTime = 4500;
 
         // ============================
         // LIMPIAR INTERVALOS ANTERIORES
         // ============================
         if (container._interval) clearInterval(container._interval);
 
-        container._interval = setInterval(() => {
-            const perView = getImagesPerView();
-            const maxIndex = total - perView;
+        function startAutoplay() {
+            container._interval = setInterval(() => {
+                const perView = getImagesPerView();
+                const maxIndex = total - perView;
 
-            if (index < maxIndex) {
-                index++;
-            } else {
-                // Cuando llega al final, vuelve al principio sin dejar hueco
-                index = 0;
-            }
-            update();
-        }, intervalTime);
+                if (index < maxIndex) index++;
+                else index = 0;
 
+                update();
+            }, intervalTime);
+        }
 
-
+        startAutoplay();
         update();
 
         // ============================
@@ -301,7 +299,6 @@ document.addEventListener("DOMContentLoaded", () => {
             startX = e.touches[0].clientX;
             isDragging = true;
 
-            // Pausar autoplay
             clearInterval(container._interval);
         });
 
@@ -311,7 +308,6 @@ document.addEventListener("DOMContentLoaded", () => {
             currentX = e.touches[0].clientX;
             const diff = currentX - startX;
 
-            // Mover el carrusel mientras arrastra
             track.style.transition = "none";
             track.style.transform = `translateX(calc(-${index * (100 / getImagesPerView())}% + ${diff}px))`;
         });
@@ -321,8 +317,6 @@ document.addEventListener("DOMContentLoaded", () => {
             track.style.transition = "transform 0.5s ease";
 
             const diff = currentX - startX;
-
-            // Si desliza más de 50px → cambiar de slide
             const perView = getImagesPerView();
             const maxIndex = total - perView;
 
@@ -334,13 +328,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             update();
 
-            // Reanudar autoplay
-            container._interval = setInterval(() => {
-                index = (index + 1) % total;
-                update();
-            }, intervalTime);
+            // Reanudar autoplay después de la transición
+            setTimeout(() => {
+                startAutoplay();
+            }, 600);
         });
-
     }
 
 
