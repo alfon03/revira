@@ -221,16 +221,9 @@ function buildCarousel(container, images) {
     const track = document.createElement("div");
     track.classList.add("carousel-track");
 
-    // Clonar para infinito
-    const fullImages = [
-        images[images.length - 1],   // último → al inicio
-        ...images,
-        images[0]                    // primero → al final
-    ];
-
-    fullImages.forEach(img => {
+    images.forEach(img => {
         const item = document.createElement("div");
-        item.classList.add("carousel-item");
+            item.classList.add("carousel-item");
 
         const element = document.createElement("img");
         element.src = img.src;
@@ -242,56 +235,58 @@ function buildCarousel(container, images) {
     container.innerHTML = "";
     container.appendChild(track);
 
-    let index = 1; // empezamos en la primera imagen real
-    const total = fullImages.length;
+    let index = 0;
+    const total = images.length;
 
     function getImagesPerView() {
-        if (window.innerWidth <= 768) return 1;
-        if (window.innerWidth <= 1024) return 2;
-        return 3;
+        if (window.innerWidth <= 768) return 1;   // móvil
+        if (window.innerWidth <= 1024) return 2;  // tablet
+        return 3;                                 // escritorio
     }
 
-    function update(animate = true) {
+    function update() {
         const perView = getImagesPerView();
         const percentage = 100 / perView;
-
-        track.style.transition = animate ? "transform 0.5s ease" : "none";
         track.style.transform = `translateX(-${index * percentage}%)`;
     }
 
-    update(false);
-
     // ============================
-    // AUTOPLAY
+    // AUTOPLAY SEGÚN PANTALLA
     // ============================
     let intervalTime = 3000;
     if (window.innerWidth <= 768) intervalTime = 6500;
     else if (window.innerWidth <= 1024) intervalTime = 4500;
 
+    const isMobile = window.innerWidth <= 768;
+
     if (container._interval) clearInterval(container._interval);
 
     function startAutoplay() {
+        // En móvil NO usamos autoplay para evitar conflictos con el táctil
+        if (isMobile) return;
+
         container._interval = setInterval(() => {
-            index++;
-            update();
-
             const perView = getImagesPerView();
-            const realLast = images.length;
+            const maxIndex = total - perView;
 
-            // Teletransporte invisible
-            setTimeout(() => {
-                if (index === realLast + 1) {
-                    index = 1;
-                    update(false);
-                }
-            }, 510);
+            if (index < maxIndex) {
+                index++;
+            } else {
+                index = 0;
+            }
+            update();
         }, intervalTime);
     }
 
     startAutoplay();
+    update();
+
+    window.addEventListener("resize", () => {
+        update();
+    });
 
     // ============================
-    // SWIPE TÁCTIL
+    // SWIPE TÁCTIL (MÓVIL)
     // ============================
     let startX = 0;
     let currentX = 0;
@@ -299,7 +294,9 @@ function buildCarousel(container, images) {
 
     track.addEventListener("touchstart", (e) => {
         startX = e.touches[0].clientX;
+        currentX = startX;
         isDragging = true;
+
         clearInterval(container._interval);
     });
 
@@ -310,36 +307,32 @@ function buildCarousel(container, images) {
         const diff = currentX - startX;
 
         track.style.transition = "none";
-
-        const perView = getImagesPerView();
-        const percentage = 100 / perView;
-
-        track.style.transform = `translateX(calc(-${index * percentage}% + ${diff}px))`;
+        track.style.transform = `translateX(calc(-${index * (100 / getImagesPerView())}% + ${diff}px))`;
     });
 
     track.addEventListener("touchend", () => {
+        if (!isDragging) return;
         isDragging = false;
+        track.style.transition = "transform 0.5s ease";
 
         const diff = currentX - startX;
+        const perView = getImagesPerView();
+        const maxIndex = total - perView;
 
-        if (diff > 50) index--;
-        else if (diff < -50) index++;
+        if (diff > 50) {
+            index = Math.max(0, index - 1);
+        } else if (diff < -50) {
+            index = Math.min(maxIndex, index + 1);
+        }
 
         update();
 
-        const realLast = images.length;
-
-        setTimeout(() => {
-            if (index === 0) {
-                index = realLast;
-                update(false);
-            } else if (index === realLast + 1) {
-                index = 1;
-                update(false);
-            }
-        }, 510);
-
-        setTimeout(() => startAutoplay(), 600);
+        // En móvil NO reanudamos autoplay
+        if (!isMobile) {
+            setTimeout(() => {
+                startAutoplay();
+            }, 600);
+        }
     });
 }
 
