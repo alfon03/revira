@@ -216,16 +216,20 @@ document.addEventListener("DOMContentLoaded", () => {
     // ============================================================
     // CARRUSEL (varias imágenes visibles)
     // ============================================================
+    // ============================================================
+    // CARRUSEL PREMIUM RESPONSIVE
+    // ============================================================
 
     function buildCarousel(container, images) {
 
-        // ============================
+        // ========================================================
         // CREAR TRACK
-        // ============================
+        // ========================================================
         const track = document.createElement("div");
         track.classList.add("carousel-track");
 
         images.forEach(img => {
+
             const item = document.createElement("div");
             item.classList.add("carousel-item");
 
@@ -239,163 +243,247 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = "";
         container.appendChild(track);
 
-        // ============================
+        // ========================================================
         // DETECTAR MÓVIL
-        // ============================
-        const isMobile = window.innerWidth <= 768;
-
-        // ============================
-        // FLECHAS SOLO EN MÓVIL
-        // ============================
-        let btnPrev, btnNext;
-
-        if (isMobile) {
-            btnPrev = document.createElement("button");
-            btnPrev.classList.add("plato-prev");
-            btnPrev.innerHTML = `
-        <span class="material-symbols-outlined">chevron_left</span>
-    `;
-
-            btnNext = document.createElement("button");
-            btnNext.classList.add("plato-next");
-            btnNext.innerHTML = `
-        <span class="material-symbols-outlined">chevron_right</span>
-    `;
-
-            container.appendChild(btnPrev);
-            container.appendChild(btnNext);
+        // ========================================================
+        function isMobile() {
+            return window.innerWidth <= 768;
         }
 
-        // Eventos de flechas
-        if (isMobile) {
-            btnPrev.addEventListener("click", () => {
-                index = Math.max(0, index - 1);
-                update();
-            });
+        // ========================================================
+        // CREAR FLECHAS
+        // ========================================================
+        let btnPrev = document.createElement("button");
+        btnPrev.classList.add("plato-prev");
+        btnPrev.innerHTML = `
+        <span class="material-symbols-outlined">
+            chevron_left
+        </span>
+    `;
 
-            btnNext.addEventListener("click", () => {
-                const perView = getImagesPerView();
-                const maxIndex = total - perView;
-                index = Math.min(maxIndex, index + 1);
-                update();
-            });
-        }
+        let btnNext = document.createElement("button");
+        btnNext.classList.add("plato-next");
+        btnNext.innerHTML = `
+        <span class="material-symbols-outlined">
+            chevron_right
+        </span>
+    `;
 
-        // ============================
+        container.appendChild(btnPrev);
+        container.appendChild(btnNext);
+
+        // ========================================================
         // VARIABLES
-        // ============================
+        // ========================================================
         let index = 0;
         const total = images.length;
 
-        function getImagesPerView() {
-            if (window.innerWidth <= 768) return 1;
-            if (window.innerWidth <= 1024) return 2;
-            return 3;
+        // ========================================================
+        // OBTENER ITEM WIDTH
+        // ========================================================
+        function getItemData() {
+
+            const item = track.querySelector(".carousel-item");
+
+            if (!item) {
+                return {
+                    width: 0,
+                    gap: 0
+                };
+            }
+
+            const width = item.offsetWidth;
+            const gap = parseInt(getComputedStyle(track).gap) || 0;
+
+            return {
+                width,
+                gap
+            };
         }
 
-        function update() {
-            const perView = getImagesPerView();
-            const percentage = 100 / perView;
-            track.style.transform = `translateX(-${index * percentage}%)`;
+        // ========================================================
+        // ITEMS VISIBLES
+        // ========================================================
+        function getVisibleItems() {
+
+            const { width, gap } = getItemData();
+
+            if (width === 0) return 1;
+
+            return Math.round(container.offsetWidth / (width + gap));
         }
 
-        // ============================
-        // AUTOPLAY SOLO EN ESCRITORIO
-        // ============================
+        // ========================================================
+        // MAX INDEX CORRECTO
+        // ========================================================
+        function getMaxIndex() {
+
+            // móvil = una imagen por slide
+            if (isMobile()) {
+                return total - 1;
+            }
+
+            // tablet / desktop
+            const visible = getVisibleItems();
+
+            return Math.max(0, total - visible);
+        }
+
+        // ========================================================
+        // UPDATE
+        // ========================================================
+        function update(animated = true) {
+
+            const { width, gap } = getItemData();
+
+            const maxIndex = getMaxIndex();
+
+            // evitar slides vacíos
+            index = Math.max(0, Math.min(index, maxIndex));
+
+            const move = index * (width + gap);
+
+            track.style.transition = animated
+                ? "transform 0.5s ease"
+                : "none";
+
+            track.style.transform = `translateX(-${move}px)`;
+        }
+
+        // ========================================================
+        // AUTOPLAY
+        // ========================================================
         let intervalTime = 3000;
-        if (window.innerWidth <= 1024 && !isMobile) intervalTime = 4500;
 
-        if (container._interval) clearInterval(container._interval);
+        if (window.innerWidth <= 1024 && !isMobile()) {
+            intervalTime = 4500;
+        }
+
+        if (container._interval) {
+            clearInterval(container._interval);
+        }
 
         function startAutoplay() {
-            if (isMobile) return; // móvil sin autoplay
+
+            if (isMobile()) return;
 
             container._interval = setInterval(() => {
-                const perView = getImagesPerView();
-                const maxIndex = total - perView;
 
-                if (index < maxIndex) index++;
-                else index = 0;
+                const maxIndex = getMaxIndex();
+
+                if (index < maxIndex) {
+                    index++;
+                } else {
+                    index = 0;
+                }
 
                 update();
+
             }, intervalTime);
         }
 
         startAutoplay();
-        update();
 
-        // ============================
-        // FLECHAS (solo móvil)
-        // ============================
-        if (isMobile) {
-            btnPrev.addEventListener("click", () => {
-                index = Math.max(0, index - 1);
-                update();
-            });
+        // ========================================================
+        // BOTONES
+        // ========================================================
+        btnPrev.addEventListener("click", () => {
 
-            btnNext.addEventListener("click", () => {
-                const perView = getImagesPerView();
-                const maxIndex = total - perView;
-                index = Math.min(maxIndex, index + 1);
-                update();
-            });
-        }
+            index--;
 
-        // ============================
+            update();
+        });
+
+        btnNext.addEventListener("click", () => {
+
+            index++;
+
+            update();
+        });
+
+        // ========================================================
         // SWIPE TÁCTIL
-        // ============================
+        // ========================================================
         let startX = 0;
         let currentX = 0;
         let isDragging = false;
 
         track.addEventListener("touchstart", (e) => {
+
             startX = e.touches[0].clientX;
             currentX = startX;
+
             isDragging = true;
 
             clearInterval(container._interval);
         });
 
         track.addEventListener("touchmove", (e) => {
+
             if (!isDragging) return;
 
             currentX = e.touches[0].clientX;
+
             const diff = currentX - startX;
 
+            const { width, gap } = getItemData();
+
+            const move = index * (width + gap);
+
             track.style.transition = "none";
-            track.style.transform = `translateX(calc(-${index * (100 / getImagesPerView())}% + ${diff}px))`;
+
+            track.style.transform =
+                `translateX(calc(-${move}px + ${diff}px))`;
+
         });
 
         track.addEventListener("touchend", () => {
+
             if (!isDragging) return;
+
             isDragging = false;
-            track.style.transition = "transform 0.5s ease";
 
             const diff = currentX - startX;
-            const perView = getImagesPerView();
-            const maxIndex = total - perView;
 
-            if (diff > 50) {
-                index = Math.max(0, index - 1);
-            } else if (diff < -50) {
-                index = Math.min(maxIndex, index + 1);
+            // sensibilidad swipe
+            if (diff > 60) {
+                index--;
+            }
+            else if (diff < -60) {
+                index++;
             }
 
             update();
 
-            if (!isMobile) {
-                setTimeout(() => startAutoplay(), 600);
+            if (!isMobile()) {
+
+                setTimeout(() => {
+                    startAutoplay();
+                }, 800);
             }
         });
 
-        // ============================
-        // REAJUSTE EN RESIZE
-        // ============================
+        // ========================================================
+        // RESIZE
+        // ========================================================
+        let resizeTimeout;
+
         window.addEventListener("resize", () => {
-            update();
-        });
-    }
 
+            clearTimeout(resizeTimeout);
+
+            resizeTimeout = setTimeout(() => {
+
+                update(false);
+
+            }, 100);
+        });
+
+        // ========================================================
+        // INIT
+        // ========================================================
+        update(false);
+    }
 
     // ============================================================
     // GALERÍA TIPO IPHONE (scroll horizontal)

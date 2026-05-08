@@ -523,13 +523,14 @@ body.light-mode .footer-bottom p {
   gap: 28px;
   transition: transform 0.5s ease;
   padding: 10px 40px;
+  will-change: transform;
 }
 
 .plato-carousel .carousel-item {
   flex: 0 0 30%;
-  /* 3 imágenes por vista */
   display: flex;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .plato-carousel .carousel-item img {
@@ -559,7 +560,7 @@ body.light-mode .footer-bottom p {
 .plato-gallery {
   width: 100%;
   padding: 40px 0;
-  background-color: var(--white);
+  background-color: var(--jet-black);
   border-top: 1px solid var(--dim-grey);
 }
 
@@ -598,7 +599,7 @@ body.light-mode .footer-bottom p {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0,0,0,0.45);
+    background: rgba(0, 0, 0, 0.45);
     border: none;
     color: white;
     cursor: pointer;
@@ -607,12 +608,18 @@ body.light-mode .footer-bottom p {
     z-index: 20;
   }
 
-  .plato-carousel .plato-prev { left: 10px; }
-  .plato-carousel .plato-next { right: 10px; }
+  .plato-carousel .plato-prev {
+    left: 10px;
+  }
+
+  .plato-carousel .plato-next {
+    right: 10px;
+  }
 }
 
 /* OCULTAR FLECHAS EN ESCRITORIO */
 @media (min-width: 769px) {
+
   .plato-carousel .plato-prev,
   .plato-carousel .plato-next {
     display: none !important;
@@ -626,14 +633,17 @@ body.light-mode .footer-bottom p {
     padding: 25px 0;
   }
 
-  .plato-carousel .carousel-track {
-    gap: 16px;
-    padding: 10px 20px;
-  }
+  @media (max-width: 768px) {
 
-  .plato-carousel .carousel-item {
-    flex: 0 0 75%;
-    /* 1 imagen por vista con aire */
+    .plato-carousel .carousel-track {
+      gap: 16px;
+      padding: 10px 20px;
+    }
+
+    .plato-carousel .carousel-item {
+      flex: 0 0 calc(100% - 40px);
+    }
+
   }
 
   .plato-carousel .carousel-item img {
