@@ -218,12 +218,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // ============================================================
 
 function buildCarousel(container, images) {
+
+    // ============================
+    // CREAR TRACK
+    // ============================
     const track = document.createElement("div");
     track.classList.add("carousel-track");
 
     images.forEach(img => {
         const item = document.createElement("div");
-            item.classList.add("carousel-item");
+        item.classList.add("carousel-item");
 
         const element = document.createElement("img");
         element.src = img.src;
@@ -235,13 +239,39 @@ function buildCarousel(container, images) {
     container.innerHTML = "";
     container.appendChild(track);
 
+    // ============================
+    // DETECTAR MÓVIL
+    // ============================
+    const isMobile = window.innerWidth <= 768;
+
+    // ============================
+    // FLECHAS SOLO EN MÓVIL
+    // ============================
+    let btnPrev, btnNext;
+
+    if (isMobile) {
+        btnPrev = document.createElement("button");
+        btnPrev.classList.add("carousel-prev");
+        btnPrev.innerHTML = "&#10094;"; // <
+
+        btnNext = document.createElement("button");
+        btnNext.classList.add("carousel-next");
+        btnNext.innerHTML = "&#10095;"; // >
+
+        container.appendChild(btnPrev);
+        container.appendChild(btnNext);
+    }
+
+    // ============================
+    // VARIABLES
+    // ============================
     let index = 0;
     const total = images.length;
 
     function getImagesPerView() {
-        if (window.innerWidth <= 768) return 1;   // móvil
-        if (window.innerWidth <= 1024) return 2;  // tablet
-        return 3;                                 // escritorio
+        if (window.innerWidth <= 768) return 1;
+        if (window.innerWidth <= 1024) return 2;
+        return 3;
     }
 
     function update() {
@@ -251,29 +281,23 @@ function buildCarousel(container, images) {
     }
 
     // ============================
-    // AUTOPLAY SEGÚN PANTALLA
+    // AUTOPLAY SOLO EN ESCRITORIO
     // ============================
     let intervalTime = 3000;
-    if (window.innerWidth <= 768) intervalTime = 6500;
-    else if (window.innerWidth <= 1024) intervalTime = 4500;
-
-    const isMobile = window.innerWidth <= 768;
+    if (window.innerWidth <= 1024 && !isMobile) intervalTime = 4500;
 
     if (container._interval) clearInterval(container._interval);
 
     function startAutoplay() {
-        // En móvil NO usamos autoplay para evitar conflictos con el táctil
-        if (isMobile) return;
+        if (isMobile) return; // móvil sin autoplay
 
         container._interval = setInterval(() => {
             const perView = getImagesPerView();
             const maxIndex = total - perView;
 
-            if (index < maxIndex) {
-                index++;
-            } else {
-                index = 0;
-            }
+            if (index < maxIndex) index++;
+            else index = 0;
+
             update();
         }, intervalTime);
     }
@@ -281,12 +305,25 @@ function buildCarousel(container, images) {
     startAutoplay();
     update();
 
-    window.addEventListener("resize", () => {
-        update();
-    });
+    // ============================
+    // FLECHAS (solo móvil)
+    // ============================
+    if (isMobile) {
+        btnPrev.addEventListener("click", () => {
+            index = Math.max(0, index - 1);
+            update();
+        });
+
+        btnNext.addEventListener("click", () => {
+            const perView = getImagesPerView();
+            const maxIndex = total - perView;
+            index = Math.min(maxIndex, index + 1);
+            update();
+        });
+    }
 
     // ============================
-    // SWIPE TÁCTIL (MÓVIL)
+    // SWIPE TÁCTIL
     // ============================
     let startX = 0;
     let currentX = 0;
@@ -327,14 +364,19 @@ function buildCarousel(container, images) {
 
         update();
 
-        // En móvil NO reanudamos autoplay
         if (!isMobile) {
-            setTimeout(() => {
-                startAutoplay();
-            }, 600);
+            setTimeout(() => startAutoplay(), 600);
         }
     });
+
+    // ============================
+    // REAJUSTE EN RESIZE
+    // ============================
+    window.addEventListener("resize", () => {
+        update();
+    });
 }
+
 
     // ============================================================
     // GALERÍA TIPO IPHONE (scroll horizontal)
