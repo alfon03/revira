@@ -12,6 +12,9 @@ menuBtn.addEventListener("click", () => {
 // =========================
 // CONFIGURACIÓN
 // =========================
+const element = document.createElement("img");
+element.loading = "lazy";
+element.src = img.src;
 
 const imageFolder = "img/carrusel/";
 const maxImages = 50;
@@ -271,11 +274,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (index < maxIndex) {
                 index++;
-                update();
             } else {
-                clearInterval(container._interval); // detener autoplay al final
+                // Cuando llega al final, vuelve al principio sin dejar hueco
+                index = 0;
             }
+            update();
         }, intervalTime);
+
 
 
         update();
@@ -320,10 +325,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const diff = currentX - startX;
 
             // Si desliza más de 50px → cambiar de slide
+            const perView = getImagesPerView();
+            const maxIndex = total - perView;
+
             if (diff > 50) {
                 index = Math.max(0, index - 1);
             } else if (diff < -50) {
-                index = Math.min(total - 1, index + 1);
+                index = Math.min(maxIndex, index + 1);
             }
 
             update();
