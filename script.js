@@ -5,7 +5,7 @@ const menuBtn = document.getElementById("menuBtn");
 const navMenu = document.getElementById("navMenu");
 
 menuBtn.addEventListener("click", () => {
-  navMenu.classList.toggle("active");
+    navMenu.classList.toggle("active");
 });
 
 
@@ -26,7 +26,7 @@ let loaded = 0;
 for (let i = 1; i <= maxImages; i++) {
     const img = new Image();
     img.src = `${imageFolder}${i}.png`;
-    
+
     img.onload = () => {
         images.push(img);
         checkFinish();
@@ -209,125 +209,133 @@ document.addEventListener("DOMContentLoaded", () => {
             if (loaded === maxImages) callback(images);
         }
 
-        
+
     }
 
     // ============================================================
     // CARRUSEL (varias imágenes visibles)
     // ============================================================
 
-   function buildCarousel(container, images) {
-    const track = document.createElement("div");
-    track.classList.add("carousel-track");
+    function buildCarousel(container, images) {
+        const track = document.createElement("div");
+        track.classList.add("carousel-track");
 
-    images.forEach(img => {
-        const item = document.createElement("div");
-        item.classList.add("carousel-item");
+        images.forEach(img => {
+            const item = document.createElement("div");
+            item.classList.add("carousel-item");
 
-        const element = document.createElement("img");
-        element.src = img.src;
+            const element = document.createElement("img");
+            element.src = img.src;
 
-        item.appendChild(element);
-        track.appendChild(item);
-    });
+            item.appendChild(element);
+            track.appendChild(item);
+        });
 
-    container.innerHTML = ""; // limpiar carrusel anterior
-    container.appendChild(track);
+        container.innerHTML = ""; // limpiar carrusel anterior
+        container.appendChild(track);
 
-    let index = 0;
-    const total = images.length;
-
-    // ============================
-    // IMÁGENES POR VISTA SEGÚN PANTALLA
-    // ============================
-    function getImagesPerView() {
-        if (window.innerWidth <= 768) return 1;   // móvil
-        if (window.innerWidth <= 1024) return 2;  // tablet
-        return 3;                                 // escritorio
-    }
-
-    function update() {
-        const perView = getImagesPerView();
-        const percentage = 100 / perView;
-        track.style.transform = `translateX(-${index * percentage}%)`;
-    }
-
-    // ============================
-    // AUTOPLAY SEGÚN PANTALLA
-    // ============================
-    let intervalTime = 3000;
-
-    if (window.innerWidth <= 768) intervalTime = 6500;   // móvil → más lento
-    else if (window.innerWidth <= 1024) intervalTime = 4500; // tablet
-
-    // ============================
-    // LIMPIAR INTERVALOS ANTERIORES
-    // ============================
-    if (container._interval) clearInterval(container._interval);
-
-    container._interval = setInterval(() => {
-        index = (index + 1) % total;
-        update();
-    }, intervalTime);
-
-    update();
-
-    // ============================
-    // REAJUSTAR AL REDIMENSIONAR
-    // ============================
-    window.addEventListener("resize", () => {
-        update();
-    });
+        let index = 0;
+        const total = images.length;
 
         // ============================
-    // SWIPE TÁCTIL (MÓVIL)
-    // ============================
-    let startX = 0;
-    let currentX = 0;
-    let isDragging = false;
-
-    track.addEventListener("touchstart", (e) => {
-        startX = e.touches[0].clientX;
-        isDragging = true;
-
-        // Pausar autoplay
-        clearInterval(container._interval);
-    });
-
-    track.addEventListener("touchmove", (e) => {
-        if (!isDragging) return;
-
-        currentX = e.touches[0].clientX;
-        const diff = currentX - startX;
-
-        // Mover el carrusel mientras arrastra
-        track.style.transition = "none";
-        track.style.transform = `translateX(calc(-${index * (100 / getImagesPerView())}% + ${diff}px))`;
-    });
-
-    track.addEventListener("touchend", () => {
-        isDragging = false;
-        track.style.transition = "transform 0.5s ease";
-
-        const diff = currentX - startX;
-
-        // Si desliza más de 50px → cambiar de slide
-        if (diff > 50) {
-            index = Math.max(0, index - 1);
-        } else if (diff < -50) {
-            index = Math.min(total - 1, index + 1);
+        // IMÁGENES POR VISTA SEGÚN PANTALLA
+        // ============================
+        function getImagesPerView() {
+            if (window.innerWidth <= 768) return 1;   // móvil
+            if (window.innerWidth <= 1024) return 2;  // tablet
+            return 3;                                 // escritorio
         }
+
+        function update() {
+            const perView = getImagesPerView();
+            const percentage = 100 / perView;
+            track.style.transform = `translateX(-${index * percentage}%)`;
+        }
+
+        // ============================
+        // AUTOPLAY SEGÚN PANTALLA
+        // ============================
+        let intervalTime = 3000;
+
+        if (window.innerWidth <= 768) intervalTime = 6500;   // móvil → más lento
+        else if (window.innerWidth <= 1024) intervalTime = 4500; // tablet
+
+        // ============================
+        // LIMPIAR INTERVALOS ANTERIORES
+        // ============================
+        if (container._interval) clearInterval(container._interval);
+
+        container._interval = setInterval(() => {
+            const perView = getImagesPerView();
+            const maxIndex = total - perView;
+
+            if (index < maxIndex) {
+                index++;
+                update();
+            } else {
+                clearInterval(container._interval); // detener autoplay al final
+            }
+        }, intervalTime);
+
 
         update();
 
-        // Reanudar autoplay
-        container._interval = setInterval(() => {
-            index = (index + 1) % total;
+        // ============================
+        // REAJUSTAR AL REDIMENSIONAR
+        // ============================
+        window.addEventListener("resize", () => {
             update();
-        }, intervalTime);
-    });
+        });
 
-}
+        // ============================
+        // SWIPE TÁCTIL (MÓVIL)
+        // ============================
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        track.addEventListener("touchstart", (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+
+            // Pausar autoplay
+            clearInterval(container._interval);
+        });
+
+        track.addEventListener("touchmove", (e) => {
+            if (!isDragging) return;
+
+            currentX = e.touches[0].clientX;
+            const diff = currentX - startX;
+
+            // Mover el carrusel mientras arrastra
+            track.style.transition = "none";
+            track.style.transform = `translateX(calc(-${index * (100 / getImagesPerView())}% + ${diff}px))`;
+        });
+
+        track.addEventListener("touchend", () => {
+            isDragging = false;
+            track.style.transition = "transform 0.5s ease";
+
+            const diff = currentX - startX;
+
+            // Si desliza más de 50px → cambiar de slide
+            if (diff > 50) {
+                index = Math.max(0, index - 1);
+            } else if (diff < -50) {
+                index = Math.min(total - 1, index + 1);
+            }
+
+            update();
+
+            // Reanudar autoplay
+            container._interval = setInterval(() => {
+                index = (index + 1) % total;
+                update();
+            }, intervalTime);
+        });
+
+    }
 
 
     // ============================================================
@@ -396,29 +404,29 @@ document.getElementById("lightbox").onclick = e => {
 
 
 async function loadLanguage(lang) {
-  const response = await fetch(`lang/${lang}.json`);
-  const translations = await response.json();
+    const response = await fetch(`lang/${lang}.json`);
+    const translations = await response.json();
 
-  document.querySelectorAll("[data-i18n]").forEach(el => {
-    const key = el.getAttribute("data-i18n");
-    if (translations[key]) {
-      el.textContent = translations[key];
-    }
-  });
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[key]) {
+            el.textContent = translations[key];
+        }
+    });
 
-  localStorage.setItem("lang", lang);
+    localStorage.setItem("lang", lang);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const savedLang = localStorage.getItem("lang") || "es";
-  loadLanguage(savedLang);
+    const savedLang = localStorage.getItem("lang") || "es";
+    loadLanguage(savedLang);
 
-  document.querySelectorAll("#language-switcher .flag").forEach(flag => {
-    flag.addEventListener("click", () => {
-      const lang = flag.dataset.lang;
-      loadLanguage(lang);
+    document.querySelectorAll("#language-switcher .flag").forEach(flag => {
+        flag.addEventListener("click", () => {
+            const lang = flag.dataset.lang;
+            loadLanguage(lang);
+        });
     });
-  });
 });
 
 
