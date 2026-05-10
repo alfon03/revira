@@ -252,14 +252,14 @@ nav a:hover {
 }
 
 body.light-mode .section {
-  background: #000814;
+  background: #ffffff;
   /* negro */
-  color: #ffffff;
+  color: #000814;
   /* blanco */
 }
 
 body.light-mode .section h1 {
-  color: #ffffff;
+  color: #000814;
   /* blanco */
 }
 
@@ -290,6 +290,16 @@ body.light-mode .section h1 {
   color: var(--ink-black);
 }
 
+body.light-mode .location {
+  color: var(#000814);
+  /* blanco */
+}
+
+body.light-mode .location h2 {
+  color: #000814;
+  /* blanco */
+}
+
 .location-container {
   display: flex;
   justify-content: space-between;
@@ -308,6 +318,10 @@ body.light-mode .section h1 {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
+body.light-mode .schedule-box {
+  background: #ffffff;
+  /* blanco */
+}
 
 .schedule-box h3 {
   color: var(--ink-black);
@@ -316,6 +330,10 @@ body.light-mode .section h1 {
   font-weight: 600;
 }
 
+body.light-mode .schedule-box h3 {
+  color: #000814;
+  /* blanco */
+}
 
 .schedule-item {
   display: flex;
@@ -333,13 +351,18 @@ body.light-mode .section h1 {
   color: var(--ink-black);
 }
 
+body.light-mode .schedule-day {
+  color: #000814;
+  /* blanco */
+}
+
 .schedule-hours {
   color: #444;
 }
 
 body.light-mode .schedule-hours {
-  color: #ffffff;
-  /* blanco */
+  color: #444;
+
 }
 
 /* Mapa */
@@ -464,12 +487,12 @@ body.light-mode .footer-social a {
    SOLO LA FRANJA FINAL NEGRA
 ============================ */
 body.light-mode .footer-bottom {
-  background: #000814;
+  background: var(--ink-black);
   border-top: 1px solid #000814;
 }
 
 body.light-mode .footer-bottom p {
-  color: #ffffff;
+  color: var(--white);
   opacity: 1;
 }
 
@@ -523,14 +546,13 @@ body.light-mode .footer-bottom p {
   gap: 28px;
   transition: transform 0.5s ease;
   padding: 10px 40px;
-  will-change: transform;
 }
 
 .plato-carousel .carousel-item {
   flex: 0 0 30%;
+  /* 3 imágenes por vista */
   display: flex;
   justify-content: center;
-  flex-shrink: 0;
 }
 
 .plato-carousel .carousel-item img {
@@ -633,17 +655,14 @@ body.light-mode .footer-bottom p {
     padding: 25px 0;
   }
 
-  @media (max-width: 768px) {
+  .plato-carousel .carousel-track {
+    gap: 16px;
+    padding: 10px 20px;
+  }
 
-    .plato-carousel .carousel-track {
-      gap: 16px;
-      padding: 10px 20px;
-    }
-
-    .plato-carousel .carousel-item {
-      flex: 0 0 calc(100% - 40px);
-    }
-
+  .plato-carousel .carousel-item {
+    flex: 0 0 75%;
+    /* 1 imagen por vista con aire */
   }
 
   .plato-carousel .carousel-item img {
@@ -993,8 +1012,13 @@ body.light-mode .menu-table td {
 }
 
 .btn-download:hover {
-  background: var(--black);
-  color: var(--gold);
+  background: #d9d9d9;
+  /* gris suave */
+  color: #000000;
+  /* texto negro */
+  border-color: #bfbfbf;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 /* ============================================================
@@ -1078,6 +1102,43 @@ body.light-mode .allergen-note {
   padding: 0 30px;
   /* AIRE LATERAL */
 }
+
+/* ============================
+   MODO CLARO: BOTONES AMARILLOS
+   ============================ */
+body.light-mode .anchors {
+  background-color: var(--ink-black);
+  border-bottom: 1px solid var(--dim-grey);
+}
+
+body.light-mode .anchors a {
+  background: var(--school-bus-yellow);
+  /* amarillo */
+  color: var(--ink-black);
+  border-color: var(--school-bus-yellow);
+}
+
+/* Hover grisáceo en modo claro */
+body.light-mode .anchors a:hover {
+  background: #d9d9d9;
+  /* gris suave */
+  color: #000000;
+  /* texto negro */
+  border-color: #bfbfbf;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Activo en modo claro → amarillo más fuerte */
+body.light-mode .anchors a.active-anchor {
+  background: var(--school-bus-yellow);
+  color: var(--ink-black);
+  border-color: var(--school-bus-yellow);
+  font-weight: 600;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
 
 /* ============================================================
    ANCLAS 
@@ -1290,4 +1351,12 @@ body.light-mode .allergen-legend {
 /* SULFITOS */
 .icon.sulfitos {
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%237f8c8d' stroke-width='2' viewBox='0 0 24 24'><path d='M8 4h8l-1 4c-.5 2-1.8 3.5-3 3.5S9.5 10 9 8z'/><path d='M12 11.5V19'/><path d='M9 19h6'/></svg>");
+}
+
+#theme-icon {
+  transition: transform 0.3s ease;
+}
+
+.light-mode #theme-icon {
+  transform: rotate(180deg);
 }

@@ -576,27 +576,58 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
-// Botón de cambio de tema
 const themeToggle = document.getElementById("theme-toggle");
+const themeIcon = document.getElementById("theme-icon");
 
-// Al cargar la página, aplicar el modo guardado
+// Cambiar icono según el modo
+function updateThemeIcon() {
+    if (document.body.classList.contains("light-mode")) {
+        themeIcon.textContent = "light_mode"; // ☀️
+    } else {
+        themeIcon.textContent = "dark_mode"; // 🌙
+    }
+}
+
+// Cambiar logo según el modo
+function updateLogo() {
+    const logo = document.querySelector(".home-logo");
+    if (!logo) return;
+
+    if (document.body.classList.contains("light-mode")) {
+        logo.src = "img/logo3.png";   // Logo para modo claro
+    } else {
+        logo.src = "img/logo.png";    // Logo para modo oscuro
+    }
+}
+
+// ===============================
+// MODO POR DEFECTO: CLARO
+// ===============================
 document.addEventListener("DOMContentLoaded", () => {
     const savedTheme = localStorage.getItem("theme");
 
-    if (savedTheme === "light") {
+    if (savedTheme === "dark") {
+        document.body.classList.remove("light-mode");
+    } else {
         document.body.classList.add("light-mode");
     }
+
+    updateThemeIcon();
+    updateLogo();
 });
 
-// Al hacer clic en el botón, cambiar y guardar
+// ===============================
+// BOTÓN DE CAMBIO DE TEMA
+// ===============================
 themeToggle.addEventListener("click", () => {
     document.body.classList.toggle("light-mode");
 
-    // Guardar el estado
     if (document.body.classList.contains("light-mode")) {
         localStorage.setItem("theme", "light");
     } else {
         localStorage.setItem("theme", "dark");
     }
+
+    updateThemeIcon();
+    updateLogo();
 });
