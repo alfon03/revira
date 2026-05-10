@@ -582,9 +582,9 @@ const themeIcon = document.getElementById("theme-icon");
 // Cambiar icono según el modo
 function updateThemeIcon() {
     if (document.body.classList.contains("light-mode")) {
-        themeIcon.textContent = "light_mode"; // ☀️
+        themeIcon.textContent = "dark_mode"; // ☀️
     } else {
-        themeIcon.textContent = "dark_mode"; // 🌙
+        themeIcon.textContent = "light_mode"; // 🌙
     }
 }
 
