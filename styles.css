@@ -233,6 +233,12 @@ nav a:hover {
 }
 
 @media (max-width: 768px) {
+  .slide-item {
+    height: clamp(300px, 70vw, 520px); /* 🔥 carrusel grande en móvil */
+  }
+}
+
+@media (max-width: 768px) {
   .carousel {
     scroll-snap-type: x mandatory;
     overflow-x: hidden;

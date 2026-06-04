@@ -26,7 +26,7 @@ let loaded = 0;
 
 // Extensiones permitidas
 const imageExt = ["png", "jpg", "jpeg", "webp"];
-const videoExt = ["mp4", "webm", "ogg"];
+const videoExt = ["mp4", "MP4", "webm", "ogg", "mov", "m4v"];
 
 // =========================
 // CARGAR IMÁGENES Y VIDEOS
@@ -129,6 +129,7 @@ function createSlide(group) {
             clone.autoplay = true;
             clone.loop = true;
             clone.muted = true;
+            clone.playsInline = true;
             clone.style.width = "100%";
             clone.style.height = "100%";
             clone.style.objectFit = "cover";
