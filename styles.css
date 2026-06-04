@@ -5,7 +5,7 @@
   --ink-black: #000814;
   --dim-grey: hsl(210, 2%, 38%);
   --jet-black: #1a1c1f;
-  --school-bus-yellow: #ffc400cb;
+  --school-bus-yellow: #ffc400fb;
   --gold: #ffd60a;
   --white: #ffffff;
   --transition: 0.3s ease;
@@ -87,6 +87,7 @@ header {
   top: 0;
   z-index: 9999;
 
+  background-blend-mode: normal; /* 🔥 evita transparencia */
   /* Logo centrado */
   background-image: url("img/logo.png");
   background-repeat: no-repeat;
