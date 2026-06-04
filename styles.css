@@ -82,7 +82,10 @@ header {
   padding: 40px 20px;
   text-align: center;
   border-bottom: 2px solid var(--dim-grey);
-  position: relative;
+
+  position: sticky;   /* 🔥 SIEMPRE ARRIBA */
+  top: 0;
+  z-index: 9999;
 
   /* Logo centrado */
   background-image: url("img/logo.png");
@@ -91,6 +94,7 @@ header {
   background-size: clamp(180px, 40vw, 380px);
   padding-top: clamp(140px, 30vw, 220px);
 }
+
 
 /* NAV */
 nav {
@@ -148,13 +152,15 @@ nav a:hover {
 /* ============================================================
    CARRUSEL DE IMÁGENES
 ============================================================ */
-
 /* Contenedor principal */
 .carousel {
-  position: relative;
-  overflow: hidden;
-  margin-top: 30px;
-  border-radius: 14px;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    margin-top: 30px;
+    border-radius: 14px;
 }
 
 /* Track */
@@ -176,21 +182,28 @@ nav a:hover {
 .slide-item {
   flex: 1;
   max-width: 33%;
-  height: clamp(180px, 30vw, 320px);
+  height: clamp(260px, 38vw, 480px); /* 🔥 más alto y uniforme */
   border-radius: 14px;
   overflow: hidden;
+
+  display: flex;              /* 🔥 centra todo */
+  justify-content: center;
+  align-items: center;
+  background: #000;           /* 🔥 relleno elegante */
 }
 
 /* Imagen */
-.slide-item img {
+.slide-item img,
+.slide-item video {
   width: 100%;
-  height: auto;
-  max-width: 100%;
-  object-fit: scale-down;
+  height: 100%;
+  object-fit: cover;          /* 🔥 CLAVE: uniformidad total */
+  border-radius: 14px;
   transition: transform 0.4s ease;
 }
 
-.slide-item:hover img {
+.slide-item:hover img,
+.slide-item:hover video {
   transform: scale(1.05);
 }
 
@@ -209,13 +222,8 @@ nav a:hover {
   z-index: 10;
 }
 
-.prev {
-  left: 10px;
-}
-
-.next {
-  right: 10px;
-}
+.prev { left: 10px; }
+.next { right: 10px; }
 
 @media (max-width: 768px) {
   .slide-item {
@@ -242,6 +250,7 @@ nav a:hover {
 #slides {
   transition: transform 0.6s ease;
 }
+
 
 /* ============================================================
    SECCIONES GENERALES
@@ -754,6 +763,33 @@ body.light-mode .footer-bottom p {
   opacity: 0.7;
 }
 
+
+/* Botones navegación */
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 55px;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  opacity: 0.7;
+}
+
+.lightbox-prev {
+  left: 25px;
+}
+
+.lightbox-next {
+  right: 25px;
+}
 
 /* ============================================================
    SIN BOTONES EN CARRUSEL DE PLATOS

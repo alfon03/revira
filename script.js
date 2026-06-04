@@ -13,74 +13,93 @@ menuBtn.addEventListener("click", () => {
 // CONFIGURACIÓN
 // =========================
 
+/* ============================================================
+   CARRUSEL IMÁGENES + VIDEOS
+============================================================ */
 
-const imageFolder = "img/carrusel/";
-const maxImages = 50;
+const mediaFolder = "img/carrusel/";
+const maxFiles = 50;
 const slidesContainer = document.getElementById("slides");
-let images = [];
+
+let media = [];
 let loaded = 0;
 
+// Extensiones permitidas
+const imageExt = ["png", "jpg", "jpeg", "webp"];
+const videoExt = ["mp4", "webm", "ogg"];
+
 // =========================
-// CARGAR IMÁGENES
+// CARGAR IMÁGENES Y VIDEOS
 // =========================
 
-for (let i = 1; i <= maxImages; i++) {
-    const img = new Image();
-    img.src = `${imageFolder}${i}.png`;
-
-    img.onload = () => {
-        images.push(img);
-        checkFinish();
-    };
-
-    img.onerror = () => {
-        checkFinish();
-    };
+for (let i = 1; i <= maxFiles; i++) {
+    loadMedia(i);
 }
 
-function getImagesPerSlide() {
-    if (window.innerWidth <= 768) {
-        return 1; // 📱 móvil → 1 imagen
-    } else if (window.innerWidth <= 1024) {
-        return 2; // tablet → 2 imágenes
-    } else {
-        return 3; // escritorio → 3 imágenes
-    }
+function loadMedia(i) {
+    // Probar imágenes
+    imageExt.forEach(ext => {
+        const img = new Image();
+        img.src = `${mediaFolder}${i}.${ext}`;
+
+        img.onload = () => {
+            media.push({ type: "image", element: img });
+            checkFinish();
+        };
+
+        img.onerror = () => checkFinish();
+    });
+
+    // Probar videos
+    videoExt.forEach(ext => {
+        const video = document.createElement("video");
+        video.src = `${mediaFolder}${i}.${ext}`;
+        video.muted = true;
+        video.playsInline = true;
+
+        video.onloadeddata = () => {
+            media.push({ type: "video", element: video });
+            checkFinish();
+        };
+
+        video.onerror = () => checkFinish();
+    });
 }
 
 function checkFinish() {
     loaded++;
-    if (loaded === maxImages) {
-        shuffle(images);
+
+    if (loaded === maxFiles * (imageExt.length + videoExt.length)) {
+        media = media.sort(() => Math.random() - 0.5); // mezclar
         buildCarousel();
     }
 }
 
 // =========================
-// MEZCLAR
+// RESPONSIVE
 // =========================
 
-function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+function getItemsPerSlide() {
+    if (window.innerWidth <= 768) return 1;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
 }
 
 // =========================
-// CREAR SLIDES (FIJO)
+// CREAR CARRUSEL
 // =========================
-function buildCarousel() {
-    slidesContainer.innerHTML = ""; // limpiar
 
-    const imagesPerSlide = getImagesPerSlide();
+function buildCarousel() {
+    slidesContainer.innerHTML = "";
+
+    const itemsPerSlide = getItemsPerSlide();
     let i = 0;
 
-    while (i < images.length) {
+    while (i < media.length) {
         const group = [];
 
-        for (let j = 0; j < imagesPerSlide && i < images.length; j++) {
-            group.push(images[i]);
+        for (let j = 0; j < itemsPerSlide && i < media.length; j++) {
+            group.push(media[i]);
             i++;
         }
 
@@ -89,9 +108,9 @@ function buildCarousel() {
 
     initCarousel();
 }
-window.addEventListener("resize", () => {
-    buildCarousel();
-});
+
+window.addEventListener("resize", () => buildCarousel());
+
 // =========================
 // CREAR SLIDE
 // =========================
@@ -100,11 +119,21 @@ function createSlide(group) {
     const slide = document.createElement("div");
     slide.classList.add("slide-group");
 
-    group.forEach(img => {
+    group.forEach(item => {
         const wrapper = document.createElement("div");
         wrapper.classList.add("slide-item");
 
-        const clone = img.cloneNode();
+        const clone = item.element.cloneNode(true);
+
+        if (item.type === "video") {
+            clone.autoplay = true;
+            clone.loop = true;
+            clone.muted = true;
+            clone.style.width = "100%";
+            clone.style.height = "100%";
+            clone.style.objectFit = "cover";
+        }
+
         wrapper.appendChild(clone);
         slide.appendChild(wrapper);
     });
@@ -115,6 +144,7 @@ function createSlide(group) {
 // =========================
 // CARRUSEL
 // =========================
+
 let index = 0;
 let autoPlayInterval = null;
 
@@ -122,16 +152,12 @@ function initCarousel() {
     const totalSlides = slidesContainer.children.length;
     if (totalSlides === 0) return;
 
-    // 🧹 limpiar intervalos anteriores
-    if (autoPlayInterval) {
-        clearInterval(autoPlayInterval);
-    }
+    if (autoPlayInterval) clearInterval(autoPlayInterval);
 
     function updateSlide() {
         slidesContainer.style.transform = `translateX(-${index * 100}%)`;
     }
 
-    // Botones
     document.getElementById("nextBtn").onclick = () => {
         index = (index + 1) % totalSlides;
         updateSlide();
@@ -142,24 +168,15 @@ function initCarousel() {
         updateSlide();
     };
 
-    // ============================
-    // ⏱ VELOCIDAD SEGÚN PANTALLA
-    // ============================
-    let intervalTime = 4500; // escritorio
+    let intervalTime = 4500;
+    if (window.innerWidth <= 768) intervalTime = 7000;
+    else if (window.innerWidth <= 1024) intervalTime = 5500;
 
-    if (window.innerWidth <= 768) {
-        intervalTime = 7000; // móvil → más lento
-    } else if (window.innerWidth <= 1024) {
-        intervalTime = 5500; // tablet
-    }
-
-    // autoplay
     autoPlayInterval = setInterval(() => {
         index = (index + 1) % totalSlides;
         updateSlide();
     }, intervalTime);
 }
-
 
 
 // BOTÓN IR ARRIBA
@@ -524,28 +541,96 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+/* ============================================================
+   LIGHTBOX PREMIUM CON NAVEGACIÓN (IMG + VIDEO)
+   - Carrusel principal (.slide-item img, video)
+   - Carrusel platos (.plato-carousel .carousel-item img)
+   - Fototeca (.plato-gallery .gallery-row img)
+============================================================ */
 
-// LIGHTBOX (ampliar imagen)
+let lightboxItems = [];
+let currentIndex = 0;
+
+// Actualizar lista de elementos (por si se reconstruyen carruseles)
+function updateLightboxItems() {
+    lightboxItems = Array.from(
+        document.querySelectorAll(
+            ".slide-item img, .slide-item video, " +
+            ".plato-carousel .carousel-item img, " +
+            ".plato-gallery .gallery-row img"
+        )
+    );
+}
+updateLightboxItems();
+
+// ABRIR LIGHTBOX al hacer clic en cualquier imagen/video de esos carruseles
 document.addEventListener("click", e => {
-    if (e.target.tagName === "IMG" && e.target.closest(".plato-carousel, .plato-gallery, .carousel, .slides")) {
-        const lightbox = document.getElementById("lightbox");
-        const lightboxImg = document.getElementById("lightboxImg");
+    const media = e.target.closest(
+        ".slide-item img, .slide-item video, " +
+        ".plato-carousel .carousel-item img, " +
+        ".plato-gallery .gallery-row img"
+    );
+    if (!media) return;
 
-        lightboxImg.src = e.target.src;
-        lightbox.style.display = "flex";
-    }
+    updateLightboxItems(); // refrescar lista por si algo cambió
+
+    currentIndex = lightboxItems.indexOf(media);
+    if (currentIndex === -1) return;
+
+    openLightbox(currentIndex);
 });
 
-document.getElementById("lightboxClose").onclick = () => {
-    document.getElementById("lightbox").style.display = "none";
+function openLightbox(index) {
+    const lightbox = document.getElementById("lightbox");
+    const img = document.getElementById("lightboxImg");
+    const video = document.getElementById("lightboxVideo");
+
+    // Reset
+    img.style.display = "none";
+    video.style.display = "none";
+    video.pause();
+
+    const item = lightboxItems[index];
+
+    if (item.tagName === "IMG") {
+        img.src = item.src;
+        img.style.display = "block";
+    } else {
+        video.src = item.src;
+        video.muted = true;      // siempre silenciado
+        video.style.display = "block";
+        video.play();
+    }
+
+    lightbox.style.display = "flex";
+}
+
+// SIGUIENTE
+document.getElementById("lightboxNext").onclick = () => {
+    currentIndex = (currentIndex + 1) % lightboxItems.length;
+    openLightbox(currentIndex);
 };
+
+// ANTERIOR
+document.getElementById("lightboxPrev").onclick = () => {
+    currentIndex = (currentIndex - 1 + lightboxItems.length) % lightboxItems.length;
+    openLightbox(currentIndex);
+};
+
+// CERRAR
+document.getElementById("lightboxClose").onclick = closeLightbox;
 
 document.getElementById("lightbox").onclick = e => {
-    if (e.target.id === "lightbox") {
-        e.target.style.display = "none";
-    }
+    if (e.target.id === "lightbox") closeLightbox();
 };
 
+function closeLightbox() {
+    const lightbox = document.getElementById("lightbox");
+    const video = document.getElementById("lightboxVideo");
+
+    lightbox.style.display = "none";
+    video.pause();
+}
 
 
 

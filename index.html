@@ -191,11 +191,17 @@
 
     </footer>
 
-    <!-- LIGHTBOX -->
-    <div class="lightbox" id="lightbox">
-        <span class="lightbox-close" id="lightboxClose" data-i18n="lightbox_close">&times;</span>
-        <img id="lightboxImg" src="">
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+
+        <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
+        <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+
+        <img id="lightboxImg" style="display:none;">
+        <video id="lightboxVideo" style="display:none;" controls></video>
     </div>
+
+
 
     <script src="script.js"></script>
 </body>
