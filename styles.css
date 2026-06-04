@@ -226,19 +226,30 @@ nav a:hover {
 .prev { left: 10px; }
 .next { right: 10px; }
 
+/* ============================
+   TABLET (≤ 1024px)
+============================ */
+@media (max-width: 1024px) {
+  .slide-item {
+    max-width: 48%;
+    height: clamp(220px, 45vw, 360px);
+  }
+}
+
+/* ============================
+   MÓVIL (≤ 768px)
+============================ */
 @media (max-width: 768px) {
+
+  .slide-group {
+    flex-direction: column;
+  }
+
   .slide-item {
     max-width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .slide-item {
     height: clamp(300px, 70vw, 520px); /* 🔥 carrusel grande en móvil */
   }
-}
 
-@media (max-width: 768px) {
   .carousel {
     scroll-snap-type: x mandatory;
     overflow-x: hidden;
@@ -251,6 +262,21 @@ nav a:hover {
 
   .slide-group {
     scroll-snap-align: center;
+  }
+}
+
+/* ============================
+   MÓVIL PEQUEÑO (≤ 600px)
+============================ */
+@media (max-width: 600px) {
+
+  .slide-group {
+    flex-direction: column;
+  }
+
+  .slide-item {
+    max-width: 100%;
+    height: clamp(300px, 80vw, 540px); /* 🔥 aún más grande en móviles pequeños */
   }
 }
 
@@ -843,25 +869,6 @@ body.light-mode .footer-bottom p {
 /* ============================================================
    MEDIA QUERIES — RESPONSIVE GENERAL
 ============================================================ */
-
-/* Carrusel */
-@media (max-width: 900px) {
-  .slide-item {
-    max-width: 48%;
-    height: clamp(160px, 35vw, 260px);
-  }
-}
-
-@media (max-width: 600px) {
-  .slide-group {
-    flex-direction: column;
-  }
-
-  .slide-item {
-    max-width: 100%;
-    height: clamp(160px, 45vw, 240px);
-  }
-}
 
 /* Ubicación */
 @media (max-width: 900px) {
