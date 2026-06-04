@@ -130,6 +130,7 @@ function createSlide(group) {
             clone.loop = true;
             clone.muted = true;
             clone.playsInline = true;
+            clone.style.display = "block"; // 🔥 clave en móvil
             clone.style.width = "100%";
             clone.style.height = "100%";
             clone.style.objectFit = "cover";
