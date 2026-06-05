@@ -14,70 +14,42 @@ menuBtn.addEventListener("click", () => {
 // =========================
 
 /* ============================================================
-   CARRUSEL IMÁGENES + VIDEOS
+   CARRUSEL OPTIMIZADO (iPhone + Android + PC)
 ============================================================ */
 
-const mediaFolder = "img/carrusel/";
-const maxFiles = 50;
 const slidesContainer = document.getElementById("slides");
 
 let media = [];
-let loaded = 0;
+let index = 0;
+let autoPlayInterval = null;
 
-// Extensiones permitidas
-const imageExt = ["png", "jpg", "jpeg", "webp"];
-const videoExt = ["mp4", "MP4", "webm", "ogg", "mov", "m4v"];
+/* =========================
+   CARGA DESDE JSON
+========================= */
 
-// =========================
-// CARGAR IMÁGENES Y VIDEOS
-// =========================
+async function loadMedia() {
+    try {
+        const res = await fetch("img/carrusel/media.json", {
+            cache: "force-cache"
+        });
 
-for (let i = 1; i <= maxFiles; i++) {
-    loadMedia(i);
-}
+        media = await res.json();
 
-function loadMedia(i) {
-    // Probar imágenes
-    imageExt.forEach(ext => {
-        const img = new Image();
-        img.src = `${mediaFolder}${i}.${ext}`;
+        // mezclar
+        media.sort(() => Math.random() - 0.5);
 
-        img.onload = () => {
-            media.push({ type: "image", element: img });
-            checkFinish();
-        };
-
-        img.onerror = () => checkFinish();
-    });
-
-    // Probar videos
-    videoExt.forEach(ext => {
-        const video = document.createElement("video");
-        video.src = `${mediaFolder}${i}.${ext}`;
-        video.muted = true;
-        video.playsInline = true;
-
-        video.onloadeddata = () => {
-            media.push({ type: "video", element: video });
-            checkFinish();
-        };
-
-        video.onerror = () => checkFinish();
-    });
-}
-
-function checkFinish() {
-    loaded++;
-
-    if (loaded === maxFiles * (imageExt.length + videoExt.length)) {
-        media = media.sort(() => Math.random() - 0.5); // mezclar
         buildCarousel();
+
+    } catch (err) {
+        console.error("Error cargando media.json:", err);
     }
 }
 
-// =========================
-// RESPONSIVE
-// =========================
+loadMedia();
+
+/* =========================
+   RESPONSIVE
+========================= */
 
 function getItemsPerSlide() {
     if (window.innerWidth <= 768) return 1;
@@ -85,23 +57,23 @@ function getItemsPerSlide() {
     return 3;
 }
 
-// =========================
-// CREAR CARRUSEL
-// =========================
+window.addEventListener("resize", () => buildCarousel());
+
+/* =========================
+   CREAR CARRUSEL
+========================= */
 
 function buildCarousel() {
+    if (!media.length) return;
+
     slidesContainer.innerHTML = "";
 
     const itemsPerSlide = getItemsPerSlide();
     let i = 0;
 
     while (i < media.length) {
-        const group = [];
-
-        for (let j = 0; j < itemsPerSlide && i < media.length; j++) {
-            group.push(media[i]);
-            i++;
-        }
+        const group = media.slice(i, i + itemsPerSlide);
+        i += itemsPerSlide;
 
         createSlide(group);
     }
@@ -109,11 +81,9 @@ function buildCarousel() {
     initCarousel();
 }
 
-window.addEventListener("resize", () => buildCarousel());
-
-// =========================
-// CREAR SLIDE
-// =========================
+/* =========================
+   CREAR SLIDE
+========================= */
 
 function createSlide(group) {
     const slide = document.createElement("div");
@@ -123,45 +93,50 @@ function createSlide(group) {
         const wrapper = document.createElement("div");
         wrapper.classList.add("slide-item");
 
-        const clone = item.element.cloneNode(true);
-        const isMobile = window.innerWidth <= 768;
+        let el;
 
-        if (item.type === "video") {
-
-            // PC → autoplay, móvil → NO autoplay
-            clone.autoplay = !isMobile;
-            clone.loop = !isMobile;
-            clone.muted = true;
-            clone.playsInline = true;
-
-            clone.style.display = "block";
-            clone.style.width = "100%";
-            clone.style.height = "100%";
-            clone.style.objectFit = "cover";
-
-            // poster automatico
-            const baseName = clone.src.split('.').slice(0, -1).join('.');
-            clone.setAttribute("poster", baseName + ".jpg");
+        if (item.type === "image") {
+            el = document.createElement("img");
+            el.src = item.src;
+            el.loading = "lazy";
         }
 
-        wrapper.appendChild(clone);
+        if (item.type === "video") {
+            el = document.createElement("video");
+
+            const source = document.createElement("source");
+            source.src = item.src;
+            source.type = "video/mp4";
+
+            el.appendChild(source);
+
+            el.muted = true;
+            el.playsInline = true;
+            el.loop = true;
+            el.preload = "metadata";
+
+            const isMobile = window.innerWidth <= 768;
+            if (!isMobile) el.autoplay = true;
+        }
+
+        el.style.width = "100%";
+        el.style.height = "100%";
+        el.style.objectFit = "cover";
+
+        wrapper.appendChild(el);
         slide.appendChild(wrapper);
     });
 
     slidesContainer.appendChild(slide);
 }
 
-
-// =========================
-// CARRUSEL
-// =========================
-
-let index = 0;
-let autoPlayInterval = null;
+/* =========================
+   CARRUSEL LOGIC
+========================= */
 
 function initCarousel() {
     const totalSlides = slidesContainer.children.length;
-    if (totalSlides === 0) return;
+    if (!totalSlides) return;
 
     if (autoPlayInterval) clearInterval(autoPlayInterval);
 
@@ -180,6 +155,7 @@ function initCarousel() {
     };
 
     let intervalTime = 4500;
+
     if (window.innerWidth <= 768) intervalTime = 7000;
     else if (window.innerWidth <= 1024) intervalTime = 5500;
 
@@ -189,6 +165,16 @@ function initCarousel() {
     }, intervalTime);
 }
 
+/* =========================
+   FIX IMPORTANTE iPHONE
+   (autoplay real tras interacción)
+========================= */
+
+document.addEventListener("touchstart", () => {
+    document.querySelectorAll("video").forEach(v => {
+        v.play().catch(() => { });
+    });
+}, { once: true });
 
 // BOTÓN IR ARRIBA
 const btnTop = document.getElementById("btnTop");
@@ -208,337 +194,294 @@ btnTop.addEventListener("click", () => {
     });
 });
 
-
 document.addEventListener("DOMContentLoaded", () => {
 
-    const maxImages = 50;
-
     // ============================================================
-    // CARGA AUTOMÁTICA DE IMÁGENES
+    // CARGA DE IMÁGENES (OPTIMIZADA)
     // ============================================================
 
     function loadImages(container, folder, callback) {
-        let images = [];
-        let loaded = 0;
 
-        for (let i = 1; i <= maxImages; i++) {
+        const images = [];
+
+        // 🔥 MEJORA: carga directa sin "maxImages" forzado
+        // ahora solo intenta hasta que falle consecutivamente
+
+        let i = 1;
+        let failCount = 0;
+        const maxFails = 3;
+
+        function tryLoad() {
             const img = new Image();
             img.src = `img/platos/${folder}/${i}.png`;
 
             img.onload = () => {
-                images.push(img);
-                check();
+                images.push({
+                    src: img.src
+                });
+
+                i++;
+                failCount = 0;
+                tryLoad();
             };
 
-            img.onerror = () => check();
+            img.onerror = () => {
+                i++;
+                failCount++;
+
+                if (failCount >= maxFails) {
+                    callback(images);
+                    return;
+                }
+
+                tryLoad();
+            };
         }
 
-        function check() {
-            loaded++;
-            if (loaded === maxImages) callback(images);
-        }
-
-
+        tryLoad();
     }
 
     // ============================================================
-    // CARRUSEL (varias imágenes visibles)
-    // ============================================================
-    // ============================================================
-    // CARRUSEL PREMIUM RESPONSIVE
+    // CARRUSEL OPTIMIZADO
     // ============================================================
 
     function buildCarousel(container, images) {
 
-        // ========================================================
-        // CREAR TRACK
-        // ========================================================
         const track = document.createElement("div");
-        track.classList.add("carousel-track");
+        track.className = "carousel-track";
 
-        images.forEach(img => {
+        const fragment = document.createDocumentFragment();
 
+        for (let img of images) {
             const item = document.createElement("div");
-            item.classList.add("carousel-item");
+            item.className = "carousel-item";
 
             const element = document.createElement("img");
             element.src = img.src;
+            element.loading = "lazy";
+            element.decoding = "async";
 
             item.appendChild(element);
-            track.appendChild(item);
-        });
+            fragment.appendChild(item);
+        }
+
+        track.appendChild(fragment);
 
         container.innerHTML = "";
         container.appendChild(track);
 
         // ========================================================
-        // DETECTAR MÓVIL
+        // ESTADO
         // ========================================================
-        function isMobile() {
-            return window.innerWidth <= 768;
-        }
+
+        let index = 0;
+        const total = images.length;
+
+        const isMobile = () => window.innerWidth <= 768;
 
         // ========================================================
-        // CREAR FLECHAS
+        // BOTONES
         // ========================================================
-        let btnPrev = document.createElement("button");
-        btnPrev.classList.add("plato-prev");
-        btnPrev.innerHTML = `
-        <span class="material-symbols-outlined">
-            chevron_left
-        </span>
-    `;
 
-        let btnNext = document.createElement("button");
-        btnNext.classList.add("plato-next");
-        btnNext.innerHTML = `
-        <span class="material-symbols-outlined">
-            chevron_right
-        </span>
-    `;
+        const btnPrev = document.createElement("button");
+        const btnNext = document.createElement("button");
+
+        btnPrev.className = "plato-prev";
+        btnNext.className = "plato-next";
+
+        btnPrev.innerHTML = "‹";
+        btnNext.innerHTML = "›";
 
         container.appendChild(btnPrev);
         container.appendChild(btnNext);
 
         // ========================================================
-        // VARIABLES
+        // MEDIDAS (OPTIMIZADO - menos reflow)
         // ========================================================
-        let index = 0;
-        const total = images.length;
 
-        // ========================================================
-        // OBTENER ITEM WIDTH
-        // ========================================================
-        function getItemData() {
-
+        function getMetrics() {
             const item = track.querySelector(".carousel-item");
 
             if (!item) {
-                return {
-                    width: 0,
-                    gap: 0
-                };
+                return { width: 0, gap: 0 };
             }
 
-            const width = item.offsetWidth;
-            const gap = parseInt(getComputedStyle(track).gap) || 0;
+            const styles = getComputedStyle(track);
 
             return {
-                width,
-                gap
+                width: item.offsetWidth,
+                gap: parseInt(styles.gap || "0", 10)
             };
         }
 
-        // ========================================================
-        // ITEMS VISIBLES
-        // ========================================================
-        function getVisibleItems() {
+        function getVisible() {
+            const { width, gap } = getMetrics();
+            if (!width) return 1;
 
-            const { width, gap } = getItemData();
-
-            if (width === 0) return 1;
-
-            return Math.round(container.offsetWidth / (width + gap));
+            return Math.max(1, Math.floor(container.offsetWidth / (width + gap)));
         }
 
-        // ========================================================
-        // MAX INDEX CORRECTO
-        // ========================================================
         function getMaxIndex() {
-
-            // móvil = una imagen por slide
-            if (isMobile()) {
-                return total - 1;
-            }
-
-            // tablet / desktop
-            const visible = getVisibleItems();
-
-            return Math.max(0, total - visible);
+            return isMobile()
+                ? total - 1
+                : Math.max(0, total - getVisible());
         }
 
         // ========================================================
-        // UPDATE
+        // UPDATE OPTIMIZADO
         // ========================================================
+
         function update(animated = true) {
 
-            const { width, gap } = getItemData();
+            const { width, gap } = getMetrics();
+            const max = getMaxIndex();
 
-            const maxIndex = getMaxIndex();
-
-            // evitar slides vacíos
-            index = Math.max(0, Math.min(index, maxIndex));
+            index = Math.min(Math.max(index, 0), max);
 
             const move = index * (width + gap);
 
-            track.style.transition = animated
-                ? "transform 0.5s ease"
-                : "none";
-
-            track.style.transform = `translateX(-${move}px)`;
+            track.style.transition = animated ? "transform .4s ease" : "none";
+            track.style.transform = `translate3d(-${move}px,0,0)`;
         }
 
         // ========================================================
-        // AUTOPLAY
+        // AUTOPLAY (mejorado)
         // ========================================================
-        let intervalTime = 3000;
 
-        if (window.innerWidth <= 1024 && !isMobile()) {
-            intervalTime = 4500;
-        }
+        let interval = null;
 
-        if (container._interval) {
-            clearInterval(container._interval);
-        }
-
-        function startAutoplay() {
+        function startAuto() {
 
             if (isMobile()) return;
 
-            container._interval = setInterval(() => {
+            clearInterval(interval);
 
-                const maxIndex = getMaxIndex();
+            interval = setInterval(() => {
 
-                if (index < maxIndex) {
-                    index++;
-                } else {
-                    index = 0;
-                }
+                const max = getMaxIndex();
+
+                index = (index >= max) ? 0 : index + 1;
 
                 update();
 
-            }, intervalTime);
+            }, 3500);
         }
 
-        startAutoplay();
+        startAuto();
 
         // ========================================================
         // BOTONES
         // ========================================================
-        btnPrev.addEventListener("click", () => {
 
+        btnPrev.onclick = () => {
             index--;
-
             update();
-        });
+        };
 
-        btnNext.addEventListener("click", () => {
-
+        btnNext.onclick = () => {
             index++;
-
             update();
-        });
+        };
 
         // ========================================================
-        // SWIPE TÁCTIL
+        // SWIPE (iOS mejorado)
         // ========================================================
+
         let startX = 0;
-        let currentX = 0;
         let isDragging = false;
 
         track.addEventListener("touchstart", (e) => {
-
             startX = e.touches[0].clientX;
-            currentX = startX;
-
             isDragging = true;
-
-            clearInterval(container._interval);
-        });
+            clearInterval(interval);
+        }, { passive: true });
 
         track.addEventListener("touchmove", (e) => {
-
             if (!isDragging) return;
 
-            currentX = e.touches[0].clientX;
+            const diff = e.touches[0].clientX - startX;
 
-            const diff = currentX - startX;
-
-            const { width, gap } = getItemData();
-
+            const { width, gap } = getMetrics();
             const move = index * (width + gap);
 
             track.style.transition = "none";
+            track.style.transform = `translate3d(calc(-${move}px + ${diff}px),0,0)`;
 
-            track.style.transform =
-                `translateX(calc(-${move}px + ${diff}px))`;
+        }, { passive: true });
 
-        });
-
-        track.addEventListener("touchend", () => {
+        track.addEventListener("touchend", (e) => {
 
             if (!isDragging) return;
 
             isDragging = false;
 
-            const diff = currentX - startX;
+            const diff = e.changedTouches[0].clientX - startX;
 
-            // sensibilidad swipe
-            if (diff > 60) {
-                index--;
-            }
-            else if (diff < -60) {
-                index++;
-            }
+            if (diff > 60) index--;
+            else if (diff < -60) index++;
 
             update();
 
-            if (!isMobile()) {
+            setTimeout(startAuto, 600);
 
-                setTimeout(() => {
-                    startAutoplay();
-                }, 800);
-            }
-        });
+        }, { passive: true });
 
         // ========================================================
-        // RESIZE
+        // RESIZE OPTIMIZADO
         // ========================================================
-        let resizeTimeout;
+
+        let resizeTimer;
 
         window.addEventListener("resize", () => {
 
-            clearTimeout(resizeTimeout);
+            clearTimeout(resizeTimer);
 
-            resizeTimeout = setTimeout(() => {
-
+            resizeTimer = setTimeout(() => {
                 update(false);
+            }, 120);
 
-            }, 100);
         });
 
-        // ========================================================
         // INIT
-        // ========================================================
         update(false);
     }
 
     // ============================================================
-    // GALERÍA TIPO IPHONE (scroll horizontal)
+    // GALERÍA OPTIMIZADA
     // ============================================================
 
     function buildGallery(container, images) {
+
         const row = document.createElement("div");
-        row.classList.add("gallery-row");
+        row.className = "gallery-row";
 
-        images.forEach(img => {
-            const element = document.createElement("img");
-            element.src = img.src;
-            row.appendChild(element);
-        });
+        const fragment = document.createDocumentFragment();
 
+        for (let img of images) {
+            const el = document.createElement("img");
+            el.src = img.src;
+            el.loading = "lazy";
+            el.decoding = "async";
+            fragment.appendChild(el);
+        }
+
+        row.appendChild(fragment);
+
+        container.innerHTML = "";
         container.appendChild(row);
     }
 
     // ============================================================
-    // DETECTAR TIPO DE COMPONENTE
+    // INIT GENERAL
     // ============================================================
 
     document.querySelectorAll("[data-folder]").forEach(container => {
+
         const folder = container.dataset.folder;
 
         loadImages(container, folder, images => {
-            if (images.length === 0) return;
+
+            if (!images.length) return;
 
             if (container.classList.contains("plato-carousel")) {
                 buildCarousel(container, images);
@@ -547,7 +490,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (container.classList.contains("plato-gallery")) {
                 buildGallery(container, images);
             }
+
         });
+
     });
 
 });
