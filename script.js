@@ -141,7 +141,7 @@ function createSlide(group) {
 
             // poster automatico
             const baseName = clone.src.split('.').slice(0, -1).join('.');
-            clone.setAttribute("poster", baseName + ".jpeg");
+            clone.setAttribute("poster", baseName + ".jpg");
         }
 
         wrapper.appendChild(clone);
