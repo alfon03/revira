@@ -25,7 +25,7 @@ let media = [];
 let loaded = 0;
 
 // Extensiones permitidas
-const imageExt = ["png", "jpeg", "webp"];
+const imageExt = ["png", "jpg", "jpeg", "webp"];
 const videoExt = ["mp4", "MP4", "webm", "ogg", "mov", "m4v"];
 
 // =========================
