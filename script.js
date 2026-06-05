@@ -124,16 +124,24 @@ function createSlide(group) {
         wrapper.classList.add("slide-item");
 
         const clone = item.element.cloneNode(true);
+        const isMobile = window.innerWidth <= 768;
 
         if (item.type === "video") {
-            clone.autoplay = true;
-            clone.loop = true;
+
+            // PC → autoplay, móvil → NO autoplay
+            clone.autoplay = !isMobile;
+            clone.loop = !isMobile;
             clone.muted = true;
             clone.playsInline = true;
-            clone.style.display = "block"; // 🔥 clave en móvil
+
+            clone.style.display = "block";
             clone.style.width = "100%";
             clone.style.height = "100%";
             clone.style.objectFit = "cover";
+
+            // poster automatico
+            const baseName = clone.src.split('.').slice(0, -1).join('.');
+            clone.setAttribute("poster", baseName + ".jpeg");
         }
 
         wrapper.appendChild(clone);
@@ -142,6 +150,7 @@ function createSlide(group) {
 
     slidesContainer.appendChild(slide);
 }
+
 
 // =========================
 // CARRUSEL
