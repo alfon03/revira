@@ -496,84 +496,115 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
-
-/* ============================================================
-   LIGHTBOX PREMIUM CON NAVEGACIÓN (IMG + VIDEO)
-   - Carrusel principal (.slide-item img, video)
-   - Carrusel platos (.plato-carousel .carousel-item img)
-   - Fototeca (.plato-gallery .gallery-row img)
-============================================================ */
-
 let lightboxItems = [];
 let currentIndex = 0;
 
-// Actualizar lista de elementos (por si se reconstruyen carruseles)
-function updateLightboxItems() {
-    lightboxItems = Array.from(
-        document.querySelectorAll(
-            ".slide-item img, .slide-item video, " +
-            ".plato-carousel .carousel-item img, " +
-            ".plato-gallery .gallery-row img"
-        )
-    );
-}
-updateLightboxItems();
+/* ============================================================
+   INDEXACIÓN MÁS ROBUSTA (NO DEPENDE DE REFERENCIAS DOM)
+============================================================ */
 
-// ABRIR LIGHTBOX al hacer clic en cualquier imagen/video de esos carruseles
-document.addEventListener("click", e => {
-    const media = e.target.closest(
+function updateLightboxItems() {
+    const nodes = document.querySelectorAll(
         ".slide-item img, .slide-item video, " +
         ".plato-carousel .carousel-item img, " +
         ".plato-gallery .gallery-row img"
     );
-    if (!media) return;
 
-    updateLightboxItems(); // refrescar lista por si algo cambió
+    lightboxItems = Array.from(nodes).map((el, i) => ({
+        src: el.currentSrc || el.src,
+        type: el.tagName.toLowerCase(), // img | video
+        node: el
+    }));
+}
 
-    currentIndex = lightboxItems.indexOf(media);
-    if (currentIndex === -1) return;
-
-    openLightbox(currentIndex);
-});
+/* ============================================================
+   OPEN LIGHTBOX
+============================================================ */
 
 function openLightbox(index) {
+
     const lightbox = document.getElementById("lightbox");
     const img = document.getElementById("lightboxImg");
     const video = document.getElementById("lightboxVideo");
 
-    // Reset
+    const item = lightboxItems[index];
+    if (!item) return;
+
+    // reset seguro iOS
     img.style.display = "none";
     video.style.display = "none";
     video.pause();
+    video.removeAttribute("src");
+    video.load();
 
-    const item = lightboxItems[index];
+    if (item.type === "img") {
 
-    if (item.tagName === "IMG") {
         img.src = item.src;
         img.style.display = "block";
-    } else {
+
+    } else if (item.type === "video") {
+
         video.src = item.src;
-        video.muted = true;      // siempre silenciado
+        video.muted = true;
+        video.playsInline = true;
+        video.loop = true;
+        video.preload = "metadata";
+
         video.style.display = "block";
-        video.play();
+
+        // iOS fix: play seguro
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {});
+        }
     }
 
     lightbox.style.display = "flex";
 }
 
-// SIGUIENTE
+/* ============================================================
+   CLICK GLOBAL (MEJORADO)
+============================================================ */
+
+document.addEventListener("click", e => {
+
+    const media = e.target.closest(
+        ".slide-item img, .slide-item video, " +
+        ".plato-carousel .carousel-item img, " +
+        ".plato-gallery .gallery-row img"
+    );
+
+    if (!media) return;
+
+    updateLightboxItems();
+
+    const src = media.currentSrc || media.src;
+
+    currentIndex = lightboxItems.findIndex(i => i.src === src);
+
+    if (currentIndex === -1) return;
+
+    openLightbox(currentIndex);
+});
+
+/* ============================================================
+   NAVEGACIÓN
+============================================================ */
+
 document.getElementById("lightboxNext").onclick = () => {
     currentIndex = (currentIndex + 1) % lightboxItems.length;
     openLightbox(currentIndex);
 };
 
-// ANTERIOR
 document.getElementById("lightboxPrev").onclick = () => {
     currentIndex = (currentIndex - 1 + lightboxItems.length) % lightboxItems.length;
     openLightbox(currentIndex);
 };
 
-// CERRAR
+/* ============================================================
+   CERRAR
+============================================================ */
+
 document.getElementById("lightboxClose").onclick = closeLightbox;
 
 document.getElementById("lightbox").onclick = e => {
@@ -581,13 +612,17 @@ document.getElementById("lightbox").onclick = e => {
 };
 
 function closeLightbox() {
+
     const lightbox = document.getElementById("lightbox");
     const video = document.getElementById("lightboxVideo");
 
     lightbox.style.display = "none";
-    video.pause();
-}
 
+    // reset fuerte (iOS fix real)
+    video.pause();
+    video.removeAttribute("src");
+    video.load();
+}
 
 
 
