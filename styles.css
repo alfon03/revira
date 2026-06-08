@@ -1639,60 +1639,61 @@ body.light-mode .allergen-legend {
 }
 
 .icon.gluten {
-  background-image: url("/img/alergenos/gluten.svg");
+  background-image: url("img/alergenos/gluten.svg");
 }
 
 .icon.huevo {
-  background-image: url("/img/alergenos/huevo.svg");
+  background-image: url("img/alergenos/huevo.svg");
 }
 
 .icon.lacteos {
-  background-image: url("/img/alergenos/lacteo.svg");
+  background-image: url("img/alergenos/lacteo.svg");
 }
 
 .icon.pescado {
-  background-image: url("/img/alergenos/pescado.svg");
+  background-image: url("img/alergenos/pescado.svg");
 }
 
 .icon.moluscos {
-  background-image: url("/img/alergenos/moluscos.svg");
+  background-image: url("img/alergenos/moluscos.svg");
 }
 
 .icon.cacahuetes {
-  background-image: url("/img/alergenos/cacahuete.svg");
+  background-image: url("img/alergenos/cacahuete.svg");
 }
 
 .icon.soja {
-  background-image: url("/img/alergenos/soja.svg");
+  background-image: url("img/alergenos/soja.svg");
 }
 
 .icon.mostaza {
-  background-image: url("/img/alergenos/mostaza.svg");
+  background-image: url("img/alergenos/mostaza.svg");
 }
 
 .icon.sesamo {
-  background-image: url("/img/alergenos/sesamo.svg");
+  background-image: url("img/alergenos/sesamo.svg");
 }
 
 .icon.sulfitos {
-  background-image: url("/img/alergenos/sulfitos.svg");
+  background-image: url("img/alergenos/sulfitos.svg");
 }
 
 .icon.apio {
-  background-image: url("/img/alergenos/apio.svg");
+  background-image: url("img/alergenos/apio.svg");
 }
 
 .icon.altramuces {
-  background-image: url("/img/alergenos/altramuces.svg");
+  background-image: url("img/alergenos/altramuces.svg");
 }
 
 .icon.frutos_secos {
-  background-image: url("/img/alergenos/frutos secos.svg");
+  background-image: url("img/alergenos/frutos secos.svg");
 }
 
 .icon.crustaceo {
-  background-image: url("/img/alergenos/crustaceo.svg");
+  background-image: url("img/alergenos/crustaceo.svg");
 }
+
 
 .icon.consultar{
     width:auto;
