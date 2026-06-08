@@ -1408,18 +1408,6 @@ body.light-mode .allergen-note {
    FILA DE ANCLAS + BOTÓN PDF
 ============================================================ */
 
-.anchors-row {
-
-    position: sticky;
-
-    z-index: 9998;
-
-    background: var(--jet-black);
-
-    padding: 12px 0;
-
-    margin-bottom: 40px;
-}
 
 .platos-section{
     scroll-margin-top: 320px;
@@ -1465,6 +1453,16 @@ body.light-mode .anchors a.active-anchor {
 /* ============================================================
    ANCLAS 
 ============================================================ */
+
+.anchors-row {
+  position: sticky;
+  top: 0;
+  z-index: 9998;
+  background: var(--jet-black);
+  padding: 8px 0;
+
+  backdrop-filter: blur(10px);
+}
 
 .anchors {
   display: flex;
@@ -1542,22 +1540,35 @@ body.light-mode .anchors a.active-anchor {
 
 /* ================================
    MÓVILES (≤ 600px)
-   CAMBIO A GRID DE 2 COLUMNAS
-================================ */
+   ================================ */
 @media (max-width: 600px) {
+
   .anchors {
-    display: grid;
-    /* 🔥 Cambia de flex a grid */
-    grid-template-columns: repeat(2, 1fr);
-    /* 🔥 SIEMPRE 2 COLUMNAS */
-    gap: 12px 14px;
-    padding: 14px 16px;
+    display: flex;
+    flex-wrap: nowrap;          /* clave */
+    overflow-x: auto;           /* scroll horizontal */
+    overflow-y: hidden;
+    gap: 10px;
+
+    padding: 12px 14px;
+
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .anchors::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
   }
 
   .anchors a {
-    width: 100%;
-    text-align: center;
-    padding: 10px 12px;
+    flex: 0 0 auto;        /* no se encogen */
+    white-space: nowrap;   /* evita salto de línea */
+
+    scroll-snap-align: start;
+
+    padding: 10px 14px;
     font-size: 0.85rem;
   }
 }
