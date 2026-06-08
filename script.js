@@ -755,9 +755,14 @@ themeToggle.addEventListener("click", () => {
 /* ============================================================
    ANCLA ACTIVA SEGÚN SCROLL
 ============================================================ */
-
 const sections = document.querySelectorAll(".platos-section");
 const anchorLinks = document.querySelectorAll(".anchors a");
+
+let lastActiveLink = null;
+
+/* ============================================================
+   OBSERVER (SCROLL SPY OPTIMIZADO)
+============================================================ */
 
 const observer = new IntersectionObserver(
     entries => {
@@ -768,20 +773,36 @@ const observer = new IntersectionObserver(
 
             const id = entry.target.id;
 
-            anchorLinks.forEach(link => {
+            const activeLink = Array.from(anchorLinks).find(link =>
+                link.getAttribute("href") === `#${id}`
+            );
 
-                link.classList.toggle(
-                    "active-anchor",
-                    link.getAttribute("href") === `#${id}`
-                );
+            if (!activeLink) return;
 
+            // 🔥 Evita recalcular si ya es el mismo
+            if (lastActiveLink === activeLink) return;
+
+            // Quitar activos anteriores + activar actual
+            anchorLinks.forEach(link =>
+                link.classList.toggle("active-anchor", link === activeLink)
+            );
+
+            lastActiveLink = activeLink;
+
+            // 🔥 Auto-scroll suave centrado (UX tipo app)
+            activeLink.scrollIntoView({
+                behavior: "smooth",
+                inline: "center",
+                block: "nearest"
             });
 
         });
 
     },
     {
-        threshold: 0.3
+        root: null,
+        threshold: 0.4,
+        rootMargin: "0px 0px -40% 0px" 
     }
 );
 
