@@ -28,10 +28,6 @@
         "src": "img/carrusel/8.jpeg"
     },
     {
-        "type": "image",
-        "src": "img/carrusel/8.jpg"
-    },
-    {
         "type": "video",
         "src": "img/carrusel/8.mp4"
     },
@@ -42,10 +38,6 @@
     {
         "type": "image",
         "src": "img/carrusel/10.jpeg"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/10.jpg"
     },
     {
         "type": "video",
@@ -80,10 +72,6 @@
         "src": "img/carrusel/17.jpeg"
     },
     {
-        "type": "image",
-        "src": "img/carrusel/17.jpg"
-    },
-    {
         "type": "video",
         "src": "img/carrusel/17.mp4"
     },
@@ -98,5 +86,25 @@
     {
         "type": "image",
         "src": "img/carrusel/20.jpeg"
+    },
+    {
+        "type": "video",
+        "src": "img/carrusel/21.mp4"
+    },
+    {
+        "type": "video",
+        "src": "img/carrusel/22.mp4"
+    },
+     {
+        "type": "video",
+        "src": "img/carrusel/24.mp4"
+    },
+     {
+        "type": "image",
+        "src": "img/carrusel/25.jpeg"
+    },
+    {
+        "type": "image",
+        "src": "img/carrusel/26.jpeg"
     }
 ]

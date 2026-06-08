@@ -10,6 +10,7 @@
   "breadcrumb_label_home": "Inicio",
   "breadcrumb_label_dishes": "Nuestros platos",
   "breadcrumb_label_menu": "Carta",
+  "unitario": "Unidad",
 
   "download_pdf": "Descargar carta en PDF",
 
@@ -29,6 +30,7 @@
   "tapas_calientes": "Tapas calientes",
   "panes": "Panes de la casa",
   "montaditos": "Montaditos",
+  "montadito": "Montadito",
   "carnes": "Carnes",
   "peques": "Para los peques",
   "pescados": "Pescados",
@@ -63,9 +65,9 @@
   "dish_salmon_queso": "Salmón con queso",
   "dish_cochinito": "Cochinito (queso o jamón)",
   "dish_piripi": "Piripi",
-  "dish_mechada": "Carne mechada",
+  "dish_mechada": "Carne mechada (queso o jamón)",
   "dish_serranito": "Serranito (pollo o lomo)",
-  "dish_presa": "Presa ibérica",
+  "dish_presa": "Presa ibérica (queso o jamón)",
   "dish_pringa": "Pringá",
   "dish_bao_curry": "Bao de curry",
   "dish_bao_carrilla": "Bao de carrillá",
@@ -158,5 +160,19 @@
   "hours_thu": "12:30–17:00 / 20:00–Cierre",
   "hours_fri": "12:30–17:00 / 20:00–Cierre",
   "hours_sat": "12:30–17:00 / 20:00–Cierre",
-  "hours_sun": "12:30–17:00"
+  "hours_sun": "12:30–17:00",
+
+  "desc_solomillo_revira_1": "Una de nuestras especialidades más demandadas.",
+  "desc_solomillo_revira_2": "Un solomillo con salsa de nata, cebolla y trufas.",
+
+  
+  "footer_slogan": "Tradición andaluza, productos frescos y recetas que invitan a compartir.",
+
+   "suggestions_title": "🍽️ Sugerencias",
+  "suggestion_tomate_caballa": "Tomate con caballa",
+  "suggestion_solomillo_pedro": "Solomillo al Pedro Ximénez (Tapa o Ración)",
+  "suggestion_rulo_cabra": "Rulo de cabra frito empanado con mermelada",
+  "suggestion_boquerones_fritos": "Boquerones fritos",
+  "close": "Cerrar"
+
 }

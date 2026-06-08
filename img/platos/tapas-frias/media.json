@@ -1,8 +1,8 @@
 [
-  { "type": "image", "src": "img/carrusel/1.png" },
-  { "type": "image", "src": "img/carrusel/2.png" },
-  { "type": "image", "src": "img/carrusel/3.png" },
-  { "type": "image", "src": "img/carrusel/4.png" },
-  { "type": "image", "src": "img/carrusel/5.png" },
-  { "type": "image", "src": "img/carrusel/6.png" }
+  { "type": "image", "src": "img/platos/tapas-frias/1.png" },
+  { "type": "image", "src": "img/platos/tapas-frias/2.png" },
+  { "type": "image", "src": "img/platos/tapas-frias/3.png" },
+  { "type": "image", "src": "img/platos/tapas-frias/4.png" },
+  { "type": "image", "src": "img/platos/tapas-frias/5.png" },
+  { "type": "image", "src": "img/platos/tapas-frias/6.png" }
 ]

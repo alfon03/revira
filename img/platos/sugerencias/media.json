@@ -1,9 +1,9 @@
 [
-  { "type": "image", "src": "img/carrusel/1.png" },
-  { "type": "image", "src": "img/carrusel/2.png" },
-  { "type": "image", "src": "img/carrusel/3.png" },
-  { "type": "image", "src": "img/carrusel/4.png" },
-  { "type": "image", "src": "img/carrusel/5.png" },
-  { "type": "image", "src": "img/carrusel/6.png" },
-  { "type": "image", "src": "img/carrusel/7.png" }
+  { "type": "image", "src": "img/platos/sugerencias/1.png" },
+  { "type": "image", "src": "img/platos/sugerencias/2.png" },
+  { "type": "image", "src": "img/platos/sugerencias/3.png" },
+  { "type": "image", "src": "img/platos/sugerencias/4.png" },
+  { "type": "image", "src": "img/platos/sugerencias/5.png" },
+  { "type": "image", "src": "img/platos/sugerencias/6.png" },
+  { "type": "image", "src": "img/platos/sugerencias/7.png" }
 ]

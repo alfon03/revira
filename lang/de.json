@@ -28,6 +28,7 @@
   "tapas_calientes": "Warme Tapas",
   "panes": "Hausbrot",
   "montaditos": "Montaditos",
+  "montadito": "Montadito",
   "carnes": "Fleischgerichte",
   "peques": "Für Kinder",
   "pescados": "Fischgerichte",
@@ -62,9 +63,9 @@
   "dish_salmon_queso": "Lachs mit Käse",
   "dish_cochinito": "Schweine‑Sandwich (Käse oder Schinken)",
   "dish_piripi": "Piripi‑Sandwich",
-  "dish_mechada": "Mariniertes Schweinefleisch",
-  "dish_serranito": "Serranito (Hähnchen oder Lende)",
-  "dish_presa": "Iberisches Schwein",
+  "dish_mechada": "Mariniertes Schweinefleisch (Käse oder Schinken)",
+  "dish_serranito": "Serranito (Hähnchen oder Schweinelende)",
+  "dish_presa": "Iberische Schweineschulter (Käse oder Schinken)",
   "dish_pringa": "Pringá",
   "dish_bao_curry": "Bao mit Curry",
   "dish_bao_carrilla": "Bao mit Schweinebäckchen",
@@ -158,5 +159,17 @@
   "hours_thu": "12:30–17:00 / 20:00–Schließung",
   "hours_fri": "12:30–17:00 / 20:00–Schließung",
   "hours_sat": "12:30–17:00 / 20:00–Schließung",
-  "hours_sun": "12:30–17:00"
+  "hours_sun": "12:30–17:00",
+  "desc_solomillo_revira_1": "Eine unserer meistbestellten Spezialitäten.",
+  "desc_solomillo_revira_2": "Ein Rinderfilet mit einer Sahne-, Zwiebel- und Trüffelsauce.",
+
+      "footer_slogan": "Andalusische Tradition, frische Produkte und Rezepte, die zum Teilen einladen.",
+
+       "suggestions_title": "🍽️ Empfehlungen",
+  "suggestion_tomate_caballa": "Tomate mit Makrele",
+  "suggestion_solomillo_pedro": "Schweinefilet in Pedro-Ximénez-Soße (Klein oder Groß)",
+  "suggestion_rulo_cabra": "Gebackene panierte Ziegenkäserolle mit Marmelade",
+  "suggestion_boquerones_fritos": "Frittierte Sardellen",
+  "close": "Schließen"
+
 }
