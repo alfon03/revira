@@ -4,5 +4,8 @@
   { "type": "image", "src": "img/platos/tapas-frias/3.png" },
   { "type": "image", "src": "img/platos/tapas-frias/4.png" },
   { "type": "image", "src": "img/platos/tapas-frias/5.png" },
-  { "type": "image", "src": "img/platos/tapas-frias/6.png" }
+  { "type": "image", "src": "img/platos/tapas-frias/6.png" },
+      { "type": "image", "src": "img/platos/tapas-frias/7.png" },
+    { "type": "image", "src": "img/platos/tapas-frias/8.png" }
+
 ]

@@ -11,5 +11,7 @@
   { "type": "image", "src": "img/platos/carnes/10.png" },
   { "type": "image", "src": "img/platos/carnes/11.png" },
   { "type": "image", "src": "img/platos/carnes/12.png" },
-  { "type": "image", "src": "img/platos/carnes/13.png" }
+  { "type": "image", "src": "img/platos/carnes/13.png" },
+    { "type": "image", "src": "img/platos/carnes/14.png" }
+
 ]
