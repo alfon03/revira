@@ -1,7 +1,27 @@
 [
     {
         "type": "image",
-        "src": "img/carrusel/1.jpeg"
+        "src": "img/carrusel/1.png"
+    },
+    {
+        "type": "image",
+        "src": "img/carrusel/2.png"
+    },
+    {
+        "type": "video",
+        "src": "img/carrusel/1.mp4"
+    },
+    {
+        "type": "video",
+        "src": "img/carrusel/2.mp4"
+    },
+     {
+        "type": "video",
+        "src": "img/carrusel/3.mp4"
+    },
+     {
+        "type": "image",
+        "src": "img/carrusel/3.png"
     },
     {
         "type": "image",
@@ -17,15 +37,11 @@
     },
     {
         "type": "image",
-        "src": "img/carrusel/6.jpeg"
-    },
-    {
-        "type": "image",
         "src": "img/carrusel/7.jpeg"
     },
     {
         "type": "image",
-        "src": "img/carrusel/8.jpeg"
+        "src": "img/carrusel/8.png"
     },
     {
         "type": "video",
@@ -37,7 +53,7 @@
     },
     {
         "type": "image",
-        "src": "img/carrusel/10.jpeg"
+        "src": "img/carrusel/10.png"
     },
     {
         "type": "video",
@@ -45,23 +61,23 @@
     },
     {
         "type": "image",
-        "src": "img/carrusel/11.jpeg"
+        "src": "img/carrusel/11.png"
     },
     {
         "type": "image",
-        "src": "img/carrusel/12.jpeg"
+        "src": "img/carrusel/12.png"
     },
     {
         "type": "image",
-        "src": "img/carrusel/13.jpeg"
+        "src": "img/carrusel/13.png"
     },
     {
         "type": "image",
-        "src": "img/carrusel/14.jpeg"
+        "src": "img/carrusel/14.png"
     },
     {
         "type": "image",
-        "src": "img/carrusel/15.jpeg"
+        "src": "img/carrusel/15.png"
     },
     {
         "type": "image",
@@ -69,7 +85,7 @@
     },
     {
         "type": "image",
-        "src": "img/carrusel/17.jpeg"
+        "src": "img/carrusel/17.png"
     },
     {
         "type": "video",
@@ -79,14 +95,7 @@
         "type": "image",
         "src": "img/carrusel/18.jpeg"
     },
-    {
-        "type": "image",
-        "src": "img/carrusel/19.jpeg"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/20.jpeg"
-    },
+
     {
         "type": "video",
         "src": "img/carrusel/21.mp4"
