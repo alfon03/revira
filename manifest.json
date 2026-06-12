@@ -1,0 +1,19 @@
+{
+  "name": "Revira",
+  "short_name": "Revira",
+  "icons": [
+    {
+      "src": "/revira/img/logo3-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/revira/img/logo3-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1a1c1f",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
