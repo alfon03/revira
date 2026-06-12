@@ -148,19 +148,20 @@
 
   "schedule_title": "Horario",
 
+  "day_monday": "Lunes",
   "day_tuesday": "Martes",
   "day_wednesday": "Miércoles",
   "day_thursday": "Jueves",
   "day_friday": "Viernes",
   "day_saturday": "Sábado",
   "day_sunday": "Domingo",
-
-  "hours_tue": "12:30–17:00 / 20:00–Cierre",
-  "hours_wed": "12:30–17:00 / 20:00–Cierre",
-  "hours_thu": "12:30–17:00 / 20:00–Cierre",
-  "hours_fri": "12:30–17:00 / 20:00–Cierre",
-  "hours_sat": "12:30–17:00 / 20:00–Cierre",
-  "hours_sun": "12:30–17:00",
+  
+  "hours_tue": "20:30–Cierre",
+  "hours_wed": "20:30–Cierre",
+  "hours_thu": "20:30–Cierre",
+  "hours_fri": "20:30–Cierre",
+  "hours_sat": "20:30–Cierre",
+  "hours_sun": "Cerrado",
 
   "desc_solomillo_revira_1": "Una de nuestras especialidades más demandadas.",
   "desc_solomillo_revira_2": "Un solomillo con salsa de nata, cebolla y trufas.",

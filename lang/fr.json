@@ -147,6 +147,7 @@
 
   "schedule_title": "Horaires",
 
+  "day_monday": "Lundi",
   "day_tuesday": "Mardi",
   "day_wednesday": "Mercredi",
   "day_thursday": "Jeudi",
@@ -154,12 +155,12 @@
   "day_saturday": "Samedi",
   "day_sunday": "Dimanche",
 
-  "hours_tue": "12:30–17:00 / 20:00–Fermeture",
-  "hours_wed": "12:30–17:00 / 20:00–Fermeture",
-  "hours_thu": "12:30–17:00 / 20:00–Fermeture",
-  "hours_fri": "12:30–17:00 / 20:00–Fermeture",
-  "hours_sat": "12:30–17:00 / 20:00–Fermeture",
-  "hours_sun": "12:30–17:00",
+  "hours_tue": "20:30–Fermeture",
+  "hours_wed": "20:30–Fermeture",
+  "hours_thu": "20:30–Fermeture",
+  "hours_fri": "20:30–Fermeture",
+  "hours_sat": "20:30–Fermeture",
+  "hours_sun": "Fermeture",
 
   "desc_solomillo_revira_1": "L’une de nos spécialités les plus demandées.",
   "desc_solomillo_revira_2": "Un filet de bœuf accompagné d’une sauce à la crème, à l’oignon et aux truffes.",

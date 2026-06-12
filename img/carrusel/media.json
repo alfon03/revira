@@ -4,22 +4,22 @@
         "src": "img/carrusel/1.png"
     },
     {
+        "type": "video",
+        "src": "img/carrusel/1.mp4"
+    },
+    {
         "type": "image",
         "src": "img/carrusel/2.png"
     },
     {
         "type": "video",
-        "src": "img/carrusel/1.mp4"
+        "src": "img/carrusel/2.mp4"
     },
     {
         "type": "video",
-        "src": "img/carrusel/2.mp4"
-    },
-     {
-        "type": "video",
         "src": "img/carrusel/3.mp4"
     },
-     {
+    {
         "type": "image",
         "src": "img/carrusel/3.png"
     },
@@ -32,8 +32,24 @@
         "src": "img/carrusel/4.jpeg"
     },
     {
+        "type": "video",
+        "src": "img/carrusel/4.mp4"
+    },
+    {
         "type": "image",
-        "src": "img/carrusel/5.jpeg"
+        "src": "img/carrusel/5.png"
+    },
+    {
+        "type": "video",
+        "src": "img/carrusel/5.mp4"
+    },
+    {
+        "type": "image",
+        "src": "img/carrusel/6.png"
+    },
+    {
+        "type": "video",
+        "src": "img/carrusel/6.mp4"
     },
     {
         "type": "image",
@@ -49,7 +65,7 @@
     },
     {
         "type": "image",
-        "src": "img/carrusel/9.jpeg"
+        "src": "img/carrusel/9.png"
     },
     {
         "type": "image",
@@ -81,7 +97,7 @@
     },
     {
         "type": "image",
-        "src": "img/carrusel/16.jpeg"
+        "src": "img/carrusel/16.png"
     },
     {
         "type": "image",
@@ -93,9 +109,16 @@
     },
     {
         "type": "image",
-        "src": "img/carrusel/18.jpeg"
+        "src": "img/carrusel/18.png"
     },
-
+    {
+        "type": "image",
+        "src": "img/carrusel/19.jpg"
+    },
+    {
+        "type": "image",
+        "src": "img/carrusel/20.png"
+    },
     {
         "type": "video",
         "src": "img/carrusel/21.mp4"
@@ -104,16 +127,12 @@
         "type": "video",
         "src": "img/carrusel/22.mp4"
     },
-     {
+    {
         "type": "video",
         "src": "img/carrusel/24.mp4"
     },
-     {
-        "type": "image",
-        "src": "img/carrusel/25.jpeg"
-    },
     {
         "type": "image",
-        "src": "img/carrusel/26.jpeg"
+        "src": "img/carrusel/25.png"
     }
 ]
