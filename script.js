@@ -755,14 +755,24 @@ themeToggle.addEventListener("click", () => {
 /* ============================================================
    ANCLA ACTIVA SEGÚN SCROLL
 ============================================================ */
-const sections = document.querySelectorAll(".platos-section");
 const anchorLinks = document.querySelectorAll(".anchors a");
+
+const sections = Array.from(anchorLinks)
+    .map(link => {
+        const href = link.getAttribute("href");
+
+        if (!href || !href.startsWith("#")) return null;
+
+        return document.querySelector(href);
+    })
+    .filter(Boolean);
 
 let lastActiveLink = null;
 
 /* ============================================================
    OBSERVER (SCROLL SPY OPTIMIZADO)
 ============================================================ */
+if (sections.length && anchorLinks.length) {
 
 const observer = new IntersectionObserver(
     entries => {
@@ -807,6 +817,7 @@ const observer = new IntersectionObserver(
 );
 
 sections.forEach(section => observer.observe(section));
+}
 
 /* ============================================================
    APARICIÓN SUAVE DE SECCIONES
@@ -829,10 +840,9 @@ const revealObserver = new IntersectionObserver(
     }
 );
 
-document
-    .querySelectorAll(".platos-section")
-    .forEach(section => revealObserver.observe(section));
-
+sections.forEach(section => {
+    revealObserver.observe(section);
+});
 
 
 function updateAnchorsPosition() {
