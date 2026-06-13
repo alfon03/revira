@@ -134,5 +134,37 @@
     {
         "type": "image",
         "src": "img/carrusel/25.png"
+    },
+    {
+        "type": "image",
+        "src": "img/carrusel/26.png"
+    },
+    {
+        "type": "image",
+        "src": "img/carrusel/27.png"
+    },
+    {
+        "type": "image",
+        "src": "img/carrusel/28.png"
+    },
+    {
+        "type": "image",
+        "src": "img/carrusel/29.png"
+    },
+    {
+        "type": "image",
+        "src": "img/carrusel/30.png"
+    },
+    {
+        "type": "image",
+        "src": "img/carrusel/31.png"
+    },
+    {
+        "type": "image",
+        "src": "img/carrusel/32.png"
+    },
+    {
+        "type": "image",
+        "src": "img/carrusel/33.png"
     }
 ]
