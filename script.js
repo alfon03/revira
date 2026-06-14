@@ -8,10 +8,11 @@ menuBtn.addEventListener("click", () => {
     navMenu.classList.toggle("active");
 });
 
-
 // =========================
 // CONFIGURACIÓN
 // =========================
+
+const MEDIA_VERSION = "1"; // Cambia este número cuando actualices media.json
 
 /* ============================================================
    CARRUSEL OPTIMIZADO (SAFE MULTI-PAGE VERSION)
@@ -40,18 +41,39 @@ if (!slidesContainer) {
 
 async function loadMedia() {
     try {
-        const res = await fetch("img/carrusel/media.json?=" + Date.now());
+        const res = await fetch(
+            `img/carrusel/media.json?v=${MEDIA_VERSION}`
+        );
 
         media = await res.json();
 
-        // mezclar
-        media.sort(() => Math.random() - 0.5);
+        // Mezclar correctamente (Fisher-Yates)
+        shuffle(media);
 
         buildCarousel();
 
     } catch (err) {
         console.error("Error cargando media.json:", err);
     }
+}
+
+/* =========================
+   MEZCLAR ARRAY
+========================= */
+
+function shuffle(array) {
+
+    for (let i = array.length - 1; i > 0; i--) {
+
+        const j = Math.floor(
+            Math.random() * (i + 1)
+        );
+
+        [array[i], array[j]] =
+        [array[j], array[i]];
+    }
+
+    return array;
 }
 
 /* =========================
@@ -66,7 +88,18 @@ function getItemsPerSlide() {
 
 /* SOLO SI EXISTE CARRUSEL */
 if (slidesContainer) {
-    window.addEventListener("resize", () => buildCarousel());
+
+    let resizeTimeout;
+
+    window.addEventListener("resize", () => {
+
+        clearTimeout(resizeTimeout);
+
+        resizeTimeout = setTimeout(() => {
+            buildCarousel();
+        }, 250);
+
+    });
 }
 
 /* =========================
@@ -81,10 +114,16 @@ function buildCarousel() {
     slidesContainer.innerHTML = "";
 
     const itemsPerSlide = getItemsPerSlide();
+
     let i = 0;
 
     while (i < media.length) {
-        const group = media.slice(i, i + itemsPerSlide);
+
+        const group = media.slice(
+            i,
+            i + itemsPerSlide
+        );
+
         i += itemsPerSlide;
 
         createSlide(group);
@@ -105,21 +144,28 @@ function createSlide(group) {
     slide.classList.add("slide-group");
 
     group.forEach(item => {
+
         const wrapper = document.createElement("div");
         wrapper.classList.add("slide-item");
 
         let el;
 
         if (item.type === "image") {
+
             el = document.createElement("img");
+
             el.src = item.src;
             el.loading = "lazy";
+            el.decoding = "async";
         }
 
         if (item.type === "video") {
+
             el = document.createElement("video");
 
-            const source = document.createElement("source");
+            const source =
+                document.createElement("source");
+
             source.src = item.src;
             source.type = "video/mp4";
 
@@ -130,8 +176,12 @@ function createSlide(group) {
             el.loop = true;
             el.preload = "metadata";
 
-            const isMobile = window.innerWidth <= 768;
-            if (!isMobile) el.autoplay = true;
+            const isMobile =
+                window.innerWidth <= 768;
+
+            if (!isMobile) {
+                el.autoplay = true;
+            }
         }
 
         if (!el) return;
@@ -155,41 +205,65 @@ function initCarousel() {
 
     if (!slidesContainer) return;
 
-    const totalSlides = slidesContainer.children.length;
+    const totalSlides =
+        slidesContainer.children.length;
+
     if (!totalSlides) return;
 
-    if (autoPlayInterval) clearInterval(autoPlayInterval);
+    if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+    }
 
     function updateSlide() {
+
         slidesContainer.style.transform =
             `translateX(-${index * 100}%)`;
     }
 
-    const nextBtn = document.getElementById("nextBtn");
-    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn =
+        document.getElementById("nextBtn");
+
+    const prevBtn =
+        document.getElementById("prevBtn");
 
     if (nextBtn) {
+
         nextBtn.onclick = () => {
-            index = (index + 1) % totalSlides;
+
+            index =
+                (index + 1) % totalSlides;
+
             updateSlide();
         };
     }
 
     if (prevBtn) {
+
         prevBtn.onclick = () => {
-            index = (index - 1 + totalSlides) % totalSlides;
+
+            index =
+                (index - 1 + totalSlides) %
+                totalSlides;
+
             updateSlide();
         };
     }
 
     let intervalTime = 4500;
 
-    if (window.innerWidth <= 768) intervalTime = 7000;
-    else if (window.innerWidth <= 1024) intervalTime = 5500;
+    if (window.innerWidth <= 768) {
+        intervalTime = 7000;
+    } else if (window.innerWidth <= 1024) {
+        intervalTime = 5500;
+    }
 
     autoPlayInterval = setInterval(() => {
-        index = (index + 1) % totalSlides;
+
+        index =
+            (index + 1) % totalSlides;
+
         updateSlide();
+
     }, intervalTime);
 }
 
@@ -199,12 +273,15 @@ function initCarousel() {
 
 document.addEventListener("touchstart", () => {
 
-    document.querySelectorAll("video").forEach(v => {
-        v.play().catch(() => { });
-    });
+    document.querySelectorAll("video")
+        .forEach(v => {
+
+            v.play()
+                .catch(() => { });
+
+        });
 
 }, { once: true });
-
 
 // BOTÓN IR ARRIBA
 const btnTop = document.getElementById("btnTop");
@@ -223,6 +300,7 @@ btnTop.addEventListener("click", () => {
         behavior: "smooth"
     });
 });
+
 document.addEventListener("DOMContentLoaded", () => {
 
     // ============================================================
@@ -231,6 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const CONFIG = {
         basePath: "img/platos",
+        mediaVersion: "1", // 👈 cambia esto cuando actualices JSON
         carousel: {
             mobileBreakpoint: 768,
             autoplayDelay: 3500,
@@ -241,13 +320,16 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     // ============================================================
-    // LOAD IMAGES (USA TU media.json TAL CUAL)
+    // LOAD IMAGES (CACHE OPTIMIZADO)
     // ============================================================
 
     async function loadImages(folder, callback) {
 
         try {
-            const res = await fetch(`${CONFIG.basePath}/${folder}/media.json`);
+            const res = await fetch(
+                `${CONFIG.basePath}/${folder}/media.json?v=${CONFIG.mediaVersion}`,
+                { cache: "force-cache" }
+            );
 
             if (!res.ok) {
                 console.warn(`No media.json en ${folder}`);
@@ -257,16 +339,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const data = await res.json();
 
-            // 👉 TU FORMATO:
-            // [
-            //   { type: "image", src: "img/platos/..." }
-            // ]
-
             const images = (data || [])
-                .filter(item => item?.type === "image" && item?.src)
-                .map(item => ({
-                    src: item.src
-                }));
+                .filter(item => item?.type === "image" && item?.src);
 
             callback(images);
 
@@ -289,7 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const fragment = document.createDocumentFragment();
 
-        images.forEach(img => {
+        images.forEach((img, i) => {
 
             const item = document.createElement("div");
             item.className = "carousel-item";
@@ -298,6 +372,9 @@ document.addEventListener("DOMContentLoaded", () => {
             el.src = img.src;
             el.loading = "lazy";
             el.decoding = "async";
+
+            // 🚀 solo primeras imágenes con prioridad alta
+            if (i < 2) el.fetchPriority = "high";
 
             item.appendChild(el);
             fragment.appendChild(item);
@@ -308,10 +385,6 @@ document.addEventListener("DOMContentLoaded", () => {
         container.innerHTML = "";
         container.appendChild(track);
 
-        // ========================================================
-        // STATE
-        // ========================================================
-
         let index = 0;
         let interval = null;
         let resizeTimer = null;
@@ -321,48 +394,42 @@ document.addEventListener("DOMContentLoaded", () => {
         const isMobile = () =>
             window.innerWidth <= cfg.mobileBreakpoint;
 
-        const getMetrics = () => {
+        let itemWidth = 0;
+        let gap = 0;
+
+        function measure() {
             const item = track.firstElementChild;
-            if (!item) return { width: 0, gap: 0 };
+            if (!item) return;
 
             const styles = getComputedStyle(track);
 
-            return {
-                width: item.offsetWidth,
-                gap: parseInt(styles.gap || "0", 10)
-            };
-        };
+            itemWidth = item.offsetWidth;
+            gap = parseInt(styles.gap || "0", 10);
+        }
 
-        const getVisible = () => {
-            const { width, gap } = getMetrics();
-            return Math.max(1, Math.floor(container.offsetWidth / (width + gap)));
-        };
+        function getVisible() {
+            return Math.max(
+                1,
+                Math.floor(container.offsetWidth / (itemWidth + gap))
+            );
+        }
 
-        const getMaxIndex = () =>
-            isMobile()
+        function getMaxIndex() {
+            return isMobile()
                 ? total - 1
                 : Math.max(0, total - getVisible());
-
-        // ========================================================
-        // UPDATE
-        // ========================================================
+        }
 
         function update(animated = true) {
-
-            const { width, gap } = getMetrics();
 
             const max = getMaxIndex();
             index = Math.min(Math.max(index, 0), max);
 
-            const move = index * (width + gap);
+            const move = index * (itemWidth + gap);
 
             track.style.transition = animated ? cfg.transition : "none";
             track.style.transform = `translate3d(-${move}px,0,0)`;
         }
-
-        // ========================================================
-        // AUTOPLAY
-        // ========================================================
 
         function startAuto() {
 
@@ -380,12 +447,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }, cfg.autoplayDelay);
         }
 
+        // init medidas UNA sola vez al inicio
+        measure();
+        update(false);
         startAuto();
 
-        // ========================================================
         // BOTONES
-        // ========================================================
-
         const btnPrev = document.createElement("button");
         const btnNext = document.createElement("button");
 
@@ -401,10 +468,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btnPrev.onclick = () => { index--; update(); };
         btnNext.onclick = () => { index++; update(); };
 
-        // ========================================================
         // SWIPE
-        // ========================================================
-
         let startX = 0;
         let dragging = false;
 
@@ -419,9 +483,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!dragging) return;
 
             const diff = e.touches[0].clientX - startX;
-            const { width, gap } = getMetrics();
 
-            const move = index * (width + gap);
+            const move = index * (itemWidth + gap);
 
             track.style.transition = "none";
             track.style.transform =
@@ -443,21 +506,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }, { passive: true });
 
-        // ========================================================
-        // RESIZE
-        // ========================================================
-
+        // RESIZE (OPTIMIZADO GLOBALMENTE)
         window.addEventListener("resize", () => {
 
             clearTimeout(resizeTimer);
 
             resizeTimer = setTimeout(() => {
+                measure();   // 👈 antes lo recalculabas demasiado
                 update(false);
             }, cfg.resizeDebounce);
 
         });
-
-        update(false);
     }
 
     // ============================================================
@@ -471,12 +530,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const fragment = document.createDocumentFragment();
 
-        images.forEach(img => {
+        images.forEach((img, i) => {
 
             const el = document.createElement("img");
             el.src = img.src;
             el.loading = "lazy";
             el.decoding = "async";
+
+            if (i < 2) el.fetchPriority = "high";
 
             fragment.appendChild(el);
         });
@@ -519,6 +580,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
 let lightboxItems = [];
 let currentIndex = 0;
 
