@@ -70,7 +70,7 @@ function shuffle(array) {
         );
 
         [array[i], array[j]] =
-        [array[j], array[i]];
+            [array[j], array[i]];
     }
 
     return array;
@@ -370,6 +370,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const el = document.createElement("img");
             el.src = img.src;
+            el.dataset.full = img.full;
             el.loading = "lazy";
             el.decoding = "async";
 
@@ -585,10 +586,10 @@ let lightboxItems = [];
 let currentIndex = 0;
 
 /* ============================================================
-   INDEXACIÓN
+   INDEXACIÓN (SOLO 1 VEZ)
 ============================================================ */
 
-function updateLightboxItems() {
+function initLightboxItems() {
 
     const nodes = document.querySelectorAll(
         ".slide-item img, .slide-item video, " +
@@ -603,6 +604,9 @@ function updateLightboxItems() {
     }));
 }
 
+/* Ejecutar una sola vez */
+document.addEventListener("DOMContentLoaded", initLightboxItems);
+
 /* ============================================================
    OPEN LIGHTBOX
 ============================================================ */
@@ -614,14 +618,16 @@ function openLightbox(index) {
     const video = document.getElementById("lightboxVideo");
     const counter = document.getElementById("lightboxCounter");
 
-    // 🔒 protección global
     if (!lightbox || !img || !video) return;
 
     const item = lightboxItems[index];
     if (!item) return;
 
+    currentIndex = index;
+
     if (counter) {
-        counter.textContent = `${index + 1} / ${lightboxItems.length}`;
+        counter.textContent =
+            `${index + 1} / ${lightboxItems.length}`;
     }
 
     img.style.display = "none";
@@ -633,7 +639,10 @@ function openLightbox(index) {
 
     if (item.type === "img") {
 
-        img.src = item.src;
+        // 🔥 mejora: fuerza carga inmediata solo en lightbox
+        img.src = item.full || item.src;
+        img.loading = "eager";
+        img.decoding = "async";
         img.style.display = "block";
 
     } else if (item.type === "video") {
@@ -646,14 +655,14 @@ function openLightbox(index) {
 
         video.style.display = "block";
 
-        video.play().catch(() => {});
+        video.play().catch(() => { });
     }
 
     lightbox.style.display = "flex";
 }
 
 /* ============================================================
-   CLICK GLOBAL
+   CLICK GLOBAL (MUCHO MÁS RÁPIDO)
 ============================================================ */
 
 document.addEventListener("click", e => {
@@ -666,19 +675,19 @@ document.addEventListener("click", e => {
 
     if (!media) return;
 
-    updateLightboxItems();
+    // ❌ ya no recalcula todo cada click
 
     const src = media.currentSrc || media.src;
 
-    currentIndex = lightboxItems.findIndex(i => i.src === src);
+    const index = lightboxItems.findIndex(i => i.src === src);
 
-    if (currentIndex === -1) return;
+    if (index === -1) return;
 
-    openLightbox(currentIndex);
+    openLightbox(index);
 });
 
 /* ============================================================
-   NAVEGACIÓN (SAFE)
+   NAVEGACIÓN
 ============================================================ */
 
 const nextBtn = document.getElementById("lightboxNext");
@@ -688,15 +697,16 @@ const lightbox = document.getElementById("lightbox");
 
 if (nextBtn) {
     nextBtn.onclick = () => {
-        currentIndex = (currentIndex + 1) % lightboxItems.length;
-        openLightbox(currentIndex);
+        openLightbox((currentIndex + 1) % lightboxItems.length);
     };
 }
 
 if (prevBtn) {
     prevBtn.onclick = () => {
-        currentIndex = (currentIndex - 1 + lightboxItems.length) % lightboxItems.length;
-        openLightbox(currentIndex);
+        openLightbox(
+            (currentIndex - 1 + lightboxItems.length) %
+            lightboxItems.length
+        );
     };
 }
 
@@ -836,49 +846,49 @@ let lastActiveLink = null;
 ============================================================ */
 if (sections.length && anchorLinks.length) {
 
-const observer = new IntersectionObserver(
-    entries => {
+    const observer = new IntersectionObserver(
+        entries => {
 
-        entries.forEach(entry => {
+            entries.forEach(entry => {
 
-            if (!entry.isIntersecting) return;
+                if (!entry.isIntersecting) return;
 
-            const id = entry.target.id;
+                const id = entry.target.id;
 
-            const activeLink = Array.from(anchorLinks).find(link =>
-                link.getAttribute("href") === `#${id}`
-            );
+                const activeLink = Array.from(anchorLinks).find(link =>
+                    link.getAttribute("href") === `#${id}`
+                );
 
-            if (!activeLink) return;
+                if (!activeLink) return;
 
-            // 🔥 Evita recalcular si ya es el mismo
-            if (lastActiveLink === activeLink) return;
+                // 🔥 Evita recalcular si ya es el mismo
+                if (lastActiveLink === activeLink) return;
 
-            // Quitar activos anteriores + activar actual
-            anchorLinks.forEach(link =>
-                link.classList.toggle("active-anchor", link === activeLink)
-            );
+                // Quitar activos anteriores + activar actual
+                anchorLinks.forEach(link =>
+                    link.classList.toggle("active-anchor", link === activeLink)
+                );
 
-            lastActiveLink = activeLink;
+                lastActiveLink = activeLink;
 
-            // 🔥 Auto-scroll suave centrado (UX tipo app)
-            activeLink.scrollIntoView({
-                behavior: "smooth",
-                inline: "center",
-                block: "nearest"
+                // 🔥 Auto-scroll suave centrado (UX tipo app)
+                activeLink.scrollIntoView({
+                    behavior: "smooth",
+                    inline: "center",
+                    block: "nearest"
+                });
+
             });
 
-        });
+        },
+        {
+            root: null,
+            threshold: 0.4,
+            rootMargin: "0px 0px -40% 0px"
+        }
+    );
 
-    },
-    {
-        root: null,
-        threshold: 0.4,
-        rootMargin: "0px 0px -40% 0px" 
-    }
-);
-
-sections.forEach(section => observer.observe(section));
+    sections.forEach(section => observer.observe(section));
 }
 
 /* ============================================================

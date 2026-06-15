@@ -124,8 +124,6 @@
   "footer_address_text": "Av. la Cruz, 41440 Lora del Río, Sevilla",
   "footer_phone": "Telefon:",
   "footer_phone_text": "645 74 02 00",
-  "footer_email": "E‑Mail:",
-  "footer_email_text": "contacto@larevira.es",
   "footer_reservas": "Reservierungen:",
   "footer_reservas_text": "Telefonisch verfügbar",
   "footer_follow": "Folge uns",
@@ -172,6 +170,36 @@
   "suggestion_solomillo_pedro": "Schweinefilet in Pedro-Ximénez-Soße (Klein oder Groß)",
   "suggestion_rulo_cabra": "Gebackene panierte Ziegenkäserolle mit Marmelade",
   "suggestion_boquerones_fritos": "Frittierte Sardellen",
-  "close": "Schließen"
+  "close": "Schließen",
+
+  "bebida": "Getränke",
+  "bodega": "Weinkeller",
+
+  "drink_agua_pequena": "Kleines Wasser",
+  "drink_agua_grande": "Großes Wasser",
+  "drink_tinto_verano": "Tinto de verano",
+  "drink_refrescos": "Erfrischungsgetränke",
+  "drink_nestea_aquarius_monster": "Nestea / Aquarius / Monster",
+  "drink_chupitos": "Shots",
+  "drink_licores": "Liköre",
+  "drink_combinados": "Mixgetränke",
+  "drink_combinados_premium": "Premium-Mixgetränke",
+
+  "wine_grabiela": "Grabiela (Manzanilla)",
+  "wine_labraz": "Labraz (Rioja)",
+  "wine_cyatho": "Cyatho (Verdejo)",
+  "wine_fya": "FYA (Halbsüßer Weißwein)",
+  "wine_vino_dulce": "Süßwein (Osborne)",
+  "wine_mil_besos": "Mil Besos (Frizzante)",
+  "wine_pierola": "Fernández Píerola (Rioja)",
+  "wine_traslascuestas_roble": "Traslascuestas Roble (Ribera del Duero)",
+  "wine_traslascuestas_crianza": "Traslascuestas Crianza (Ribera del Duero)",
+  "wine_carramimbre": "Carramimbre (Ribera del Duero)",
+  "wine_ramon_bilbao": "Ramón Bilbao (Rioja)",
+
+  "cata": "Verkostung",
+  "copa": "Glas",
+  "botella": "Flasche"
+
 
 }

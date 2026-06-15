@@ -106,8 +106,7 @@
   "footer_address_text": "Av. la Cruz, 41440 Lora del Río, Seville",
   "footer_phone": "Phone:",
   "footer_phone_text": "645 74 02 00",
-  "footer_email": "Email:",
-  "footer_email_text": "contacto@larevira.es",
+
   "footer_reservas": "Reservations:",
   "footer_reservas_text": "Available by phone",
   "footer_follow": "Follow us",
@@ -148,6 +147,35 @@
   "suggestion_solomillo_pedro": "Pork sirloin in Pedro Ximénez sauce (Small or Large)",
   "suggestion_rulo_cabra": "Fried breaded goat cheese roll with jam",
   "suggestion_boquerones_fritos": "Fried anchovies",
-  "close": "Close"
+  "close": "Close",
+
+  "bebida": "Drinks",
+  "bodega": "Wine Cellar",
+
+  "drink_agua_pequena": "Small water",
+  "drink_agua_grande": "Large water",
+  "drink_tinto_verano": "Tinto de verano",
+  "drink_refrescos": "Soft drinks",
+  "drink_nestea_aquarius_monster": "Nestea / Aquarius / Monster",
+  "drink_chupitos": "Shots",
+  "drink_licores": "Liqueurs",
+  "drink_combinados": "Mixed drinks",
+  "drink_combinados_premium": "Premium mixed drinks",
+
+  "wine_grabiela": "Grabiela (Manzanilla)",
+  "wine_labraz": "Labraz (Rioja)",
+  "wine_cyatho": "Cyatho (Verdejo)",
+  "wine_fya": "FYA (Semi-sweet white)",
+  "wine_vino_dulce": "Sweet wine (Osborne)",
+  "wine_mil_besos": "Mil Besos (Frizzante)",
+  "wine_pierola": "Fernández Píerola (Rioja)",
+  "wine_traslascuestas_roble": "Traslascuestas Roble (Ribera del Duero)",
+  "wine_traslascuestas_crianza": "Traslascuestas Crianza (Ribera del Duero)",
+  "wine_carramimbre": "Carramimbre (Ribera del Duero)",
+  "wine_ramon_bilbao": "Ramón Bilbao (Rioja)",
+
+  "cata": "tasting",
+  "copa": "glass",
+  "botella": "bottle"
 
 }

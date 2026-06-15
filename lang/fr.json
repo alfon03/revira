@@ -124,8 +124,7 @@
   "footer_address_text": "Av. la Cruz, 41440 Lora del Río, Séville",
   "footer_phone": "Téléphone :",
   "footer_phone_text": "645 74 02 00",
-  "footer_email": "Email :",
-  "footer_email_text": "contacto@larevira.es",
+
   "footer_reservas": "Réservations :",
   "footer_reservas_text": "Disponible par téléphone",
   "footer_follow": "Suivez-nous",
@@ -172,5 +171,35 @@
   "suggestion_solomillo_pedro": "Filet de porc au Pedro Ximénez (Petite ou Grande portion)",
   "suggestion_rulo_cabra": "Rouleau de chèvre pané et frit avec confiture",
   "suggestion_boquerones_fritos": "Anchois frits",
-  "close": "Fermer"
+  "close": "Fermer",
+
+  "bebida": "Boissons",
+  "bodega": "Cave à vin",
+
+  "drink_agua_pequena": "Petite eau",
+  "drink_agua_grande": "Grande eau",
+  "drink_tinto_verano": "Tinto de verano",
+  "drink_refrescos": "Sodas",
+  "drink_nestea_aquarius_monster": "Nestea / Aquarius / Monster",
+  "drink_chupitos": "Shots",
+  "drink_licores": "Liqueurs",
+  "drink_combinados": "Boissons mixtes",
+  "drink_combinados_premium": "Boissons mixtes premium",
+
+  "wine_grabiela": "Grabiela (Manzanilla)",
+  "wine_labraz": "Labraz (Rioja)",
+  "wine_cyatho": "Cyatho (Verdejo)",
+  "wine_fya": "FYA (Blanc demi-doux)",
+  "wine_vino_dulce": "Vin doux (Osborne)",
+  "wine_mil_besos": "Mil Besos (Frizzante)",
+  "wine_pierola": "Fernández Píerola (Rioja)",
+  "wine_traslascuestas_roble": "Traslascuestas Roble (Ribera del Duero)",
+  "wine_traslascuestas_crianza": "Traslascuestas Crianza (Ribera del Duero)",
+  "wine_carramimbre": "Carramimbre (Ribera del Duero)",
+  "wine_ramon_bilbao": "Ramón Bilbao (Rioja)",
+
+  "cata": "dégustation",
+  "copa": "verre",
+  "botella": "bouteille"
+
 }
