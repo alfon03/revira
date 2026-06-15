@@ -580,16 +580,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-});
-
-let lightboxItems = [];
+});let lightboxItems = [];
 let currentIndex = 0;
 
 /* ============================================================
-   INDEXACIÓN (SOLO 1 VEZ)
+   INDEXACIÓN
 ============================================================ */
 
-function initLightboxItems() {
+function updateLightboxItems() {
 
     const nodes = document.querySelectorAll(
         ".slide-item img, .slide-item video, " +
@@ -603,9 +601,6 @@ function initLightboxItems() {
         node: el
     }));
 }
-
-/* Ejecutar una sola vez */
-document.addEventListener("DOMContentLoaded", initLightboxItems);
 
 /* ============================================================
    OPEN LIGHTBOX
@@ -621,6 +616,7 @@ function openLightbox(index) {
     if (!lightbox || !img || !video) return;
 
     const item = lightboxItems[index];
+
     if (!item) return;
 
     currentIndex = index;
@@ -637,15 +633,21 @@ function openLightbox(index) {
     video.load();
     video.style.display = "none";
 
+    /* =========================
+       IMAGEN
+    ========================= */
+
     if (item.type === "img") {
 
-        // 🔥 mejora: fuerza carga inmediata solo en lightbox
-        img.src = item.full || item.src;
-        img.loading = "eager";
-        img.decoding = "async";
+        img.src = item.src;
         img.style.display = "block";
+    }
 
-    } else if (item.type === "video") {
+    /* =========================
+       VIDEO
+    ========================= */
+
+    else if (item.type === "video") {
 
         video.src = item.src;
         video.muted = true;
@@ -655,14 +657,14 @@ function openLightbox(index) {
 
         video.style.display = "block";
 
-        video.play().catch(() => { });
+        video.play().catch(() => {});
     }
 
     lightbox.style.display = "flex";
 }
 
 /* ============================================================
-   CLICK GLOBAL (MUCHO MÁS RÁPIDO)
+   CLICK GLOBAL
 ============================================================ */
 
 document.addEventListener("click", e => {
@@ -675,15 +677,16 @@ document.addEventListener("click", e => {
 
     if (!media) return;
 
-    // ❌ ya no recalcula todo cada click
+    // Actualiza por si los carruseles han cambiado
+    updateLightboxItems();
 
-    const src = media.currentSrc || media.src;
+    currentIndex = lightboxItems.findIndex(
+        item => item.node === media
+    );
 
-    const index = lightboxItems.findIndex(i => i.src === src);
+    if (currentIndex === -1) return;
 
-    if (index === -1) return;
-
-    openLightbox(index);
+    openLightbox(currentIndex);
 });
 
 /* ============================================================
@@ -696,17 +699,29 @@ const closeBtn = document.getElementById("lightboxClose");
 const lightbox = document.getElementById("lightbox");
 
 if (nextBtn) {
+
     nextBtn.onclick = () => {
-        openLightbox((currentIndex + 1) % lightboxItems.length);
+
+        if (!lightboxItems.length) return;
+
+        currentIndex =
+            (currentIndex + 1) % lightboxItems.length;
+
+        openLightbox(currentIndex);
     };
 }
 
 if (prevBtn) {
+
     prevBtn.onclick = () => {
-        openLightbox(
+
+        if (!lightboxItems.length) return;
+
+        currentIndex =
             (currentIndex - 1 + lightboxItems.length) %
-            lightboxItems.length
-        );
+            lightboxItems.length;
+
+        openLightbox(currentIndex);
     };
 }
 
@@ -715,10 +730,49 @@ if (closeBtn) {
 }
 
 if (lightbox) {
+
     lightbox.onclick = e => {
-        if (e.target.id === "lightbox") closeLightbox();
+
+        if (e.target.id === "lightbox") {
+            closeLightbox();
+        }
     };
 }
+
+/* ============================================================
+   TECLADO
+============================================================ */
+
+document.addEventListener("keydown", e => {
+
+    if (!lightbox ||
+        lightbox.style.display !== "flex") {
+        return;
+    }
+
+    if (e.key === "Escape") {
+        closeLightbox();
+    }
+
+    if (e.key === "ArrowRight" &&
+        lightboxItems.length) {
+
+        currentIndex =
+            (currentIndex + 1) % lightboxItems.length;
+
+        openLightbox(currentIndex);
+    }
+
+    if (e.key === "ArrowLeft" &&
+        lightboxItems.length) {
+
+        currentIndex =
+            (currentIndex - 1 + lightboxItems.length) %
+            lightboxItems.length;
+
+        openLightbox(currentIndex);
+    }
+});
 
 /* ============================================================
    CLOSE
@@ -727,19 +781,26 @@ if (lightbox) {
 function closeLightbox() {
 
     const lightbox = document.getElementById("lightbox");
+    const img = document.getElementById("lightboxImg");
     const video = document.getElementById("lightboxVideo");
 
     if (!lightbox) return;
 
     lightbox.style.display = "none";
 
+    if (img) {
+        img.removeAttribute("src");
+    }
+
     if (video) {
+
         video.pause();
+
         video.removeAttribute("src");
+
         video.load();
     }
 }
-
 
 async function loadLanguage(lang) {
     const response = await fetch(`lang/${lang}.json`);
