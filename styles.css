@@ -1199,8 +1199,7 @@ body {
 .menu-item-img {
   width: 120px;
   height: 120px;
-  object-fit: contain;
-  background: #fff;
+  object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, .15);
 }
