@@ -1086,16 +1086,17 @@ body {
   }
 }
 
-@media (max-width:768px){
+@media (max-width:768px) {
 
-    .carta-grid{
+  .carta-grid {
 
-        padding:0 12px;
+    padding: 0 12px;
 
-        gap:20px;
-    }
+    gap: 20px;
+  }
 
 }
+
 .menu-list {
   display: flex;
   flex-direction: column;
@@ -1226,88 +1227,87 @@ body {
   color: #555;
 }
 
-@media (max-width:768px){
+@media (max-width:768px) {
 
-    .menu-item{
-        padding:14px;
-    }
+  .menu-item {
+    padding: 14px;
+  }
 
-    .menu-item-foto{
+  .menu-item-foto {
 
-        display:grid;
+    display: grid;
 
-        grid-template-columns:90px 1fr;
+    grid-template-columns: 90px 1fr;
 
-        grid-template-areas:
-            "img content"
-            "img price";
+    grid-template-areas:
+      "img content"
+      "img price";
 
-        gap:12px;
+    gap: 12px;
 
-        align-items:start;
+    align-items: start;
 
-    }
+  }
 
-    .menu-item-img{
+  .menu-item-img {
 
-        grid-area:img;
+    grid-area: img;
 
-        width:90px;
-        height:90px;
+    width: 90px;
+    height: 90px;
 
-        object-fit:contain;
+    object-fit: cover;
 
-        background:#fff;
+    flex: none;
+  }
 
-        flex:none;
-    }
+  .menu-item-content {
 
-    .menu-item-content{
+    grid-area: content;
 
-        grid-area:content;
+    min-width: 0;
+  }
 
-        min-width:0;
-    }
+  .menu-item-content h3 {
 
-    .menu-item-content h3{
+    font-size: 1rem;
+    line-height: 1.25;
 
-        font-size:1rem;
-        line-height:1.25;
+    word-break: break-word;
+  }
 
-        word-break:break-word;
-    }
+  .menu-item-content p {
 
-    .menu-item-content p{
+    font-size: .85rem;
+    line-height: 1.4;
+  }
 
-        font-size:.85rem;
-        line-height:1.4;
-    }
+  .menu-item-prices {
 
-    .menu-item-prices{
+    grid-area: price;
 
-        grid-area:price;
+    display: flex;
+    flex-wrap: wrap;
 
-        display:flex;
-        flex-wrap:wrap;
+    gap: 6px;
 
-        gap:6px;
+    margin-top: 4px;
+  }
 
-        margin-top:4px;
-    }
+  .menu-item-prices span {
 
-    .menu-item-prices span{
+    padding: 6px 10px;
 
-        padding:6px 10px;
-
-        font-size:.9rem;
-    }
+    font-size: .9rem;
+  }
 
 }
+
 .menu-item,
 .menu-item-foto,
 .menu-item-content,
-.menu-item-prices{
-    box-sizing:border-box;
+.menu-item-prices {
+  box-sizing: border-box;
 }
 
 /* ============================================
@@ -1421,6 +1421,7 @@ body.dark-mode .plato-modal-panel {
   object-fit: contain;
   background: #fff;
 }
+
 #bodega .menu-item-img {
   object-fit: contain;
   background: #fff;
