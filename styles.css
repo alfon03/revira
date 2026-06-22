@@ -1417,6 +1417,16 @@ body.dark-mode .plato-modal-panel {
   object-fit: contain;
 }
 
+#bebida .menu-item-img {
+  object-fit: contain;
+  background: #fff;
+}
+
+#bodega .menu-item-img {
+  object-fit: contain;
+  background: #fff;
+}
+
 .plato-modal-back {
   background: none;
   border: none;
