@@ -3,6 +3,7 @@
 // =========================
 // CONFIGURACIÓN
 // =========================
+//carrusel pagina inicio con videos
 
 const MEDIA_VERSION = "1"; // Cambia este número cuando actualices media.json
 
@@ -293,6 +294,10 @@ btnTop.addEventListener("click", () => {
     });
 });
 
+
+// carrusel pagina platos
+
+
 document.addEventListener("DOMContentLoaded", () => {
 
     // ============================================================
@@ -342,6 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // carrusel pagina platos
     // ============================================================
     // CARRUSEL
     // ============================================================
@@ -572,7 +578,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-});let lightboxItems = [];
+});
+
+//ampliar imagenes o videos
+
+let lightboxItems = [];
 let currentIndex = 0;
 
 /* ============================================================
@@ -649,7 +659,7 @@ function openLightbox(index) {
 
         video.style.display = "block";
 
-        video.play().catch(() => {});
+        video.play().catch(() => { });
     }
 
     lightbox.style.display = "flex";
@@ -794,6 +804,8 @@ function closeLightbox() {
     }
 }
 
+
+// cambio de idioma
 async function loadLanguage(lang) {
     const response = await fetch(`lang/${lang}.json`);
     const translations = await response.json();
@@ -820,6 +832,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// cambio de color
 const themeToggle = document.getElementById("theme-toggle");
 const themeIcon = document.getElementById("theme-icon");
 
@@ -1046,17 +1059,17 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
 
     const secciones = {
-    "bebida": "img/platos/bebida/",
-    "bodega": "img/platos/bodega/",
-    "panes": "img/platos/panes/",
-    "tapas-frias": "img/platos/tapas-frias/",
-    "tapas-calientes": "img/platos/tapas-calientes/",
-    "montaditos": "img/platos/montaditos/",
-    "carnes": "img/platos/carnes/",
-    "chacinas": "img/platos/chacinas/",
-    "peques": "img/platos/peques/",
-    "pescados": "img/platos/pescados/",
-    "postres": "img/platos/postres/"
+        "bebida": "img/platos/bebida/",
+        "bodega": "img/platos/bodega/",
+        "panes": "img/platos/panes/",
+        "tapas-frias": "img/platos/tapas-frias/",
+        "tapas-calientes": "img/platos/tapas-calientes/",
+        "montaditos": "img/platos/montaditos/",
+        "carnes": "img/platos/carnes/",
+        "chacinas": "img/platos/chacinas/",
+        "peques": "img/platos/peques/",
+        "pescados": "img/platos/pescados/",
+        "postres": "img/platos/postres/"
     };
 
     Object.entries(secciones).forEach(([id, ruta]) => {
@@ -1136,6 +1149,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+// pagina carta modal al hacer click en la imagen
 document.addEventListener("DOMContentLoaded", () => {
 
     const modal = document.getElementById("plato-modal");
@@ -1189,6 +1203,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         /* Imagen */
         modalImg.src = imgElement.src;
+        modalImg.onload = () => {
+
+            if (modalImg.naturalHeight > modalImg.naturalWidth) {
+                modalImg.classList.add("portrait");
+                modalImg.classList.remove("landscape");
+            } else {
+                modalImg.classList.add("landscape");
+                modalImg.classList.remove("portrait");
+            }
+
+        };
         modalImg.alt = titulo;
 
         /* Texto */
