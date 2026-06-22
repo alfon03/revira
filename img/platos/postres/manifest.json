@@ -1,0 +1,24 @@
+[
+  {
+    "i18n_key": "dish_tarta_abuela",
+    "nombre": "Tarta de la Abuela",
+    "descripcion": "",
+    "img": "1.png",
+    "tipo": "unico",
+    "alergenos": ["gluten", "lacteos", "soja"],
+    "precios": [
+      { "cantidad": "5,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_tarta_queso",
+    "nombre": "Tarta de Queso",
+    "descripcion": "",
+    "img": "2.png",
+    "tipo": "unico",
+    "alergenos": ["gluten", "lacteos", "huevo"],
+    "precios": [
+      { "cantidad": "5,00 €", "tipo": "" }
+    ]
+  }
+]

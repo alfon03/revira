@@ -1,0 +1,96 @@
+[
+  {
+    "i18n_key": "dish_solomillo_revira",
+    "nombre": "Solomillo a la Revira",
+    "descripcion": "Una de nuestras especialidades más demandadas. Solomillo con salsa de nata, cebolla y trufas.",
+    "img": "3.png",
+    "alergenos": ["lacteos"],
+    "precios": [
+      { "cantidad": "4,50 €", "tipo": "tapa" },
+      { "cantidad": "10,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_solomillo_whisky",
+    "nombre": "Solomillo al Whisky",
+    "descripcion": "",
+    "img": "4.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "4,50 €", "tipo": "tapa" },
+      { "cantidad": "10,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_solomillo_pimienta",
+    "nombre": "Solomillo a la Pimienta",
+    "descripcion": "",
+    "img": "14.png",
+    "alergenos": ["lacteos"],
+    "precios": [
+      { "cantidad": "4,50 €", "tipo": "tapa" },
+      { "cantidad": "10,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_solomillo_roquefort",
+    "nombre": "Solomillo al Roquefort",
+    "descripcion": "",
+    "img": "10.png",
+    "alergenos": ["lacteos"],
+    "precios": [
+      { "cantidad": "4,50 €", "tipo": "tapa" },
+      { "cantidad": "10,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_hamburguesa_angus",
+    "nombre": "Hamburguesa Angus",
+    "descripcion": "",
+    "img": "5.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "14,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_lagartito",
+    "nombre": "Lagartito ibérico",
+    "descripcion": "",
+    "img": "6.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "15,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_presa_iberica",
+    "nombre": "Presa ibérica",
+    "descripcion": "",
+    "img": "8.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "17,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_pechuga",
+    "nombre": "Pechuga de pollo a la plancha",
+    "descripcion": "",
+    "img": "1.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "6,50 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_pollo_frito",
+    "nombre": "Pollo frito",
+    "descripcion": "",
+    "img": "5.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "5,00 €", "tipo": "" }
+    ]
+  }
+]

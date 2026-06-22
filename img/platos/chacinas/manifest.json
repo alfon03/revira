@@ -1,0 +1,70 @@
+[
+  {
+    "i18n_key": "dish_jamon",
+    "nombre": "Jamón",
+    "descripcion": "",
+    "img": "9.png",
+    "alergenos": ["sulfitos"],
+    "precios": [
+      { "cantidad": "7,00 €", "tipo": "1/2" },
+      { "cantidad": "14,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_queso",
+    "nombre": "Queso",
+    "descripcion": "",
+    "img": "1.png",
+    "alergenos": ["lacteos"],
+    "precios": [
+      { "cantidad": "4,00 €", "tipo": "tapa" },
+      { "cantidad": "8,00 €", "tipo": "1/2" },
+      { "cantidad": "14,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_carne_mecha",
+    "nombre": "Carne mechá",
+    "descripcion": "",
+    "img": "8.png",
+    "alergenos": ["sulfitos"],
+    "precios": [
+      { "cantidad": "4,00 €", "tipo": "tapa" },
+      { "cantidad": "8,00 €", "tipo": "1/2" },
+      { "cantidad": "14,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_cana_lomo",
+    "nombre": "Caña de lomo",
+    "descripcion": "",
+    "img": "7.png",
+    "alergenos": ["sulfitos"],
+    "precios": [
+      { "cantidad": "4,00 €", "tipo": "tapa" },
+      { "cantidad": "8,00 €", "tipo": "1/2" },
+      { "cantidad": "15,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_chicharron",
+    "nombre": "Chicharrón de Cádiz",
+    "descripcion": "",
+    "img": "2.png",
+    "alergenos": ["sulfitos"],
+    "precios": [
+      { "cantidad": "8,00 €", "tipo": "1/2" },
+      { "cantidad": "14,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_variado",
+    "nombre": "Variado de chacinas",
+    "descripcion": "",
+    "img": "6.png",
+    "alergenos": ["sulfitos"],
+    "precios": [
+      { "cantidad": "22,00 €", "tipo": "" }
+    ]
+  }
+]

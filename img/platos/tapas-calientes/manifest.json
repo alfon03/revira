@@ -1,0 +1,127 @@
+[
+  {
+    "i18n_key": "dish_espinacas",
+    "nombre": "Espinacas con garbanzos",
+    "descripcion": "",
+    "img": "4.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "4,50 €", "tipo": "tapa" },
+      { "cantidad": "8,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_croquetas_marisco",
+    "nombre": "Croquetas de marisco",
+    "descripcion": "",
+    "img": "9.png",
+    "alergenos": ["gluten", "lacteos", "huevo", "crustaceo"],
+    "precios": [
+      { "cantidad": "4,50 €", "tipo": "tapa" },
+      { "cantidad": "9,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_croquetas_queso",
+    "nombre": "Croquetas de queso",
+    "descripcion": "",
+    "img": "2.png",
+    "alergenos": ["gluten", "lacteos", "huevo"],
+    "precios": [
+      { "cantidad": "4,50 €", "tipo": "tapa" },
+      { "cantidad": "9,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_croquetas_cocido",
+    "nombre": "Croquetas de cocido",
+    "descripcion": "",
+    "img": "16.png",
+    "alergenos": ["gluten", "lacteos", "huevo"],
+    "precios": [
+      { "cantidad": "4,50 €", "tipo": "tapa" },
+      { "cantidad": "9,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_variado_croquetas",
+    "nombre": "Variado de croquetas",
+    "descripcion": "",
+    "img": "11.png",
+    "alergenos": ["gluten", "lacteos", "huevo", "crustaceo"],
+    "precios": [
+      { "cantidad": "12,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_carrillera",
+    "nombre": "Carrillera",
+    "descripcion": "",
+    "img": "10.png",
+    "alergenos": ["sulfitos"],
+    "precios": [
+      { "cantidad": "5,00 €", "tipo": "tapa" },
+      { "cantidad": "10,00 €", "tipo": "ración" }
+    ]
+  },
+  {
+    "i18n_key": "dish_pastel_berenjena",
+    "nombre": "Pastel de berenjenas",
+    "descripcion": "",
+    "img": "8.png",
+    "alergenos": ["lacteos", "sulfitos"],
+    "precios": [
+      { "cantidad": "6,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_patatas_gratinadas",
+    "nombre": "Patatas gratinadas",
+    "descripcion": "",
+    "img": "3.png",
+    "alergenos": ["lacteos", "huevo", "sulfitos"],
+    "precios": [
+      { "cantidad": "8,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_patatas_bravas",
+    "nombre": "Patatas bravas",
+    "descripcion": "",
+    "img": "5.png",
+    "alergenos": ["lacteos"],
+    "precios": [
+      { "cantidad": "8,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_papas_arrieras",
+    "nombre": "Papas arrieras",
+    "descripcion": "",
+    "img": "1.png",
+    "alergenos": ["huevo", "lacteos"],
+    "precios": [
+      { "cantidad": "9,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_berenjenas_miel",
+    "nombre": "Berenjenas con miel de caña",
+    "descripcion": "",
+    "img": "6.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "7,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_gyozas",
+    "nombre": "Gyosas",
+    "descripcion": "",
+    "img": "7.png",
+    "alergenos": ["gluten", "soja"],
+    "precios": [
+      { "cantidad": "7,00 €", "tipo": "" }
+    ]
+  }
+]

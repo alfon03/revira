@@ -1,0 +1,57 @@
+[
+  {
+    "i18n_key": "dish_mejillones",
+    "nombre": "Mejillones",
+    "descripcion": "",
+    "img": "4.png",
+    "alergenos": ["gluten", "moluscos"],
+    "precios": [
+      { "cantidad": "2,00 €", "tipo": "/ud" }
+    ],
+    "tipo": "unitario"
+  },
+  {
+    "i18n_key": "dish_anchoas",
+    "nombre": "Anchoas",
+    "descripcion": "",
+    "img": "3.png",
+    "alergenos": ["gluten", "pescado"],
+    "precios": [
+      { "cantidad": "2,50 €", "tipo": "/ud" }
+    ],
+    "tipo": "unitario"
+  },
+  {
+    "i18n_key": "dish_sardinas",
+    "nombre": "Sardinas",
+    "descripcion": "",
+    "img": "8.png",
+    "alergenos": ["gluten", "pescado"],
+    "precios": [
+      { "cantidad": "3,00 €", "tipo": "/ud" }
+    ],
+    "tipo": "unitario"
+  },
+  {
+    "i18n_key": "dish_lomo_orza",
+    "nombre": "Lomo a la Orza",
+    "descripcion": "",
+    "img": "3.png",
+    "alergenos": ["gluten", "consultar"],
+    "precios": [
+      { "cantidad": "2,50 €", "tipo": "/ud" }
+    ],
+    "tipo": "unitario"
+  },
+  {
+    "i18n_key": "dish_tosta_chicharron",
+    "nombre": "Tostá de chicharrón de Cádiz con manteca",
+    "descripcion": "",
+    "img": "6.png",
+    "alergenos": ["gluten", "sulfitos"],
+    "precios": [
+      { "cantidad": "12,00 €", "tipo": "" }
+    ],
+    "featured": true
+  }
+]

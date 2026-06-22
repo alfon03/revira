@@ -1,0 +1,91 @@
+[
+  {
+    "i18n_key": "drink_agua_pequena",
+    "nombre": "Agua pequeña",
+    "descripcion": "",
+    "img": "1.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "1,20 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "drink_agua_grande",
+    "nombre": "Agua grande",
+    "descripcion": "",
+    "img": "2.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "2,30 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "drink_tinto_verano",
+    "nombre": "Tinto de verano",
+    "descripcion": "",
+    "img": "3.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "2,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "drink_refrescos",
+    "nombre": "Refrescos",
+    "descripcion": "",
+    "img": "4.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "2,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "drink_nestea_aquarius_monster",
+    "nombre": "Nestea / Aquarius / Monster",
+    "descripcion": "",
+    "img": "5.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "2,50 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "drink_chupitos",
+    "nombre": "Chupitos",
+    "descripcion": "",
+    "img": "6.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "2,50 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "drink_licores",
+    "nombre": "Licores",
+    "descripcion": "",
+    "img": "7.png",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "5,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "drink_combinados",
+    "nombre": "Combinados",
+    "descripcion": "",
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "6,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "drink_combinados_premium",
+    "nombre": "Combinados Premium",
+    "descripcion": "",
+    "featured": true,
+    "alergenos": [],
+    "precios": [
+      { "cantidad": "7,00 €", "tipo": "" }
+    ]
+  }
+]

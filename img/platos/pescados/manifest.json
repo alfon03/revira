@@ -1,0 +1,62 @@
+[
+  {
+    "i18n_key": "dish_chocos",
+    "nombre": "Cartucho de chocos",
+    "descripcion": "",
+    "img": "3.png",
+    "alergenos": ["gluten", "huevo", "moluscos"],
+    "precios": [
+      { "cantidad": "9,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_calamares",
+    "nombre": "Cartucho de calamares",
+    "descripcion": "",
+    "img": "4.png",
+    "alergenos": ["gluten", "moluscos"],
+    "precios": [
+      { "cantidad": "8,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_bacalao",
+    "nombre": "Cartucho de bacalao frito",
+    "descripcion": "",
+    "img": "2.png",
+    "alergenos": ["gluten", "pescado"],
+    "precios": [
+      { "cantidad": "7,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_twister",
+    "nombre": "Twister de langostino",
+    "descripcion": "",
+    "img": "1.png",
+    "alergenos": ["gluten", "crustaceo"],
+    "precios": [
+      { "cantidad": "5,50 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_pavia",
+    "nombre": "Pavía de gambón",
+    "descripcion": "",
+    "img": "0.png",
+    "alergenos": ["gluten", "crustaceo"],
+    "precios": [
+      { "cantidad": "7,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_gambas_ajillo",
+    "nombre": "Gambas al ajillo",
+    "descripcion": "",
+    "img": "7.png",
+    "alergenos": ["crustaceo"],
+    "precios": [
+      { "cantidad": "11,00 €", "tipo": "" }
+    ]
+  }
+]

@@ -1,0 +1,123 @@
+[
+  {
+    "i18n_key": "dish_melva",
+    "nombre": "Melva y pimientos del piquillo",
+    "descripcion": "",
+    "img": "10.png",
+    "alergenos": ["gluten", "pescado"],
+    "precios": [
+      { "cantidad": "4,00 €", "tipo": "" }
+    ],
+    "tipo": "montadito"
+  },
+  {
+    "i18n_key": "dish_salmon_queso",
+    "nombre": "Salmón y queso",
+    "descripcion": "",
+    "img": "8.png",
+    "alergenos": ["gluten", "pescado", "lacteos"],
+    "precios": [
+      { "cantidad": "5,50 €", "tipo": "" }
+    ],
+    "tipo": "montadito"
+  },
+  {
+    "i18n_key": "dish_cochinito",
+    "nombre": "Cochinito (queso o jamón)",
+    "descripcion": "",
+    "img": "7.png",
+    "alergenos": ["gluten", "lacteos", "sulfitos"],
+    "precios": [
+      { "cantidad": "4,50 €", "tipo": "" }
+    ],
+    "tipo": "montadito"
+  },
+  {
+    "i18n_key": "dish_piripi",
+    "nombre": "Piripi",
+    "descripcion": "",
+    "img": "14.png",
+    "alergenos": ["gluten", "lacteos", "huevo", "sulfitos"],
+    "precios": [
+      { "cantidad": "5,50 €", "tipo": "" }
+    ],
+    "tipo": "montadito"
+  },
+  {
+    "i18n_key": "dish_mechada",
+    "nombre": "Mechada (queso o jamón)",
+    "descripcion": "",
+    "img": "12.png",
+    "alergenos": ["gluten", "lacteos", "sulfitos"],
+    "precios": [
+      { "cantidad": "5,00 €", "tipo": "" }
+    ],
+    "tipo": "montadito"
+  },
+  {
+    "i18n_key": "dish_serranito",
+    "nombre": "Serranito (pollo o lomo)",
+    "descripcion": "",
+    "img": "0.png",
+    "alergenos": ["gluten"],
+    "precios": [
+      { "cantidad": "5,00 €", "tipo": "" }
+    ],
+    "tipo": "montadito"
+  },
+  {
+    "i18n_key": "dish_presa",
+    "nombre": "Presa (queso o jamón)",
+    "descripcion": "",
+    "img": "5.png",
+    "alergenos": ["gluten", "lacteos", "sulfitos"],
+    "precios": [
+      { "cantidad": "5,50 €", "tipo": "" }
+    ],
+    "tipo": "montadito"
+  },
+  {
+    "i18n_key": "dish_pringa",
+    "nombre": "Pringá",
+    "descripcion": "",
+    "img": "6.png",
+    "alergenos": ["gluten", "sulfitos"],
+    "precios": [
+      { "cantidad": "4,50 €", "tipo": "" }
+    ],
+    "tipo": "montadito"
+  },
+  {
+    "i18n_key": "dish_bao_curry",
+    "nombre": "Bao curry",
+    "descripcion": "",
+    "img": "3.png",
+    "alergenos": ["gluten"],
+    "precios": [
+      { "cantidad": "4,00 €", "tipo": "" }
+    ],
+    "tipo": "montadito"
+  },
+  {
+    "i18n_key": "dish_bao_carrilla",
+    "nombre": "Bao carrillá",
+    "descripcion": "",
+    "img": "4.png",
+    "alergenos": ["gluten", "sulfitos"],
+    "precios": [
+      { "cantidad": "4,00 €", "tipo": "" }
+    ],
+    "tipo": "montadito"
+  },
+  {
+    "i18n_key": "dish_gambas_alioli",
+    "nombre": "Gambas alioli",
+    "descripcion": "",
+    "img": "15.png",
+    "alergenos": ["gluten", "crustaceo", "huevo"],
+    "precios": [
+      { "cantidad": "5,00 €", "tipo": "" }
+    ],
+    "tipo": "montadito"
+  }
+]

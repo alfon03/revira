@@ -1,13 +1,5 @@
 
 
-// MENU RESPONSIVE
-const menuBtn = document.getElementById("menuBtn");
-const navMenu = document.getElementById("navMenu");
-
-menuBtn.addEventListener("click", () => {
-    navMenu.classList.toggle("active");
-});
-
 // =========================
 // CONFIGURACIÓN
 // =========================
@@ -991,22 +983,336 @@ function updateAnchorsPosition() {
 window.addEventListener("load", updateAnchorsPosition);
 window.addEventListener("resize", updateAnchorsPosition);
 
+//sugerencias carta modal al entrar
+
 document.addEventListener("DOMContentLoaded", () => {
+
     const modal = document.getElementById("suggestionsModal");
     const closeBtn = document.getElementById("closeModal");
+    const closeBtnBottom = document.getElementById("closeModalBtn");
 
-    // mostrar modal al entrar
-    modal.classList.remove("hidden");
+    function abrirModal() {
 
-    // cerrar
-    closeBtn.addEventListener("click", () => {
-        modal.classList.add("hidden");
-    });
+        modal.style.display = "flex";
 
-    // cerrar al hacer click fuera
+        requestAnimationFrame(() => {
+            modal.classList.add("show");
+        });
+
+        document.body.style.overflow = "hidden";
+    }
+
+    function cerrarModal() {
+
+        modal.classList.remove("show");
+
+        setTimeout(() => {
+
+            modal.style.display = "";
+            document.body.style.overflow = "";
+
+        }, 550);
+
+    }
+
+    /* Mostrar automáticamente */
+    abrirModal();
+
+    /* Cerrar */
+    closeBtn.addEventListener("click", cerrarModal);
+    closeBtnBottom.addEventListener("click", cerrarModal);
+
+    /* Click fuera */
     modal.addEventListener("click", (e) => {
+
         if (e.target === modal) {
-            modal.classList.add("hidden");
+            cerrarModal();
         }
+
     });
+
+    /* ESC */
+    document.addEventListener("keydown", (e) => {
+
+        if (e.key === "Escape") {
+            cerrarModal();
+        }
+
+    });
+
+});
+
+// carga de carta json
+document.addEventListener("DOMContentLoaded", () => {
+
+    const secciones = {
+    "bebida": "img/platos/bebida/",
+    "bodega": "img/platos/bodega/",
+    "panes": "img/platos/panes/",
+    "tapas-frias": "img/platos/tapas-frias/",
+    "tapas-calientes": "img/platos/tapas-calientes/",
+    "montaditos": "img/platos/montaditos/",
+    "carnes": "img/platos/carnes/",
+    "chacinas": "img/platos/chacinas/",
+    "peques": "img/platos/peques/",
+    "pescados": "img/platos/pescados/",
+    "postres": "img/platos/postres/"
+    };
+
+    Object.entries(secciones).forEach(([id, ruta]) => {
+        const contenedor = document.querySelector(`#${id} .menu-list`);
+        if (!contenedor) return;
+
+        fetch(ruta + "manifest.json")
+            .then(r => r.json())
+            .then(platos => {
+                contenedor.innerHTML = "";
+
+                platos.forEach(plato => {
+                    const item = crearItemMenu(plato, ruta);
+                    contenedor.appendChild(item);
+                });
+            })
+            .catch(err => console.error("Error cargando JSON de", id, err));
+    });
+
+    function crearItemMenu(plato, ruta) {
+
+        const article = document.createElement("article");
+        article.className = "menu-item menu-item-foto";
+        if (plato.featured) article.classList.add("featured");
+
+        const img = document.createElement("img");
+        img.className = "menu-item-img";
+        img.src = ruta + plato.img;
+        img.alt = plato.nombre;
+
+        const content = document.createElement("div");
+        content.className = "menu-item-content";
+
+        if (plato.tipo) {
+            const tipo = document.createElement("div");
+            tipo.className = "menu-type " + plato.tipo;
+            tipo.setAttribute("data-i18n", plato.tipo);
+            tipo.textContent = plato.tipo === "unitario" ? "Unidad" : plato.tipo;
+            content.appendChild(tipo);
+        }
+
+        const h3 = document.createElement("h3");
+        h3.setAttribute("data-i18n", plato.i18n_key);
+        h3.textContent = plato.nombre;
+
+        const p = document.createElement("p");
+        if (plato.descripcion) p.textContent = plato.descripcion;
+
+        const alergenos = document.createElement("div");
+        alergenos.className = "alergenos";
+
+        plato.alergenos.forEach(a => {
+            const span = document.createElement("span");
+            span.className = "icon " + a;
+            alergenos.appendChild(span);
+        });
+
+        content.appendChild(h3);
+        if (plato.descripcion) content.appendChild(p);
+        content.appendChild(alergenos);
+
+        const precios = document.createElement("div");
+        precios.className = "menu-item-prices";
+
+        plato.precios.forEach(pre => {
+            const span = document.createElement("span");
+            span.innerHTML = `${pre.cantidad} <small data-i18n="${pre.tipo}">${pre.tipo}</small>`;
+            precios.appendChild(span);
+        });
+
+        article.appendChild(img);
+        article.appendChild(content);
+        article.appendChild(precios);
+
+        return article;
+    }
+
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const modal = document.getElementById("plato-modal");
+    const panel = document.querySelector(".plato-modal-panel");
+    const modalImg = document.getElementById("modal-img");
+
+    /* ============================================
+       DETECTAR IMÁGENES GENERADAS DINÁMICAMENTE
+    ============================================ */
+    const observer = new MutationObserver(() => {
+
+        document.querySelectorAll(".menu-item-img").forEach(img => {
+
+            if (img.dataset.modalBound) return;
+
+            img.dataset.modalBound = "true";
+
+            img.addEventListener("click", () => {
+                abrirModal(img);
+            });
+
+        });
+
+    });
+
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+
+    /* ============================================
+       ABRIR MODAL
+    ============================================ */
+    function abrirModal(imgElement) {
+
+        const article = imgElement.closest(".menu-item");
+
+        if (!article) return;
+
+        const titulo =
+            article.querySelector("h3")?.textContent || "";
+
+        const descripcion =
+            article.querySelector("p")?.textContent || "";
+
+        const precios =
+            article.querySelectorAll(".menu-item-prices span");
+
+        const alergenos =
+            article.querySelectorAll(".alergenos span");
+
+        /* Imagen */
+        modalImg.src = imgElement.src;
+        modalImg.alt = titulo;
+
+        /* Texto */
+        document.getElementById("modal-title").textContent = titulo;
+        document.getElementById("modal-desc").textContent = descripcion;
+
+        /* Alergenos */
+        const alerCont = document.getElementById("modal-alergenos");
+        alerCont.innerHTML = "";
+
+        alergenos.forEach(a => {
+            const span = document.createElement("span");
+            span.className = a.className;
+            alerCont.appendChild(span);
+        });
+
+        /* Precios */
+        const preciosCont = document.getElementById("modal-precios");
+        preciosCont.innerHTML = "";
+
+        precios.forEach(pre => {
+            const span = document.createElement("span");
+            span.innerHTML = pre.innerHTML;
+            preciosCont.appendChild(span);
+        });
+
+        /* Mostrar modal */
+        modal.style.display = "block";
+
+        requestAnimationFrame(() => {
+            modal.classList.add("show");
+        });
+
+        document.body.style.overflow = "hidden";
+    }
+
+    /* ============================================
+       CERRAR MODAL
+    ============================================ */
+    function cerrarModal() {
+
+        if (
+            !modal.classList.contains("show") ||
+            modal.classList.contains("closing")
+        ) {
+            return;
+        }
+
+        modal.classList.add("closing");
+
+        panel.addEventListener("transitionend", function handler(e) {
+
+            if (e.propertyName !== "transform") return;
+
+            panel.removeEventListener("transitionend", handler);
+
+            modal.classList.remove("show");
+            modal.classList.remove("closing");
+
+            modal.style.display = "";
+
+            document.body.style.overflow = "";
+
+        });
+    }
+
+    /* ============================================
+       BOTÓN VOLVER
+    ============================================ */
+    document
+        .getElementById("modal-back")
+        .addEventListener("click", cerrarModal);
+
+    /* ============================================
+       CLIC EN EL FONDO
+    ============================================ */
+    modal.addEventListener("click", (e) => {
+
+        if (e.target === modal) {
+            cerrarModal();
+        }
+
+    });
+
+    /* ============================================
+       TECLA ESC
+    ============================================ */
+    document.addEventListener("keydown", (e) => {
+
+        if (e.key === "Escape") {
+            cerrarModal();
+        }
+
+    });
+
+    /* ============================================
+       SWIPE DOWN EN MÓVIL
+    ============================================ */
+    let startY = 0;
+    let currentY = 0;
+
+    panel.addEventListener("touchstart", (e) => {
+
+        startY = e.touches[0].clientY;
+
+    }, { passive: true });
+
+    panel.addEventListener("touchmove", (e) => {
+
+        currentY = e.touches[0].clientY;
+
+    }, { passive: true });
+
+    panel.addEventListener("touchend", () => {
+
+        const diff = currentY - startY;
+
+        if (diff > 100) {
+            cerrarModal();
+        }
+
+        startY = 0;
+        currentY = 0;
+
+    });
+
 });

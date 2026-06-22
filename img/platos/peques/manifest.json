@@ -1,0 +1,45 @@
+[
+  {
+    "i18n_key": "dish_hamburguesa_pollo",
+    "nombre": "Hamburguesa pollo",
+    "descripcion": "",
+    "img": "1.png",
+    "alergenos": ["gluten"],
+    "precios": [
+      { "cantidad": "5,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_lagrimitas",
+    "nombre": "Lagrimitas",
+    "descripcion": "",
+    "img": "3.png",
+    "alergenos": ["gluten"],
+    "precios": [
+      { "cantidad": "4,00 €", "tipo": "tapa" },
+      { "cantidad": "8,00 €", "tipo": "plato" }
+    ]
+  },
+  {
+    "i18n_key": "dish_nuggets",
+    "nombre": "Nuggets",
+    "descripcion": "",
+    "img": "2.png",
+    "alergenos": ["gluten"],
+    "precios": [
+      { "cantidad": "4,00 €", "tipo": "tapa" },
+      { "cantidad": "8,00 €", "tipo": "plato" }
+    ]
+  },
+  {
+    "i18n_key": "dish_perrito",
+    "nombre": "Perrito caliente",
+    "descripcion": "",
+    "img": "4.png",
+    "alergenos": ["gluten"],
+    "featured": true,
+    "precios": [
+      { "cantidad": "4,00 €", "tipo": "" }
+    ]
+  }
+]
