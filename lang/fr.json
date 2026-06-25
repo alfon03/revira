@@ -20,6 +20,7 @@
   "alergenos": "Allergènes",
   "consultar": "Demander au personnel",
   "ración": "Portion",
+"volver": "Retour",
 
   "racion": "Portion",
   "media_racion": "Demi-portion",
@@ -167,7 +168,7 @@
 
    "footer_slogan": "Tradition andalouse, produits frais et recettes faites pour être partagées.",
 
-   "suggestions_title": "🍽️ Suggestions",
+   "suggestions_title": "Suggestions",
   "suggestion_tomate_caballa": "Tomate à la maquereau",
   "suggestion_solomillo_pedro": "Filet de porc au Pedro Ximénez (Petite ou Grande portion)",
   "suggestion_rulo_cabra": "Rouleau de chèvre pané et frit avec confiture",

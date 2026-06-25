@@ -20,7 +20,7 @@
   "alergenos": "Allergene",
   "consultar": "Beim Personal nachfragen",
   "ración": "Portion",
-
+"volver": "Zurück",
   "racion": "Portion",
   "media_racion": "Halbe Portion",
 
@@ -166,7 +166,7 @@
 
       "footer_slogan": "Andalusische Tradition, frische Produkte und Rezepte, die zum Teilen einladen.",
 
-       "suggestions_title": "🍽️ Empfehlungen",
+       "suggestions_title": "Empfehlungen",
   "suggestion_tomate_caballa": "Tomate mit Makrele",
   "suggestion_solomillo_pedro": "Schweinefilet in Pedro-Ximénez-Soße (Klein oder Groß)",
   "suggestion_rulo_cabra": "Gebackene panierte Ziegenkäserolle mit Marmelade",

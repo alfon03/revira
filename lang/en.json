@@ -16,6 +16,7 @@
   "alergenos": "Allergens",
   "consultar": "Ask staff",
     "ración": "Portion",
+"volver": "Back",
 
   "racion": "Portion",
   "media_racion": "Half portion",
@@ -144,7 +145,7 @@
 
      "footer_slogan": "Andalusian tradition, fresh products, and recipes made to be shared.",
 
-      "suggestions_title": "🍽️ Suggestions",
+      "suggestions_title": "Suggestions",
   "suggestion_tomate_caballa": "Tomato with mackerel",
   "suggestion_solomillo_pedro": "Pork sirloin in Pedro Ximénez sauce (Small or Large)",
   "suggestion_rulo_cabra": "Fried breaded goat cheese roll with jam",

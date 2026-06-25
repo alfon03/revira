@@ -25,6 +25,8 @@
 
   "racion": "Ración",
   "media_racion": "1/2 Ración",
+"volver": "Volver",
+
 
   "chacinas": "Chacinas",
   "tapas_frias": "Tapas frías",
@@ -168,7 +170,7 @@
   
   "footer_slogan": "Tradición andaluza, productos frescos y recetas que invitan a compartir.",
 
-   "suggestions_title": "🍽️ Sugerencias",
+   "suggestions_title": "Sugerencias",
   "suggestion_tomate_caballa": "Tomate con caballa",
   "suggestion_solomillo_pedro": "Solomillo al Pedro Ximénez (Tapa o Ración)",
   "suggestion_rulo_cabra": "Rulo de cabra frito empanado con mermelada",
