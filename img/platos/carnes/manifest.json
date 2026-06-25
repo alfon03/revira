@@ -47,7 +47,7 @@
     "i18n_key": "dish_hamburguesa_angus",
     "nombre": "Hamburguesa Angus",
     "descripcion": "",
-    "imgs": ["0.png"],
+    "imgs": ["15.png"],
     "alergenos": [],
     "precios": [
       { "cantidad": "14,00 €", "tipo": "" }

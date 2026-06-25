@@ -6,6 +6,8 @@
   { "type": "image", "src": "img/platos/chacinas/5.png" },
   { "type": "image", "src": "img/platos/chacinas/6.png" },
   { "type": "image", "src": "img/platos/chacinas/7.png" },
-    { "type": "image", "src": "img/platos/chacinas/8.png" }
+    { "type": "image", "src": "img/platos/chacinas/8.png" },
+     { "type": "image", "src": "img/platos/chacinas/9.png" },
+    { "type": "image", "src": "img/platos/chacinas/10.png" }
 
 ]
