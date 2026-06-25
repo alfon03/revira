@@ -5,7 +5,7 @@
 // =========================
 //carrusel pagina inicio con videos
 
-const MEDIA_VERSION = "4"; // Cambia este número cuando actualices media.json
+const MEDIA_VERSION = "5"; // Cambia este número cuando actualices media.json
 
 /* ============================================================
    CARRUSEL OPTIMIZADO (SAFE MULTI-PAGE VERSION)
@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const CONFIG = {
         basePath: "img/platos",
-        mediaVersion: "4", // 👈 cambia esto cuando actualices JSON
+        mediaVersion: "5", // 👈 cambia esto cuando actualices JSON
         carousel: {
             mobileBreakpoint: 768,
             autoplayDelay: 3500,
