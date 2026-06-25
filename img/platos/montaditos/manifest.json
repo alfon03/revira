@@ -2,7 +2,7 @@
   {
     "i18n_key": "dish_melva",
     "nombre": "Melva y pimientos del piquillo",
-    "descripcion": "",
+    "descripcion": "Melva con pimientos del piquillo, un clásico suave y equilibrado.",
     "img": "10.png",
     "alergenos": ["gluten", "pescado"],
     "precios": [
@@ -13,7 +13,7 @@
   {
     "i18n_key": "dish_salmon_queso",
     "nombre": "Salmón y queso",
-    "descripcion": "",
+    "descripcion": "Salmón con queso fresco, combinación suave y muy jugosa.",
     "img": "8.png",
     "alergenos": ["gluten", "pescado", "lacteos"],
     "precios": [
@@ -25,7 +25,7 @@
     "i18n_key": "dish_cochinito",
     "nombre": "Cochinito (queso o jamón)",
     "descripcion": "",
-    "img": "7.png",
+    "imgs": ["7.png","17.png"],
     "alergenos": ["gluten", "lacteos", "sulfitos"],
     "precios": [
       { "cantidad": "4,50 €", "tipo": "" }
@@ -35,7 +35,7 @@
   {
     "i18n_key": "dish_piripi",
     "nombre": "Piripi",
-    "descripcion": "",
+    "descripcion": "Montadito de lomo, queso, bacon y alioli, un clásico jugoso y sabroso.",
     "img": "14.png",
     "alergenos": ["gluten", "lacteos", "huevo", "sulfitos"],
     "precios": [
@@ -47,7 +47,7 @@
     "i18n_key": "dish_mechada",
     "nombre": "Mechada (queso o jamón)",
     "descripcion": "",
-    "img": "12.png",
+    "imgs": ["12.png","16.png"],
     "alergenos": ["gluten", "lacteos", "sulfitos"],
     "precios": [
       { "cantidad": "5,00 €", "tipo": "" }
@@ -57,8 +57,8 @@
   {
     "i18n_key": "dish_serranito",
     "nombre": "Serranito (pollo o lomo)",
-    "descripcion": "",
-    "img": "0.png",
+    "descripcion": "Clásico serranito con pollo o lomo, pimiento y jamón",
+    "imgs": ["9.png","11.png"],
     "alergenos": ["gluten"],
     "precios": [
       { "cantidad": "5,00 €", "tipo": "" }
@@ -69,7 +69,7 @@
     "i18n_key": "dish_presa",
     "nombre": "Presa (queso o jamón)",
     "descripcion": "",
-    "img": "5.png",
+    "imgs": ["5.png","13.png"],
     "alergenos": ["gluten", "lacteos", "sulfitos"],
     "precios": [
       { "cantidad": "5,50 €", "tipo": "" }
@@ -79,7 +79,7 @@
   {
     "i18n_key": "dish_pringa",
     "nombre": "Pringá",
-    "descripcion": "",
+    "descripcion": "Pringá tradicional, melosa y con su sabor auténtico.",
     "img": "6.png",
     "alergenos": ["gluten", "sulfitos"],
     "precios": [
@@ -90,7 +90,7 @@
   {
     "i18n_key": "dish_bao_curry",
     "nombre": "Bao curry",
-    "descripcion": "",
+    "descripcion": "Bao tierno relleno con pollo al curry suave.",
     "img": "3.png",
     "alergenos": ["gluten"],
     "precios": [
@@ -101,7 +101,7 @@
   {
     "i18n_key": "dish_bao_carrilla",
     "nombre": "Bao carrillá",
-    "descripcion": "",
+    "descripcion": "Bao relleno de carrillada melosa con su salsa.",
     "img": "4.png",
     "alergenos": ["gluten", "sulfitos"],
     "precios": [

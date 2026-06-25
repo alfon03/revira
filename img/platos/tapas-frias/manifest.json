@@ -3,7 +3,7 @@
     "i18n_key": "dish_ensaladilla",
     "nombre": "Ensaladilla",
     "descripcion": "",
-    "img": "1.png",
+    "imgs": ["1.png","2.png"],
     "alergenos": ["huevo", "pescado", "sulfitos"],
     "precios": [
       { "cantidad": "4,00 €", "tipo": "tapa" },
@@ -14,7 +14,7 @@
     "i18n_key": "dish_pulpo",
     "nombre": "Aliño de Pulpo",
     "descripcion": "",
-    "img": "5.png",
+    "imgs": ["5.png","6.png"],
     "alergenos": ["moluscos"],
     "precios": [
       { "cantidad": "4,00 €", "tipo": "tapa" },
@@ -25,7 +25,7 @@
     "i18n_key": "dish_patatas_alinadas",
     "nombre": "Patatas Aliñadas",
     "descripcion": "",
-    "img": "3.png",
+    "imgs": ["3.png","4.png"],
     "alergenos": ["pescado", "sulfitos"],
     "precios": [
       { "cantidad": "4,00 €", "tipo": "tapa" },
@@ -36,7 +36,7 @@
     "i18n_key": "dish_boquerones",
     "nombre": "Boquerones en Vinagre",
     "descripcion": "",
-    "img": "7.png",
+    "imgs": ["7.png","10.png"],
     "alergenos": ["pescado", "sulfitos"],
     "precios": [
       { "cantidad": "4,00 €", "tipo": "tapa" },
@@ -46,7 +46,7 @@
   {
     "i18n_key": "dish_ensalada_casa",
     "nombre": "Ensalada de la Casa",
-    "descripcion": "",
+    "descripcion": "Lechuga, pollo, zanahoria, nueces y salsa de miel y mostaza.",
     "img": "8.png",
     "alergenos": ["mostaza", "frutos_secos"],
     "precios": [
@@ -54,11 +54,11 @@
     ]
   },
   {
-    "i18n_key": "dish_ensalada_casa",
+    "i18n_key": "dish_tomate_caballa",
     "nombre": "Tomate con Caballa",
-    "descripcion": "",
+    "descripcion": "Tomate fresco con caballa y aceite de oliva.",
     "img": "9.png",
-    "alergenos": ["mostaza", "frutos_secos"],
+    "alergenos": ["pescado"],
     "precios": [
       { "cantidad": "6,00 €", "tipo": "" }
     ]

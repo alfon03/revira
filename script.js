@@ -5,7 +5,7 @@
 // =========================
 //carrusel pagina inicio con videos
 
-const MEDIA_VERSION = "1"; // Cambia este número cuando actualices media.json
+const MEDIA_VERSION = "2"; // Cambia este número cuando actualices media.json
 
 /* ============================================================
    CARRUSEL OPTIMIZADO (SAFE MULTI-PAGE VERSION)
@@ -890,79 +890,144 @@ themeToggle.addEventListener("click", () => {
 });
 
 
-/* ============================================================
-   ANCLA ACTIVA SEGÚN SCROLL
-============================================================ */
-const anchorLinks = document.querySelectorAll(".anchors a");
 
-const sections = Array.from(anchorLinks)
-    .map(link => {
-        const href = link.getAttribute("href");
+// anclas 
 
-        if (!href || !href.startsWith("#")) return null;
+document.addEventListener("DOMContentLoaded", () => {
 
-        return document.querySelector(href);
-    })
-    .filter(Boolean);
+    /* ============================================
+       ELEMENTOS
+    ============================================ */
 
-let lastActiveLink = null;
+    const anchorsContainer = document.querySelector(".anchors");
+    const anchorsRow = document.querySelector(".anchors-row");
+    const header = document.querySelector("header");
 
-/* ============================================================
-   OBSERVER (SCROLL SPY OPTIMIZADO)
-============================================================ */
-if (sections.length && anchorLinks.length) {
+    const anchorLinks = [
+        ...document.querySelectorAll(".anchors a[href^='#']")
+    ];
 
-    const observer = new IntersectionObserver(
-        entries => {
+    if (!anchorLinks.length) return;
 
-            entries.forEach(entry => {
+    const sections = [];
+    const linksById = new Map();
 
-                if (!entry.isIntersecting) return;
+    anchorLinks.forEach(link => {
 
-                const id = entry.target.id;
+        const id = link.getAttribute("href").slice(1);
 
-                const activeLink = Array.from(anchorLinks).find(link =>
-                    link.getAttribute("href") === `#${id}`
-                );
+        const section = document.getElementById(id);
 
-                if (!activeLink) return;
+        if (!section) {
+            console.warn(`Sección no encontrada: #${id}`);
+            return;
+        }
 
-                // 🔥 Evita recalcular si ya es el mismo
-                if (lastActiveLink === activeLink) return;
+        sections.push(section);
+        linksById.set(id, link);
 
-                // Quitar activos anteriores + activar actual
-                anchorLinks.forEach(link =>
-                    link.classList.toggle("active-anchor", link === activeLink)
-                );
+    });
 
-                lastActiveLink = activeLink;
+    let activeId = null;
 
-                // 🔥 Auto-scroll suave centrado (UX tipo app)
+    /* ============================================
+       ACTIVAR ANCLA
+    ============================================ */
+
+    function setActiveSection(id) {
+
+        if (id === activeId) return;
+
+        activeId = id;
+
+        anchorLinks.forEach(link => {
+            link.classList.remove("active-anchor");
+        });
+
+        const activeLink = linksById.get(id);
+
+        if (!activeLink) return;
+
+        activeLink.classList.add("active-anchor");
+
+        if (anchorsContainer) {
+
+            const containerRect =
+                anchorsContainer.getBoundingClientRect();
+
+            const linkRect =
+                activeLink.getBoundingClientRect();
+
+            const isOutside =
+                linkRect.left < containerRect.left ||
+                linkRect.right > containerRect.right;
+
+            if (isOutside) {
+
                 activeLink.scrollIntoView({
                     behavior: "smooth",
                     inline: "center",
                     block: "nearest"
                 });
 
-            });
-
-        },
-        {
-            root: null,
-            threshold: 0.4,
-            rootMargin: "0px 0px -40% 0px"
+            }
         }
-    );
+    }
 
-    sections.forEach(section => observer.observe(section));
-}
+    /* ============================================
+       SCROLL SPY ULTRA PRECISO
+    ============================================ */
 
-/* ============================================================
-   APARICIÓN SUAVE DE SECCIONES
-============================================================ */
+    function updateActiveSection() {
 
-const revealObserver = new IntersectionObserver(
-    entries => {
+        const headerHeight =
+            header?.getBoundingClientRect().height || 0;
+
+        const triggerLine =
+            headerHeight + 120;
+
+        let currentSection = sections[0];
+
+        for (const section of sections) {
+
+            const rect = section.getBoundingClientRect();
+
+            if (rect.top <= triggerLine) {
+                currentSection = section;
+            } else {
+                break;
+            }
+
+        }
+
+        if (currentSection) {
+            setActiveSection(currentSection.id);
+        }
+    }
+
+    let ticking = false;
+
+    function onScroll() {
+
+        if (ticking) return;
+
+        ticking = true;
+
+        requestAnimationFrame(() => {
+
+            updateActiveSection();
+
+            ticking = false;
+
+        });
+
+    }
+
+    /* ============================================
+       REVEAL ANIMATION
+    ============================================ */
+
+    const revealObserver = new IntersectionObserver(entries => {
 
         entries.forEach(entry => {
 
@@ -972,29 +1037,64 @@ const revealObserver = new IntersectionObserver(
 
         });
 
-    },
-    {
-        threshold: 0.15
+    }, {
+        threshold: 0.08
+    });
+
+    sections.forEach(section => {
+        revealObserver.observe(section);
+    });
+
+    /* ============================================
+       POSICIÓN STICKY ANCHORS
+    ============================================ */
+
+    function updateAnchorsPosition() {
+
+        if (!header || !anchorsRow) return;
+
+        anchorsRow.style.top =
+            `${Math.ceil(header.offsetHeight)}px`;
+
     }
-);
 
-sections.forEach(section => {
-    revealObserver.observe(section);
+    /* ============================================
+       OBSERVADORES
+    ============================================ */
+
+    const resizeObserver = new ResizeObserver(() => {
+
+        updateAnchorsPosition();
+        updateActiveSection();
+
+    });
+
+    if (header) {
+        resizeObserver.observe(header);
+    }
+
+    window.addEventListener(
+        "scroll",
+        onScroll,
+        { passive: true }
+    );
+
+    window.addEventListener(
+        "resize",
+        onScroll
+    );
+
+    /* ============================================
+       INICIALIZACIÓN
+    ============================================ */
+
+    updateAnchorsPosition();
+
+    requestAnimationFrame(() => {
+        updateActiveSection();
+    });
+
 });
-
-
-function updateAnchorsPosition() {
-
-    const header = document.querySelector("header");
-    const anchors = document.querySelector(".anchors-row");
-
-    if (!header || !anchors) return;
-
-    anchors.style.top = `${header.offsetHeight}px`;
-}
-
-window.addEventListener("load", updateAnchorsPosition);
-window.addEventListener("resize", updateAnchorsPosition);
 
 //sugerencias carta modal al entrar
 
@@ -1055,7 +1155,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-// carga de carta json
 document.addEventListener("DOMContentLoaded", () => {
 
     const secciones = {
@@ -1072,272 +1171,233 @@ document.addEventListener("DOMContentLoaded", () => {
         "postres": "img/platos/postres/"
     };
 
+    const modal = document.getElementById("plato-modal");
+    const modalImg = document.getElementById("modal-img");
+    const btnPrev = document.getElementById("modal-prev");
+    const btnNext = document.getElementById("modal-next");
+
+    const btnTop = document.getElementById("btnTop");
+
+    let images = [];
+    let currentIndex = 0;
+
+
+    /* =========================
+       CARGA MENÚ
+    ========================= */
     Object.entries(secciones).forEach(([id, ruta]) => {
+
         const contenedor = document.querySelector(`#${id} .menu-list`);
         if (!contenedor) return;
 
         fetch(ruta + "manifest.json")
             .then(r => r.json())
             .then(platos => {
+
                 contenedor.innerHTML = "";
 
                 platos.forEach(plato => {
-                    const item = crearItemMenu(plato, ruta);
-                    contenedor.appendChild(item);
+
+                    const article = document.createElement("article");
+                    article.className = "menu-item";
+
+                    const imgs = plato.imgs || (plato.img ? [plato.img] : []);
+                    const fullImgs = imgs.map(i => ruta + i);
+
+                    // 🟢 SOLO SI HAY IMAGEN
+                    if (fullImgs.length) {
+
+                        const img = document.createElement("img");
+                        img.className = "menu-item-img";
+                        img.src = fullImgs[0];
+                        img.alt = plato.nombre;
+                        img.dataset.imgs = JSON.stringify(fullImgs);
+
+                        article.appendChild(img);
+                    }
+
+                    const content = document.createElement("div");
+                    content.className = "menu-item-content";
+
+                    const h3 = document.createElement("h3");
+                    h3.textContent = plato.nombre;
+
+                    const p = document.createElement("p");
+                    p.textContent = plato.descripcion || "";
+
+                    content.appendChild(h3);
+                    if (plato.descripcion) content.appendChild(p);
+
+                    const alergenos = document.createElement("div");
+                    alergenos.className = "alergenos";
+
+                    (plato.alergenos || []).forEach(a => {
+                        const span = document.createElement("span");
+                        span.className = "icon " + a;
+                        alergenos.appendChild(span);
+                    });
+
+                    content.appendChild(alergenos);
+
+                    const precios = document.createElement("div");
+                    precios.className = "menu-item-prices";
+
+                    (plato.precios || []).forEach(pre => {
+                        const span = document.createElement("span");
+                        span.innerHTML = `${pre.cantidad} <small>${pre.tipo}</small>`;
+                        precios.appendChild(span);
+                    });
+
+                    article.appendChild(content);
+                    article.appendChild(precios);
+
+                    contenedor.appendChild(article);
                 });
-            })
-            .catch(err => console.error("Error cargando JSON de", id, err));
+            });
     });
 
-    function crearItemMenu(plato, ruta) {
+    /* =========================
+       CLICK GLOBAL
+    ========================= */
+    document.addEventListener("click", (e) => {
 
-        const article = document.createElement("article");
-        article.className = "menu-item menu-item-foto";
-        if (plato.featured) article.classList.add("featured");
+        const img = e.target.closest(".menu-item-img");
+        if (!img) return;
 
-        const img = document.createElement("img");
-        img.className = "menu-item-img";
-        img.src = ruta + plato.img;
-        img.alt = plato.nombre;
+        abrirModal(img);
+    });
 
-        const content = document.createElement("div");
-        content.className = "menu-item-content";
+    /* =========================
+       ABRIR MODAL
+    ========================= */
+    function abrirModal(img) {
 
-        if (plato.tipo) {
-            const tipo = document.createElement("div");
-            tipo.className = "menu-type " + plato.tipo;
-            tipo.setAttribute("data-i18n", plato.tipo);
-            tipo.textContent = plato.tipo === "unitario" ? "Unidad" : plato.tipo;
-            content.appendChild(tipo);
+        const article = img.closest(".menu-item");
+
+        const titulo = article.querySelector("h3")?.textContent || "";
+        const descripcion = article.querySelector("p")?.textContent || "";
+
+        const precios = article.querySelectorAll(".menu-item-prices span");
+        const alergenos = article.querySelectorAll(".alergenos span");
+
+        try {
+            images = JSON.parse(img.dataset.imgs || "[]");
+        } catch {
+            images = [img.src];
         }
 
-        const h3 = document.createElement("h3");
-        h3.setAttribute("data-i18n", plato.i18n_key);
-        h3.textContent = plato.nombre;
+        currentIndex = 0;
+        render();
 
-        const p = document.createElement("p");
-        if (plato.descripcion) p.textContent = plato.descripcion;
-
-        const alergenos = document.createElement("div");
-        alergenos.className = "alergenos";
-
-        plato.alergenos.forEach(a => {
-            const span = document.createElement("span");
-            span.className = "icon " + a;
-            alergenos.appendChild(span);
-        });
-
-        content.appendChild(h3);
-        if (plato.descripcion) content.appendChild(p);
-        content.appendChild(alergenos);
-
-        const precios = document.createElement("div");
-        precios.className = "menu-item-prices";
-
-        plato.precios.forEach(pre => {
-            const span = document.createElement("span");
-            span.innerHTML = `${pre.cantidad} <small data-i18n="${pre.tipo}">${pre.tipo}</small>`;
-            precios.appendChild(span);
-        });
-
-        article.appendChild(img);
-        article.appendChild(content);
-        article.appendChild(precios);
-
-        return article;
-    }
-
-});
-
-// pagina carta modal al hacer click en la imagen
-document.addEventListener("DOMContentLoaded", () => {
-
-    const modal = document.getElementById("plato-modal");
-    const panel = document.querySelector(".plato-modal-panel");
-    const modalImg = document.getElementById("modal-img");
-
-    /* ============================================
-       DETECTAR IMÁGENES GENERADAS DINÁMICAMENTE
-    ============================================ */
-    const observer = new MutationObserver(() => {
-
-        document.querySelectorAll(".menu-item-img").forEach(img => {
-
-            if (img.dataset.modalBound) return;
-
-            img.dataset.modalBound = "true";
-
-            img.addEventListener("click", () => {
-                abrirModal(img);
-            });
-
-        });
-
-    });
-
-    observer.observe(document.body, {
-        childList: true,
-        subtree: true
-    });
-
-    /* ============================================
-       ABRIR MODAL
-    ============================================ */
-    function abrirModal(imgElement) {
-
-        const article = imgElement.closest(".menu-item");
-
-        if (!article) return;
-
-        const titulo =
-            article.querySelector("h3")?.textContent || "";
-
-        const descripcion =
-            article.querySelector("p")?.textContent || "";
-
-        const precios =
-            article.querySelectorAll(".menu-item-prices span");
-
-        const alergenos =
-            article.querySelectorAll(".alergenos span");
-
-        /* Imagen */
-        modalImg.src = imgElement.src;
-        modalImg.onload = () => {
-
-            if (modalImg.naturalHeight > modalImg.naturalWidth) {
-                modalImg.classList.add("portrait");
-                modalImg.classList.remove("landscape");
-            } else {
-                modalImg.classList.add("landscape");
-                modalImg.classList.remove("portrait");
-            }
-
-        };
-        modalImg.alt = titulo;
-
-        /* Texto */
         document.getElementById("modal-title").textContent = titulo;
         document.getElementById("modal-desc").textContent = descripcion;
 
-        /* Alergenos */
         const alerCont = document.getElementById("modal-alergenos");
         alerCont.innerHTML = "";
 
-        alergenos.forEach(a => {
+        alergenos.forEach((a, i) => {
             const span = document.createElement("span");
             span.className = a.className;
+            span.style.transitionDelay = `${i * 60}ms`;
             alerCont.appendChild(span);
         });
 
-        /* Precios */
         const preciosCont = document.getElementById("modal-precios");
         preciosCont.innerHTML = "";
 
-        precios.forEach(pre => {
+        precios.forEach((pre, i) => {
             const span = document.createElement("span");
             span.innerHTML = pre.innerHTML;
+            span.style.transitionDelay = `${i * 80}ms`;
             preciosCont.appendChild(span);
         });
 
-        /* Mostrar modal */
         modal.style.display = "block";
-
-        requestAnimationFrame(() => {
-            modal.classList.add("show");
-        });
+        requestAnimationFrame(() => modal.classList.add("show"));
 
         document.body.style.overflow = "hidden";
+
+        if (btnTop) {
+            btnTop.classList.remove("show");
+            btnTop.style.pointerEvents = "none";
+        }
     }
 
-    /* ============================================
-       CERRAR MODAL
-    ============================================ */
-    function cerrarModal() {
+    /* =========================
+       RENDER
+    ========================= */
+    function render() {
 
-        if (
-            !modal.classList.contains("show") ||
-            modal.classList.contains("closing")
-        ) {
-            return;
-        }
+        if (!images.length) return;
 
+        modalImg.classList.remove("landscape", "portrait");
+
+        modalImg.style.opacity = 0;
+
+        modalImg.onload = () => {
+
+            modalImg.style.opacity = 1;
+
+            modalImg.classList.toggle(
+                "portrait",
+                modalImg.naturalHeight > modalImg.naturalWidth
+            );
+
+            modalImg.classList.toggle(
+                "landscape",
+                modalImg.naturalHeight <= modalImg.naturalWidth
+            );
+        };
+
+        modalImg.src = images[currentIndex];
+  
+
+        btnPrev.style.display = images.length > 1 ? "flex" : "none";
+        btnNext.style.display = images.length > 1 ? "flex" : "none";
+    }
+
+
+    /* =========================
+       NAV
+    ========================= */
+    btnNext.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        render();
+    });
+
+    btnPrev.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        render();
+    });
+
+    /* =========================
+       CERRAR
+    ========================= */
+    function cerrar() {
+
+        modal.classList.remove("show");
         modal.classList.add("closing");
 
-        panel.addEventListener("transitionend", function handler(e) {
+        document.body.style.overflow = "";
 
-            if (e.propertyName !== "transform") return;
-
-            panel.removeEventListener("transitionend", handler);
-
-            modal.classList.remove("show");
+        setTimeout(() => {
             modal.classList.remove("closing");
-
             modal.style.display = "";
+        }, 500);
 
-            document.body.style.overflow = "";
-
-        });
+        if (btnTop) {
+            btnTop.style.pointerEvents = "";
+        }
     }
 
-    /* ============================================
-       BOTÓN VOLVER
-    ============================================ */
-    document
-        .getElementById("modal-back")
-        .addEventListener("click", cerrarModal);
+    document.getElementById("modal-back")?.addEventListener("click", cerrar);
 
-    /* ============================================
-       CLIC EN EL FONDO
-    ============================================ */
     modal.addEventListener("click", (e) => {
-
-        if (e.target === modal) {
-            cerrarModal();
-        }
-
+        if (e.target === modal) cerrar();
     });
 
-    /* ============================================
-       TECLA ESC
-    ============================================ */
     document.addEventListener("keydown", (e) => {
-
-        if (e.key === "Escape") {
-            cerrarModal();
-        }
-
-    });
-
-    /* ============================================
-       SWIPE DOWN EN MÓVIL
-    ============================================ */
-    let startY = 0;
-    let currentY = 0;
-
-    panel.addEventListener("touchstart", (e) => {
-
-        startY = e.touches[0].clientY;
-
-    }, { passive: true });
-
-    panel.addEventListener("touchmove", (e) => {
-
-        currentY = e.touches[0].clientY;
-
-    }, { passive: true });
-
-    panel.addEventListener("touchend", () => {
-
-        const diff = currentY - startY;
-
-        if (diff > 100) {
-            cerrarModal();
-        }
-
-        startY = 0;
-        currentY = 0;
-
+        if (e.key === "Escape") cerrar();
     });
 
 });

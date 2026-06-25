@@ -43,7 +43,6 @@
     "i18n_key": "drink_nestea_aquarius_monster",
     "nombre": "Nestea / Aquarius / Monster",
     "descripcion": "",
-    "img": "5.png",
     "alergenos": [],
     "precios": [
       { "cantidad": "2,50 €", "tipo": "" }
@@ -63,7 +62,6 @@
     "i18n_key": "drink_licores",
     "nombre": "Licores",
     "descripcion": "",
-    "img": "7.png",
     "alergenos": [],
     "precios": [
       { "cantidad": "5,00 €", "tipo": "" }

@@ -2,8 +2,8 @@
   {
     "i18n_key": "dish_espinacas",
     "nombre": "Espinacas con garbanzos",
-    "descripcion": "",
-    "img": "4.png",
+    "descripcion": "Receta tradicional de espinacas con garbanzos, suave y casera.",
+    "imgs": ["4.png"],
     "alergenos": [],
     "precios": [
       { "cantidad": "4,50 €", "tipo": "tapa" },
@@ -14,7 +14,7 @@
     "i18n_key": "dish_croquetas_marisco",
     "nombre": "Croquetas de marisco",
     "descripcion": "",
-    "img": "9.png",
+    "imgs": ["9.png","13.png"],
     "alergenos": ["gluten", "lacteos", "huevo", "crustaceo"],
     "precios": [
       { "cantidad": "4,50 €", "tipo": "tapa" },
@@ -25,7 +25,7 @@
     "i18n_key": "dish_croquetas_queso",
     "nombre": "Croquetas de queso",
     "descripcion": "",
-    "img": "2.png",
+    "imgs": ["2.png","15.png"],
     "alergenos": ["gluten", "lacteos", "huevo"],
     "precios": [
       { "cantidad": "4,50 €", "tipo": "tapa" },
@@ -36,7 +36,7 @@
     "i18n_key": "dish_croquetas_cocido",
     "nombre": "Croquetas de cocido",
     "descripcion": "",
-    "img": "16.png",
+    "imgs": ["16.png","15.png"],
     "alergenos": ["gluten", "lacteos", "huevo"],
     "precios": [
       { "cantidad": "4,50 €", "tipo": "tapa" },
@@ -57,7 +57,7 @@
     "i18n_key": "dish_carrillera",
     "nombre": "Carrillera",
     "descripcion": "",
-    "img": "10.png",
+    "imgs": ["10.png","12.png"],
     "alergenos": ["sulfitos"],
     "precios": [
       { "cantidad": "5,00 €", "tipo": "tapa" },
@@ -117,9 +117,9 @@
   {
     "i18n_key": "dish_gyozas",
     "nombre": "Gyosas",
-    "descripcion": "",
+    "descripcion": "Gyosas con salsa de soja y mayonesa por encima.",
     "img": "7.png",
-    "alergenos": ["gluten", "soja"],
+    "alergenos": ["gluten", "soja", "huevo"],
     "precios": [
       { "cantidad": "7,00 €", "tipo": "" }
     ]

@@ -26,6 +26,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -386,22 +390,43 @@
 
     </div>
 
-    <div id="plato-modal" class="plato-modal">
-        <div class="plato-modal-panel">
+<div id="plato-modal" class="plato-modal">
 
-            <button class="plato-modal-back" id="modal-back">← Volver</button>
+    <div class="plato-modal-panel">
 
-            <img id="modal-img" src="" alt="Plato" class="modal-img">
+        <button id="modal-back" class="plato-modal-back">
+            ← Volver
+        </button>
 
-            <h3 id="modal-title"></h3>
-            <p id="modal-desc"></p>
+        <div class="modal-image-container">
 
-            <div id="modal-alergenos" class="modal-alergenos"></div>
+            <img id="modal-img" class="modal-img" src="" alt="Plato">
 
-            <div id="modal-precios" class="modal-precios"></div>
+            <button id="modal-prev" class="nav-btn nav-left">
+                <span class="material-symbols-outlined">
+                    chevron_left
+                </span>
+            </button>
+
+            <button id="modal-next" class="nav-btn nav-right">
+                <span class="material-symbols-outlined">
+                    chevron_right
+                </span>
+            </button>
 
         </div>
+
+        <h2 id="modal-title"></h2>
+
+        <p id="modal-desc"></p>
+
+        <div id="modal-alergenos" class="modal-alergenos"></div>
+
+        <div id="modal-precios" class="modal-precios"></div>
+
     </div>
+
+</div>
 
 
     <script src="script.js"></script>

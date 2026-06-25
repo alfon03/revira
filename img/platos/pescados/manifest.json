@@ -2,7 +2,7 @@
   {
     "i18n_key": "dish_chocos",
     "nombre": "Cartucho de chocos",
-    "descripcion": "",
+    "descripcion": ".",
     "img": "3.png",
     "alergenos": ["gluten", "huevo", "moluscos"],
     "precios": [
@@ -32,7 +32,7 @@
   {
     "i18n_key": "dish_twister",
     "nombre": "Twister de langostino",
-    "descripcion": "",
+    "descripcion": "Langostino crujiente envuelto en masa fina.",
     "img": "1.png",
     "alergenos": ["gluten", "crustaceo"],
     "precios": [
@@ -42,9 +42,9 @@
   {
     "i18n_key": "dish_pavia",
     "nombre": "Pavía de gambón",
-    "descripcion": "",
-    "img": "0.png",
+    "descripcion": "Gambón en rebozado tradicional tipo pavía.",
     "alergenos": ["gluten", "crustaceo"],
+    "img": "5.png",
     "precios": [
       { "cantidad": "7,00 €", "tipo": "" }
     ]
@@ -52,7 +52,7 @@
   {
     "i18n_key": "dish_gambas_ajillo",
     "nombre": "Gambas al ajillo",
-    "descripcion": "",
+    "descripcion": "Gambas salteadas con ajo y aceite caliente.",
     "img": "7.png",
     "alergenos": ["crustaceo"],
     "precios": [
