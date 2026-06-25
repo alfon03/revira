@@ -15,6 +15,8 @@
   "plato": "Dish",
   "alergenos": "Allergens",
   "consultar": "Ask staff",
+    "ración": "Portion",
+
   "racion": "Portion",
   "media_racion": "Half portion",
   "sugerencias": "Suggestions",
@@ -180,7 +182,6 @@
   "dish_tomate_caballa": "Tomato with mackerel",
   "dish_ensalada_casa_desc": "Lettuce, chicken, carrot, walnuts and honey mustard sauce.",
   "dish_tomate_caballa_desc": "Fresh tomato with mackerel and olive oil.",
-  "ración": "Portion",
   "dish_solomillo_revira_desc": "Sirloin with cream, onion and truffle sauce. One of our specialties.",
 "dish_solomillo_whisky_desc": "Sirloin in garlic and whisky sauce.",
 "dish_solomillo_pimienta_desc": "Sirloin with creamy pepper sauce.",
