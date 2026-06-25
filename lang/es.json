@@ -201,8 +201,45 @@
 
   "cata": "cata",
   "copa": "copa",
-  "botella": "botella"
+  "botella": "botella",
+
+  "dish_ensalada_casa_desc": "Lechuga, pollo, zanahoria, nueces y salsa de miel y mostaza.",
+"dish_tomate_caballa_desc": "Tomate fresco con caballa y aceite de oliva.",
+"dish_solomillo_revira_desc": "Solomillo con salsa de nata, cebolla y trufa. Una de nuestras especialidades.",
+"dish_solomillo_whisky_desc": "Solomillo en salsa de ajo y whisky.",
+"dish_solomillo_pimienta_desc": "Solomillo con salsa cremosa de pimienta.",
+"dish_solomillo_roquefort_desc": "Solomillo con salsa de queso roquefort.",
+"dish_lagartito_desc": "Lagartito ibérico a la plancha, jugoso y con sabor intenso.",
+"dish_presa_iberica_desc": "Presa ibérica a la plancha, tierna y muy sabrosa.",
+
+  "1/2": "1/2 Ración",
+  
+  "dish_melva_desc": "Melva con pimientos del piquillo, un clásico suave y equilibrado.",
+  "dish_salmon_queso_desc": "Salmón con queso fresco, combinación suave y muy jugosa.",
+  "dish_piripi_desc": "Montadito de lomo, queso, bacon y alioli, un clásico jugoso y sabroso.",
+  "dish_serranito_desc": "Clásico serranito con pollo o lomo, pimiento y jamón.",
+  "dish_pringa_desc": "Pringá tradicional, melosa y con su sabor auténtico.",
+  "dish_bao_curry_desc": "Bao tierno relleno con pollo al curry suave.",
+  "dish_bao_carrilla_desc": "Bao relleno de carrillada melosa con su salsa.",
+
+  "dish_mejillones_desc": "Pan tostado con mejillón encima.",
+  "dish_anchoas_desc": "Regañá con guacamole y una anchoa encima.",
+  "dish_sardinas_desc": "Pan tostado con mermelada y sardina encima.",
+  "dish_lomo_orza_desc": "Pan tostado con salsa española y lomo a la orza encima.",
+  "dish_tosta_chicharron_desc": "Pan tostado con manteca colorá y lonchas de chicharrón encima.",
+  "/ud": "Unidad",
+  
+  "dish_hamburguesa_pollo_desc": "Hamburguesa de pollo con pan suave, ideal para los peques.",
+  "dish_lagrimitas_desc": "Tiras de pollo crujientes y muy jugosas.",
+  "dish_chocos_desc": ".",
+  "dish_twister_desc": "Langostino crujiente envuelto en masa fina.",
+  "dish_pavia_desc": "Gambón en rebozado tradicional tipo pavía.",
+  "dish_gambas_ajillo_desc": "Gambas salteadas con ajo y aceite caliente.",
 
 
+  "dish_espinacas_desc": "Receta tradicional de espinacas con garbanzos, suave y casera.",
+  "dish_gyozas_desc": "Gyosas con salsa de soja y mayonesa por encima.",
+  "dish_delicias_queso_viejo": "Delicias de Queso Viejo",
+  "dish_almejas_ajillo": "Almejas al Ajillo"
 
 }

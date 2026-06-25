@@ -806,14 +806,24 @@ function closeLightbox() {
 
 
 // cambio de idioma
+
 async function loadLanguage(lang) {
     const response = await fetch(`lang/${lang}.json`);
     const translations = await response.json();
 
     document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
+
         if (translations[key]) {
-            el.textContent = translations[key];
+
+            // Si el elemento tiene hijos HTML → usar innerHTML
+            if (el.children.length > 0) {
+                el.innerHTML = translations[key];
+            } 
+            // Si es texto plano → usar textContent
+            else {
+                el.textContent = translations[key];
+            }
         }
     });
 
@@ -831,6 +841,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
 
 // cambio de color
 const themeToggle = document.getElementById("theme-toggle");
@@ -1155,6 +1166,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+// script carga y modal pagina platos
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const secciones = {
@@ -1175,12 +1188,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalImg = document.getElementById("modal-img");
     const btnPrev = document.getElementById("modal-prev");
     const btnNext = document.getElementById("modal-next");
-
     const btnTop = document.getElementById("btnTop");
 
     let images = [];
     let currentIndex = 0;
-
 
     /* =========================
        CARGA MENÚ
@@ -1204,30 +1215,35 @@ document.addEventListener("DOMContentLoaded", () => {
                     const imgs = plato.imgs || (plato.img ? [plato.img] : []);
                     const fullImgs = imgs.map(i => ruta + i);
 
-                    // 🟢 SOLO SI HAY IMAGEN
+                    // Imagen
                     if (fullImgs.length) {
-
                         const img = document.createElement("img");
                         img.className = "menu-item-img";
                         img.src = fullImgs[0];
                         img.alt = plato.nombre;
                         img.dataset.imgs = JSON.stringify(fullImgs);
-
                         article.appendChild(img);
                     }
 
+                    // Contenido
                     const content = document.createElement("div");
                     content.className = "menu-item-content";
 
+                    // Nombre con i18n
                     const h3 = document.createElement("h3");
+                    h3.dataset.i18n = plato.i18n_key;
                     h3.textContent = plato.nombre;
-
-                    const p = document.createElement("p");
-                    p.textContent = plato.descripcion || "";
-
                     content.appendChild(h3);
-                    if (plato.descripcion) content.appendChild(p);
 
+                    // Descripción con i18n
+                    if (plato.descripcion) {
+                        const p = document.createElement("p");
+                        p.dataset.i18n = plato.i18n_key + "_desc";
+                        p.textContent = plato.descripcion;
+                        content.appendChild(p);
+                    }
+
+                    // Alérgenos con i18n
                     const alergenos = document.createElement("div");
                     alergenos.className = "alergenos";
 
@@ -1239,18 +1255,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     content.appendChild(alergenos);
 
+                    // Precios (DENTRO del content → FIX móvil)
                     const precios = document.createElement("div");
                     precios.className = "menu-item-prices";
 
                     (plato.precios || []).forEach(pre => {
                         const span = document.createElement("span");
-                        span.innerHTML = `${pre.cantidad} <small>${pre.tipo}</small>`;
+                        span.innerHTML = `${pre.cantidad} <small data-i18n="${pre.tipo}">${pre.tipo}</small>`;
                         precios.appendChild(span);
                     });
 
-                    article.appendChild(content);
-                    article.appendChild(precios);
+                    content.appendChild(precios);
 
+                    article.appendChild(content);
                     contenedor.appendChild(article);
                 });
             });
@@ -1260,10 +1277,8 @@ document.addEventListener("DOMContentLoaded", () => {
        CLICK GLOBAL
     ========================= */
     document.addEventListener("click", (e) => {
-
         const img = e.target.closest(".menu-item-img");
         if (!img) return;
-
         abrirModal(img);
     });
 
@@ -1331,7 +1346,6 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!images.length) return;
 
         modalImg.classList.remove("landscape", "portrait");
-
         modalImg.style.opacity = 0;
 
         modalImg.onload = () => {
@@ -1350,12 +1364,10 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         modalImg.src = images[currentIndex];
-  
 
         btnPrev.style.display = images.length > 1 ? "flex" : "none";
         btnNext.style.display = images.length > 1 ? "flex" : "none";
     }
-
 
     /* =========================
        NAV

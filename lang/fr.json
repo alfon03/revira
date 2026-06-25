@@ -200,6 +200,48 @@
 
   "cata": "dégustation",
   "copa": "verre",
-  "botella": "bouteille"
+  "botella": "bouteille",
+
+  "dish_ensalada_casa_desc": "Laitue, poulet, carotte, noix et sauce miel-moutarde.",
+  "dish_tomate_caballa_desc": "Tomate fraîche avec maquereau et huile d’olive.",
+
+  "dish_solomillo_revira_desc": "Filet de porc avec sauce à la crème, oignon et truffe. L’une de nos spécialités.",
+  "dish_solomillo_whisky_desc": "Filet de porc dans une sauce à l’ail et au whisky.",
+  "dish_solomillo_pimienta_desc": "Filet de porc avec sauce crémeuse au poivre.",
+  "dish_solomillo_roquefort_desc": "Filet de porc avec sauce au roquefort.",
+  "dish_lagartito_desc": "Échine ibérique grillée, juteuse et pleine de saveur.",
+  "dish_presa_iberica_desc": "Presa ibérique grillée, tendre et très savoureuse.",
+
+  "dish_melva_desc": "Melva avec poivrons del piquillo, un classique doux et équilibré.",
+  "dish_salmon_queso_desc": "Saumon avec fromage frais, une combinaison douce et juteuse.",
+  "dish_piripi_desc": "Sandwich de longe, fromage, bacon et aïoli, juteux et savoureux.",
+  "dish_serranito_desc": "Serranito classique avec poulet ou longe, poivron et jambon.",
+  "dish_pringa_desc": "Pringá traditionnelle, fondante et pleine de saveur authentique.",
+  "dish_bao_curry_desc": "Bao moelleux garni de poulet au curry doux.",
+  "dish_bao_carrilla_desc": "Bao garni de joue de porc fondante dans sa sauce.",
+
+  "dish_mejillones_desc": "Pain grillé garni d’un moule.",
+  "dish_anchoas_desc": "Regañá avec guacamole et un anchois dessus.",
+  "dish_sardinas_desc": "Pain grillé avec confiture et sardine.",
+  "dish_lomo_orza_desc": "Pain grillé avec sauce espagnole et longe de porc en graisse.",
+  "dish_tosta_chicharron_desc": "Pain grillé avec manteca colorá et tranches de chicharrón de Cadix.",
+
+  "dish_hamburguesa_pollo_desc": "Burger de poulet avec pain moelleux, idéal pour les enfants.",
+  "dish_lagrimitas_desc": "Lanières de poulet croustillantes et juteuses.",
+
+  "dish_chocos_desc": ".",
+  "dish_twister_desc": "Crevette croustillante enveloppée dans une pâte fine.",
+  "dish_pavia_desc": "Gambon en beignet traditionnel type pavía.",
+  "dish_gambas_ajillo_desc": "Crevettes sautées à l’ail et à l’huile chaude.",
+
+  "dish_espinacas_desc": "Recette traditionnelle d’épinards aux pois chiches, douce et maison.",
+  "dish_gyozas_desc": "Gyozas avec sauce soja et mayonnaise par-dessus.",
+
+  "1/2": "Demi",
+  "/ud": "à l’unité",
+  "unitario": "Unité",
+    "dish_almejas_ajillo": "Palourdes à l’Ail",
+  "dish_delicias_queso_viejo": "Délices de Vieux Fromage"
+
 
 }
