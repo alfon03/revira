@@ -44,7 +44,7 @@
     "nombre": "Pavía de gambón",
     "descripcion": "Gambón en rebozado tradicional tipo pavía.",
     "alergenos": ["gluten", "crustaceo"],
-    "img": "5.png",
+    "img": "6.png",
     "precios": [
       { "cantidad": "7,00 €", "tipo": "" }
     ]
