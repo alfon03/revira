@@ -5,7 +5,7 @@
 // =========================
 //carrusel pagina inicio con videos
 
-const MEDIA_VERSION = "5"; // Cambia este número cuando actualices media.json
+const MEDIA_VERSION = "6"; // Cambia este número cuando actualices media.json
 
 /* ============================================================
    CARRUSEL OPTIMIZADO (SAFE MULTI-PAGE VERSION)
@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const CONFIG = {
         basePath: "img/platos",
-        mediaVersion: "5", // 👈 cambia esto cuando actualices JSON
+        mediaVersion: "6", // 👈 cambia esto cuando actualices JSON
         carousel: {
             mobileBreakpoint: 768,
             autoplayDelay: 3500,
@@ -1109,12 +1109,99 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //sugerencias carta modal al entrar
 
+// ===============================
+// SUGERENCIAS - MODAL AL ENTRAR
+// ===============================
+
 document.addEventListener("DOMContentLoaded", () => {
 
     const modal = document.getElementById("suggestionsModal");
     const closeBtn = document.getElementById("closeModal");
     const closeBtnBottom = document.getElementById("closeModalBtn");
+    const lista = modal.querySelector("ul");
 
+    const ruta = "img/platos/sugerencias/";
+
+    // ===============================
+    // CARGAR MANIFEST Y GENERAR LISTA
+    // ===============================
+    fetch(ruta + "manifest.json")
+        .then(r => r.json())
+        .then(sugerencias => {
+
+            lista.innerHTML = "";
+
+            sugerencias.forEach(item => {
+
+    const li = document.createElement("li");
+
+    // Imagen principal
+    const img = document.createElement("img");
+    img.className = "menu-item-img";
+
+    const imgs = item.imgs || (item.img ? [item.img] : []);
+    const fullImgs = imgs.map(i => ruta + i);
+
+    img.src = fullImgs[0];
+    img.alt = item.nombre;
+    img.dataset.imgs = JSON.stringify(fullImgs);
+
+    // Nombre visible
+    const span = document.createElement("span");
+    span.dataset.i18n = item.i18n_key;
+    span.textContent = item.nombre;
+
+    // ====== CAMPOS OCULTOS PARA EL MODAL GRANDE ======
+
+    // Título oculto
+    const h3 = document.createElement("h3");
+    h3.style.display = "none";
+    h3.textContent = item.nombre;
+
+    // Descripción oculta
+    const p = document.createElement("p");
+    p.style.display = "none";
+    p.textContent = item.descripcion || "";
+
+    // Alérgenos ocultos
+    const alergenos = document.createElement("div");
+    alergenos.className = "alergenos";
+    alergenos.style.display = "none";
+
+    (item.alergenos || []).forEach(a => {
+        const spanA = document.createElement("span");
+        spanA.className = "icon " + a;
+        alergenos.appendChild(spanA);
+    });
+
+    // Precios ocultos
+    const precios = document.createElement("div");
+    precios.className = "menu-item-prices";
+    precios.style.display = "none";
+
+    (item.precios || []).forEach(pre => {
+        const spanP = document.createElement("span");
+        spanP.innerHTML = `${pre.cantidad} <small data-i18n="${pre.tipo}">${pre.tipo}</small>`;
+        precios.appendChild(spanP);
+    });
+
+    // Añadir todo al <li>
+    li.appendChild(img);
+    li.appendChild(span);
+    li.appendChild(h3);
+    li.appendChild(p);
+    li.appendChild(alergenos);
+    li.appendChild(precios);
+
+    lista.appendChild(li);
+});
+
+
+        });
+
+    // ===============================
+    // ABRIR MODAL
+    // ===============================
     function abrirModal() {
 
         modal.style.display = "flex";
@@ -1126,45 +1213,38 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.style.overflow = "hidden";
     }
 
+    // ===============================
+    // CERRAR MODAL
+    // ===============================
     function cerrarModal() {
 
         modal.classList.remove("show");
 
         setTimeout(() => {
-
             modal.style.display = "";
             document.body.style.overflow = "";
-
         }, 550);
-
     }
 
-    /* Mostrar automáticamente */
+    // Mostrar automáticamente
     abrirModal();
 
-    /* Cerrar */
+    // Botones cerrar
     closeBtn.addEventListener("click", cerrarModal);
     closeBtnBottom.addEventListener("click", cerrarModal);
 
-    /* Click fuera */
+    // Click fuera
     modal.addEventListener("click", (e) => {
-
-        if (e.target === modal) {
-            cerrarModal();
-        }
-
+        if (e.target === modal) cerrarModal();
     });
 
-    /* ESC */
+    // ESC
     document.addEventListener("keydown", (e) => {
-
-        if (e.key === "Escape") {
-            cerrarModal();
-        }
-
+        if (e.key === "Escape") cerrarModal();
     });
 
 });
+
 
 // script carga y modal pagina platos
 
@@ -1287,7 +1367,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================= */
     function abrirModal(img) {
 
-        const article = img.closest(".menu-item");
+const article =
+    img.closest(".menu-item")      // platos normales
+    || img.closest("#suggestionsModal li"); // sugerencias del modal
 
         const titulo = article.querySelector("h3")?.textContent || "";
         const descripcion = article.querySelector("p")?.textContent || "";

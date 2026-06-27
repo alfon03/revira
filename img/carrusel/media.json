@@ -3,6 +3,10 @@
         "type": "image",
         "src": "img/carrusel/1.png"
     },
+      {
+        "type": "image",
+        "src": "img/carrusel/1.jpeg"
+    },
     {
         "type": "video",
         "src": "img/carrusel/1.mp4"
@@ -10,6 +14,10 @@
     {
         "type": "image",
         "src": "img/carrusel/2.png"
+    },
+    {
+        "type": "image",
+        "src": "img/carrusel/2.jpeg"
     },
     {
         "type": "video",

@@ -1,0 +1,52 @@
+[
+  {
+    "i18n_key": "suggestion_tomate_caballa",
+    "nombre": "Tomate con Caballa",
+    "descripcion": "Tomate fresco con caballa y aceite de oliva.",
+    "imgs": ["9.png"],
+    "alergenos": ["pescado"],
+    "precios": [
+      { "cantidad": "6,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "dish_delicias_queso_viejo",
+    "nombre": "Delicias de Queso Viejo",
+    "descripcion": "Crujientes bolitas de queso viejo fundido.",
+    "imgs": ["10.png"],
+    "alergenos": ["lacteos", "gluten", "huevo"],
+    "precios": [
+      { "cantidad": "6,00 €", "tipo": "" }
+    ]
+  },
+    {
+    "i18n_key": "",
+    "nombre": "Buñuelos de Marisco",
+    "descripcion": "",
+    "imgs": ["7.png"],
+    "alergenos": ["lacteos", "gluten", "huevo"],
+    "precios": [
+      { "cantidad": "6,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "suggestion_rulo_cabra",
+    "nombre": "Rulo de Cabra Frito",
+    "descripcion": "Rulo de cabra empanado y frito, acompañado de mermelada.",
+    "imgs": ["4.png"],
+    "alergenos": ["lacteos", "gluten", "huevo"],
+    "precios": [
+      { "cantidad": "6,00 €", "tipo": "" }
+    ]
+  },
+  {
+    "i18n_key": "suggestion_boquerones_fritos",
+    "nombre": "Boquerones Fritos",
+    "descripcion": "",
+    "imgs": ["5.png"],
+    "alergenos": ["pescado", "gluten"],
+    "precios": [
+      { "cantidad": "6,00 €", "tipo": "" }
+    ]
+  }
+]
