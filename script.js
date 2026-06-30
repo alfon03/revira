@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const CONFIG = {
         basePath: "img/platos",
-        mediaVersion: "8", // 👈 cambia esto cuando actualices JSON
+        mediaVersion: "9", // 👈 cambia esto cuando actualices JSON
         carousel: {
             mobileBreakpoint: 768,
             autoplayDelay: 3500,
