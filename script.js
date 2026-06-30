@@ -5,7 +5,7 @@
 // =========================
 //carrusel pagina inicio con videos
 
-const MEDIA_VERSION = "6"; // Cambia este número cuando actualices media.json
+const MEDIA_VERSION = "7"; // Cambia este número cuando actualices media.json
 
 /* ============================================================
    CARRUSEL OPTIMIZADO (SAFE MULTI-PAGE VERSION)
@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const CONFIG = {
         basePath: "img/platos",
-        mediaVersion: "6", // 👈 cambia esto cuando actualices JSON
+        mediaVersion: "7", // 👈 cambia esto cuando actualices JSON
         carousel: {
             mobileBreakpoint: 768,
             autoplayDelay: 3500,
@@ -830,17 +830,31 @@ async function loadLanguage(lang) {
     localStorage.setItem("lang", lang);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    const savedLang = localStorage.getItem("lang") || "es";
-    loadLanguage(savedLang);
+document.addEventListener("DOMContentLoaded", async () => {
 
+    const savedLang = localStorage.getItem("lang") || "es";
+
+    // 1. Cargar idioma primero
+    await loadLanguage(savedLang);
+
+    // 2. Cargar sugerencias después
+    await cargarSugerencias();
+
+    // 3. Volver a aplicar idioma para traducir sugerencias
+    await loadLanguage(savedLang);
+
+    // 4. Activar botones de cambio de idioma
     document.querySelectorAll("#language-switcher .flag").forEach(flag => {
-        flag.addEventListener("click", () => {
+        flag.addEventListener("click", async () => {
             const lang = flag.dataset.lang;
-            loadLanguage(lang);
+
+            await loadLanguage(lang);
+            await cargarSugerencias();
+            await loadLanguage(lang);
         });
     });
 });
+
 
 
 // cambio de color
@@ -1113,7 +1127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // SUGERENCIAS - MODAL AL ENTRAR
 // ===============================
 
-document.addEventListener("DOMContentLoaded", () => {
+async function cargarSugerencias() {
 
     const modal = document.getElementById("suggestionsModal");
     const closeBtn = document.getElementById("closeModal");
@@ -1122,128 +1136,94 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const ruta = "img/platos/sugerencias/";
 
-    // ===============================
-    // CARGAR MANIFEST Y GENERAR LISTA
-    // ===============================
-    fetch(ruta + "manifest.json")
-        .then(r => r.json())
-        .then(sugerencias => {
+    const r = await fetch(ruta + "manifest.json");
+    const sugerencias = await r.json();
 
-            lista.innerHTML = "";
+    lista.innerHTML = "";
 
-            sugerencias.forEach(item => {
+    sugerencias.forEach(item => {
 
-    const li = document.createElement("li");
+        const li = document.createElement("li");
 
-    // Imagen principal
-    const img = document.createElement("img");
-    img.className = "menu-item-img";
+        const img = document.createElement("img");
+        img.className = "menu-item-img";
 
-    const imgs = item.imgs || (item.img ? [item.img] : []);
-    const fullImgs = imgs.map(i => ruta + i);
+        const imgs = item.imgs || (item.img ? [item.img] : []);
+        const fullImgs = imgs.map(i => ruta + i);
 
-    img.src = fullImgs[0];
-    img.alt = item.nombre;
-    img.dataset.imgs = JSON.stringify(fullImgs);
+        img.src = fullImgs[0];
+        img.alt = item.nombre;
+        img.dataset.imgs = JSON.stringify(fullImgs);
 
-    // Nombre visible
-    const span = document.createElement("span");
-    span.dataset.i18n = item.i18n_key;
-    span.textContent = item.nombre;
+        const span = document.createElement("span");
+        span.dataset.i18n = item.i18n_key;
+        span.textContent = item.nombre;
 
-    // ====== CAMPOS OCULTOS PARA EL MODAL GRANDE ======
+        const h3 = document.createElement("h3");
+        h3.style.display = "none";
+        h3.textContent = item.nombre;
 
-    // Título oculto
-    const h3 = document.createElement("h3");
-    h3.style.display = "none";
-    h3.textContent = item.nombre;
+        const p = document.createElement("p");
+        p.style.display = "none";
+        p.textContent = item.descripcion || "";
 
-    // Descripción oculta
-    const p = document.createElement("p");
-    p.style.display = "none";
-    p.textContent = item.descripcion || "";
+        const alergenos = document.createElement("div");
+        alergenos.className = "alergenos";
+        alergenos.style.display = "none";
 
-    // Alérgenos ocultos
-    const alergenos = document.createElement("div");
-    alergenos.className = "alergenos";
-    alergenos.style.display = "none";
-
-    (item.alergenos || []).forEach(a => {
-        const spanA = document.createElement("span");
-        spanA.className = "icon " + a;
-        alergenos.appendChild(spanA);
-    });
-
-    // Precios ocultos
-    const precios = document.createElement("div");
-    precios.className = "menu-item-prices";
-    precios.style.display = "none";
-
-    (item.precios || []).forEach(pre => {
-        const spanP = document.createElement("span");
-        spanP.innerHTML = `${pre.cantidad} <small data-i18n="${pre.tipo}">${pre.tipo}</small>`;
-        precios.appendChild(spanP);
-    });
-
-    // Añadir todo al <li>
-    li.appendChild(img);
-    li.appendChild(span);
-    li.appendChild(h3);
-    li.appendChild(p);
-    li.appendChild(alergenos);
-    li.appendChild(precios);
-
-    lista.appendChild(li);
-});
-
-
+        (item.alergenos || []).forEach(a => {
+            const spanA = document.createElement("span");
+            spanA.className = "icon " + a;
+            alergenos.appendChild(spanA);
         });
 
-    // ===============================
-    // ABRIR MODAL
-    // ===============================
-    function abrirModal() {
+        const precios = document.createElement("div");
+        precios.className = "menu-item-prices";
+        precios.style.display = "none";
 
-        modal.style.display = "flex";
-
-        requestAnimationFrame(() => {
-            modal.classList.add("show");
+        (item.precios || []).forEach(pre => {
+            const spanP = document.createElement("span");
+            spanP.innerHTML = `${pre.cantidad} <small data-i18n="${pre.tipo}">${pre.tipo}</small>`;
+            precios.appendChild(spanP);
         });
 
-        document.body.style.overflow = "hidden";
-    }
+        li.appendChild(img);
+        li.appendChild(span);
+        li.appendChild(h3);
+        li.appendChild(p);
+        li.appendChild(alergenos);
+        li.appendChild(precios);
 
-    // ===============================
-    // CERRAR MODAL
-    // ===============================
-    function cerrarModal() {
+        lista.appendChild(li);
+    });
 
-        modal.classList.remove("show");
+    // abrir modal automáticamente
+    modal.style.display = "flex";
+    requestAnimationFrame(() => modal.classList.add("show"));
 
-        setTimeout(() => {
-            modal.style.display = "";
-            document.body.style.overflow = "";
-        }, 550);
-    }
+    document.body.style.overflow = "hidden";
 
-    // Mostrar automáticamente
-    abrirModal();
-
-    // Botones cerrar
     closeBtn.addEventListener("click", cerrarModal);
     closeBtnBottom.addEventListener("click", cerrarModal);
 
-    // Click fuera
     modal.addEventListener("click", (e) => {
         if (e.target === modal) cerrarModal();
     });
 
-    // ESC
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") cerrarModal();
     });
+}
 
-});
+function cerrarModal() {
+    const modal = document.getElementById("suggestionsModal");
+    modal.classList.remove("show");
+
+    setTimeout(() => {
+        modal.style.display = "";
+        document.body.style.overflow = "";
+    }, 550);
+}
 
 
 // script carga y modal pagina platos

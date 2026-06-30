@@ -16,17 +16,17 @@
     "imgs": ["10.png"],
     "alergenos": ["lacteos", "gluten", "huevo"],
     "precios": [
-      { "cantidad": "6,00 €", "tipo": "" }
+      { "cantidad": "5,00 €", "tipo": "" }
     ]
   },
     {
-    "i18n_key": "",
+    "i18n_key": "suggestion_bunuelos_marisco",
     "nombre": "Buñuelos de Marisco",
     "descripcion": "",
     "imgs": ["7.png"],
     "alergenos": ["lacteos", "gluten", "huevo"],
     "precios": [
-      { "cantidad": "6,00 €", "tipo": "" }
+      { "cantidad": "10,00 €", "tipo": "" }
     ]
   },
   {
@@ -36,7 +36,7 @@
     "imgs": ["4.png"],
     "alergenos": ["lacteos", "gluten", "huevo"],
     "precios": [
-      { "cantidad": "6,00 €", "tipo": "" }
+      { "cantidad": "5,00 €", "tipo": "" }
     ]
   },
   {
@@ -46,7 +46,7 @@
     "imgs": ["5.png"],
     "alergenos": ["pescado", "gluten"],
     "precios": [
-      { "cantidad": "6,00 €", "tipo": "" }
+      { "cantidad": "9,00 €", "tipo": "" }
     ]
   }
 ]

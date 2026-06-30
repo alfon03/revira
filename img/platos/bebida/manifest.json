@@ -62,6 +62,8 @@
     "i18n_key": "drink_licores",
     "nombre": "Licores",
     "descripcion": "",
+        "img": "5.png",
+
     "alergenos": [],
     "precios": [
       { "cantidad": "5,00 €", "tipo": "" }

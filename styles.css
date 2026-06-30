@@ -1765,6 +1765,33 @@ body.dark-mode .plato-modal-panel::-webkit-scrollbar-thumb {
   }
 }
 
+@media (max-width: 768px) {
+
+  /* Imagen más pequeña en móvil */
+  .modal-img {
+    height: 260px !important;
+  }
+
+  .modal-img.portrait {
+    height: 300px !important;
+    padding: 8px;
+  }
+
+  /* Contenido más compacto */
+  #modal-title {
+    font-size: 1.6rem;
+  }
+
+  #modal-desc {
+    font-size: .9rem;
+    line-height: 1.5;
+  }
+
+  .modal-precios {
+    margin-top: 18px;
+  }
+}
+
 
 /* ==========================================
    GALERÍA
