@@ -29,6 +29,16 @@
       { "cantidad": "10,00 €", "tipo": "" }
     ]
   },
+   {
+    "i18n_key": "suggestion_tortilla_camaron",
+    "nombre": "Tortilla de Camarón",
+    "descripcion": "",
+    "imgs": ["11.png"],
+    "alergenos": ["pescado", "gluten", "crustaceo", "huevo"],
+    "precios": [
+      { "cantidad": "4,00 €", "tipo": "" }
+    ]
+  },
   {
     "i18n_key": "suggestion_rulo_cabra",
     "nombre": "Rulo de Cabra Frito",
