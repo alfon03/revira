@@ -225,37 +225,41 @@
     </footer>
 
     <!-- LIGHTBOX -->
-    <div id="lightbox" class="lightbox">
+<div id="lightbox" class="lightbox">
 
-        <div class="lightbox-content">
+    <div class="lightbox-content">
 
-            <!-- Header -->
-            <div class="lightbox-top">
-                <div id="lightboxTitle" class="lightbox-title"></div>
+        <!-- TOP BAR -->
+        <div class="lightbox-top">
+            <div id="lightboxTitle" class="lightbox-title"></div>
 
-                <button id="lightboxShare" class="lightbox-share">
-                    <span class="material-symbols-outlined">share</span>
-                </button>
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+        </div>
 
-                <button class="lightbox-close" id="lightboxClose">&times;</button>
-            </div>
+        <!-- MEDIA WRAPPER -->
+        <div class="lightbox-media-wrapper">
 
-            <!-- Media -->
             <img id="lightboxImg" class="lightbox-media" style="display:none;">
             <video id="lightboxVideo" class="lightbox-media" style="display:none;" controls></video>
 
-            <!-- Navigation -->
-            <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
-            <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+            <!-- SHARE BUTTON (correct position) -->
+            <button id="lightboxShare" class="lightbox-share">
+                <span class="material-symbols-outlined">share</span>
+            </button>
 
-            <!-- Thumbs -->
-            <div id="lightboxThumbs"></div>
-
-            <!-- Counter -->
             <div id="lightboxCounter"></div>
-
         </div>
+
+        <!-- NAV -->
+        <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
+        <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+
+        <!-- THUMBS -->
+        <div id="lightboxThumbs"></div>
+
     </div>
+</div>
+
 
 
 

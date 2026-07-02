@@ -415,28 +415,41 @@
     </div>
 
 <!-- LIGHTBOX -->
-<div class="lightbox-content">
+<div id="lightbox" class="lightbox">
 
-  <!-- Media wrapper (CLAVE) -->
-  <div class="lightbox-media-wrapper">
+    <div class="lightbox-content">
 
-  <img id="lightboxImg" class="lightbox-media" style="display:none;">
-  <video id="lightboxVideo" class="lightbox-media" style="display:none;" controls></video>
+        <!-- TOP BAR -->
+        <div class="lightbox-top">
+            <div id="lightboxTitle" class="lightbox-title"></div>
 
-  <button id="lightboxShare" class="lightbox-share"></button>
+            <button class="lightbox-close" id="lightboxClose">&times;</button>
+        </div>
 
-  <div id="lightboxCounter"></div>
+        <!-- MEDIA WRAPPER -->
+        <div class="lightbox-media-wrapper">
 
+            <img id="lightboxImg" class="lightbox-media" style="display:none;">
+            <video id="lightboxVideo" class="lightbox-media" style="display:none;" controls></video>
+
+            <!-- SHARE BUTTON (correct position) -->
+            <button id="lightboxShare" class="lightbox-share">
+                <span class="material-symbols-outlined">share</span>
+            </button>
+
+            <div id="lightboxCounter"></div>
+        </div>
+
+        <!-- NAV -->
+        <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
+        <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+
+        <!-- THUMBS -->
+        <div id="lightboxThumbs"></div>
+
+    </div>
 </div>
 
-  <!-- Thumbs al lado derecho -->
-  <div id="lightboxThumbs"></div>
-
-  <!-- Nav -->
-  <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
-  <span class="lightbox-next" id="lightboxNext">&#10095;</span>
-
-</div>
 
 
 

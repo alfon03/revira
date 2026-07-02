@@ -664,6 +664,8 @@ window.updateLightboxItems = updateLightboxItems;
 
 function openLightbox(index) {
 
+    document.body.classList.add("lightbox-open");
+
   if (!initDOM()) return;
 
   const item = lightboxItems[index];
@@ -748,13 +750,36 @@ document.addEventListener("click", e => {
 
   if (!media) return;
 
-  const context = media.closest(".platos-section");
+  // 1. Buscar contexto en platos-section
+let context = media.closest(".platos-section");
 
-  const sectionTitle = context
-    ? context.querySelector("h2, h1")?.textContent.trim() || ""
-    : "";
+// 2. Si no está en platos-section, buscar en carta-grid
+if (!context) {
+    context = media.closest(".carta-grid section");
+}
 
-  updateLightboxItems(context, sectionTitle);
+// 3. Si viene del modal de sugerencias
+if (!context && media.closest("#suggestionsModal")) {
+    context = media.closest("#suggestionsModal");
+}
+
+// 4. Obtener título según el tipo de contexto
+let sectionTitle = "";
+
+if (context) {
+
+    // Prioridad: h2 → h1 → span[data-i18n] → suggestions-title
+    sectionTitle =
+        context.querySelector("h2")?.textContent.trim() ||
+        context.querySelector("h1")?.textContent.trim() ||
+        context.querySelector("[data-i18n]")?.textContent.trim() ||
+        context.querySelector(".suggestions-title span[data-i18n]")?.textContent.trim() ||
+        "";
+}
+
+// Pasar título al lightbox
+updateLightboxItems(context, sectionTitle);
+
 
   currentIndex = lightboxItems.findIndex(item => item.node === media);
 
@@ -788,13 +813,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (lightbox) {
-      lightbox.addEventListener("click", e => {
-        if (e.target.id === "lightbox") closeLightbox();
-      });
+  lightbox.addEventListener("click", e => {
+
+    const content = document.querySelector(".lightbox-content");
+
+    // Si el clic NO está dentro del contenido → cerrar
+    if (!content.contains(e.target)) {
+      closeLightbox();
     }
+  });
+}
+
   }
 
   function closeLightbox() {
+
+    document.body.classList.remove("lightbox-open");
 
     if (!initDOM()) return;
 
@@ -1176,8 +1210,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function cargarSugerencias() {
 
-        console.log("ENTRA EN CARGAR SUGERENCIAS");
-
     const modal = document.getElementById("suggestionsModal");
     if (!modal) return;
 
@@ -1369,7 +1401,6 @@ function cerrarModal() {
 
 
 // script carga y modal pagina platos
-
 document.addEventListener("DOMContentLoaded", () => {
 
     const secciones = {
@@ -1487,6 +1518,8 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================
        ABRIR MODAL
     ========================= */
+    let lastSectionTitle = "";
+
     function abrirModal(img) {
 
         const article =
@@ -1494,6 +1527,8 @@ document.addEventListener("DOMContentLoaded", () => {
             img.closest("#suggestionsModal li");
 
         const titulo = article.querySelector("h3")?.textContent || "";
+        lastSectionTitle = titulo;
+
         const descripcion = article.querySelector("p")?.textContent || "";
 
         const precios = article.querySelectorAll(".menu-item-prices span");
@@ -1630,16 +1665,13 @@ modalImg.addEventListener("click", () => {
         temp.appendChild(img);
     });
 
-    const section = modal.closest(".platos-section");
-    const title = section ? section.querySelector("h2")?.textContent : "";
+   const title = lastSectionTitle;
 
     updateLightboxItems(temp, title);
 
     const index = lightboxItems.findIndex(item => item.src === modalImg.src);
     openLightbox(index);
 });
-
-console.log("VOY A LLAMAR");
 
 // <-- AÑADE ESTO
 cargarSugerencias();

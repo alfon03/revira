@@ -820,10 +820,7 @@ body.light-mode .footer-bottom p {
 }
 
 /* ============================================================
-   LIGHTBOX PREMIUM
-============================================================ */
-/* ============================================================
-   LIGHTBOX PREMIUM (CLEAN VERSION)
+   LIGHTBOX PREMIUM (CORREGIDO)
 ============================================================ */
 
 .lightbox {
@@ -837,30 +834,41 @@ body.light-mode .footer-bottom p {
   z-index: 9999;
 }
 
+/* Ocultar botón ir arriba */
+body.lightbox-open #btnTop {
+  display: none !important;
+  pointer-events: none !important;
+}
+
 .lightbox-content {
   position: relative;
   width: 92%;
-  height: 92%;
+  max-height: 92vh; /* CLAVE REAL */
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px; /* espacio entre imagen y thumbs */
+  gap: 20px;
 }
+
 .lightbox-media-wrapper {
   position: relative;
+  max-width: 65vw;
+  max-height: 85vh; /* CLAVE REAL */
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 80%;
-  max-height: 100%;
 }
-/* MEDIA */
+
 .lightbox-media {
+  width: auto;
+  height: auto;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 85vh; /* CLAVE REAL */
+  object-fit: contain;
   border-radius: 16px;
   box-shadow: 0 15px 50px rgba(0,0,0,0.6);
 }
+
 
 /* TOP BAR */
 .lightbox-top {
@@ -876,19 +884,22 @@ body.light-mode .footer-bottom p {
 
 .lightbox-title {
   color: white;
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0,0,0,.5);
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(6px);
 }
 
-/* SHARE */
+/* SHARE BUTTON (correct position) */
 #lightboxShare {
   position: absolute;
-  bottom: 12px;
+  top: 12px;
   right: 12px;
 
-  width: 42px;
-  height: 42px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   border: none;
 
@@ -903,28 +914,28 @@ body.light-mode .footer-bottom p {
   backdrop-filter: blur(6px);
   transition: .2s;
 
-  z-index: 5;
+  z-index: 10001;
 }
 
 #lightboxShare:hover {
   background: rgba(0,0,0,.7);
 }
 
-/* CLOSE */
+/* CLOSE BUTTON (bigger) */
 .lightbox-close {
-  margin-left: 10px;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: none;
   background: rgba(0,0,0,.45);
   color: white;
-  font-size: 1.6rem;
+  font-size: 2rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: .2s;
+  z-index: 10001;
 }
 
 .lightbox-close:hover {
@@ -960,34 +971,29 @@ body.light-mode .footer-bottom p {
   bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
-
   color: white;
   font-size: 13px;
-
   padding: 6px 12px;
   border-radius: 999px;
-
   background: rgba(0,0,0,.35);
   backdrop-filter: blur(6px);
-
   z-index: 5;
 }
 
 /* THUMBS */
 #lightboxThumbs {
-  position: relative;
-  right: auto;
-  top: auto;
-  transform: none;
-
   display: flex;
   flex-direction: column;
   gap: 10px;
-
   max-height: 100%;
   overflow-y: auto;
-  padding-right: 5px;
+  scrollbar-width: none; /* Firefox */
 }
+
+#lightboxThumbs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
 .lightbox-thumb {
   width: 70px;
   height: 70px;
@@ -1027,6 +1033,7 @@ body.light-mode .footer-bottom p {
     max-width: 100%;
   }
 }
+
 
 /* ============================================================
    SIN BOTONES EN CARRUSEL DE PLATOS
@@ -1495,6 +1502,7 @@ transition:
 box-shadow:
     0 40px 80px rgba(0,0,0,.45),
     0 15px 40px rgba(0,0,0,.25);
+      scrollbar-width: none;
 }
 
 /* Modal abierto */
@@ -1803,6 +1811,7 @@ body.dark-mode .plato-modal-panel {
    SCROLL MÁS LIMPIO
 ============================================ */
 .plato-modal-panel::-webkit-scrollbar {
+    display: none;
   width: 6px;
 }
 
@@ -1824,7 +1833,9 @@ body.dark-mode .plato-modal-panel::-webkit-scrollbar-thumb {
     width: 100%;
     max-width: none;
 
-    height: 92%;
+    height: auto; /* CLAVE: ya no 92% fijo */
+    max-height: 90vh; /* CLAVE: límite real */
+    overflow-y: auto; /* scroll limpio */
 
     left: 0;
     right: 0;
@@ -1867,6 +1878,7 @@ body.dark-mode .plato-modal-panel::-webkit-scrollbar-thumb {
   }
 }
 
+
 /* ============================================
    REDUCIR ANIMACIONES SI EL USUARIO LO PREFIERE
 ============================================ */
@@ -1887,12 +1899,14 @@ body.dark-mode .plato-modal-panel::-webkit-scrollbar-thumb {
 
   /* Imagen más pequeña en móvil */
   .modal-img {
-    height: 260px !important;
+    height: 220px !important;
+    object-fit: cover;
   }
 
   .modal-img.portrait {
-    height: 300px !important;
+    height: 260px !important;
     padding: 8px;
+    object-fit: contain;
   }
 
   /* Contenido más compacto */
@@ -1903,10 +1917,15 @@ body.dark-mode .plato-modal-panel::-webkit-scrollbar-thumb {
   #modal-desc {
     font-size: .9rem;
     line-height: 1.5;
+    margin-bottom: 12px;
+  }
+   .modal-alergenos {
+    margin-bottom: 12px;
   }
 
   .modal-precios {
     margin-top: 18px;
+    margin-bottom: 20px;
   }
 }
 
