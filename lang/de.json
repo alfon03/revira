@@ -1,18 +1,14 @@
 {
   "title": "La ReviRa",
-
   "menu_home": "Startseite",
   "menu_dishes": "Unsere Gerichte",
   "menu_menu": "Speisekarte",
   "menu_about": "Über uns",
-
   "breadcrumb": "Du bist hier:",
   "breadcrumb_label_home": "Startseite",
   "breadcrumb_label_dishes": "Unsere Gerichte",
   "breadcrumb_label_menu": "Speisekarte",
-
   "download_pdf": "Speisekarte als PDF herunterladen",
-
   "producto": "Produkt",
   "precio": "Preis",
   "tapa": "Tapa",
@@ -20,10 +16,9 @@
   "alergenos": "Allergene",
   "consultar": "Beim Personal nachfragen",
   "ración": "Portion",
-"volver": "Zurück",
+  "volver": "Zurück",
   "racion": "Portion",
   "media_racion": "Halbe Portion",
-
   "chacinas": "Aufschnitt",
   "tapas_frias": "Kalte Tapas",
   "tapas_calientes": "Warme Tapas",
@@ -34,19 +29,16 @@
   "peques": "Für Kinder",
   "pescados": "Fischgerichte",
   "postres": "Desserts",
-
   "dish_mejillones": "Miesmuscheln",
   "dish_anchoas": "Sardellen",
   "dish_sardinas": "Sardinen",
   "dish_lomo_orza": "Schweinelende im Schmalz",
   "dish_tosta_chicharron": "Toast mit Cádiz‑Grieben",
-
   "dish_ensaladilla": "Russischer Salat",
   "dish_pulpo": "Oktopussalat",
   "dish_patatas_alinadas": "Gewürzte Kartoffeln",
   "dish_boquerones": "Sardellen in Essig",
   "dish_ensalada_casa": "Haussalat",
-
   "dish_espinacas": "Spinat mit Kichererbsen",
   "dish_croquetas_marisco": "Meeresfrüchte‑Kroketten",
   "dish_croquetas_queso": "Käsekroketten",
@@ -59,7 +51,6 @@
   "dish_papas_arrieras": "Arrieras‑Kartoffeln",
   "dish_berenjenas_miel": "Auberginen mit Zuckerrohrhonig",
   "dish_gyozas": "Gyozas",
-
   "dish_melva": "Melva mit Paprika",
   "dish_salmon_queso": "Lachs mit Käse",
   "dish_cochinito": "Schweine‑Sandwich (Käse oder Schinken)",
@@ -71,7 +62,6 @@
   "dish_bao_curry": "Bao mit Curry",
   "dish_bao_carrilla": "Bao mit Schweinebäckchen",
   "dish_gambas_alioli": "Garnelen mit Aioli",
-
   "dish_solomillo_revira": "Lendensteak nach Revira‑Art",
   "dish_solomillo_whisky": "Lendensteak mit Whiskysauce",
   "dish_solomillo_pimienta": "Lendensteak mit Pfeffersauce",
@@ -81,29 +71,24 @@
   "dish_presa_iberica": "Iberische Presa",
   "dish_pechuga": "Gegrillte Hähnchenbrust",
   "dish_pollo_frito": "Frittiertes Hähnchen",
-
   "dish_jamon": "Schinken",
   "dish_queso": "Käse",
   "dish_carne_mecha": "Gezupftes Schweinefleisch",
   "dish_cana_lomo": "Getrocknete Lende",
   "dish_chicharron": "Cádiz‑Grieben",
   "dish_variado": "Gemischte Platte",
-
   "dish_hamburguesa_pollo": "Hähnchen‑Burger",
   "dish_lagrimitas": "Hähnchenstreifen",
   "dish_nuggets": "Nuggets",
   "dish_perrito": "Hot Dog",
-
   "dish_chocos": "Frittierte Tintenfischstücke",
   "dish_calamares": "Frittierte Calamari",
   "dish_bacalao": "Frittierter Kabeljau",
   "dish_twister": "Garnelen‑Twister",
   "dish_pavia": "Gambón‑Pavía",
   "dish_gambas_ajillo": "Garnelen in Knoblauch",
-
   "dish_tarta_abuela": "Oma‑Kuchen",
   "dish_tarta_queso": "Käsekuchen",
-
   "alergeno_gluten": "Gluten",
   "alergeno_huevo": "Ei",
   "alergeno_lacteos": "Milchprodukte",
@@ -113,13 +98,10 @@
   "alergeno_mostaza": "Senf",
   "alergeno_sesamo": "Sesam",
   "alergeno_sulfitos": "Sulfite",
-
   "alergenos_title": "Allergene",
   "alergenos_nota": "Alle Gerichte können aufgrund der Zubereitung Allergene oder Spuren davon enthalten.",
-
   "footer_about_title": "La Revirá",
   "footer_about_text": "Andalusische Tradition liebevoll neu interpretiert. Frische Produkte, traditionelle Rezepte und eine Atmosphäre, die zum Verweilen einlädt. Ein Ort, an dem gutes Essen und gute Gesellschaft zusammenkommen.",
-
   "footer_info_title": "Informationen",
   "footer_address": "Adresse:",
   "footer_address_text": "Av. la Cruz, 41440 Lora del Río, Sevilla",
@@ -128,24 +110,17 @@
   "footer_reservas": "Reservierungen:",
   "footer_reservas_text": "Telefonisch verfügbar",
   "footer_follow": "Folge uns",
-
   "footer_copy": "© 2026 La Revirá — Alle Rechte vorbehalten",
-
   "btn_top": "Nach oben",
   "lightbox_close": "×",
   "map_iframe": "",
-
   "carousel_prev": "chevron_left",
   "carousel_next": "chevron_right",
-
   "home_title": "Willkommen bei",
   "home_subtitle": "Der perfekte Ort zum Genießen, Essen und Teilen.",
   "sugerencias": "Vorschläge",
-
   "location_title": "Wo sind wir?",
-
   "schedule_title": "Öffnungszeiten",
-
   "day_monday": "Montag",
   "day_tuesday": "Dienstag",
   "day_wednesday": "Mittwoch",
@@ -153,32 +128,38 @@
   "day_friday": "Freitag",
   "day_saturday": "Samstag",
   "day_sunday": "Sonntag",
-
   "hours_tue": "20:30–Schließung",
   "hours_wed": "20:30–Schließung",
   "hours_thu": "20:30–Schließung",
   "hours_fri": "20:30–Schließung",
   "hours_sat": "20:30–Schließung",
   "hours_sun": "Schließung",
-  
   "desc_solomillo_revira_1": "Eine unserer meistbestellten Spezialitäten.",
   "desc_solomillo_revira_2": "Ein Rinderfilet mit einer Sahne-, Zwiebel- und Trüffelsauce.",
-
-      "footer_slogan": "Andalusische Tradition, frische Produkte und Rezepte, die zum Teilen einladen.",
-
-       "suggestions_title": "Empfehlungen",
+  "footer_slogan": "Andalusische Tradition, frische Produkte und Rezepte, die zum Teilen einladen.",
+  "suggestions_title": "Empfehlungen",
+  "dish_almejas_ajillo": "Venusmuscheln in Knoblauch",
   "suggestion_tomate_caballa": "Tomate mit Makrele",
-  "suggestion_solomillo_pedro": "Schweinefilet in Pedro-Ximénez-Soße (Klein oder Groß)",
-  "suggestion_rulo_cabra": "Gebackene panierte Ziegenkäserolle mit Marmelade",
+  "suggestion_tomate_caballa_desc": "Frische Tomate mit Makrele und Olivenöl.",
+  "dish_delicias_queso_viejo": "Alte-Käse-Häppchen",
+  "dish_delicias_queso_viejo_desc": "Knusprige Bällchen aus geschmolzenem alten Käse.",
+  "suggestion_bunuelos_marisco": "Meeresfrüchte-Krapfen",
+  "suggestion_bunuelos_marisco_desc": "",
+  "suggestion_tortilla_camaron": "Garnelen-Omelett",
+  "suggestion_tortilla_camaron_desc": "",
+  "suggestion_rulo_cabra": "Frittierte Ziegenkäserolle",
+  "suggestion_rulo_cabra_desc": "Panierte und frittierte Ziegenkäserolle mit Marmelade.",
   "suggestion_boquerones_fritos": "Frittierte Sardellen",
-        "suggestion_tortilla_camaron": "Garnelenomelett",
-          "suggestion_bunuelos_marisco": "Meeresfrüchte-Krapfen",
-  "btn_ver_pdf": "PDF‑Speisekarte ansehen",
-  "close": "Schließen",
+  "suggestion_boquerones_fritos_desc": "",
+  "suggestion_patatas_4_pecados": "Kartoffeln der Vier Sünden",
+  "suggestion_patatas_4_pecados_desc": "Kartoffeln mit Frischkäse, Cheddar, Bacon und altem Käse.",
+    "suggestion_chipiron": "Tintenfisch vom Grill oder frittiert",
 
+  "btn_ver_pdf": "PDF‑Speisekarte ansehen",
+
+  "close": "Schließen",
   "bebida": "Getränke",
   "bodega": "Weinkeller",
-
   "drink_agua_pequena": "Kleines Wasser",
   "drink_agua_grande": "Großes Wasser",
   "drink_tinto_verano": "Tinto de verano",
@@ -188,7 +169,6 @@
   "drink_licores": "Liköre",
   "drink_combinados": "Mixgetränke",
   "drink_combinados_premium": "Premium-Mixgetränke",
-
   "wine_grabiela": "Grabiela (Manzanilla)",
   "wine_labraz": "Labraz (Rioja)",
   "wine_cyatho": "Cyatho (Verdejo)",
@@ -200,21 +180,17 @@
   "wine_traslascuestas_crianza": "Traslascuestas Crianza (Ribera del Duero)",
   "wine_carramimbre": "Carramimbre (Ribera del Duero)",
   "wine_ramon_bilbao": "Ramón Bilbao (Rioja)",
-
   "cata": "Verkostung",
   "copa": "Glas",
   "botella": "Flasche",
-
   "dish_ensalada_casa_desc": "Salat mit Kopfsalat, Hähnchen, Karotte, Walnüssen und Honig‑Senf‑Sauce.",
   "dish_tomate_caballa_desc": "Frische Tomate mit Makrele und Olivenöl.",
-
   "dish_solomillo_revira_desc": "Lendensteak mit Sahne‑, Zwiebel‑ und Trüffelsauce. Eine unserer Spezialitäten.",
   "dish_solomillo_whisky_desc": "Lendensteak in Knoblauch‑Whiskysauce.",
   "dish_solomillo_pimienta_desc": "Lendensteak mit cremiger Pfeffersauce.",
   "dish_solomillo_roquefort_desc": "Lendensteak mit Roquefort‑Käsesauce.",
   "dish_lagartito_desc": "Gegrillter iberischer Schweinerücken, saftig und voller Geschmack.",
   "dish_presa_iberica_desc": "Gegrillte iberische Presa, zart und sehr aromatisch.",
-
   "dish_melva_desc": "Melva mit Piquillo‑Paprika, ein mildes und ausgewogenes Gericht.",
   "dish_salmon_queso_desc": "Lachs mit Frischkäse, eine milde und saftige Kombination.",
   "dish_piripi_desc": "Sandwich mit Schweinelende, Käse, Bacon und Aioli – saftig und sehr schmackhaft.",
@@ -222,28 +198,20 @@
   "dish_pringa_desc": "Traditionelle Pringá, zart und voller authentischem Geschmack.",
   "dish_bao_curry_desc": "Weiches Bao‑Brötchen gefüllt mit mildem Curry‑Hähnchen.",
   "dish_bao_carrilla_desc": "Bao‑Brötchen gefüllt mit zarter Schweinebäckchen in eigener Sauce.",
-
   "dish_mejillones_desc": "Geröstetes Brot mit einer Miesmuschel oben drauf.",
   "dish_anchoas_desc": "Regañá mit Guacamole und einer Sardelle oben drauf.",
   "dish_sardinas_desc": "Geröstetes Brot mit Marmelade und Sardine.",
   "dish_lomo_orza_desc": "Geröstetes Brot mit spanischer Sauce und Schweinelende im Schmalz.",
   "dish_tosta_chicharron_desc": "Geröstetes Brot mit manteca colorá und Cádiz‑Grieben.",
-
   "dish_hamburguesa_pollo_desc": "Hähnchen‑Burger mit weichem Brötchen, ideal für Kinder.",
   "dish_lagrimitas_desc": "Knusprige und saftige Hähnchenstreifen.",
-
   "dish_chocos_desc": ".",
   "dish_twister_desc": "Knusprige Garnele in dünnem Teig gewickelt.",
   "dish_pavia_desc": "Gambón im traditionellen Paví­a‑Backteig.",
   "dish_gambas_ajillo_desc": "Garnelen in heißem Öl mit Knoblauch sautiert.",
-
   "dish_espinacas_desc": "Traditionelles Rezept aus Spinat und Kichererbsen, mild und hausgemacht.",
   "dish_gyozas_desc": "Gyozas mit Sojasauce und Mayonnaise darüber.",
-
   "1/2": "Halb",
   "/ud": "pro Stück",
-  "unitario": "Einzelstück",
-  "dish_delicias_queso_viejo": "Köstlichkeiten aus gereiftem Käse",
-  "dish_almejas_ajillo": "Venusmuscheln in Knoblauch"
-
+  "unitario": "Einzelstück"
 }

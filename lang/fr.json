@@ -169,13 +169,34 @@
    "footer_slogan": "Tradition andalouse, produits frais et recettes faites pour être partagées.",
 
    "suggestions_title": "Suggestions",
-  "suggestion_tomate_caballa": "Tomate à la maquereau",
-  "suggestion_solomillo_pedro": "Filet de porc au Pedro Ximénez (Petite ou Grande portion)",
-  "suggestion_rulo_cabra": "Rouleau de chèvre pané et frit avec confiture",
-  "suggestion_boquerones_fritos": "Anchois frits",
-      "suggestion_tortilla_camaron": "Omelette aux Crevettes",
-        "suggestion_bunuelos_marisco": "Beignets de Fruits de Mer",
+  
+  "suggestion_tomate_caballa": "Tomate à la Maquereau",
+  "suggestion_tomate_caballa_desc": "Tomate frais avec maquereau et huile d’olive.",
+
+  "dish_delicias_queso_viejo": "Délices de Fromage Affiné",
+  "dish_delicias_queso_viejo_desc": "Boulettes croustillantes de fromage affiné fondu.",
+
+  "suggestion_bunuelos_marisco": "Beignets de Fruits de Mer",
+  "suggestion_bunuelos_marisco_desc": "",
+
+  "suggestion_tortilla_camaron": "Omelette aux Crevettes",
+  "suggestion_tortilla_camaron_desc": "",
+
+  "suggestion_rulo_cabra": "Roulé de Chèvre Frit",
+  "suggestion_rulo_cabra_desc": "Roulé de fromage de chèvre pané et frit, servi avec confiture.",
+
+  "suggestion_boquerones_fritos": "Anchois Frits",
+  "suggestion_boquerones_fritos_desc": "",
+
+  "suggestion_patatas_4_pecados": "Pommes de Terre des Quatre Péchés",
+  "suggestion_patatas_4_pecados_desc": "Pommes de terre avec fromage à la crème, cheddar, bacon et fromage affiné.",
+    "suggestion_chipiron": "Chipiron à la plancha ou frit",
+
+      "dish_almejas_ajillo": "Palourdes à l’Ail",
+
+
   "btn_ver_pdf": "Voir la carte en PDF",
+
   "close": "Fermer",
 
   "bebida": "Boissons",
@@ -244,9 +265,6 @@
 
   "1/2": "Demi",
   "/ud": "à l’unité",
-  "unitario": "Unité",
-    "dish_almejas_ajillo": "Palourdes à l’Ail",
-  "dish_delicias_queso_viejo": "Délices de Vieux Fromage"
-
+  "unitario": "Unité"
 
 }

@@ -214,5 +214,13 @@
     {
         "type": "image",
         "src": "img/carrusel/43.jpeg"
+    },
+     {
+        "type": "image",
+        "src": "img/carrusel/43.png"
+    },
+     {
+        "type": "image",
+        "src": "img/carrusel/44.png"
     }
 ]

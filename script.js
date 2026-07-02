@@ -5,7 +5,7 @@
 // =========================
 //carrusel pagina inicio con videos
 
-const MEDIA_VERSION = "8"; // Cambia este número cuando actualices media.json
+const MEDIA_VERSION = "9"; // Cambia este número cuando actualices media.json
 
 /* ============================================================
    CARRUSEL OPTIMIZADO (SAFE MULTI-PAGE VERSION)
@@ -306,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const CONFIG = {
         basePath: "img/platos",
-        mediaVersion: "9", // 👈 cambia esto cuando actualices JSON
+        mediaVersion: "10", // 👈 cambia esto cuando actualices JSON
         carousel: {
             mobileBreakpoint: 768,
             autoplayDelay: 3500,
@@ -594,7 +594,8 @@ function updateLightboxItems() {
     const nodes = document.querySelectorAll(
         ".slide-item img, .slide-item video, " +
         ".plato-carousel .carousel-item img, " +
-        ".plato-gallery .gallery-row img"
+        ".plato-gallery .gallery-row img, " +
+        ".menu-item-img"  
     );
 
     lightboxItems = Array.from(nodes).map(el => ({
@@ -603,6 +604,7 @@ function updateLightboxItems() {
         node: el
     }));
 }
+
 
 /* ============================================================
    OPEN LIGHTBOX
@@ -819,7 +821,7 @@ async function loadLanguage(lang) {
             // Si el elemento tiene hijos HTML → usar innerHTML
             if (el.children.length > 0) {
                 el.innerHTML = translations[key];
-            } 
+            }
             // Si es texto plano → usar textContent
             else {
                 el.textContent = translations[key];
@@ -1122,7 +1124,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //sugerencias carta modal al entrar
-
 // ===============================
 // SUGERENCIAS - MODAL AL ENTRAR
 // ===============================
@@ -1145,28 +1146,39 @@ async function cargarSugerencias() {
 
         const li = document.createElement("li");
 
-        const img = document.createElement("img");
-        img.className = "menu-item-img";
-
+        // ===========================
+        // IMAGEN (solo si existe)
+        // ===========================
         const imgs = item.imgs || (item.img ? [item.img] : []);
-        const fullImgs = imgs.map(i => ruta + i);
+        const fullImgs = imgs.length ? imgs.map(i => ruta + i) : [];
 
-        img.src = fullImgs[0];
-        img.alt = item.nombre;
-        img.dataset.imgs = JSON.stringify(fullImgs);
+        if (fullImgs.length > 0) {
+            const img = document.createElement("img");
+            img.className = "menu-item-img";
+            img.src = fullImgs[0];
+            img.alt = item.nombre;
+            img.dataset.imgs = JSON.stringify(fullImgs);
+            li.appendChild(img);
+        }
 
+        // Nombre visible
         const span = document.createElement("span");
         span.dataset.i18n = item.i18n_key;
         span.textContent = item.nombre;
 
+        // Título oculto
         const h3 = document.createElement("h3");
         h3.style.display = "none";
+        h3.dataset.i18n = item.i18n_key;
         h3.textContent = item.nombre;
 
+        // Descripción oculta
         const p = document.createElement("p");
         p.style.display = "none";
+        p.dataset.i18n = item.i18n_key + "_desc";
         p.textContent = item.descripcion || "";
 
+        // Alérgenos ocultos
         const alergenos = document.createElement("div");
         alergenos.className = "alergenos";
         alergenos.style.display = "none";
@@ -1177,17 +1189,24 @@ async function cargarSugerencias() {
             alergenos.appendChild(spanA);
         });
 
+        // Precios ocultos
         const precios = document.createElement("div");
         precios.className = "menu-item-prices";
         precios.style.display = "none";
 
         (item.precios || []).forEach(pre => {
+
             const spanP = document.createElement("span");
-            spanP.innerHTML = `${pre.cantidad} <small data-i18n="${pre.tipo}">${pre.tipo}</small>`;
+
+            if (pre.tipo) {
+                spanP.innerHTML = `${pre.cantidad} <small data-i18n="${pre.tipo}">${pre.tipo}</small>`;
+            } else {
+                spanP.textContent = pre.cantidad;
+            }
+
             precios.appendChild(spanP);
         });
 
-        li.appendChild(img);
         li.appendChild(span);
         li.appendChild(h3);
         li.appendChild(p);
@@ -1196,6 +1215,9 @@ async function cargarSugerencias() {
 
         lista.appendChild(li);
     });
+
+    // Aplicar traducción después de crear todo
+    await loadLanguage(localStorage.getItem("lang") || "es");
 
     // abrir modal automáticamente
     modal.style.display = "flex";
@@ -1214,6 +1236,7 @@ async function cargarSugerencias() {
         if (e.key === "Escape") cerrarModal();
     });
 }
+
 
 function cerrarModal() {
     const modal = document.getElementById("suggestionsModal");
@@ -1315,7 +1338,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     content.appendChild(alergenos);
 
-                    // Precios (DENTRO del content → FIX móvil)
+                    // Precios
                     const precios = document.createElement("div");
                     precios.className = "menu-item-prices";
 
@@ -1347,9 +1370,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================= */
     function abrirModal(img) {
 
-const article =
-    img.closest(".menu-item")      // platos normales
-    || img.closest("#suggestionsModal li"); // sugerencias del modal
+        const article =
+            img.closest(".menu-item") ||
+            img.closest("#suggestionsModal li");
 
         const titulo = article.querySelector("h3")?.textContent || "";
         const descripcion = article.querySelector("p")?.textContent || "";
@@ -1472,6 +1495,22 @@ const article =
 
     document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") cerrar();
+    });
+
+    /* =========================
+       LIGHTBOX DESDE EL MODAL
+    ========================= */
+    modalImg.addEventListener("click", () => {
+
+        updateLightboxItems();
+
+        const index = lightboxItems.findIndex(
+            item => item.src === modalImg.src
+        );
+
+        if (index !== -1) {
+            openLightbox(index);
+        }
     });
 
 });

@@ -3,60 +3,148 @@
     "i18n_key": "suggestion_tomate_caballa",
     "nombre": "Tomate con Caballa",
     "descripcion": "Tomate fresco con caballa y aceite de oliva.",
-    "imgs": ["9.png"],
-    "alergenos": ["pescado"],
+    "imgs": [
+      "9.png"
+    ],
+    "alergenos": [
+      "pescado"
+    ],
     "precios": [
-      { "cantidad": "6,00 €", "tipo": "" }
+      {
+        "cantidad": "6,00 €",
+        "tipo": ""
+      }
     ]
   },
   {
     "i18n_key": "dish_delicias_queso_viejo",
     "nombre": "Delicias de Queso Viejo",
     "descripcion": "Crujientes bolitas de queso viejo fundido.",
-    "imgs": ["10.png"],
-    "alergenos": ["lacteos", "gluten", "huevo"],
+    "imgs": [
+      "10.png"
+    ],
+    "alergenos": [
+      "lacteos",
+      "gluten",
+      "huevo"
+    ],
     "precios": [
-      { "cantidad": "5,00 €", "tipo": "" }
+      {
+        "cantidad": "5,00 €",
+        "tipo": ""
+      }
     ]
   },
-    {
+  {
     "i18n_key": "suggestion_bunuelos_marisco",
     "nombre": "Buñuelos de Marisco",
     "descripcion": "",
-    "imgs": ["7.png"],
-    "alergenos": ["lacteos", "gluten", "huevo"],
+    "imgs": [
+      "7.png"
+    ],
+    "alergenos": [
+      "lacteos",
+      "gluten",
+      "huevo"
+    ],
     "precios": [
-      { "cantidad": "10,00 €", "tipo": "" }
+      {
+        "cantidad": "10,00 €",
+        "tipo": ""
+      }
     ]
   },
-   {
+  {
     "i18n_key": "suggestion_tortilla_camaron",
     "nombre": "Tortilla de Camarón",
     "descripcion": "",
-    "imgs": ["11.png"],
-    "alergenos": ["pescado", "gluten", "crustaceo", "huevo"],
+    "imgs": [
+      "11.png"
+    ],
+    "alergenos": [
+      "pescado",
+      "gluten",
+      "crustaceo",
+      "huevo"
+    ],
     "precios": [
-      { "cantidad": "4,00 €", "tipo": "" }
+      {
+        "cantidad": "4,00 €",
+        "tipo": ""
+      }
     ]
   },
   {
     "i18n_key": "suggestion_rulo_cabra",
     "nombre": "Rulo de Cabra Frito",
     "descripcion": "Rulo de cabra empanado y frito, acompañado de mermelada.",
-    "imgs": ["4.png"],
-    "alergenos": ["lacteos", "gluten", "huevo"],
+    "imgs": [
+      "4.png"
+    ],
+    "alergenos": [
+      "lacteos",
+      "gluten",
+      "huevo"
+    ],
     "precios": [
-      { "cantidad": "5,00 €", "tipo": "" }
+      {
+        "cantidad": "5,00 €",
+        "tipo": ""
+      }
     ]
   },
   {
     "i18n_key": "suggestion_boquerones_fritos",
     "nombre": "Boquerones Fritos",
     "descripcion": "",
-    "imgs": ["5.png"],
-    "alergenos": ["pescado", "gluten"],
+    "imgs": [
+      "5.png"
+    ],
+    "alergenos": [
+      "pescado",
+      "gluten"
+    ],
     "precios": [
-      { "cantidad": "9,00 €", "tipo": "" }
+      {
+        "cantidad": "9,00 €",
+        "tipo": ""
+      }
+    ]
+  },
+  {
+    "i18n_key": "suggestion_patatas_4_pecados",
+    "nombre": "Patatas cuatro Pecados",
+    "descripcion": "Patatas con queso nata, queso chedar, bacon y queso viejo.",
+    "imgs": [
+      "12.png"
+    ],
+    "alergenos": ["lacteos", "sulfitos"],
+    "precios": [
+      {
+        "cantidad": "7,00 €",
+        "tipo": ""
+      }
+    ]
+  },
+  {
+    "i18n_key": "suggestion_chipiron",
+    "nombre": "Chipirón Plancha o Frito",
+    "descripcion": "Patatas con queso nata, queso chedar, bacon y queso viejo.",
+    "imgs": [
+      "13.png",
+      "14.png",
+      "15.png"
+    ],
+    "alergenos": ["moluscos","gluten","sulfitos"],
+    "precios": [
+      {
+        "cantidad": "7,00 €",
+        "tipo": "1/2"
+      },
+      {
+        "cantidad": "11,00 €",
+        "tipo": "ración"
+      }
     ]
   }
 ]
