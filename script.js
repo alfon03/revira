@@ -702,31 +702,57 @@ function openLightbox(index) {
     setTimeout(() => img.style.opacity = 1, 50);
   } else {
     video.src = item.src;
-    video.style.display = "block";
-    video.play().catch(() => {});
+video.muted = true;          // 🔇 SIN SONIDO
+video.playsInline = true;    // 📱 Evita pantalla completa en iPhone
+video.autoplay = true;       // ▶️ Reproduce sin interacción
+video.style.display = "block";
+video.play().catch(() => {});
+
     setTimeout(() => video.style.opacity = 1, 50);
   }
 
   // thumbs
-  if (thumbsBox) {
+if (thumbsBox) {
     thumbsBox.innerHTML = "";
 
     for (let i = 1; i <= 3; i++) {
 
-      const idx = currentIndex + i;
-      const nextItem = lightboxItems[idx];
+        const idx = currentIndex + i;
+        const nextItem = lightboxItems[idx];
 
-      if (!nextItem) break;
+        if (!nextItem) break;
 
-      const t = document.createElement("img");
-      t.src = nextItem.src;
-      t.className = "lightbox-thumb";
+        let t;
 
-      t.onclick = () => openLightbox(idx);
+        // 👉 Si es imagen → miniatura normal
+        if (nextItem.type === "img") {
+            t = document.createElement("img");
+            t.src = nextItem.src;
+        }
 
-      thumbsBox.appendChild(t);
+        // 👉 Si es vídeo → miniatura con icono
+        else {
+            t = document.createElement("div");
+            t.className = "lightbox-thumb video-thumb";
+            t.innerHTML = `
+                <span class="material-symbols-outlined">play_circle</span>
+            `;
+        }
+
+        t.classList.add("lightbox-thumb");
+
+        // 👉 Abrir la miniatura sin cerrar el lightbox
+        t.onclick = (ev) => {
+            ev.stopPropagation();
+            openLightbox(idx);
+        };
+
+        thumbsBox.appendChild(t);
     }
-  }
+}
+
+
+
 
   lightbox.style.display = "flex";
 }
@@ -1678,3 +1704,11 @@ cargarSugerencias();
 
 });
 
+
+
+const btnSuggestions = document.getElementById("btnSuggestions");
+if (btnSuggestions) {
+    btnSuggestions.addEventListener("click", () => {
+        cargarSugerencias();
+    });
+}
