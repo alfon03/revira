@@ -230,16 +230,29 @@
     </footer>
 
     <!-- LIGHTBOX -->
-    <div id="lightbox" class="lightbox">
-        <div id="lightboxCounter"></div>
-        <span class="lightbox-close" id="lightboxClose">&times;</span>
+<div class="lightbox-content">
 
-        <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
-        <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+  <!-- Media wrapper (CLAVE) -->
+  <div class="lightbox-media-wrapper">
 
-        <img id="lightboxImg" style="display:none;">
-        <video id="lightboxVideo" style="display:none;" controls></video>
-    </div>
+  <img id="lightboxImg" class="lightbox-media" style="display:none;">
+  <video id="lightboxVideo" class="lightbox-media" style="display:none;" controls></video>
+
+  <button id="lightboxShare" class="lightbox-share"></button>
+
+  <div id="lightboxCounter"></div>
+
+</div>
+
+  <!-- Thumbs al lado derecho -->
+  <div id="lightboxThumbs"></div>
+
+  <!-- Nav -->
+  <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
+  <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+
+</div>
+
 
 
     <!-- JS -->

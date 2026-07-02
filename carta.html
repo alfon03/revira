@@ -350,12 +350,6 @@
         </div>
     </footer>
 
-    <!-- LIGHTBOX -->
-    <div class="lightbox" id="lightbox">
-        <span class="lightbox-close" id="lightboxClose" data-i18n="lightbox_close">&times;</span>
-        <img id="lightboxImg" src="">
-    </div>
-
     <div id="suggestionsModal" class="modal hidden">
 
         <div class="modal-content">
@@ -368,6 +362,7 @@
             </h2>
 
             <ul id="suggestionsList"></ul>
+            <div id="suggestionsPagination" class="modal-pagination"></div>
 
             <button class="modal-btn" id="closeModalBtn" data-i18n="close">
                 Continuar
@@ -419,17 +414,29 @@
 
     </div>
 
-    <div id="lightbox" class="lightbox">
-        <span class="lightbox-close" id="lightboxClose">&times;</span>
+<!-- LIGHTBOX -->
+<div class="lightbox-content">
 
-        <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
-        <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+  <!-- Media wrapper (CLAVE) -->
+  <div class="lightbox-media-wrapper">
 
-        <img id="lightboxImg" style="display:none;">
-        <video id="lightboxVideo" style="display:none;" controls></video>
+  <img id="lightboxImg" class="lightbox-media" style="display:none;">
+  <video id="lightboxVideo" class="lightbox-media" style="display:none;" controls></video>
 
-        <div id="lightboxCounter"></div>
-    </div>
+  <button id="lightboxShare" class="lightbox-share"></button>
+
+  <div id="lightboxCounter"></div>
+
+</div>
+
+  <!-- Thumbs al lado derecho -->
+  <div id="lightboxThumbs"></div>
+
+  <!-- Nav -->
+  <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
+  <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+
+</div>
 
 
 

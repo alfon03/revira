@@ -185,7 +185,7 @@
                 </p>
             </div>
 
-            
+
             <!-- Columna 2: Información -->
             <div class="footer-col">
                 <h3 data-i18n="footer_info_title">Información</h3>
@@ -224,16 +224,37 @@
 
     </footer>
 
+    <!-- LIGHTBOX -->
     <div id="lightbox" class="lightbox">
-        <span class="lightbox-close" id="lightboxClose">&times;</span>
 
-        <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
-        <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+        <div class="lightbox-content">
 
-        <img id="lightboxImg" style="display:none;">
-        <video id="lightboxVideo" style="display:none;" controls></video>
+            <!-- Header -->
+            <div class="lightbox-top">
+                <div id="lightboxTitle" class="lightbox-title"></div>
 
-        <div id="lightboxCounter"></div>
+                <button id="lightboxShare" class="lightbox-share">
+                    <span class="material-symbols-outlined">share</span>
+                </button>
+
+                <button class="lightbox-close" id="lightboxClose">&times;</button>
+            </div>
+
+            <!-- Media -->
+            <img id="lightboxImg" class="lightbox-media" style="display:none;">
+            <video id="lightboxVideo" class="lightbox-media" style="display:none;" controls></video>
+
+            <!-- Navigation -->
+            <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
+            <span class="lightbox-next" id="lightboxNext">&#10095;</span>
+
+            <!-- Thumbs -->
+            <div id="lightboxThumbs"></div>
+
+            <!-- Counter -->
+            <div id="lightboxCounter"></div>
+
+        </div>
     </div>
 
 

@@ -580,232 +580,278 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-//ampliar imagenes o videos
 
+// ============================================================
+// GLOBAL FUNCTIONS (FIX SCOPE ERROR)
+// ============================================================
+
+// estado global encapsulado
 let lightboxItems = [];
 let currentIndex = 0;
+let currentTitle = "";
 
-/* ============================================================
-   INDEXACIÓN
-============================================================ */
+let scale = 1;
+let startDistance = 0;
+let startX = 0;
 
-function updateLightboxItems() {
+// ============================================================
+// SAFE DOM GETTER
+// ============================================================
 
-    const nodes = document.querySelectorAll(
-        ".slide-item img, .slide-item video, " +
-        ".plato-carousel .carousel-item img, " +
-        ".plato-gallery .gallery-row img, " +
-        ".menu-item-img"  
-    );
+const $ = (id) => document.getElementById(id);
 
-    lightboxItems = Array.from(nodes).map(el => ({
-        src: el.currentSrc || el.src,
-        type: el.tagName.toLowerCase(),
-        node: el
-    }));
+// refs
+let lightbox, img, video, counter, titleBox;
+let nextBtn, prevBtn, closeBtn, thumbsBox, shareBtn, lightboxImg;
+
+// ============================================================
+// INIT DOM
+// ============================================================
+
+function initDOM() {
+
+  lightbox = $("lightbox");
+  img = $("lightboxImg");
+  video = $("lightboxVideo");
+  counter = $("lightboxCounter");
+  titleBox = $("lightboxTitle");
+
+  nextBtn = $("lightboxNext");
+  prevBtn = $("lightboxPrev");
+  closeBtn = $("lightboxClose");
+  thumbsBox = $("lightboxThumbs");
+  shareBtn = $("lightboxShare");
+
+  lightboxImg = $("lightboxImg");
+
+  if (!lightbox) return false;
+  return true;
 }
 
+// ============================================================
+// INDEX MEDIA (EXPOSED)
+// ============================================================
 
-/* ============================================================
-   OPEN LIGHTBOX
-============================================================ */
+function updateLightboxItems(context, title = "") {
+
+  currentTitle = title;
+
+  let nodes;
+
+  if (context) {
+    nodes = context.querySelectorAll("img, video");
+  } else {
+    nodes = document.querySelectorAll(
+      ".slide-item img, .slide-item video, " +
+      ".plato-carousel .carousel-item img, " +
+      ".plato-gallery .gallery-row img"
+    );
+  }
+
+  lightboxItems = Array.from(nodes).map(el => ({
+    src: el.currentSrc || el.src,
+    type: el.tagName.toLowerCase(),
+    node: el
+  }));
+}
+
+// 👉 IMPORTANTE: HACER GLOBAL
+window.updateLightboxItems = updateLightboxItems;
+
+// ============================================================
+// OPEN LIGHTBOX (GLOBAL SAFE)
+// ============================================================
 
 function openLightbox(index) {
 
-    const lightbox = document.getElementById("lightbox");
-    const img = document.getElementById("lightboxImg");
-    const video = document.getElementById("lightboxVideo");
-    const counter = document.getElementById("lightboxCounter");
+  if (!initDOM()) return;
 
-    if (!lightbox || !img || !video) return;
+  const item = lightboxItems[index];
+  if (!item) return;
 
-    const item = lightboxItems[index];
+  currentIndex = index;
 
-    if (!item) return;
+  if (lightboxItems.length <= 1) {
+    nextBtn.style.display = "none";
+    prevBtn.style.display = "none";
+  } else {
+    nextBtn.style.display = "flex";
+    prevBtn.style.display = "flex";
+  }
 
-    currentIndex = index;
+  if (titleBox) titleBox.textContent = currentTitle;
 
-    if (counter) {
-        counter.textContent =
-            `${index + 1} / ${lightboxItems.length}`;
+  if (counter) {
+    counter.textContent = `${index + 1} / ${lightboxItems.length}`;
+  }
+
+  img.style.display = "none";
+  video.style.display = "none";
+
+  img.style.opacity = 0;
+  video.style.opacity = 0;
+
+  scale = 1;
+  img.style.transform = "scale(1)";
+
+  if (item.type === "img") {
+    img.src = item.src;
+    img.style.display = "block";
+    setTimeout(() => img.style.opacity = 1, 50);
+  } else {
+    video.src = item.src;
+    video.style.display = "block";
+    video.play().catch(() => {});
+    setTimeout(() => video.style.opacity = 1, 50);
+  }
+
+  // thumbs
+  if (thumbsBox) {
+    thumbsBox.innerHTML = "";
+
+    for (let i = 1; i <= 3; i++) {
+
+      const idx = currentIndex + i;
+      const nextItem = lightboxItems[idx];
+
+      if (!nextItem) break;
+
+      const t = document.createElement("img");
+      t.src = nextItem.src;
+      t.className = "lightbox-thumb";
+
+      t.onclick = () => openLightbox(idx);
+
+      thumbsBox.appendChild(t);
     }
+  }
 
-    img.style.display = "none";
-
-    video.pause();
-    video.removeAttribute("src");
-    video.load();
-    video.style.display = "none";
-
-    /* =========================
-       IMAGEN
-    ========================= */
-
-    if (item.type === "img") {
-
-        img.src = item.src;
-        img.style.display = "block";
-    }
-
-    /* =========================
-       VIDEO
-    ========================= */
-
-    else if (item.type === "video") {
-
-        video.src = item.src;
-        video.muted = true;
-        video.playsInline = true;
-        video.loop = true;
-        video.preload = "metadata";
-
-        video.style.display = "block";
-
-        video.play().catch(() => { });
-    }
-
-    lightbox.style.display = "flex";
+  lightbox.style.display = "flex";
 }
 
-/* ============================================================
-   CLICK GLOBAL
-============================================================ */
+// 👉 IMPORTANTE: GLOBAL
+window.openLightbox = openLightbox;
+
+// ============================================================
+// CLICK OPEN
+// ============================================================
 
 document.addEventListener("click", e => {
 
-    const media = e.target.closest(
-        ".slide-item img, .slide-item video, " +
-        ".plato-carousel .carousel-item img, " +
-        ".plato-gallery .gallery-row img"
-    );
+  if (e.target.closest("#suggestionsModal")) return;
 
-    if (!media) return;
+  const media = e.target.closest(
+    ".slide-item img, .slide-item video, " +
+    ".plato-carousel .carousel-item img, " +
+    ".plato-gallery .gallery-row img"
+  );
 
-    // Actualiza por si los carruseles han cambiado
-    updateLightboxItems();
+  if (!media) return;
 
-    currentIndex = lightboxItems.findIndex(
-        item => item.node === media
-    );
+  const context = media.closest(".platos-section");
 
-    if (currentIndex === -1) return;
+  const sectionTitle = context
+    ? context.querySelector("h2, h1")?.textContent.trim() || ""
+    : "";
 
-    openLightbox(currentIndex);
+  updateLightboxItems(context, sectionTitle);
+
+  currentIndex = lightboxItems.findIndex(item => item.node === media);
+
+  openLightbox(currentIndex);
 });
 
-/* ============================================================
-   NAVEGACIÓN
-============================================================ */
+// ============================================================
+// NAVIGATION
+// ============================================================
 
-const nextBtn = document.getElementById("lightboxNext");
-const prevBtn = document.getElementById("lightboxPrev");
-const closeBtn = document.getElementById("lightboxClose");
-const lightbox = document.getElementById("lightbox");
+document.addEventListener("DOMContentLoaded", () => {
 
-if (nextBtn) {
+  function bindNavigation() {
 
-    nextBtn.onclick = () => {
-
-        if (!lightboxItems.length) return;
-
-        currentIndex =
-            (currentIndex + 1) % lightboxItems.length;
-
+    if (nextBtn) {
+      nextBtn.onclick = () => {
+        currentIndex = (currentIndex + 1) % lightboxItems.length;
         openLightbox(currentIndex);
-    };
-}
-
-if (prevBtn) {
-
-    prevBtn.onclick = () => {
-
-        if (!lightboxItems.length) return;
-
-        currentIndex =
-            (currentIndex - 1 + lightboxItems.length) %
-            lightboxItems.length;
-
-        openLightbox(currentIndex);
-    };
-}
-
-if (closeBtn) {
-    closeBtn.onclick = closeLightbox;
-}
-
-if (lightbox) {
-
-    lightbox.onclick = e => {
-
-        if (e.target.id === "lightbox") {
-            closeLightbox();
-        }
-    };
-}
-
-/* ============================================================
-   TECLADO
-============================================================ */
-
-document.addEventListener("keydown", e => {
-
-    if (!lightbox ||
-        lightbox.style.display !== "flex") {
-        return;
+      };
     }
 
-    if (e.key === "Escape") {
-        closeLightbox();
-    }
-
-    if (e.key === "ArrowRight" &&
-        lightboxItems.length) {
-
-        currentIndex =
-            (currentIndex + 1) % lightboxItems.length;
-
+    if (prevBtn) {
+      prevBtn.onclick = () => {
+        currentIndex = (currentIndex - 1 + lightboxItems.length) % lightboxItems.length;
         openLightbox(currentIndex);
+      };
     }
 
-    if (e.key === "ArrowLeft" &&
-        lightboxItems.length) {
-
-        currentIndex =
-            (currentIndex - 1 + lightboxItems.length) %
-            lightboxItems.length;
-
-        openLightbox(currentIndex);
+    if (closeBtn) {
+      closeBtn.onclick = closeLightbox;
     }
-});
 
-/* ============================================================
-   CLOSE
-============================================================ */
+    if (lightbox) {
+      lightbox.addEventListener("click", e => {
+        if (e.target.id === "lightbox") closeLightbox();
+      });
+    }
+  }
 
-function closeLightbox() {
+  function closeLightbox() {
 
-    const lightbox = document.getElementById("lightbox");
-    const img = document.getElementById("lightboxImg");
-    const video = document.getElementById("lightboxVideo");
-
-    if (!lightbox) return;
+    if (!initDOM()) return;
 
     lightbox.style.display = "none";
 
-    if (img) {
-        img.removeAttribute("src");
-    }
+    if (img) img.removeAttribute("src");
+    if (video) video.removeAttribute("src");
+  }
 
-    if (video) {
+  // SWIPE
+  function bindSwipe() {
 
-        video.pause();
+    if (!lightbox) return;
 
-        video.removeAttribute("src");
+    lightbox.addEventListener("touchstart", e => {
+      startX = e.touches[0].clientX;
+    });
 
-        video.load();
-    }
-}
+    lightbox.addEventListener("touchend", e => {
 
+      const diff = e.changedTouches[0].clientX - startX;
+
+      if (diff > 50 && prevBtn) prevBtn.onclick();
+      if (diff < -50 && nextBtn) nextBtn.onclick();
+    });
+  }
+
+  // SHARE
+  function bindShare() {
+
+    if (!shareBtn) return;
+
+    shareBtn.onclick = () => {
+
+      const item = lightboxItems[currentIndex];
+      if (!item) return;
+
+      if (navigator.share) {
+        navigator.share({
+          title: currentTitle,
+          text: "Mira este plato",
+          url: item.src
+        });
+      }
+    };
+  }
+
+  function init() {
+    if (!initDOM()) return;
+
+    bindNavigation();
+    bindSwipe();
+    bindShare();
+  }
+
+  init();
+});
 
 // cambio de idioma
 
@@ -1130,10 +1176,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function cargarSugerencias() {
 
+        console.log("ENTRA EN CARGAR SUGERENCIAS");
+
     const modal = document.getElementById("suggestionsModal");
+    if (!modal) return;
+
     const closeBtn = document.getElementById("closeModal");
     const closeBtnBottom = document.getElementById("closeModalBtn");
     const lista = modal.querySelector("ul");
+    const paginacion = document.getElementById("suggestionsPagination");
 
     const ruta = "img/platos/sugerencias/";
 
@@ -1146,9 +1197,6 @@ async function cargarSugerencias() {
 
         const li = document.createElement("li");
 
-        // ===========================
-        // IMAGEN (solo si existe)
-        // ===========================
         const imgs = item.imgs || (item.img ? [item.img] : []);
         const fullImgs = imgs.length ? imgs.map(i => ruta + i) : [];
 
@@ -1161,24 +1209,20 @@ async function cargarSugerencias() {
             li.appendChild(img);
         }
 
-        // Nombre visible
         const span = document.createElement("span");
         span.dataset.i18n = item.i18n_key;
         span.textContent = item.nombre;
 
-        // Título oculto
         const h3 = document.createElement("h3");
         h3.style.display = "none";
         h3.dataset.i18n = item.i18n_key;
         h3.textContent = item.nombre;
 
-        // Descripción oculta
         const p = document.createElement("p");
         p.style.display = "none";
         p.dataset.i18n = item.i18n_key + "_desc";
         p.textContent = item.descripcion || "";
 
-        // Alérgenos ocultos
         const alergenos = document.createElement("div");
         alergenos.className = "alergenos";
         alergenos.style.display = "none";
@@ -1189,13 +1233,11 @@ async function cargarSugerencias() {
             alergenos.appendChild(spanA);
         });
 
-        // Precios ocultos
         const precios = document.createElement("div");
         precios.className = "menu-item-prices";
         precios.style.display = "none";
 
         (item.precios || []).forEach(pre => {
-
             const spanP = document.createElement("span");
 
             if (pre.tipo) {
@@ -1216,17 +1258,93 @@ async function cargarSugerencias() {
         lista.appendChild(li);
     });
 
-    // Aplicar traducción después de crear todo
+    // Traducir textos
     await loadLanguage(localStorage.getItem("lang") || "es");
 
-    // abrir modal automáticamente
+    // ===============================
+    // PAGINACIÓN + SWIPE
+    // ===============================
+    let paginaActual = 0;
+    const porPagina = 4;
+
+    function mostrarPagina(n) {
+        paginaActual = n;
+
+        const items = lista.querySelectorAll("li");
+        const inicio = n * porPagina;
+        const fin = inicio + porPagina;
+
+        items.forEach((li, i) => {
+            li.style.display = (i >= inicio && i < fin) ? "flex" : "none";
+        });
+
+        crearDots();
+    }
+
+    function crearDots() {
+        const totalPaginas = Math.ceil(lista.children.length / porPagina);
+        paginacion.innerHTML = "";
+
+        for (let i = 0; i < totalPaginas; i++) {
+            const dot = document.createElement("div");
+            dot.className = "modal-dot" + (i === paginaActual ? " active" : "");
+            dot.onclick = () => mostrarPagina(i);
+            paginacion.appendChild(dot);
+        }
+    }
+
+    mostrarPagina(0);
+
+    let startX = 0;
+
+    modal.addEventListener("touchstart", e => {
+        startX = e.touches[0].clientX;
+    });
+
+    modal.addEventListener("touchend", e => {
+        const endX = e.changedTouches[0].clientX;
+        const diff = endX - startX;
+
+        const totalPaginas = Math.ceil(lista.children.length / porPagina);
+
+        if (diff > 50 && paginaActual > 0) {
+            mostrarPagina(paginaActual - 1);
+        }
+
+        if (diff < -50 && paginaActual < totalPaginas - 1) {
+            mostrarPagina(paginaActual + 1);
+        }
+    });
+
+    // ===============================
+    // ABRIR MODAL
+    // ===============================
     modal.style.display = "flex";
     requestAnimationFrame(() => modal.classList.add("show"));
-
     document.body.style.overflow = "hidden";
 
-    closeBtn.addEventListener("click", cerrarModal);
-    closeBtnBottom.addEventListener("click", cerrarModal);
+    // ===============================
+    // CIERRE
+    // ===============================
+    function cerrarModal() {
+        modal.classList.remove("show");
+        modal.classList.add("closing");
+
+        document.body.style.overflow = "";
+
+        setTimeout(() => {
+            modal.classList.remove("closing");
+            modal.style.display = "";
+        }, 300);
+    }
+
+    if (closeBtn) {
+        closeBtn.onclick = cerrarModal;
+    }
+
+    if (closeBtnBottom) {
+        closeBtnBottom.onclick = cerrarModal;
+    }
 
     modal.addEventListener("click", (e) => {
         if (e.target === modal) cerrarModal();
@@ -1236,6 +1354,7 @@ async function cargarSugerencias() {
         if (e.key === "Escape") cerrarModal();
     });
 }
+
 
 
 function cerrarModal() {
@@ -1500,17 +1619,30 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================
        LIGHTBOX DESDE EL MODAL
     ========================= */
-    modalImg.addEventListener("click", () => {
+modalImg.addEventListener("click", () => {
 
-        updateLightboxItems();
+    // Crear contenedor temporal SOLO con las imágenes del plato
+    const temp = document.createElement("div");
 
-        const index = lightboxItems.findIndex(
-            item => item.src === modalImg.src
-        );
-
-        if (index !== -1) {
-            openLightbox(index);
-        }
+    images.forEach(src => {
+        const img = document.createElement("img");
+        img.src = src;
+        temp.appendChild(img);
     });
 
+    const section = modal.closest(".platos-section");
+    const title = section ? section.querySelector("h2")?.textContent : "";
+
+    updateLightboxItems(temp, title);
+
+    const index = lightboxItems.findIndex(item => item.src === modalImg.src);
+    openLightbox(index);
 });
+
+console.log("VOY A LLAMAR");
+
+// <-- AÑADE ESTO
+cargarSugerencias();
+
+});
+
