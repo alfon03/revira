@@ -610,22 +610,22 @@ let nextBtn, prevBtn, closeBtn, thumbsBox, shareBtn, lightboxImg;
 
 function initDOM() {
 
-  lightbox = $("lightbox");
-  img = $("lightboxImg");
-  video = $("lightboxVideo");
-  counter = $("lightboxCounter");
-  titleBox = $("lightboxTitle");
+    lightbox = $("lightbox");
+    img = $("lightboxImg");
+    video = $("lightboxVideo");
+    counter = $("lightboxCounter");
+    titleBox = $("lightboxTitle");
 
-  nextBtn = $("lightboxNext");
-  prevBtn = $("lightboxPrev");
-  closeBtn = $("lightboxClose");
-  thumbsBox = $("lightboxThumbs");
-  shareBtn = $("lightboxShare");
+    nextBtn = $("lightboxNext");
+    prevBtn = $("lightboxPrev");
+    closeBtn = $("lightboxClose");
+    thumbsBox = $("lightboxThumbs");
+    shareBtn = $("lightboxShare");
 
-  lightboxImg = $("lightboxImg");
+    lightboxImg = $("lightboxImg");
 
-  if (!lightbox) return false;
-  return true;
+    if (!lightbox) return false;
+    return true;
 }
 
 // ============================================================
@@ -634,25 +634,25 @@ function initDOM() {
 
 function updateLightboxItems(context, title = "") {
 
-  currentTitle = title;
+    currentTitle = title;
 
-  let nodes;
+    let nodes;
 
-  if (context) {
-    nodes = context.querySelectorAll("img, video");
-  } else {
-    nodes = document.querySelectorAll(
-      ".slide-item img, .slide-item video, " +
-      ".plato-carousel .carousel-item img, " +
-      ".plato-gallery .gallery-row img"
-    );
-  }
+    if (context) {
+        nodes = context.querySelectorAll("img, video");
+    } else {
+        nodes = document.querySelectorAll(
+            ".slide-item img, .slide-item video, " +
+            ".plato-carousel .carousel-item img, " +
+            ".plato-gallery .gallery-row img"
+        );
+    }
 
-  lightboxItems = Array.from(nodes).map(el => ({
-    src: el.currentSrc || el.src,
-    type: el.tagName.toLowerCase(),
-    node: el
-  }));
+    lightboxItems = Array.from(nodes).map(el => ({
+        src: el.currentSrc || el.src,
+        type: el.tagName.toLowerCase(),
+        node: el
+    }));
 }
 
 // 👉 IMPORTANTE: HACER GLOBAL
@@ -666,95 +666,101 @@ function openLightbox(index) {
 
     document.body.classList.add("lightbox-open");
 
-  if (!initDOM()) return;
+    if (!initDOM()) return;
 
-  const item = lightboxItems[index];
-  if (!item) return;
+    const item = lightboxItems[index];
+    if (!item) return;
 
-  currentIndex = index;
+    currentIndex = index;
 
-  if (lightboxItems.length <= 1) {
-    nextBtn.style.display = "none";
-    prevBtn.style.display = "none";
-  } else {
-    nextBtn.style.display = "flex";
-    prevBtn.style.display = "flex";
-  }
+    if (lightboxItems.length <= 1) {
+        nextBtn.style.display = "none";
+        prevBtn.style.display = "none";
+    } else {
+        nextBtn.style.display = "flex";
+        prevBtn.style.display = "flex";
+    }
 
-  if (titleBox) titleBox.textContent = currentTitle;
+    if (titleBox) titleBox.textContent = currentTitle;
 
-  if (counter) {
-    counter.textContent = `${index + 1} / ${lightboxItems.length}`;
-  }
+    if (counter) {
+        counter.textContent = `${index + 1} / ${lightboxItems.length}`;
+    }
 
-  img.style.display = "none";
-  video.style.display = "none";
+    img.style.display = "none";
+    video.style.display = "none";
 
-  img.style.opacity = 0;
-  video.style.opacity = 0;
+    img.style.opacity = 0;
+    video.style.opacity = 0;
 
-  scale = 1;
-  img.style.transform = "scale(1)";
+    scale = 1;
+    img.style.transform = "scale(1)";
 
-  if (item.type === "img") {
-    img.src = item.src;
-    img.style.display = "block";
-    setTimeout(() => img.style.opacity = 1, 50);
-  } else {
-    video.src = item.src;
-video.muted = true;          // 🔇 SIN SONIDO
-video.playsInline = true;    // 📱 Evita pantalla completa en iPhone
-video.autoplay = true;       // ▶️ Reproduce sin interacción
-video.style.display = "block";
-video.play().catch(() => {});
+    if (item.type === "img") {
+        img.src = item.src;
+        img.style.display = "block";
+        setTimeout(() => img.style.opacity = 1, 50);
+    } else {
 
-    setTimeout(() => video.style.opacity = 1, 50);
-  }
+        video.src = item.src;
+        video.muted = true;
+        video.setAttribute("muted", "");
+        video.setAttribute("disableRemotePlayback", "");
+        video.playsInline = true;
+        video.autoplay = true;
+        video.controls = false;
+        video.loop = true;
+        video.preload = "metadata";
 
-  // thumbs
-if (thumbsBox) {
-    thumbsBox.innerHTML = "";
+        video.play().catch(() => { });
 
-    for (let i = 1; i <= 3; i++) {
+        setTimeout(() => video.style.opacity = 1, 50);
+    }
 
-        const idx = currentIndex + i;
-        const nextItem = lightboxItems[idx];
+    // thumbs
+    if (thumbsBox) {
+        thumbsBox.innerHTML = "";
 
-        if (!nextItem) break;
+        for (let i = 1; i <= 3; i++) {
 
-        let t;
+            const idx = currentIndex + i;
+            const nextItem = lightboxItems[idx];
 
-        // 👉 Si es imagen → miniatura normal
-        if (nextItem.type === "img") {
-            t = document.createElement("img");
-            t.src = nextItem.src;
-        }
+            if (!nextItem) break;
 
-        // 👉 Si es vídeo → miniatura con icono
-        else {
-            t = document.createElement("div");
-            t.className = "lightbox-thumb video-thumb";
-            t.innerHTML = `
+            let t;
+
+            // 👉 Si es imagen → miniatura normal
+            if (nextItem.type === "img") {
+                t = document.createElement("img");
+                t.src = nextItem.src;
+            }
+
+            // 👉 Si es vídeo → miniatura con icono
+            else {
+                t = document.createElement("div");
+                t.className = "lightbox-thumb video-thumb";
+                t.innerHTML = `
                 <span class="material-symbols-outlined">play_circle</span>
             `;
+            }
+
+            t.classList.add("lightbox-thumb");
+
+            // 👉 Abrir la miniatura sin cerrar el lightbox
+            t.onclick = (ev) => {
+                ev.stopPropagation();
+                openLightbox(idx);
+            };
+
+            thumbsBox.appendChild(t);
         }
-
-        t.classList.add("lightbox-thumb");
-
-        // 👉 Abrir la miniatura sin cerrar el lightbox
-        t.onclick = (ev) => {
-            ev.stopPropagation();
-            openLightbox(idx);
-        };
-
-        thumbsBox.appendChild(t);
     }
-}
 
 
 
 
-  lightbox.style.display = "flex";
+    lightbox.style.display = "flex";
 }
 
 // 👉 IMPORTANTE: GLOBAL
@@ -766,50 +772,50 @@ window.openLightbox = openLightbox;
 
 document.addEventListener("click", e => {
 
-  if (e.target.closest("#suggestionsModal")) return;
+    if (e.target.closest("#suggestionsModal")) return;
 
-  const media = e.target.closest(
-    ".slide-item img, .slide-item video, " +
-    ".plato-carousel .carousel-item img, " +
-    ".plato-gallery .gallery-row img"
-  );
+    const media = e.target.closest(
+        ".slide-item img, .slide-item video, " +
+        ".plato-carousel .carousel-item img, " +
+        ".plato-gallery .gallery-row img"
+    );
 
-  if (!media) return;
+    if (!media) return;
 
-  // 1. Buscar contexto en platos-section
-let context = media.closest(".platos-section");
+    // 1. Buscar contexto en platos-section
+    let context = media.closest(".platos-section");
 
-// 2. Si no está en platos-section, buscar en carta-grid
-if (!context) {
-    context = media.closest(".carta-grid section");
-}
+    // 2. Si no está en platos-section, buscar en carta-grid
+    if (!context) {
+        context = media.closest(".carta-grid section");
+    }
 
-// 3. Si viene del modal de sugerencias
-if (!context && media.closest("#suggestionsModal")) {
-    context = media.closest("#suggestionsModal");
-}
+    // 3. Si viene del modal de sugerencias
+    if (!context && media.closest("#suggestionsModal")) {
+        context = media.closest("#suggestionsModal");
+    }
 
-// 4. Obtener título según el tipo de contexto
-let sectionTitle = "";
+    // 4. Obtener título según el tipo de contexto
+    let sectionTitle = "";
 
-if (context) {
+    if (context) {
 
-    // Prioridad: h2 → h1 → span[data-i18n] → suggestions-title
-    sectionTitle =
-        context.querySelector("h2")?.textContent.trim() ||
-        context.querySelector("h1")?.textContent.trim() ||
-        context.querySelector("[data-i18n]")?.textContent.trim() ||
-        context.querySelector(".suggestions-title span[data-i18n]")?.textContent.trim() ||
-        "";
-}
+        // Prioridad: h2 → h1 → span[data-i18n] → suggestions-title
+        sectionTitle =
+            context.querySelector("h2")?.textContent.trim() ||
+            context.querySelector("h1")?.textContent.trim() ||
+            context.querySelector("[data-i18n]")?.textContent.trim() ||
+            context.querySelector(".suggestions-title span[data-i18n]")?.textContent.trim() ||
+            "";
+    }
 
-// Pasar título al lightbox
-updateLightboxItems(context, sectionTitle);
+    // Pasar título al lightbox
+    updateLightboxItems(context, sectionTitle);
 
 
-  currentIndex = lightboxItems.findIndex(item => item.node === media);
+    currentIndex = lightboxItems.findIndex(item => item.node === media);
 
-  openLightbox(currentIndex);
+    openLightbox(currentIndex);
 });
 
 // ============================================================
@@ -818,99 +824,99 @@ updateLightboxItems(context, sectionTitle);
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  function bindNavigation() {
+    function bindNavigation() {
 
-    if (nextBtn) {
-      nextBtn.onclick = () => {
-        currentIndex = (currentIndex + 1) % lightboxItems.length;
-        openLightbox(currentIndex);
-      };
+        if (nextBtn) {
+            nextBtn.onclick = () => {
+                currentIndex = (currentIndex + 1) % lightboxItems.length;
+                openLightbox(currentIndex);
+            };
+        }
+
+        if (prevBtn) {
+            prevBtn.onclick = () => {
+                currentIndex = (currentIndex - 1 + lightboxItems.length) % lightboxItems.length;
+                openLightbox(currentIndex);
+            };
+        }
+
+        if (closeBtn) {
+            closeBtn.onclick = closeLightbox;
+        }
+
+        if (lightbox) {
+            lightbox.addEventListener("click", e => {
+
+                const content = document.querySelector(".lightbox-content");
+
+                // Si el clic NO está dentro del contenido → cerrar
+                if (!content.contains(e.target)) {
+                    closeLightbox();
+                }
+            });
+        }
+
     }
 
-    if (prevBtn) {
-      prevBtn.onclick = () => {
-        currentIndex = (currentIndex - 1 + lightboxItems.length) % lightboxItems.length;
-        openLightbox(currentIndex);
-      };
+    function closeLightbox() {
+
+        document.body.classList.remove("lightbox-open");
+
+        if (!initDOM()) return;
+
+        lightbox.style.display = "none";
+
+        if (img) img.removeAttribute("src");
+        if (video) video.removeAttribute("src");
     }
 
-    if (closeBtn) {
-      closeBtn.onclick = closeLightbox;
-    }
+    // SWIPE
+    function bindSwipe() {
 
-    if (lightbox) {
-  lightbox.addEventListener("click", e => {
+        if (!lightbox) return;
 
-    const content = document.querySelector(".lightbox-content");
-
-    // Si el clic NO está dentro del contenido → cerrar
-    if (!content.contains(e.target)) {
-      closeLightbox();
-    }
-  });
-}
-
-  }
-
-  function closeLightbox() {
-
-    document.body.classList.remove("lightbox-open");
-
-    if (!initDOM()) return;
-
-    lightbox.style.display = "none";
-
-    if (img) img.removeAttribute("src");
-    if (video) video.removeAttribute("src");
-  }
-
-  // SWIPE
-  function bindSwipe() {
-
-    if (!lightbox) return;
-
-    lightbox.addEventListener("touchstart", e => {
-      startX = e.touches[0].clientX;
-    });
-
-    lightbox.addEventListener("touchend", e => {
-
-      const diff = e.changedTouches[0].clientX - startX;
-
-      if (diff > 50 && prevBtn) prevBtn.onclick();
-      if (diff < -50 && nextBtn) nextBtn.onclick();
-    });
-  }
-
-  // SHARE
-  function bindShare() {
-
-    if (!shareBtn) return;
-
-    shareBtn.onclick = () => {
-
-      const item = lightboxItems[currentIndex];
-      if (!item) return;
-
-      if (navigator.share) {
-        navigator.share({
-          title: currentTitle,
-          text: "Mira este plato",
-          url: item.src
+        lightbox.addEventListener("touchstart", e => {
+            startX = e.touches[0].clientX;
         });
-      }
-    };
-  }
 
-  function init() {
-    if (!initDOM()) return;
+        lightbox.addEventListener("touchend", e => {
 
-    bindNavigation();
-    bindSwipe();
-    bindShare();
-  }
+            const diff = e.changedTouches[0].clientX - startX;
 
-  init();
+            if (diff > 50 && prevBtn) prevBtn.onclick();
+            if (diff < -50 && nextBtn) nextBtn.onclick();
+        });
+    }
+
+    // SHARE
+    function bindShare() {
+
+        if (!shareBtn) return;
+
+        shareBtn.onclick = () => {
+
+            const item = lightboxItems[currentIndex];
+            if (!item) return;
+
+            if (navigator.share) {
+                navigator.share({
+                    title: currentTitle,
+                    text: "Mira este plato",
+                    url: item.src
+                });
+            }
+        };
+    }
+
+    function init() {
+        if (!initDOM()) return;
+
+        bindNavigation();
+        bindSwipe();
+        bindShare();
+    }
+
+    init();
 });
 
 // cambio de idioma
@@ -1680,27 +1686,27 @@ document.addEventListener("DOMContentLoaded", () => {
     /* =========================
        LIGHTBOX DESDE EL MODAL
     ========================= */
-modalImg.addEventListener("click", () => {
+    modalImg.addEventListener("click", () => {
 
-    // Crear contenedor temporal SOLO con las imágenes del plato
-    const temp = document.createElement("div");
+        // Crear contenedor temporal SOLO con las imágenes del plato
+        const temp = document.createElement("div");
 
-    images.forEach(src => {
-        const img = document.createElement("img");
-        img.src = src;
-        temp.appendChild(img);
+        images.forEach(src => {
+            const img = document.createElement("img");
+            img.src = src;
+            temp.appendChild(img);
+        });
+
+        const title = lastSectionTitle;
+
+        updateLightboxItems(temp, title);
+
+        const index = lightboxItems.findIndex(item => item.src === modalImg.src);
+        openLightbox(index);
     });
 
-   const title = lastSectionTitle;
-
-    updateLightboxItems(temp, title);
-
-    const index = lightboxItems.findIndex(item => item.src === modalImg.src);
-    openLightbox(index);
-});
-
-// <-- AÑADE ESTO
-cargarSugerencias();
+    // <-- AÑADE ESTO
+    cargarSugerencias();
 
 });
 

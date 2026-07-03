@@ -890,6 +890,11 @@ body.lightbox-open #btnTop {
   border-radius: 8px;
   background: rgba(0,0,0,.35);
   backdrop-filter: blur(6px);
+
+  max-width: 90%;
+  text-align: center;
+  word-wrap: break-word;
+  white-space: normal;
 }
 
 /* SHARE BUTTON (correct position) */
@@ -1068,7 +1073,9 @@ body.lightbox-open #btnTop {
     left: 50%;
     transform: translateX(-50%);
     right: auto;
-    text-align: center;
+    font-size: 1rem;
+    padding: 4px 10px;
+    max-width: 80%;
   }
 }
 
