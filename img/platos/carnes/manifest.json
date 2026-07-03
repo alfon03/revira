@@ -3,7 +3,7 @@
     "i18n_key": "dish_solomillo_revira",
     "nombre": "Solomillo a la Revira",
     "descripcion": "Solomillo con salsa de nata, cebolla y trufa. Una de nuestras especialidades.",
-    "imgs": ["3.png","9.png"],
+    "imgs": ["3.webp","9.webp"],
     "alergenos": ["lacteos"],
     "precios": [
       { "cantidad": "4,50 €", "tipo": "tapa" },
@@ -14,7 +14,7 @@
     "i18n_key": "dish_solomillo_whisky",
     "nombre": "Solomillo al Whisky",
     "descripcion": "Solomillo en salsa de ajo y whisky.",
-    "imgs": ["4.png","12.png"],
+    "imgs": ["4.webp","12.webp"],
     "alergenos": [],
     "precios": [
       { "cantidad": "4,50 €", "tipo": "tapa" },
@@ -25,7 +25,7 @@
     "i18n_key": "dish_solomillo_pimienta",
     "nombre": "Solomillo a la Pimienta",
     "descripcion": "Solomillo con salsa cremosa de pimienta.",
-    "imgs": ["14.png"],
+    "imgs": ["14.webp"],
     "alergenos": ["lacteos"],
     "precios": [
       { "cantidad": "4,50 €", "tipo": "tapa" },
@@ -36,7 +36,7 @@
     "i18n_key": "dish_solomillo_roquefort",
     "nombre": "Solomillo al Roquefort",
     "descripcion": "Solomillo con salsa de queso roquefort.",
-    "imgs": ["10.png","7.png"],
+    "imgs": ["10.webp","7.webp"],
     "alergenos": ["lacteos"],
     "precios": [
       { "cantidad": "4,50 €", "tipo": "tapa" },
@@ -47,7 +47,7 @@
     "i18n_key": "dish_hamburguesa_angus",
     "nombre": "Hamburguesa Angus",
     "descripcion": "",
-    "imgs": ["15.png"],
+    "imgs": ["15.webp"],
     "alergenos": [],
     "precios": [
       { "cantidad": "14,00 €", "tipo": "" }
@@ -57,7 +57,7 @@
     "i18n_key": "dish_lagartito",
     "nombre": "Lagartito ibérico",
     "descripcion": "Lagartito ibérico a la plancha, jugoso y con sabor intenso.",
-    "img": "6.png",
+    "img": "6.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "15,00 €", "tipo": "" }
@@ -67,7 +67,7 @@
     "i18n_key": "dish_presa_iberica",
     "nombre": "Presa ibérica",
     "descripcion": "Presa ibérica a la plancha, tierna y muy sabrosa.",
-    "img": "8.png",
+    "img": "8.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "17,00 €", "tipo": "" }
@@ -77,7 +77,7 @@
     "i18n_key": "dish_pechuga",
     "nombre": "Pechuga de pollo a la plancha",
     "descripcion": "",
-    "img": "1.png",
+    "img": "1.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "6,50 €", "tipo": "" }
@@ -87,7 +87,7 @@
     "i18n_key": "dish_pollo_frito",
     "nombre": "Pollo frito",
     "descripcion": "",
-    "imgs": ["5.png","13.png"],
+    "imgs": ["5.webp","13.webp"],
     "alergenos": [],
     "precios": [
       { "cantidad": "5,00 €", "tipo": "" }

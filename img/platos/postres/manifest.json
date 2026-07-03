@@ -3,7 +3,7 @@
     "i18n_key": "dish_tarta_abuela",
     "nombre": "Tarta de la Abuela",
     "descripcion": "",
-    "img": "1.png",
+    "img": "1.webp",
     "tipo": "unico",
     "alergenos": ["gluten", "lacteos", "soja"],
     "precios": [
@@ -14,7 +14,7 @@
     "i18n_key": "dish_tarta_queso",
     "nombre": "Tarta de Queso",
     "descripcion": "",
-    "img": "2.png",
+    "img": "2.webp",
     "tipo": "unico",
     "alergenos": ["gluten", "lacteos", "huevo"],
     "precios": [

@@ -1,10 +1,10 @@
 [
-  { "type": "image", "src": "img/platos/panes/1.png" },
-  { "type": "image", "src": "img/platos/panes/2.png" },
-  { "type": "image", "src": "img/platos/panes/3.png" },
-  { "type": "image", "src": "img/platos/panes/4.png" },
-  { "type": "image", "src": "img/platos/panes/6.png" },
-  { "type": "image", "src": "img/platos/panes/7.png" },
-  { "type": "image", "src": "img/platos/panes/8.png" },
-  { "type": "image", "src": "img/platos/panes/9.png" }
+  { "type": "image", "src": "img/platos/panes/1.webp" },
+  { "type": "image", "src": "img/platos/panes/2.webp" },
+  { "type": "image", "src": "img/platos/panes/3.webp" },
+  { "type": "image", "src": "img/platos/panes/4.webp" },
+  { "type": "image", "src": "img/platos/panes/6.webp" },
+  { "type": "image", "src": "img/platos/panes/7.webp" },
+  { "type": "image", "src": "img/platos/panes/8.webp" },
+  { "type": "image", "src": "img/platos/panes/9.webp" }
 ]

@@ -1,10 +1,10 @@
 [
-  { "type": "image", "src": "img/platos/peques/1.png" },
-  { "type": "image", "src": "img/platos/peques/2.png" },
-  { "type": "image", "src": "img/platos/peques/3.png" },
-  { "type": "image", "src": "img/platos/peques/4.png" },
-  { "type": "image", "src": "img/platos/peques/5.png" },
-  { "type": "image", "src": "img/platos/peques/6.png" },
-    { "type": "image", "src": "img/platos/peques/7.png" }
+  { "type": "image", "src": "img/platos/peques/1.webp" },
+  { "type": "image", "src": "img/platos/peques/2.webp" },
+  { "type": "image", "src": "img/platos/peques/3.webp" },
+  { "type": "image", "src": "img/platos/peques/4.webp" },
+  { "type": "image", "src": "img/platos/peques/5.webp" },
+  { "type": "image", "src": "img/platos/peques/6.webp" },
+    { "type": "image", "src": "img/platos/peques/7.webp" }
 
 ]

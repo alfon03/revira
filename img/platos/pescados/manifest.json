@@ -3,7 +3,7 @@
     "i18n_key": "dish_chocos",
     "nombre": "Cartucho de chocos",
     "descripcion": ".",
-    "img": "3.png",
+    "img": "3.webp",
     "alergenos": ["gluten", "huevo", "moluscos"],
     "precios": [
       { "cantidad": "9,00 €", "tipo": "" }
@@ -13,7 +13,7 @@
     "i18n_key": "dish_calamares",
     "nombre": "Cartucho de calamares",
     "descripcion": "",
-    "img": "4.png",
+    "img": "4.webp",
     "alergenos": ["gluten", "moluscos"],
     "precios": [
       { "cantidad": "8,00 €", "tipo": "" }
@@ -23,7 +23,7 @@
     "i18n_key": "dish_bacalao",
     "nombre": "Cartucho de bacalao frito",
     "descripcion": "",
-    "img": "2.png",
+    "img": "2.webp",
     "alergenos": ["gluten", "pescado"],
     "precios": [
       { "cantidad": "7,00 €", "tipo": "" }
@@ -33,7 +33,7 @@
     "i18n_key": "dish_twister",
     "nombre": "Twister de langostino",
     "descripcion": "Langostino crujiente envuelto en masa fina.",
-    "img": "1.png",
+    "img": "1.webp",
     "alergenos": ["gluten", "crustaceo"],
     "precios": [
       { "cantidad": "5,50 €", "tipo": "" }
@@ -44,7 +44,7 @@
     "nombre": "Pavía de gambón",
     "descripcion": "Gambón en rebozado tradicional tipo pavía.",
     "alergenos": ["gluten", "crustaceo"],
-    "img": "6.png",
+    "img": "6.webp",
     "precios": [
       { "cantidad": "7,00 €", "tipo": "" }
     ]
@@ -53,7 +53,7 @@
     "i18n_key": "dish_gambas_ajillo",
     "nombre": "Gambas al ajillo",
     "descripcion": "Gambas salteadas con ajo y aceite caliente.",
-    "img": "7.png",
+    "img": "7.webp",
     "alergenos": ["crustaceo"],
     "precios": [
       { "cantidad": "11,00 €", "tipo": "" }

@@ -4,7 +4,7 @@
     "nombre": "Tomate con Caballa",
     "descripcion": "Tomate fresco con caballa y aceite de oliva.",
     "imgs": [
-      "9.png"
+      "9.webp"
     ],
     "alergenos": [
       "pescado"
@@ -21,7 +21,7 @@
     "nombre": "Delicias de Queso Viejo",
     "descripcion": "Crujientes bolitas de queso viejo fundido.",
     "imgs": [
-      "10.png"
+      "10.webp"
     ],
     "alergenos": [
       "lacteos",
@@ -40,7 +40,7 @@
     "nombre": "Buñuelos de Marisco",
     "descripcion": "",
     "imgs": [
-      "7.png"
+      "7.webp"
     ],
     "alergenos": [
       "lacteos",
@@ -59,7 +59,7 @@
     "nombre": "Tortilla de Camarón",
     "descripcion": "",
     "imgs": [
-      "11.png"
+      "11.webp"
     ],
     "alergenos": [
       "pescado",
@@ -79,7 +79,7 @@
     "nombre": "Rulo de Cabra Frito",
     "descripcion": "Rulo de cabra empanado y frito, acompañado de mermelada.",
     "imgs": [
-      "4.png"
+      "4.webp"
     ],
     "alergenos": [
       "lacteos",
@@ -98,7 +98,7 @@
     "nombre": "Boquerones Fritos",
     "descripcion": "",
     "imgs": [
-      "5.png"
+      "5.webp"
     ],
     "alergenos": [
       "pescado",
@@ -116,7 +116,7 @@
     "nombre": "Patatas cuatro Pecados",
     "descripcion": "Patatas con queso nata, queso chedar, bacon y queso viejo.",
     "imgs": [
-      "12.png"
+      "12.webp"
     ],
     "alergenos": ["lacteos", "sulfitos"],
     "precios": [
@@ -131,9 +131,9 @@
     "nombre": "Chipirón Plancha o Frito",
     "descripcion": "Patatas con queso nata, queso chedar, bacon y queso viejo.",
     "imgs": [
-      "13.png",
-      "14.png",
-      "15.png"
+      "13.webp",
+      "14.webp",
+      "15.webp"
     ],
     "alergenos": ["moluscos","gluten","sulfitos"],
     "precios": [

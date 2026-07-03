@@ -3,7 +3,7 @@
     "i18n_key": "wine_grabiela",
     "nombre": "Grabiela (Manzanilla)",
     "descripcion": "",
-    "img": "1.png",
+    "img": "1.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "2,50 €", "tipo": "cata" },
@@ -15,7 +15,7 @@
     "i18n_key": "wine_labraz",
     "nombre": "Labraz (Rioja)",
     "descripcion": "",
-    "img": "2.png",
+    "img": "2.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "3,00 €", "tipo": "copa" },
@@ -26,7 +26,7 @@
     "i18n_key": "wine_cyatho",
     "nombre": "Cyatho (Verdejo)",
     "descripcion": "",
-    "img": "3.png",
+    "img": "3.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "3,00 €", "tipo": "copa" },
@@ -37,7 +37,7 @@
     "i18n_key": "wine_fya",
     "nombre": "FYA (Blanco Semi-Dulce)",
     "descripcion": "",
-    "img": "4.png",
+    "img": "4.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "3,00 €", "tipo": "copa" },
@@ -48,7 +48,7 @@
     "i18n_key": "wine_vino_dulce",
     "nombre": "Vino dulce (Osborne)",
     "descripcion": "",
-    "img": "5.png",
+    "img": "5.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "3,00 €", "tipo": "cata" },
@@ -60,7 +60,7 @@
     "i18n_key": "wine_mil_besos",
     "nombre": "Mil Besos (Frizzante)",
     "descripcion": "",
-    "img": "6.png",
+    "img": "6.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "3,00 €", "tipo": "copa" },
@@ -71,7 +71,7 @@
     "i18n_key": "wine_pierola",
     "nombre": "Fernández Píerola (Rioja)",
     "descripcion": "",
-    "img": "7.png",
+    "img": "7.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "3,50 €", "tipo": "copa" },
@@ -82,7 +82,7 @@
     "i18n_key": "wine_traslascuestas_roble",
     "nombre": "Traslascuestas Roble (Ribera del Duero)",
     "descripcion": "",
-    "img": "8.png",
+    "img": "8.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "3,50 €", "tipo": "copa" },
@@ -93,7 +93,7 @@
     "i18n_key": "wine_traslascuestas_crianza",
     "nombre": "Traslascuestas Crianza (Ribera del Duero)",
     "descripcion": "",
-    "img": "9.png",
+    "img": "9.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "25 €", "tipo": "botella" }
@@ -103,7 +103,7 @@
     "i18n_key": "wine_carramimbre",
     "nombre": "Carramimbre (Ribera del Duero)",
     "descripcion": "",
-    "img": "10.png",
+    "img": "10.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "3,80 €", "tipo": "copa" },
@@ -114,7 +114,7 @@
     "i18n_key": "wine_ramon_bilbao",
     "nombre": "Ramón Bilbao (Rioja)",
     "descripcion": "",
-    "img": "11.png",
+    "img": "11.webp",
     "alergenos": [],
     "precios": [
       { "cantidad": "3,50 €", "tipo": "copa" },

@@ -2409,7 +2409,7 @@ body.light-mode .allergen-note {
   background:
     linear-gradient(rgba(0, 0, 0, .55),
       rgba(0, 0, 0, .65)),
-    url("img/platos/chacinas/1.png");
+    url("img/platos/chacinas/1.webp");
 
   background-size: cover;
   background-position: center;

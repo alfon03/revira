@@ -1,13 +1,13 @@
 [
-  { "type": "image", "src": "img/platos/chacinas/1.png" },
-  { "type": "image", "src": "img/platos/chacinas/2.png" },
-  { "type": "image", "src": "img/platos/chacinas/3.png" },
-  { "type": "image", "src": "img/platos/chacinas/4.png" },
-  { "type": "image", "src": "img/platos/chacinas/5.png" },
-  { "type": "image", "src": "img/platos/chacinas/6.png" },
-  { "type": "image", "src": "img/platos/chacinas/7.png" },
-    { "type": "image", "src": "img/platos/chacinas/8.png" },
-     { "type": "image", "src": "img/platos/chacinas/9.png" },
-    { "type": "image", "src": "img/platos/chacinas/10.png" }
+  { "type": "image", "src": "img/platos/chacinas/1.webp" },
+  { "type": "image", "src": "img/platos/chacinas/2.webp" },
+  { "type": "image", "src": "img/platos/chacinas/3.webp" },
+  { "type": "image", "src": "img/platos/chacinas/4.webp" },
+  { "type": "image", "src": "img/platos/chacinas/5.webp" },
+  { "type": "image", "src": "img/platos/chacinas/6.webp" },
+  { "type": "image", "src": "img/platos/chacinas/7.webp" },
+    { "type": "image", "src": "img/platos/chacinas/8.webp" },
+     { "type": "image", "src": "img/platos/chacinas/9.webp" },
+    { "type": "image", "src": "img/platos/chacinas/10.webp" }
 
 ]

@@ -3,7 +3,7 @@
     "i18n_key": "dish_hamburguesa_pollo",
     "nombre": "Hamburguesa pollo",
     "descripcion": "Hamburguesa de pollo con pan suave, ideal para los peques.",
-    "img": "1.png",
+    "img": "1.webp",
     "alergenos": ["gluten"],
     "precios": [
       { "cantidad": "5,00 €", "tipo": "" }
@@ -13,7 +13,7 @@
     "i18n_key": "dish_lagrimitas",
     "nombre": "Lagrimitas",
     "descripcion": "Tiras de pollo crujientes y muy jugosas.",
-    "imgs": ["3.png","5.png"],
+    "imgs": ["3.webp","5.webp"],
     "alergenos": ["gluten"],
     "precios": [
       { "cantidad": "4,00 €", "tipo": "tapa" },
@@ -24,7 +24,7 @@
     "i18n_key": "dish_nuggets",
     "nombre": "Nuggets",
     "descripcion": "",
-    "imgs": ["2.png","7.png"],
+    "imgs": ["2.webp","7.webp"],
     "alergenos": ["gluten"],
     "precios": [
       { "cantidad": "4,00 €", "tipo": "tapa" },
@@ -35,7 +35,7 @@
     "i18n_key": "dish_perrito",
     "nombre": "Perrito caliente",
     "descripcion": "",
-    "img": "4.png",
+    "img": "4.webp",
     "alergenos": ["gluten"],
     "featured": true,
     "precios": [
