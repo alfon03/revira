@@ -1,226 +1,67 @@
 [
-    {
-        "type": "image",
-        "src": "img/carrusel/1.png"
-    },
-      {
-        "type": "image",
-        "src": "img/carrusel/1.jpeg"
-    },
-    {
-        "type": "video",
-        "src": "img/carrusel/1.mp4"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/2.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/2.jpeg"
-    },
-    {
-        "type": "video",
-        "src": "img/carrusel/2.mp4"
-    },
-    {
-        "type": "video",
-        "src": "img/carrusel/3.mp4"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/3.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/3.jpeg"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/4.jpeg"
-    },
-    {
-        "type": "video",
-        "src": "img/carrusel/4.mp4"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/5.png"
-    },
-    {
-        "type": "video",
-        "src": "img/carrusel/5.mp4"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/6.png"
-    },
-    {
-        "type": "video",
-        "src": "img/carrusel/6.mp4"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/7.jpeg"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/8.png"
-    },
-    {
-        "type": "video",
-        "src": "img/carrusel/8.mp4"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/9.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/10.png"
-    },
-    {
-        "type": "video",
-        "src": "img/carrusel/10.mp4"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/11.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/12.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/13.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/14.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/15.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/16.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/17.png"
-    },
-    {
-        "type": "video",
-        "src": "img/carrusel/17.mp4"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/18.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/19.jpg"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/20.png"
-    },
-    {
-        "type": "video",
-        "src": "img/carrusel/21.mp4"
-    },
-    {
-        "type": "video",
-        "src": "img/carrusel/22.mp4"
-    },
-    {
-        "type": "video",
-        "src": "img/carrusel/24.mp4"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/25.jpg"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/26.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/27.jpeg"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/28.jpeg"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/29.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/30.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/31.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/32.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/33.jpeg"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/34.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/35.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/36.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/37.jpeg"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/38.jpeg"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/39.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/40.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/41.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/42.png"
-    },
-    {
-        "type": "image",
-        "src": "img/carrusel/43.jpeg"
-    },
-     {
-        "type": "image",
-        "src": "img/carrusel/43.png"
-    },
-     {
-        "type": "image",
-        "src": "img/carrusel/44.png"
-    }
+    { "type": "image", "src": "img/carrusel/1.webp" },
+    { "type": "video", "src": "img/carrusel/1.mp4" },
+
+    { "type": "image", "src": "img/carrusel/2.webp" },
+    { "type": "video", "src": "img/carrusel/2.mp4" },
+
+    { "type": "video", "src": "img/carrusel/3.mp4" },
+    { "type": "image", "src": "img/carrusel/3.webp" },
+
+    { "type": "image", "src": "img/carrusel/4.webp" },
+    { "type": "video", "src": "img/carrusel/4.mp4" },
+
+    { "type": "image", "src": "img/carrusel/5.webp" },
+    { "type": "video", "src": "img/carrusel/5.mp4" },
+
+    { "type": "image", "src": "img/carrusel/6.webp" },
+    { "type": "video", "src": "img/carrusel/6.mp4" },
+
+    { "type": "image", "src": "img/carrusel/7.webp" },
+
+    { "type": "image", "src": "img/carrusel/8.webp" },
+    { "type": "video", "src": "img/carrusel/8.mp4" },
+
+    { "type": "image", "src": "img/carrusel/9.webp" },
+
+    { "type": "image", "src": "img/carrusel/10.webp" },
+    { "type": "video", "src": "img/carrusel/10.mp4" },
+
+    { "type": "image", "src": "img/carrusel/11.webp" },
+    { "type": "image", "src": "img/carrusel/12.webp" },
+    { "type": "image", "src": "img/carrusel/13.webp" },
+    { "type": "image", "src": "img/carrusel/14.webp" },
+    { "type": "image", "src": "img/carrusel/15.webp" },
+    { "type": "image", "src": "img/carrusel/16.webp" },
+    { "type": "image", "src": "img/carrusel/17.webp" },
+    { "type": "video", "src": "img/carrusel/17.mp4" },
+
+    { "type": "image", "src": "img/carrusel/18.webp" },
+    { "type": "image", "src": "img/carrusel/19.webp" },
+    { "type": "image", "src": "img/carrusel/20.webp" },
+
+    { "type": "video", "src": "img/carrusel/21.mp4" },
+    { "type": "video", "src": "img/carrusel/22.mp4" },
+    { "type": "video", "src": "img/carrusel/24.mp4" },
+
+    { "type": "image", "src": "img/carrusel/25.webp" },
+    { "type": "image", "src": "img/carrusel/26.webp" },
+    { "type": "image", "src": "img/carrusel/27.webp" },
+    { "type": "image", "src": "img/carrusel/28.webp" },
+    { "type": "image", "src": "img/carrusel/29.webp" },
+    { "type": "image", "src": "img/carrusel/30.webp" },
+    { "type": "image", "src": "img/carrusel/31.webp" },
+    { "type": "image", "src": "img/carrusel/32.webp" },
+    { "type": "image", "src": "img/carrusel/33.webp" },
+    { "type": "image", "src": "img/carrusel/34.webp" },
+    { "type": "image", "src": "img/carrusel/35.webp" },
+    { "type": "image", "src": "img/carrusel/36.webp" },
+    { "type": "image", "src": "img/carrusel/37.webp" },
+    { "type": "image", "src": "img/carrusel/38.webp" },
+    { "type": "image", "src": "img/carrusel/39.webp" },
+    { "type": "image", "src": "img/carrusel/40.webp" },
+    { "type": "image", "src": "img/carrusel/41.webp" },
+    { "type": "image", "src": "img/carrusel/42.webp" },
+    { "type": "image", "src": "img/carrusel/43.webp" },
+    { "type": "image", "src": "img/carrusel/44.webp" }
 ]
