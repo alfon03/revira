@@ -1,279 +1,196 @@
 <!DOCTYPE html>
+
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Inicio - La Revirá</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Google Material Symbols -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-
-    <!-- Favicon (PC / Navegadores) -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/revira/img/icons/logo-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/revira/img/icons/logo-16.png">
-
-    <!-- Apple Touch Icon (iPhone / iPad) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/revira/img/icons/apple-icon.png">
-
-    <!-- Android / PWA -->
-    <link rel="manifest" href="/revira/manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="/revira/img/icons/icon-192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/revira/img/icons/icon-512.png">
-
-    <!-- PWA Meta -->
-    <meta name="theme-color" content="#D4AF37">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- Playball font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
-
-    <!-- Inter + Playfair -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="styles.css">
-</head>
+<meta charset="utf-8"/>
+<title>La Revirá Cerveceros | Tapas y buen ambiente en Lora del Río</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
 
-<body>
+<link href="img/icons/logo-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="img/icons/logo-16.png" rel="icon" sizes="16x16" type="image/png"/>
 
-    <header>
+<link href="img/icons/apple-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 
-        <nav id="navMenu">
-            <a data-i18n="menu_home" href="index.html">Inicio</a>
-            <a data-i18n="menu_dishes" href="platos.html">Nuestros platos</a>
-            <a data-i18n="menu_menu" href="carta.html">Carta</a>
-            <a data-i18n="menu_about" href="#info">Sobre nosotros</a>
-        </nav>
+<link href="manifest.json" rel="manifest"/>
+<link href="img/icons/logo-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="img/icons/logo-512.png" rel="icon" sizes="512x512" type="image/png"/>
 
-        <button id="theme-toggle">
-            <span id="theme-icon" class="material-symbols-outlined">dark_mode</span>
-        </button>
+<meta content="#F6F1E7" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 
 
 
-        <div id="language-switcher">
-            <div class="flag" data-lang="es">
-                <img src="https://flagcdn.com/es.svg" alt="ES">
-            </div>
-            <div class="flag" data-lang="en">
-                <img src="https://flagcdn.com/gb.svg" alt="EN">
-            </div>
-            <div class="flag" data-lang="fr">
-                <img src="https://flagcdn.com/fr.svg" alt="FR">
-            </div>
-            <div class="flag" data-lang="de">
-                <img src="https://flagcdn.com/de.svg" alt="DE">
-            </div>
-        </div>
-    </header>
-    <!-- NAV BOTTOM (solo móvil) -->
-    <div class="bottom-nav" id="bottomNav">
-        <a href="index.html">
-            <span class="material-symbols-outlined">home</span>
-            <small data-i18n="menu_home">Inicio</small>
-        </a>
 
-        <a href="platos.html">
-            <span class="material-symbols-outlined">restaurant_menu</span>
-            <small data-i18n="menu_dishes">Platos</small>
-        </a>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
 
-        <a href="carta.html">
-            <span class="material-symbols-outlined">menu_book</span>
-            <small data-i18n="menu_menu">Carta</small>
-        </a>
+<meta content="Tapas andaluzas, una buena mesa y momentos para compartir en La Revirá Cerveceros, Lora del Río. Descubre la carta y los platos." name="description"/><meta content="light dark" name="color-scheme"/><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Restaurant", "name": "La Revirá Cerveceros", "telephone": "+34645740200", "email": "eventsbacchanalia@gmail.com", "address": {"@type": "PostalAddress", "streetAddress": "Av. la Cruz", "postalCode": "41440", "addressLocality": "Lora del Río", "addressRegion": "Sevilla", "addressCountry": "ES"}, "servesCuisine": ["Andaluza", "Española"], "sameAs": ["https://www.instagram.com/la_revira_cerveceros/", "https://www.facebook.com/p/La-Revir%C3%A1-Cerveceros-61552801625227/"]}</script><meta content="website" property="og:type"/><meta content="es_ES" property="og:locale"/><meta content="La Revirá Cerveceros | Tapas y buen ambiente en Lora del Río" property="og:title"/><meta content="Tapas andaluzas, una buena mesa y momentos para compartir en La Revirá Cerveceros, Lora del Río. Descubre la carta y los platos." property="og:description"/><meta content="img/platos/tapas-calientes/1.webp" property="og:image"/><meta content="summary_large_image" name="twitter:card"/>
+<link href="site.css?v=13" rel="stylesheet"/></head>
+<body class="page-inicio light-mode"><script>try{if(localStorage.getItem("theme")==="dark")document.body.classList.remove("light-mode")}catch(e){}</script><a class="skip-link" href="#main-content">Saltar al contenido</a>
+<header class="site-header" id="siteHeader">
+<div class="header-inner">
+<a aria-label="La Revirá — Inicio" class="brand" href="index.html"><img alt="La Revirá Cerveceros" height="74" src="img/logo3.png" width="148"/></a>
+<nav aria-label="Navegación principal" class="primary-nav" id="navMenu">
+<a aria-current="page" data-i18n="menu_home" href="index.html">Inicio</a>
+<a data-i18n="menu_dishes" href="platos.html">Nuestros platos</a>
+<a data-i18n="menu_menu" href="carta.html">Carta</a>
+<a data-i18n="menu_about" href="#info">Contacto</a>
+</nav>
+<div class="header-actions">
+<div aria-label="Idioma / Language" class="language-switcher" id="language-switcher" role="group">
+<button aria-label="Español" class="flag" data-lang="es" title="Español" type="button">ES</button>
+<button aria-label="English" class="flag" data-lang="en" title="English" type="button">EN</button>
+<button aria-label="Français" class="flag" data-lang="fr" title="Français" type="button">FR</button>
+<button aria-label="Deutsch" class="flag" data-lang="de" title="Deutsch" type="button">DE</button>
+</div>
+<button aria-label="Cambiar tema" class="theme-toggle" id="theme-toggle" title="Cambiar tema" type="button"><svg aria-hidden="true" class="ui-icon" focusable="false" id="theme-icon" viewbox="0 0 24 24"><path d="M20.985 12.486A9 9 0 1 1 11.514 3.015a7 7 0 0 0 9.47 9.47Z"></path></svg></button>
+<a class="header-book" aria-label="Llamar para reservar una mesa" href="tel:+34645740200"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 2.09 4.18 2 2 0 0 1 4.08 2h3a2 2 0 0 1 2 1.72c.13.96.32 1.91.57 2.83a2 2 0 0 1-.45 2.11L7.1 10.9a16 16 0 0 0 6 6l2.24-2.2a2 2 0 0 1 2.11-.45c.92.25 1.87.44 2.83.57A2 2 0 0 1 22 16.92Z"></path></svg><span data-i18n="ui_book">Reservar mesa</span></a>
+</div>
+</div>
+</header>
 
-        <a href="#info">
-            <span class="material-symbols-outlined">info</span>
-            <small data-i18n="menu_about">Nosotros</small>
-        </a>
-    </div>
+<nav aria-label="Navegación móvil" class="bottom-nav" id="bottomNav">
+<a aria-current="page" href="index.html"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"></path></svg><small data-i18n="menu_home">Inicio</small></a>
+<a href="platos.html"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M4 3v7m4-7v7M2 3v4a4 4 0 0 0 8 0V3M6 11v10M16 12V6a3 3 0 0 1 6 0v15m-6-8h6"></path></svg><small data-i18n="ui_dishes_short">Platos</small></a>
+<a href="carta.html"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M12 7c-2.1-1.9-5.5-2.3-9-1v14c3.5-1.2 6.9-.8 9 1 2.1-1.8 5.5-2.2 9-1V6c-3.5-1.3-6.9-.9-9 1Zm0 0v14"></path></svg><small data-i18n="menu_menu">Carta</small></a>
+<a href="#info"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 11v6m0-10h.01"></path></svg><small data-i18n="ui_about_short">Contacto</small></a>
+</nav>
+<section aria-labelledby="heroTitle" class="home-hero" id="main-content">
+<div class="hero-copy"><div class="eyebrow"><span class="eyebrow-line"></span><span data-i18n="ui_hero_eyebrow">LORA DEL RÍO · SEVILLA</span></div><h1 data-i18n="ui_hero_title" id="heroTitle">Aquí se viene a disfrutar.</h1><p class="hero-description" data-i18n="ui_hero_desc">Una mesa compartida, sabores de siempre y ese ratito que nunca quieres que termine. Bienvenidos a La Revirá.</p><div class="hero-actions"><a class="btn btn-primary" href="carta.html"><span data-i18n="ui_view_menu">Descubre nuestra carta</span><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"></path></svg></a><a class="btn btn-secondary" href="tel:+34645740200"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 2.09 4.18 2 2 0 0 1 4.08 2h3a2 2 0 0 1 2 1.72c.13.96.32 1.91.57 2.83a2 2 0 0 1-.45 2.11L7.1 10.9a16 16 0 0 0 6 6l2.24-2.2a2 2 0 0 1 2.11-.45c.92.25 1.87.44 2.83.57A2 2 0 0 1 22 16.92Z"></path></svg><span data-i18n="ui_book">Reservar mesa</span></a></div><div class="hero-footnote"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"></path></svg><span data-i18n="ui_hero_note">Cocina andaluza, momentos para compartir.</span></div></div>
+<div aria-label="Galería de ambiente y platos de La Revirá" class="hero-visual hero-gallery">
+<div class="hero-shot hero-shot-main">
+<img alt="Terraza de La Revirá con clientes disfrutando" fetchpriority="high" height="768" src="img/carrusel/28.webp" width="1024"/>
+</div>
+<div class="hero-shot hero-shot-tall">
+<img alt="Comensales en La Revirá" decoding="async" height="1024" loading="lazy" src="img/carrusel/31.webp" width="768"/>
+</div>
+<div class="hero-shot hero-shot-small">
+<img alt="Plato destacado de La Revirá" decoding="async" height="650" loading="lazy" src="img/platos/tapas-calientes/1.webp" width="750"/>
+</div>
+<div class="hero-gallery-caption">
+<span>Tapas</span>
+<span>Terraza</span>
+<span>Buen ambiente</span>
+</div>
+</div>
+</section><section aria-labelledby="valuesTitle" class="values-section"><div class="section-heading centered"><span class="eyebrow" data-i18n="ui_values_eyebrow">LO QUE NOS MUEVE</span><h2 data-i18n="ui_values_title" id="valuesTitle">La buena mesa, sin prisas.</h2><p data-i18n="ui_values_intro">No hace falta una ocasión especial para convertir cualquier día en un buen recuerdo.</p></div><div class="values-grid"><article class="value-card"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M4 11h14a2 2 0 0 1 2 2v3a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5v-3a2 2 0 0 1 2-2Zm16 4h3M7 7c-2-2 2-3 0-5m6 5c-2-2 2-3 0-5"></path></svg><h3 data-i18n="ui_value1_title">Sabor de siempre</h3><p data-i18n="ui_value1_desc">Recetas que nos gustan, hechas con mimo y con raíces andaluzas.</p></article><article class="value-card"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M4 13a8 8 0 0 0 16 0H4Zm-2 0h20M7 8h10m-8-4h6M12 3v2"></path></svg><h3 data-i18n="ui_value2_title">Platos para compartir</h3><p data-i18n="ui_value2_desc">Tapas, montaditos y muchas ganas de probar un poquito de todo.</p></article><article class="value-card"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="m4 21 6-15 8 8-14 7Zm6-15 8 8m-3-11 0 3m5 1 2-2M14 2l-1 2m7 10 2 1M7 2l-1-1"></path></svg><h3 data-i18n="ui_value3_title">Momentos que se quedan</h3><p data-i18n="ui_value3_desc">Una charla larga, buena compañía y ese ambiente que invita a volver.</p></article></div></section>
 
-    <div class="breadcrumb">
-        <span data-i18n="breadcrumb">Estás en:</span>
-        <span class="breadcrumb-label" data-i18n="breadcrumb_label_home">Inicio</span>
-    </div>
+<section aria-labelledby="signatureTitle" class="signature-section">
+<div class="signature-heading">
+<div>
+<span class="eyebrow" data-i18n="ui_feature_kicker">UN BOCADO DE LA REVIRÁ</span>
+<h2 data-i18n="ui_feature_title" id="signatureTitle">Platos que siempre apetecen.</h2>
+</div>
+<div class="signature-heading-side">
+<p data-i18n="ui_feature_intro">De un montadito para compartir a un buen capricho dulce. Empieza por aquí y descubre el resto en nuestra carta.</p>
+<a class="text-link" href="carta.html"><span data-i18n="ui_feature_all">Descubrir toda la carta</span><svg aria-hidden="true" class="ui-icon" viewbox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"></path></svg></a>
+</div>
+</div>
+<div class="signature-grid">
+<a aria-label="Ver Solomillo a la Revirá en la carta" class="signature-card" href="carta.html#carnes">
+<div class="signature-image"><img alt="Solomillo a la Revirá con patatas" decoding="async" height="720" loading="lazy" src="img/platos/carnes/3.webp" width="640"/><span class="signature-number">01 / 03</span></div>
+<div class="signature-card-info"><div><span class="signature-tag" data-i18n="carnes">Carnes</span><h3 data-i18n="dish_solomillo_revira">Solomillo a la Revira</h3><small><span data-i18n="ui_feature_from">Desde</span> 4,50 €</small></div><span aria-hidden="true" class="signature-card-arrow">↗</span></div>
+</a>
+<a aria-label="Ver Piripi en la carta" class="signature-card" href="carta.html#montaditos">
+<div class="signature-image"><img alt="Montadito Piripi de La Revirá" decoding="async" height="720" loading="lazy" src="img/platos/montaditos/14.webp" width="640"/><span class="signature-number">02 / 03</span></div>
+<div class="signature-card-info"><div><span class="signature-tag" data-i18n="montaditos">Montaditos</span><h3 data-i18n="dish_piripi">Piripi</h3><small><span data-i18n="ui_feature_from">Desde</span> 5,50 €</small></div><span aria-hidden="true" class="signature-card-arrow">↗</span></div>
+</a>
+<a aria-label="Ver Tarta de Queso en la carta" class="signature-card" href="carta.html#postres">
+<div class="signature-image"><img alt="Porción de tarta de queso con salsa de La Revirá" decoding="async" height="720" loading="lazy" src="img/platos/postres/2.webp" width="640"/><span class="signature-number">03 / 03</span></div>
+<div class="signature-card-info"><div><span class="signature-tag" data-i18n="postres">Postres</span><h3 data-i18n="dish_tarta_queso">Tarta de Queso</h3><small><span data-i18n="ui_feature_from">Desde</span> 5,00 €</small></div><span aria-hidden="true" class="signature-card-arrow">↗</span></div>
+</a>
+</div>
+<p class="signature-disclaimer" data-i18n="ui_feature_price_note">Precios según formato. Consulta la carta completa.</p>
+</section>
+<section aria-labelledby="experienceTitle" class="experience-section"><div class="section-heading split-heading"><div><span class="eyebrow" data-i18n="ui_gallery_eyebrow">ASÍ SOMOS</span><h2 data-i18n="ui_gallery_title" id="experienceTitle">Una Revirá por dentro.</h2></div><p data-i18n="ui_gallery_intro">Nuestra gente, nuestro rincón y los pequeños momentos que lo hacen especial.</p></div><div aria-label="Galería de fotos de La Revirá" aria-roledescription="carrusel" class="carousel"><div class="slides" id="slides"></div><button aria-label="Anterior" class="prev" id="prevBtn" type="button"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg></button><button aria-label="Siguiente" class="next" id="nextBtn" type="button"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg></button></div><div class="experience-foot"><span data-i18n="ui_gallery_caption">Cada visita tiene su historia.</span><a class="text-link" href="platos.html"><span data-i18n="ui_see_dishes">Ver nuestros platos</span><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M4 12h16m-7-7 7 7-7 7"></path></svg></a></div></section><section aria-labelledby="visitTitle" class="visit-banner"><div aria-label="Terraza de La Revirá" class="visit-banner-image" role="img"></div><div class="visit-banner-copy"><span class="eyebrow" data-i18n="ui_banner_eyebrow">TE GUARDAMOS UN SITIO</span><h2 data-i18n="ui_banner_title" id="visitTitle">Lo mejor empieza alrededor de una mesa.</h2><p data-i18n="ui_banner_desc">¿Nos vemos esta noche? Llámanos para consultar disponibilidad.</p><a class="btn btn-cream" href="tel:+34645740200"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 2.09 4.18 2 2 0 0 1 4.08 2h3a2 2 0 0 1 2 1.72c.13.96.32 1.91.57 2.83a2 2 0 0 1-.45 2.11L7.1 10.9a16 16 0 0 0 6 6l2.24-2.2a2 2 0 0 1 2.11-.45c.92.25 1.87.44 2.83.57A2 2 0 0 1 22 16.92Z"></path></svg><span data-i18n="ui_call">Llámanos</span></a></div></section>
 
+<section class="location-section">
+<div class="section-heading centered"><span class="eyebrow" data-i18n="ui_visit_eyebrow">VEN A CONOCERNOS</span><h2 data-i18n="location_title">¿Dónde estamos?</h2><p data-i18n="ui_visit_desc">Estamos en Lora del Río. Aquí tienes todo lo necesario para encontrarnos.</p></div>
+<div class="location-container">
+<div class="schedule-box"><span class="schedule-kicker" data-i18n="ui_schedule_label">CUÁNDO VENIR</span>
+<h3 data-i18n="schedule_title">Horario</h3>
+<div class="schedule-item">
+<span class="schedule-day" data-i18n="day_monday">Lunes</span>
+<span class="schedule-hours is-closed" data-i18n="hours_mon">Cerrado</span>
+</div>
+<div class="schedule-item">
+<span class="schedule-day" data-i18n="day_tuesday">Martes</span>
+<span class="schedule-hours" data-i18n="hours_tue">12:00–cierre
+20:30–cierre</span>
+</div>
+<div class="schedule-item">
+<span class="schedule-day" data-i18n="day_wednesday">Miércoles</span>
+<span class="schedule-hours" data-i18n="hours_wed">12:00–cierre
+20:30–cierre</span>
+</div>
+<div class="schedule-item">
+<span class="schedule-day" data-i18n="day_thursday">Jueves</span>
+<span class="schedule-hours" data-i18n="hours_thu">12:00–cierre
+20:30–cierre</span>
+</div>
+<div class="schedule-item">
+<span class="schedule-day" data-i18n="day_friday">Viernes</span>
+<span class="schedule-hours" data-i18n="hours_fri">12:00–cierre
+20:30–cierre</span>
+</div>
+<div class="schedule-item">
+<span class="schedule-day" data-i18n="day_saturday">Sábado</span>
+<span class="schedule-hours" data-i18n="hours_sat">12:00–cierre
+20:30–cierre</span>
+</div>
+<div class="schedule-item">
+<span class="schedule-day" data-i18n="day_sunday">Domingo</span>
+<span class="schedule-hours" data-i18n="hours_sun">12:00–cierre
+Noche: cerrado</span>
+</div>
+</div>
+<div class="map-box">
+<iframe allowfullscreen="" data-i18n="map_iframe" height="450" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3158.6429367144765!2d-5.5250937!3d37.6575978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd12ef8e2f49fc83%3A0xf90147c673b99165!2sLa%20Revir%C3%A1!5e0!3m2!1ses!2ses!4v1776873864673!5m2!1ses!2ses" style="border:0;" title="Mapa de ubicación de La Revirá en Lora del Río" width="600">
+</iframe>
+</div><a class="directions-link" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+la+Cruz%2C+41440+Lora+del+R%C3%ADo%2C+Sevilla" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M3 12 12 3l9 9-9 9-9-9Zm6 3v-4h7m-3-3 3 3-3 3"></path></svg><span data-i18n="ui_directions">Cómo llegar</span><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+</div>
+</section>
 
-    <!-- CARRUSEL -->
-    <section class="carousel">
-        <div class="slides" id="slides"></div>
+<button aria-label="Volver arriba" class="btn-top" id="btnTop" title="Volver arriba" type="button">
+<svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M12 20V4m-7 7 7-7 7 7"></path></svg>
+</button>
+<footer class="footer" id="info">
+<div class="footer-container">
+<div class="footer-col footer-brand"><img alt="La Revirá Cerveceros" height="106" loading="lazy" src="img/logo3.png" width="192"><p data-i18n="footer_about_text">Tradición andaluza reinterpretada con cariño. Productos frescos, recetas de siempre y un ambiente que invita a quedarse.</p></img></div>
+<div class="footer-col"><h3 data-i18n="footer_info_title">Información</h3><ul class="footer-links"><li><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><a data-i18n="footer_address_text" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+la+Cruz%2C+41440+Lora+del+R%C3%ADo%2C+Sevilla" rel="noopener noreferrer" target="_blank">Av. la Cruz, 41440 Lora del Río, Sevilla</a></li><li><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 2.09 4.18 2 2 0 0 1 4.08 2h3a2 2 0 0 1 2 1.72c.13.96.32 1.91.57 2.83a2 2 0 0 1-.45 2.11L7.1 10.9a16 16 0 0 0 6 6l2.24-2.2a2 2 0 0 1 2.11-.45c.92.25 1.87.44 2.83.57A2 2 0 0 1 22 16.92Z"></path></svg><a href="tel:+34645740200">645 74 02 00</a></li><li><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m2 6 10 7 10-7"></path></svg><a href="mailto:eventsbacchanalia@gmail.com">eventsbacchanalia@gmail.com</a></li></ul></div>
+<div class="footer-col"><h3 data-i18n="ui_explore">Explora</h3><ul class="footer-nav"><li><a data-i18n="menu_home" href="index.html">Inicio</a></li><li><a data-i18n="menu_dishes" href="platos.html">Nuestros platos</a></li><li><a data-i18n="menu_menu" href="carta.html">Carta</a></li><li><a data-i18n="ui_book" href="tel:+34645740200">Reservar mesa</a></li></ul></div>
+<div class="footer-col"><h3 data-i18n="footer_follow">Síguenos</h3><p data-i18n="ui_social_text">Un poquito de nuestra cocina y de lo que pasa por aquí.</p><div class="footer-social"><a aria-label="Instagram" href="https://www.instagram.com/la_revira_cerveceros/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><rect height="20" rx="5" width="20" x="2" y="2"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" fill="currentColor" r=".6" stroke="none"></circle></svg></a><a aria-label="Facebook" href="https://www.facebook.com/p/La-Revir%C3%A1-Cerveceros-61552801625227/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M15 21v-8h3l.5-4H15V7c0-1.2.5-2 2-2h2V2h-3c-4 0-5 2-5 5v2H8v4h3v8"></path></svg></a></div></div>
+</div>
+<div class="footer-bottom"><p data-i18n="footer_copy">© 2026 La Revirá — Todos los derechos reservados</p><span data-i18n="ui_made_with_care">Hecho con cariño, en Lora del Río.</span></div>
+</footer>
 
-        <button class="prev" id="prevBtn">
-            <span class="material-symbols-outlined" data-i18n="carousel_prev">chevron_left</span>
-        </button>
+<div aria-hidden="true" aria-label="Galería de fotografías" aria-modal="true" class="lightbox" id="lightbox" role="dialog">
+<div class="lightbox-content">
 
-        <button class="next" id="nextBtn">
-            <span class="material-symbols-outlined" data-i18n="carousel_next">chevron_right</span>
-        </button>
-    </section>
-
-    <section class="section">
-        <h1 data-i18n="home_title"></h1>
-        <img src="img/logo.png" alt="La ReviRa" class="home-logo">
-        <p data-i18n="home_subtitle">El lugar perfecto para disfrutar, comer y compartir.</p>
-    </section>
-
-    <section class="section location">
-        <h2><span class="material-symbols-outlined">location_on</span> <span data-i18n="location_title">¿Dónde
-                estamos?</span></h2>
-
-        <div class="location-container">
-
-            <div class="schedule-box">
-                <h3 data-i18n="schedule_title">Horario</h3>
-
-                <div class="schedule-item">
-                    <span class="schedule-day" data-i18n="day_monday">Lunes</span>
-                    <span class="schedule-hours" data-i18n="hours_tue">20:30–Cierre</span>
-                </div>
-
-                <div class="schedule-item">
-                    <span class="schedule-day" data-i18n="day_tuesday">Martes</span>
-                    <span class="schedule-hours" data-i18n="hours_tue">20:30–Cierre</span>
-                </div>
-
-                <div class="schedule-item">
-                    <span class="schedule-day" data-i18n="day_wednesday">Miércoles</span>
-                    <span class="schedule-hours" data-i18n="hours_wed">20:30–Cierre</span>
-                </div>
-
-                <div class="schedule-item">
-                    <span class="schedule-day" data-i18n="day_thursday">Jueves</span>
-                    <span class="schedule-hours" data-i18n="hours_thu">20:30–Cierre</span>
-                </div>
-
-                <div class="schedule-item">
-                    <span class="schedule-day" data-i18n="day_friday">Viernes</span>
-                    <span class="schedule-hours" data-i18n="hours_fri">20:30–Cierre</span>
-                </div>
-
-                <div class="schedule-item">
-                    <span class="schedule-day" data-i18n="day_saturday">Sábado</span>
-                    <span class="schedule-hours" data-i18n="hours_sat">20:30–Cierre</span>
-                </div>
-
-                <div class="schedule-item">
-                    <span class="schedule-day" data-i18n="day_sunday">Domingo</span>
-                    <span class="schedule-hours" data-i18n="hours_sun">cerrado</span>
-                </div>
-            </div>
-
-            <div class="map-box">
-                <iframe data-i18n="map_iframe"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3158.6429367144765!2d-5.5250937!3d37.6575978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd12ef8e2f49fc83%3A0xf90147c673b99165!2sLa%20Revir%C3%A1!5e0!3m2!1ses!2ses!4v1776873864673!5m2!1ses!2ses"
-                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- BOTÓN FLOTANTE IR ARRIBA -->
-    <button id="btnTop" class="btn-top">
-        <span class="material-symbols-outlined">arrow_upward</span>
-    </button>
-
-    <footer class="footer">
-        <div id="info" class="footer-container">
-
-            <!-- Columna 1: Sobre nosotros -->
-            <div class="footer-col">
-                <h3 data-i18n="footer_about_title">La Revirá</h3>
-                <p data-i18n="footer_about_text">
-                    Tradición andaluza reinterpretada con cariño.
-                    Productos frescos, recetas de siempre y un ambiente que invita a quedarse.
-                    Somos un rincón donde la buena mesa y la buena compañía se encuentran.
-                </p>
-            </div>
-
-
-            <!-- Columna 2: Información -->
-            <div class="footer-col">
-                <h3 data-i18n="footer_info_title">Información</h3>
-                <ul>
-                    <li><strong data-i18n="footer_address">Dirección:</strong> <span data-i18n="footer_address_text">Av.
-                            la Cruz, 41440 Lora del Río, Sevilla</span></li>
-                    <li><strong data-i18n="footer_phone">Teléfono:</strong> <span data-i18n="footer_phone_text">645 74
-                            02 00</span></li>
-                    <li><strong data-i18n="footer_email">Email:</strong> <span
-                            data-i18n="footer_email_text">eventsbacchanalia@gmail.com</span></li>
-                    <li><strong data-i18n="footer_reservas">Reservas:</strong> <span
-                            data-i18n="footer_reservas_text">Disponible por teléfono</span></li>
-                </ul>
-            </div>
-
-            <!-- Columna 3: Redes -->
-            <div class="footer-col">
-                <h3 data-i18n="footer_follow">Síguenos</h3>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/la_revira_cerveceros/" target="_blank" aria-label="Instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-
-                    <a href="https://www.facebook.com/p/La-Revirá-Cerveceros-61552801625227/" target="_blank"
-                        aria-label="Facebook">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            <p data-i18n="footer_copy">© 2026 La Revirá — Todos los derechos reservados</p>
-        </div>
-
-    </footer>
-
-    <!-- LIGHTBOX -->
-<div id="lightbox" class="lightbox">
-
-    <div class="lightbox-content">
-
-        <!-- TOP BAR -->
-        <div class="lightbox-top">
-            <div id="lightboxTitle" class="lightbox-title"></div>
-
-            <button class="lightbox-close" id="lightboxClose">&times;</button>
-        </div>
-
-        <!-- MEDIA WRAPPER -->
-        <div class="lightbox-media-wrapper">
-
-            <img id="lightboxImg" class="lightbox-media" style="display:none;">
-            <video id="lightboxVideo" class="lightbox-media" style="display:none;" controls></video>
-
-            <!-- SHARE BUTTON (correct position) -->
-            <button id="lightboxShare" class="lightbox-share">
-                <span class="material-symbols-outlined">share</span>
-            </button>
-
-            <div id="lightboxCounter"></div>
-        </div>
-
-        <!-- NAV -->
-        <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
-        <span class="lightbox-next" id="lightboxNext">&#10095;</span>
-
-        <!-- THUMBS -->
-        <div id="lightboxThumbs"></div>
-
-    </div>
+<div class="lightbox-top">
+<div class="lightbox-title" id="lightboxTitle"></div>
+<button aria-label="Cerrar galería" class="lightbox-close" id="lightboxClose" tabindex="0">×</button>
 </div>
 
+<div class="lightbox-media-wrapper">
+<img class="lightbox-media" id="lightboxImg" style="display:none;">
+<video class="lightbox-media" controls="" id="lightboxVideo" style="display:none;"></video>
 
+<button aria-label="Compartir imagen" class="lightbox-share" id="lightboxShare" tabindex="0">
+<svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.7 10.6 6.6-4.2M8.7 13.4l6.6 4.2"></path></svg>
+</button>
+<div id="lightboxCounter"></div>
+</img></div>
 
+<button aria-label="Imagen anterior" class="lightbox-prev" id="lightboxPrev" type="button">❮</button>
+<button aria-label="Imagen siguiente" class="lightbox-next" id="lightboxNext" type="button">❯</button>
 
-    <script src="script.js"></script>
-</body>
+<div id="lightboxThumbs"></div>
+</div>
+</div>
 
+<script src="site-data.js?v=13"></script><script src="core.js?v=13"></script><script src="ui.js?v=13"></script></body>
 </html>

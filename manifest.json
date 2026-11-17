@@ -3,8 +3,8 @@
   "short_name": "La Revirá",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#D4AF37",
+  "background_color": "#f7f4ee",
+  "theme_color": "#24372c",
   "icons": [
     {
       "src": "img/icons/logo-192.png",

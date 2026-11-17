@@ -23,7 +23,7 @@ let autoPlayInterval = null;
 
 // Si no existe el carrusel en esta página, no hacemos nada
 if (!slidesContainer) {
-    console.warn("Carrusel no encontrado en esta página (#slides). Script desactivado.");
+    // No hay carrusel en esta página; el resto del sitio sigue funcionando.
 } else {
     loadMedia();
 }
@@ -34,14 +34,23 @@ if (!slidesContainer) {
 
 async function loadMedia() {
     try {
-        const res = await fetch(
-            `img/carrusel/media.json?v=${MEDIA_VERSION}`
-        );
-
-        media = await res.json();
-
-        // Mezclar correctamente (Fisher-Yates)
-        shuffle(media);
+        // Al abrir index.html directamente (file://), fetch de JSON puede fallar.
+        // La copia generada en site-data.js permite usar la web también sin servidor.
+        let allMedia = window.REVIRA_MEDIA?.carrusel;
+        if (location.protocol !== 'file:') {
+            try {
+                const res = await fetch(`img/carrusel/media.json?v=${MEDIA_VERSION}`);
+                if (!res.ok) throw new Error('Carrusel no disponible');
+                allMedia = await res.json();
+            } catch (e) {
+                if (!allMedia) throw e;
+            }
+        }
+        if (!Array.isArray(allMedia)) throw new Error('No hay contenidos para el carrusel');
+        // Galería más ligera: menos recursos iniciales y una muestra de vídeos.
+        const fotos = allMedia.filter(item => item.type === 'image').slice(0, 18);
+        const videos = allMedia.filter(item => item.type === 'video').slice(0, 2);
+        media = shuffle([...fotos, ...videos]);
 
         buildCarousel();
 
@@ -105,6 +114,7 @@ function buildCarousel() {
     if (!media.length) return;
 
     slidesContainer.innerHTML = "";
+    index = 0;
 
     const itemsPerSlide = getItemsPerSlide();
 
@@ -150,6 +160,7 @@ function createSlide(group) {
             el.src = item.src;
             el.loading = "lazy";
             el.decoding = "async";
+            el.alt = 'Momentos en La Revirá Cerveceros';
         }
 
         if (item.type === "video") {
@@ -167,12 +178,14 @@ function createSlide(group) {
             el.muted = true;
             el.playsInline = true;
             el.loop = true;
-            el.preload = "metadata";
+            el.preload = "none";
+            el.poster = item.src.replace(/\.mp4$/i, '.webp');
+            el.controls = true;
 
             const isMobile =
                 window.innerWidth <= 768;
 
-            if (!isMobile) {
+            if (!isMobile && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 el.autoplay = true;
             }
         }
@@ -250,8 +263,9 @@ function initCarousel() {
         intervalTime = 5500;
     }
 
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     autoPlayInterval = setInterval(() => {
-
+        if (document.hidden || slidesContainer.matches(':hover') || slidesContainer.contains(document.activeElement)) return;
         index =
             (index + 1) % totalSlides;
 
@@ -259,22 +273,6 @@ function initCarousel() {
 
     }, intervalTime);
 }
-
-/* =========================
-   FIX iPHONE AUTOPLAY
-========================= */
-
-document.addEventListener("touchstart", () => {
-
-    document.querySelectorAll("video")
-        .forEach(v => {
-
-            v.play()
-                .catch(() => { });
-
-        });
-
-}, { once: true });
 
 // BOTÓN IR ARRIBA
 const btnTop = document.getElementById("btnTop");
@@ -323,18 +321,23 @@ document.addEventListener("DOMContentLoaded", () => {
     async function loadImages(folder, callback) {
 
         try {
-            const res = await fetch(
-                `${CONFIG.basePath}/${folder}/media.json?v=${CONFIG.mediaVersion}`,
-                { cache: "force-cache" }
-            );
-
-            if (!res.ok) {
-                console.warn(`No media.json en ${folder}`);
+            let data = window.REVIRA_MEDIA?.platos?.[folder];
+            if (location.protocol !== 'file:') {
+                try {
+                    const res = await fetch(
+                        `${CONFIG.basePath}/${folder}/media.json?v=${CONFIG.mediaVersion}`,
+                        { cache: "force-cache" }
+                    );
+                    if (!res.ok) throw new Error(`No media.json en ${folder}`);
+                    data = await res.json();
+                } catch (error) {
+                    if (!data) throw error;
+                }
+            }
+            if (!Array.isArray(data)) {
                 callback([]);
                 return;
             }
-
-            const data = await res.json();
 
             const images = (data || [])
                 .filter(item => item?.type === "image" && item?.src);
@@ -371,9 +374,10 @@ document.addEventListener("DOMContentLoaded", () => {
             el.dataset.full = img.full;
             el.loading = "lazy";
             el.decoding = "async";
+            el.alt = `Fotografía de ${container.parentElement?.querySelector("h2")?.textContent.trim() || "La Revirá"}, imagen ${i + 1}`;
 
             // 🚀 solo primeras imágenes con prioridad alta
-            if (i < 2) el.fetchPriority = "high";
+            if (i < 2 && container.dataset.folder === "sugerencias") el.fetchPriority = "high";
 
             item.appendChild(el);
             fragment.appendChild(item);
@@ -395,6 +399,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let itemWidth = 0;
         let gap = 0;
+        let btnPrev;
+        let btnNext;
 
         function measure() {
             const item = track.firstElementChild;
@@ -409,7 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function getVisible() {
             return Math.max(
                 1,
-                Math.floor(container.offsetWidth / (itemWidth + gap))
+                Math.floor((container.offsetWidth + gap + 2) / (itemWidth + gap))
             );
         }
 
@@ -428,22 +434,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
             track.style.transition = animated ? cfg.transition : "none";
             track.style.transform = `translate3d(-${move}px,0,0)`;
+            if (btnPrev && btnNext) {
+                btnPrev.disabled = index <= 0;
+                btnNext.disabled = index >= max;
+                btnPrev.hidden = max === 0;
+                btnNext.hidden = max === 0;
+            }
         }
 
         function startAuto() {
-
-            if (isMobile()) return;
-
+            // V9: no se mueve solo; el visitante controla la galería.
+            // Mantener función para no alterar los manejadores de gestos.
             clearInterval(interval);
-
-            interval = setInterval(() => {
-
-                const max = getMaxIndex();
-                index = (index >= max) ? 0 : index + 1;
-
-                update();
-
-            }, cfg.autoplayDelay);
         }
 
         // init medidas UNA sola vez al inicio
@@ -452,8 +454,12 @@ document.addEventListener("DOMContentLoaded", () => {
         startAuto();
 
         // BOTONES
-        const btnPrev = document.createElement("button");
-        const btnNext = document.createElement("button");
+        btnPrev = document.createElement("button");
+        btnNext = document.createElement("button");
+        btnPrev.type = "button";
+        btnNext.type = "button";
+        btnPrev.setAttribute('aria-label', 'Fotografía anterior');
+        btnNext.setAttribute('aria-label', 'Fotografía siguiente');
 
         btnPrev.className = "plato-prev";
         btnNext.className = "plato-next";
@@ -463,6 +469,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         container.appendChild(btnPrev);
         container.appendChild(btnNext);
+        update(false);
 
         btnPrev.onclick = () => { index--; update(); };
         btnNext.onclick = () => { index++; update(); };
@@ -535,8 +542,9 @@ document.addEventListener("DOMContentLoaded", () => {
             el.src = img.src;
             el.loading = "lazy";
             el.decoding = "async";
+            el.alt = `Fotografía de ${container.parentElement?.querySelector("h2")?.textContent.trim() || "La Revirá"}, imagen ${i + 1}`;
 
-            if (i < 2) el.fetchPriority = "high";
+            if (i < 2 && container.dataset.folder === "sugerencias") el.fetchPriority = "high";
 
             fragment.appendChild(el);
         });
@@ -664,12 +672,11 @@ window.updateLightboxItems = updateLightboxItems;
 
 function openLightbox(index) {
 
-    document.body.classList.add("lightbox-open");
-
     if (!initDOM()) return;
-
     const item = lightboxItems[index];
     if (!item) return;
+    document.body.classList.add("lightbox-open");
+    lightbox.setAttribute('aria-hidden', 'false');
 
     currentIndex = index;
 
@@ -698,6 +705,7 @@ function openLightbox(index) {
 
     if (item.type === "img") {
         img.src = item.src;
+        img.alt = currentTitle ? `Fotografía ampliada: ${currentTitle}` : 'Fotografía ampliada de La Revirá';
         img.style.display = "block";
         setTimeout(() => img.style.opacity = 1, 50);
     } else {
@@ -707,12 +715,11 @@ function openLightbox(index) {
         video.setAttribute("muted", "");
         video.setAttribute("disableRemotePlayback", "");
         video.playsInline = true;
-        video.autoplay = true;
-        video.controls = false;
-        video.loop = true;
+        video.autoplay = false;
+        video.controls = true;
+        video.loop = false;
         video.preload = "metadata";
-
-        video.play().catch(() => { });
+        video.style.display = "block";
 
         setTimeout(() => video.style.opacity = 1, 50);
     }
@@ -740,9 +747,7 @@ function openLightbox(index) {
             else {
                 t = document.createElement("div");
                 t.className = "lightbox-thumb video-thumb";
-                t.innerHTML = `
-                <span class="material-symbols-outlined">play_circle</span>
-            `;
+                t.innerHTML = '<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m10 8 6 4-6 4Z"></path></svg>';
             }
 
             t.classList.add("lightbox-thumb");
@@ -761,6 +766,7 @@ function openLightbox(index) {
 
 
     lightbox.style.display = "flex";
+    closeBtn?.focus();
 }
 
 // 👉 IMPORTANTE: GLOBAL
@@ -865,9 +871,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!initDOM()) return;
 
         lightbox.style.display = "none";
+        lightbox.setAttribute('aria-hidden', 'true');
 
         if (img) img.removeAttribute("src");
-        if (video) video.removeAttribute("src");
+        if (video) { video.pause(); video.removeAttribute("src"); }
     }
 
     // SWIPE
@@ -888,22 +895,112 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // SHARE
+    // SHARE: nativo cuando esté disponible; si no, copiar enlace o descargar.
+    // En file:// no compartimos rutas privadas del ordenador.
     function bindShare() {
-
         if (!shareBtn) return;
 
-        shareBtn.onclick = () => {
+        const messages = {
+            es: { copied:'Enlace de la imagen copiado', downloaded:'Imagen descargada para compartirla', failed:'No se pudo compartir; intenta descargar la imagen', shared:'Imagen lista para compartir', button:'Compartir imagen' },
+            en: { copied:'Image link copied', downloaded:'Image downloaded for sharing', failed:'Could not share; try downloading the image', shared:'Image ready to share', button:'Share image' },
+            fr: { copied:'Lien de l’image copié', downloaded:'Image téléchargée pour être partagée', failed:'Partage impossible ; essayez de télécharger l’image', shared:'Image prête à partager', button:'Partager l’image' },
+            de: { copied:'Bildlink kopiert', downloaded:'Bild zum Teilen heruntergeladen', failed:'Teilen nicht möglich; Bild herunterladen', shared:'Bild bereit zum Teilen', button:'Bild teilen' }
+        };
+        const labels = () => messages[(document.documentElement.lang || 'es').slice(0,2)] || messages.es;
+        let feedbackTimeout;
 
+        function notify(message) {
+            const container = document.querySelector('.lightbox-media-wrapper');
+            if (!container) return;
+            let status = container.querySelector('.lightbox-share-feedback');
+            if (!status) {
+                status = document.createElement('div');
+                status.className = 'lightbox-share-feedback';
+                status.setAttribute('role', 'status');
+                status.setAttribute('aria-live', 'polite');
+                container.appendChild(status);
+            }
+            clearTimeout(feedbackTimeout);
+            status.textContent = message;
+            status.hidden = false;
+            feedbackTimeout = setTimeout(() => status.hidden = true, 3200);
+        }
+
+        function downloadCurrent(url, item) {
+            try {
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `La-Revira-${currentIndex + 1}.${item.type === 'video' ? 'mp4' : (url.split(/[?#]/)[0].split('.').pop() || 'webp')}`;
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                notify(labels().downloaded);
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        async function copyLink(text) {
+            if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+                try { await navigator.clipboard.writeText(text); return true; } catch (e) {}
+            }
+            // Copia compatible con navegadores sin Clipboard API.
+            const field = document.createElement('textarea');
+            field.value = text;
+            field.readOnly = true;
+            field.style.cssText = 'position:fixed;left:-10000px;top:0;opacity:0';
+            document.body.appendChild(field);
+            field.select();
+            let copied = false;
+            try { copied = document.execCommand('copy'); } catch (e) {}
+            field.remove();
+            return copied;
+        }
+
+        shareBtn.setAttribute('type','button');
+        const updateShareLabel = () => {
+            shareBtn.setAttribute('aria-label', labels().button);
+            shareBtn.setAttribute('title', labels().button);
+        };
+        updateShareLabel();
+        document.addEventListener('revira:languagechange', updateShareLabel);
+        shareBtn.onclick = async (event) => {
+            event.preventDefault();
+            event.stopPropagation();
             const item = lightboxItems[currentIndex];
-            if (!item) return;
+            if (!item || !item.src) return;
+            let url;
+            try { url = new URL(item.src, document.baseURI).href; }
+            catch (e) { url = item.src; }
+            const localPage = location.protocol === 'file:';
 
-            if (navigator.share) {
-                navigator.share({
-                    title: currentTitle,
-                    text: "Mira este plato",
-                    url: item.src
-                });
+            // Los enlaces file:// no sirven a destinatarios externos.
+            if (localPage) {
+                if (!downloadCurrent(url, item)) notify(labels().failed);
+                return;
+            }
+
+            if (typeof navigator.share === 'function') {
+                try {
+                    await navigator.share({
+                        title: currentTitle || 'La Revirá Cerveceros',
+                        text: 'Una imagen de La Revirá Cerveceros',
+                        url
+                    });
+                    notify(labels().shared);
+                    return;
+                } catch (e) {
+                    if (e?.name === 'AbortError') return;
+                    // Puede fallar por permisos o soporte limitado: intentar copiar.
+                }
+            }
+
+            if (await copyLink(url)) {
+                notify(labels().copied);
+            } else if (!downloadCurrent(url, item)) {
+                notify(labels().failed);
             }
         };
     }
@@ -919,70 +1016,86 @@ document.addEventListener("DOMContentLoaded", () => {
     init();
 });
 
-// cambio de idioma
-
+// Sistema de idiomas con caché y traducción segura (también para contenido dinámico)
+const translationCache = new Map();
+let currentLanguage = (() => { try { return localStorage.getItem('lang') || 'es'; } catch { return 'es'; } })();
 async function loadLanguage(lang) {
-    const response = await fetch(`lang/${lang}.json`);
-    const translations = await response.json();
-
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-
-        if (translations[key]) {
-
-            // Si el elemento tiene hijos HTML → usar innerHTML
-            if (el.children.length > 0) {
-                el.innerHTML = translations[key];
-            }
-            // Si es texto plano → usar textContent
-            else {
-                el.textContent = translations[key];
-            }
+    const supported = ['es', 'en', 'fr', 'de'];
+    lang = supported.includes(lang) ? lang : 'es';
+    currentLanguage = lang;
+    try {
+        if (!translationCache.has(lang)) {
+            const fallback = window.REVIRA_LANGUAGES?.[lang];
+            const promise = location.protocol === 'file:' && fallback
+                ? Promise.resolve(fallback)
+                : fetch(`lang/${lang}.json`).then(r => {
+                    if (!r.ok) throw new Error('No se pudo cargar el idioma');
+                    return r.json();
+                  }).catch(err => { if (fallback) return fallback; throw err; });
+            translationCache.set(lang, promise);
         }
-    });
-
-    localStorage.setItem("lang", lang);
+        const translations = await translationCache.get(lang);
+        if (currentLanguage !== lang) return;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const value = translations[el.dataset.i18n];
+            if (typeof value !== 'string') return;
+            // Conservar iconos, contadores y etiquetas anidadas; nunca inyectar HTML.
+            if (el.children.length) {
+                const directText = Array.from(el.childNodes).find(n => n.nodeType === Node.TEXT_NODE && n.textContent.trim());
+                if (directText) directText.textContent = value + ' ';
+            } else {
+                el.textContent = value;
+            }
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const value = translations[el.dataset.i18nPlaceholder];
+            if (typeof value === 'string') el.placeholder = value;
+        });
+        document.documentElement.lang = lang;
+        try { localStorage.setItem('lang', lang); } catch {}
+        document.querySelectorAll('#language-switcher [data-lang]').forEach(btn => {
+            btn.setAttribute('aria-pressed', String(btn.dataset.lang === lang));
+        });
+        document.dispatchEvent(new CustomEvent('revira:languagechange', { detail: { lang, translations } }));
+    } catch (error) {
+        console.warn('No se ha podido cambiar el idioma:', error);
+    }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-
-    const savedLang = localStorage.getItem("lang") || "es";
-
-    // 1. Cargar idioma primero
-    await loadLanguage(savedLang);
-
-    // 2. Cargar sugerencias después
-    await cargarSugerencias();
-
-    // 3. Volver a aplicar idioma para traducir sugerencias
-    await loadLanguage(savedLang);
-
-    // 4. Activar botones de cambio de idioma
-    document.querySelectorAll("#language-switcher .flag").forEach(flag => {
-        flag.addEventListener("click", async () => {
-            const lang = flag.dataset.lang;
-
-            await loadLanguage(lang);
-            await cargarSugerencias();
-            await loadLanguage(lang);
-        });
+document.addEventListener('DOMContentLoaded', () => {
+    loadLanguage(currentLanguage);
+    document.querySelectorAll('#language-switcher [data-lang]').forEach(btn => {
+        btn.addEventListener('click', () => loadLanguage(btn.dataset.lang));
     });
 });
-
-
 
 // cambio de color
 const themeToggle = document.getElementById("theme-toggle");
 const themeIcon = document.getElementById("theme-icon");
 
 // Cambiar icono según el modo
+const moonIconPaths = `<path d="M20.985 12.486A9 9 0 1 1 11.514 3.015a7 7 0 0 0 9.47 9.47Z"></path>`;
+const sunIconPaths = `<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>`;
 function updateThemeIcon() {
-    if (document.body.classList.contains("light-mode")) {
-        themeIcon.textContent = "dark_mode"; // ☀️
-    } else {
-        themeIcon.textContent = "light_mode"; // 🌙
-    }
+    if (!themeIcon) return;
+    const isLight = document.body.classList.contains('light-mode');
+    // Asegurar que el dibujo SVG nunca se recorte en ningún navegador.
+    themeIcon.setAttribute('viewBox', '0 0 24 24');
+    themeIcon.innerHTML = isLight ? moonIconPaths : sunIconPaths;
+    const lang = (document.documentElement.lang || 'es').slice(0, 2);
+    const translations = {
+        es: {dark: 'Activar modo oscuro', light: 'Activar modo claro'},
+        en: {dark: 'Switch to dark mode', light: 'Switch to light mode'},
+        fr: {dark: 'Activer le mode sombre', light: 'Activer le mode clair'},
+        de: {dark: 'Dunkelmodus aktivieren', light: 'Hellmodus aktivieren'}
+    };
+    const labels = translations[lang] || translations.es;
+    const label = isLight ? labels.dark : labels.light;
+    themeToggle?.setAttribute('aria-label', label);
+    themeToggle?.setAttribute('title', label);
 }
+// Cambiar el texto accesible cuando se elige otro idioma.
+document.addEventListener('revira:languagechange', updateThemeIcon);
 
 // Cambiar logo según el modo
 function updateLogo() {
@@ -992,7 +1105,7 @@ function updateLogo() {
     if (document.body.classList.contains("light-mode")) {
         logo.src = "img/logo3.png";   // Logo para modo claro
     } else {
-        logo.src = "img/logo.png";    // Logo para modo oscuro
+        logo.src = "img/logo3.png";   // Logo unificado en ambos temas
     }
 }
 
@@ -1000,7 +1113,9 @@ function updateLogo() {
 // MODO POR DEFECTO: CLARO
 // ===============================
 document.addEventListener("DOMContentLoaded", () => {
-    const savedTheme = localStorage.getItem("theme");
+    let savedTheme = 'light';
+    try { savedTheme = localStorage.getItem("theme") || 'light'; }
+    catch (e) { /* Modo claro disponible incluso con almacenamiento bloqueado. */ }
 
     if (savedTheme === "dark") {
         document.body.classList.remove("light-mode");
@@ -1015,14 +1130,12 @@ document.addEventListener("DOMContentLoaded", () => {
 // ===============================
 // BOTÓN DE CAMBIO DE TEMA
 // ===============================
-themeToggle.addEventListener("click", () => {
+themeToggle?.addEventListener("click", () => {
     document.body.classList.toggle("light-mode");
 
-    if (document.body.classList.contains("light-mode")) {
-        localStorage.setItem("theme", "light");
-    } else {
-        localStorage.setItem("theme", "dark");
-    }
+    try {
+        localStorage.setItem("theme", document.body.classList.contains("light-mode") ? "light" : "dark");
+    } catch (e) { /* Mantener cambio de tema durante esta visita. */ }
 
     updateThemeIcon();
     updateLogo();
@@ -1240,11 +1353,21 @@ document.addEventListener("DOMContentLoaded", () => {
 // SUGERENCIAS - MODAL AL ENTRAR
 // ===============================
 
-async function cargarSugerencias() {
+async function cargarSugerencias(abrir = false) {
 
     const modal = document.getElementById("suggestionsModal");
     if (!modal) return;
 
+    if (modal.dataset.loaded === 'true') {
+        if (abrir) {
+            modal.style.display = 'flex';
+            modal.setAttribute('aria-hidden', 'false');
+            requestAnimationFrame(() => modal.classList.add('show'));
+            document.body.style.overflow = 'hidden';
+            document.getElementById('closeModal')?.focus();
+        }
+        return;
+    }
     const closeBtn = document.getElementById("closeModal");
     const closeBtnBottom = document.getElementById("closeModalBtn");
     const lista = modal.querySelector("ul");
@@ -1252,8 +1375,16 @@ async function cargarSugerencias() {
 
     const ruta = "img/platos/sugerencias/";
 
-    const r = await fetch(ruta + "manifest.json");
-    const sugerencias = await r.json();
+    const sugerenciasLocal = window.REVIRA_MENU?.sugerencias;
+    const sugerencias = location.protocol === 'file:' && Array.isArray(sugerenciasLocal)
+        ? sugerenciasLocal
+        : await fetch(ruta + "manifest.json").then(r => {
+            if (!r.ok) throw new Error('No se pudo abrir el listado de sugerencias');
+            return r.json();
+          }).catch(error => {
+            if (Array.isArray(sugerenciasLocal)) return sugerenciasLocal;
+            throw error;
+          });
 
     lista.innerHTML = "";
 
@@ -1323,7 +1454,7 @@ async function cargarSugerencias() {
     });
 
     // Traducir textos
-    await loadLanguage(localStorage.getItem("lang") || "es");
+    await loadLanguage((() => { try { return localStorage.getItem("lang") || "es"; } catch { return "es"; } })());
 
     // ===============================
     // PAGINACIÓN + SWIPE
@@ -1383,9 +1514,14 @@ async function cargarSugerencias() {
     // ===============================
     // ABRIR MODAL
     // ===============================
-    modal.style.display = "flex";
-    requestAnimationFrame(() => modal.classList.add("show"));
-    document.body.style.overflow = "hidden";
+    modal.dataset.loaded = 'true';
+    if (abrir) {
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
+        requestAnimationFrame(() => modal.classList.add('show'));
+        document.body.style.overflow = 'hidden';
+        document.getElementById('closeModal')?.focus();
+    }
 
     // ===============================
     // CIERRE
@@ -1398,7 +1534,9 @@ async function cargarSugerencias() {
 
         setTimeout(() => {
             modal.classList.remove("closing");
-            modal.style.display = "";
+            modal.style.display = "none";
+            modal.setAttribute('aria-hidden', 'true');
+            document.getElementById('btnSuggestions')?.focus();
         }, 300);
     }
 
@@ -1415,7 +1553,7 @@ async function cargarSugerencias() {
     });
 
     document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") cerrarModal();
+        if (e.key === "Escape" && modal.classList.contains("show")) cerrarModal();
     });
 }
 
@@ -1458,6 +1596,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let images = [];
     let currentIndex = 0;
 
+    if (!modal || !modalImg || !btnPrev || !btnNext) return;
+
     /* =========================
        CARGA MENÚ
     ========================= */
@@ -1466,9 +1606,18 @@ document.addEventListener("DOMContentLoaded", () => {
         const contenedor = document.querySelector(`#${id} .menu-list`);
         if (!contenedor) return;
 
-        fetch(ruta + "manifest.json")
-            .then(r => r.json())
-            .then(platos => {
+        const localMenu = window.REVIRA_MENU?.[id];
+        const menuPromise = location.protocol === 'file:' && Array.isArray(localMenu)
+            ? Promise.resolve(localMenu)
+            : fetch(ruta + "manifest.json").then(r => {
+                if (!r.ok) throw new Error(`No se encontró el menú de ${id}`);
+                return r.json();
+              }).catch(error => {
+                if (Array.isArray(localMenu)) return localMenu;
+                throw error;
+              });
+
+        menuPromise.then(platos => {
 
                 contenedor.innerHTML = "";
 
@@ -1485,6 +1634,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         const img = document.createElement("img");
                         img.className = "menu-item-img";
                         img.src = fullImgs[0];
+                        img.loading = "lazy";
+                        img.decoding = "async";
+                        img.width = 180;
+                        img.height = 180;
                         img.alt = plato.nombre;
                         img.dataset.imgs = JSON.stringify(fullImgs);
                         article.appendChild(img);
@@ -1526,7 +1679,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     (plato.precios || []).forEach(pre => {
                         const span = document.createElement("span");
-                        span.innerHTML = `${pre.cantidad} <small data-i18n="${pre.tipo}">${pre.tipo}</small>`;
+                        span.textContent = pre.cantidad || '';
+                        if (pre.tipo) {
+                            const tipo = document.createElement('small');
+                            tipo.dataset.i18n = pre.tipo;
+                            tipo.textContent = pre.tipo;
+                            span.appendChild(tipo);
+                        }
                         precios.appendChild(span);
                     });
 
@@ -1535,7 +1694,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     article.appendChild(content);
                     contenedor.appendChild(article);
                 });
-            });
+                loadLanguage(currentLanguage);
+            })
+            .catch(error => console.warn(`Error al cargar ${id}:`, error));
     });
 
     /* =========================
@@ -1599,6 +1760,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         modal.style.display = "block";
+        modal.setAttribute('aria-hidden', 'false');
         requestAnimationFrame(() => modal.classList.add("show"));
 
         document.body.style.overflow = "hidden";
@@ -1665,7 +1827,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
             modal.classList.remove("closing");
-            modal.style.display = "";
+            modal.style.display = "none";
+            modal.setAttribute('aria-hidden', 'true');
         }, 500);
 
         if (btnTop) {
@@ -1680,7 +1843,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") cerrar();
+        if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false" && document.getElementById("lightbox")?.getAttribute("aria-hidden") !== "false") cerrar();
     });
 
     /* =========================
@@ -1705,8 +1868,7 @@ document.addEventListener("DOMContentLoaded", () => {
         openLightbox(index);
     });
 
-    // <-- AÑADE ESTO
-    cargarSugerencias();
+    // Las sugerencias se muestran únicamente cuando las solicita el visitante.
 
 });
 
@@ -1715,6 +1877,6 @@ document.addEventListener("DOMContentLoaded", () => {
 const btnSuggestions = document.getElementById("btnSuggestions");
 if (btnSuggestions) {
     btnSuggestions.addEventListener("click", () => {
-        cargarSugerencias();
+        cargarSugerencias(true).catch(err => console.warn('Sugerencias:', err));
     });
 }

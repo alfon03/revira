@@ -3,44 +3,92 @@
     "i18n_key": "dish_espinacas",
     "nombre": "Espinacas con garbanzos",
     "descripcion": "Receta tradicional de espinacas con garbanzos, suave y casera.",
-    "imgs": ["4.webp"],
+    "imgs": [
+      "4.webp"
+    ],
     "alergenos": [],
     "precios": [
-      { "cantidad": "4,50 €", "tipo": "tapa" },
-      { "cantidad": "8,00 €", "tipo": "ración" }
+      {
+        "cantidad": "4,50 €",
+        "tipo": "tapa"
+      },
+      {
+        "cantidad": "8,00 €",
+        "tipo": "ración"
+      }
     ]
   },
   {
     "i18n_key": "dish_croquetas_marisco",
     "nombre": "Croquetas de marisco",
     "descripcion": "",
-    "imgs": ["9.webp","13.webp"],
-    "alergenos": ["gluten", "lacteos", "huevo", "crustaceo"],
+    "imgs": [
+      "9.webp",
+      "13.webp"
+    ],
+    "alergenos": [
+      "gluten",
+      "lacteos",
+      "huevo",
+      "crustaceo"
+    ],
     "precios": [
-      { "cantidad": "4,50 €", "tipo": "tapa" },
-      { "cantidad": "9,00 €", "tipo": "ración" }
+      {
+        "cantidad": "4,50 €",
+        "tipo": "tapa"
+      },
+      {
+        "cantidad": "9,00 €",
+        "tipo": "ración"
+      }
     ]
   },
   {
     "i18n_key": "dish_croquetas_queso",
     "nombre": "Croquetas de queso",
     "descripcion": "",
-    "imgs": ["2.webp","15.webp"],
-    "alergenos": ["gluten", "lacteos", "huevo"],
+    "imgs": [
+      "2.webp",
+      "15.webp"
+    ],
+    "alergenos": [
+      "gluten",
+      "lacteos",
+      "huevo"
+    ],
     "precios": [
-      { "cantidad": "4,50 €", "tipo": "tapa" },
-      { "cantidad": "9,00 €", "tipo": "ración" }
+      {
+        "cantidad": "4,50 €",
+        "tipo": "tapa"
+      },
+      {
+        "cantidad": "9,00 €",
+        "tipo": "ración"
+      }
     ]
   },
   {
     "i18n_key": "dish_croquetas_cocido",
     "nombre": "Croquetas de cocido",
     "descripcion": "",
-    "imgs": ["16.webp","15.webp"],
-    "alergenos": ["gluten", "lacteos", "huevo"],
+    "imgs": [
+      "16.webp",
+      "15.webp"
+    ],
+    "alergenos": [
+      "gluten",
+      "lacteos",
+      "huevo"
+    ],
     "precios": [
-      { "cantidad": "4,50 €", "tipo": "tapa" },
-      { "cantidad": "9,00 €", "tipo": "ración" }
+      {
+        "cantidad": "4,50 €",
+        "tipo": "tapa"
+      },
+      {
+        "cantidad": "9,00 €",
+        "tipo": "ración"
+      }
     ]
   },
   {
@@ -48,20 +96,38 @@
     "nombre": "Variado de croquetas",
     "descripcion": "",
     "img": "11.webp",
-    "alergenos": ["gluten", "lacteos", "huevo", "crustaceo"],
+    "alergenos": [
+      "gluten",
+      "lacteos",
+      "huevo",
+      "crustaceo"
+    ],
     "precios": [
-      { "cantidad": "12,00 €", "tipo": "" }
+      {
+        "cantidad": "12,00 €",
+        "tipo": ""
+      }
     ]
   },
   {
     "i18n_key": "dish_carrillera",
     "nombre": "Carrillera",
     "descripcion": "",
-    "imgs": ["10.webp","12.webp"],
-    "alergenos": ["sulfitos"],
+    "imgs": [
+      "10.webp"
+    ],
+    "alergenos": [
+      "sulfitos"
+    ],
     "precios": [
-      { "cantidad": "5,00 €", "tipo": "tapa" },
-      { "cantidad": "10,00 €", "tipo": "ración" }
+      {
+        "cantidad": "5,00 €",
+        "tipo": "tapa"
+      },
+      {
+        "cantidad": "10,00 €",
+        "tipo": "ración"
+      }
     ]
   },
   {
@@ -69,9 +135,15 @@
     "nombre": "Pastel de berenjenas",
     "descripcion": "",
     "img": "8.webp",
-    "alergenos": ["lacteos", "sulfitos"],
+    "alergenos": [
+      "lacteos",
+      "sulfitos"
+    ],
     "precios": [
-      { "cantidad": "6,00 €", "tipo": "" }
+      {
+        "cantidad": "6,00 €",
+        "tipo": ""
+      }
     ]
   },
   {
@@ -79,9 +151,16 @@
     "nombre": "Patatas gratinadas",
     "descripcion": "",
     "img": "3.webp",
-    "alergenos": ["lacteos", "huevo", "sulfitos"],
+    "alergenos": [
+      "lacteos",
+      "huevo",
+      "sulfitos"
+    ],
     "precios": [
-      { "cantidad": "8,00 €", "tipo": "" }
+      {
+        "cantidad": "8,00 €",
+        "tipo": ""
+      }
     ]
   },
   {
@@ -89,9 +168,14 @@
     "nombre": "Patatas bravas",
     "descripcion": "",
     "img": "5.webp",
-    "alergenos": ["lacteos"],
+    "alergenos": [
+      "lacteos"
+    ],
     "precios": [
-      { "cantidad": "8,00 €", "tipo": "" }
+      {
+        "cantidad": "8,00 €",
+        "tipo": ""
+      }
     ]
   },
   {
@@ -99,9 +183,15 @@
     "nombre": "Papas arrieras",
     "descripcion": "",
     "img": "1.webp",
-    "alergenos": ["huevo", "lacteos"],
+    "alergenos": [
+      "huevo",
+      "lacteos"
+    ],
     "precios": [
-      { "cantidad": "9,00 €", "tipo": "" }
+      {
+        "cantidad": "9,00 €",
+        "tipo": ""
+      }
     ]
   },
   {
@@ -111,7 +201,10 @@
     "img": "6.webp",
     "alergenos": [],
     "precios": [
-      { "cantidad": "7,00 €", "tipo": "" }
+      {
+        "cantidad": "7,00 €",
+        "tipo": ""
+      }
     ]
   },
   {
@@ -119,9 +212,16 @@
     "nombre": "Gyosas",
     "descripcion": "Gyosas con salsa de soja y mayonesa por encima.",
     "img": "7.webp",
-    "alergenos": ["gluten", "soja", "huevo"],
+    "alergenos": [
+      "gluten",
+      "soja",
+      "huevo"
+    ],
     "precios": [
-      { "cantidad": "7,00 €", "tipo": "" }
+      {
+        "cantidad": "7,00 €",
+        "tipo": ""
+      }
     ]
   }
 ]

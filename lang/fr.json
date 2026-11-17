@@ -1,18 +1,14 @@
 {
   "title": "La ReviRa",
-
   "menu_home": "Accueil",
   "menu_dishes": "Nos plats",
   "menu_menu": "Carte",
-  "menu_about": "À propos de nous",
-
+  "menu_about": "Contact",
   "breadcrumb": "Vous êtes ici :",
   "breadcrumb_label_home": "Accueil",
   "breadcrumb_label_dishes": "Nos plats",
   "breadcrumb_label_menu": "Carte",
-
   "download_pdf": "Télécharger la carte en PDF",
-
   "producto": "Produit",
   "precio": "Prix",
   "tapa": "Tapa",
@@ -20,11 +16,9 @@
   "alergenos": "Allergènes",
   "consultar": "Demander au personnel",
   "ración": "Portion",
-"volver": "Retour",
-
+  "volver": "Retour",
   "racion": "Portion",
   "media_racion": "Demi-portion",
-
   "chacinas": "Charcuteries",
   "tapas_frias": "Tapas froides",
   "tapas_calientes": "Tapas chaudes",
@@ -35,19 +29,16 @@
   "peques": "Menu enfants",
   "pescados": "Poissons",
   "postres": "Desserts",
-
   "dish_mejillones": "Moules",
   "dish_anchoas": "Anchois",
   "dish_sardinas": "Sardines",
   "dish_lomo_orza": "Longe de porc en graisse",
   "dish_tosta_chicharron": "Tartine de chicharrón de Cadix",
-
   "dish_ensaladilla": "Salade russe",
   "dish_pulpo": "Salade de poulpe",
   "dish_patatas_alinadas": "Pommes de terre assaisonnées",
   "dish_boquerones": "Anchois au vinaigre",
   "dish_ensalada_casa": "Salade maison",
-
   "dish_espinacas": "Épinards aux pois chiches",
   "dish_croquetas_marisco": "Croquettes de fruits de mer",
   "dish_croquetas_queso": "Croquettes au fromage",
@@ -60,7 +51,6 @@
   "dish_papas_arrieras": "Pommes de terre arrieras",
   "dish_berenjenas_miel": "Aubergines au miel de canne",
   "dish_gyozas": "Gyozas",
-
   "dish_melva": "Melva aux poivrons",
   "dish_salmon_queso": "Saumon au fromage",
   "dish_cochinito": "Cochinito (fromage ou jambon)",
@@ -72,7 +62,6 @@
   "dish_bao_curry": "Bao au curry",
   "dish_bao_carrilla": "Bao à la joue de porc",
   "dish_gambas_alioli": "Crevettes à l’aïoli",
-
   "dish_solomillo_revira": "Filet de porc façon Revira",
   "dish_solomillo_whisky": "Filet de porc sauce whisky",
   "dish_solomillo_pimienta": "Filet de porc au poivre",
@@ -82,29 +71,24 @@
   "dish_presa_iberica": "Presa ibérique",
   "dish_pechuga": "Blanc de poulet grillé",
   "dish_pollo_frito": "Poulet frit",
-
   "dish_jamon": "Jambon",
   "dish_queso": "Fromage",
   "dish_carne_mecha": "Porc effiloché",
   "dish_cana_lomo": "Longe séchée",
   "dish_chicharron": "Chicharrón de Cadix",
   "dish_variado": "Assortiment",
-
   "dish_hamburguesa_pollo": "Burger de poulet",
   "dish_lagrimitas": "Lagrimitas (lanières de poulet)",
   "dish_nuggets": "Nuggets",
   "dish_perrito": "Hot-dog",
-
   "dish_chocos": "Cornets de seiche",
   "dish_calamares": "Cornets de calamars",
   "dish_bacalao": "Cornet de morue frite",
   "dish_twister": "Twister de crevette",
   "dish_pavia": "Pavía de gambon",
   "dish_gambas_ajillo": "Crevettes à l’ail",
-
   "dish_tarta_abuela": "Gâteau de grand-mère",
   "dish_tarta_queso": "Gâteau au fromage",
-
   "alergeno_gluten": "Gluten",
   "alergeno_huevo": "Œuf",
   "alergeno_lacteos": "Produits laitiers",
@@ -114,40 +98,29 @@
   "alergeno_mostaza": "Moutarde",
   "alergeno_sesamo": "Sésame",
   "alergeno_sulfitos": "Sulfites",
-
   "alergenos_title": "Allergènes",
   "alergenos_nota": "Tous nos plats peuvent contenir des allergènes ou des traces en raison de leur préparation.",
-
   "footer_about_title": "La Revirá",
   "footer_about_text": "Tradition andalouse réinterprétée avec soin. Produits frais, recettes traditionnelles et une ambiance qui invite à rester. Un lieu où bonne cuisine et bonne compagnie se rencontrent.",
-
   "footer_info_title": "Informations",
   "footer_address": "Adresse :",
   "footer_address_text": "Av. la Cruz, 41440 Lora del Río, Séville",
   "footer_phone": "Téléphone :",
   "footer_phone_text": "645 74 02 00",
-
   "footer_reservas": "Réservations :",
   "footer_reservas_text": "Disponible par téléphone",
   "footer_follow": "Suivez-nous",
-
   "footer_copy": "© 2026 La Revirá — Tous droits réservés",
-
   "btn_top": "Haut",
   "lightbox_close": "×",
   "map_iframe": "",
-
   "carousel_prev": "chevron_left",
   "carousel_next": "chevron_right",
   "sugerencias": "Suggestions",
-
   "home_title": "Bienvenue à",
   "home_subtitle": "L’endroit parfait pour profiter, manger et partager.",
-
   "location_title": "Où sommes-nous ?",
-
   "schedule_title": "Horaires",
-
   "day_monday": "Lundi",
   "day_tuesday": "Mardi",
   "day_wednesday": "Mercredi",
@@ -155,53 +128,37 @@
   "day_friday": "Vendredi",
   "day_saturday": "Samedi",
   "day_sunday": "Dimanche",
-
-  "hours_tue": "20:30–Fermeture",
-  "hours_wed": "20:30–Fermeture",
-  "hours_thu": "20:30–Fermeture",
-  "hours_fri": "20:30–Fermeture",
-  "hours_sat": "20:30–Fermeture",
-  "hours_sun": "Fermeture",
-
+  "hours_tue": "12:00–fermeture\n20:30–fermeture",
+  "hours_wed": "12:00–fermeture\n20:30–fermeture",
+  "hours_thu": "12:00–fermeture\n20:30–fermeture",
+  "hours_fri": "12:00–fermeture\n20:30–fermeture",
+  "hours_sat": "12:00–fermeture\n20:30–fermeture",
+  "hours_sun": "12:00–fermeture\nSoir : fermé",
   "desc_solomillo_revira_1": "L’une de nos spécialités les plus demandées.",
   "desc_solomillo_revira_2": "Un filet de bœuf accompagné d’une sauce à la crème, à l’oignon et aux truffes.",
-
-   "footer_slogan": "Tradition andalouse, produits frais et recettes faites pour être partagées.",
-
-   "suggestions_title": "Suggestions",
-  
+  "footer_slogan": "Tradition andalouse, produits frais et recettes faites pour être partagées.",
+  "suggestions_title": "Suggestions",
   "suggestion_tomate_caballa": "Tomate à la Maquereau",
   "suggestion_tomate_caballa_desc": "Tomate frais avec maquereau et huile d’olive.",
-
   "dish_delicias_queso_viejo": "Délices de Fromage Affiné",
   "dish_delicias_queso_viejo_desc": "Boulettes croustillantes de fromage affiné fondu.",
-
   "suggestion_bunuelos_marisco": "Beignets de Fruits de Mer",
   "suggestion_bunuelos_marisco_desc": "",
-
   "suggestion_tortilla_camaron": "Omelette aux Crevettes",
   "suggestion_tortilla_camaron_desc": "",
-
   "suggestion_rulo_cabra": "Roulé de Chèvre Frit",
   "suggestion_rulo_cabra_desc": "Roulé de fromage de chèvre pané et frit, servi avec confiture.",
-
   "suggestion_boquerones_fritos": "Anchois Frits",
   "suggestion_boquerones_fritos_desc": "",
-
   "suggestion_patatas_4_pecados": "Pommes de Terre des Quatre Péchés",
   "suggestion_patatas_4_pecados_desc": "Pommes de terre avec fromage à la crème, cheddar, bacon et fromage affiné.",
-    "suggestion_chipiron": "Chipiron à la plancha ou frit",
-"ver_sugerencias": "Voir les suggestions",
-      "dish_almejas_ajillo": "Palourdes à l’Ail",
-
-
+  "suggestion_chipiron": "Chipiron à la plancha ou frit",
+  "ver_sugerencias": "Voir les suggestions",
+  "dish_almejas_ajillo": "Palourdes à l’Ail",
   "btn_ver_pdf": "Voir la carte en PDF",
-
   "close": "Fermer",
-
   "bebida": "Boissons",
   "bodega": "Cave à vin",
-
   "drink_agua_pequena": "Petite eau",
   "drink_agua_grande": "Grande eau",
   "drink_tinto_verano": "Tinto de verano",
@@ -211,7 +168,6 @@
   "drink_licores": "Liqueurs",
   "drink_combinados": "Boissons mixtes",
   "drink_combinados_premium": "Boissons mixtes premium",
-
   "wine_grabiela": "Grabiela (Manzanilla)",
   "wine_labraz": "Labraz (Rioja)",
   "wine_cyatho": "Cyatho (Verdejo)",
@@ -223,21 +179,17 @@
   "wine_traslascuestas_crianza": "Traslascuestas Crianza (Ribera del Duero)",
   "wine_carramimbre": "Carramimbre (Ribera del Duero)",
   "wine_ramon_bilbao": "Ramón Bilbao (Rioja)",
-
   "cata": "dégustation",
   "copa": "verre",
   "botella": "bouteille",
-
   "dish_ensalada_casa_desc": "Laitue, poulet, carotte, noix et sauce miel-moutarde.",
   "dish_tomate_caballa_desc": "Tomate fraîche avec maquereau et huile d’olive.",
-
   "dish_solomillo_revira_desc": "Filet de porc avec sauce à la crème, oignon et truffe. L’une de nos spécialités.",
   "dish_solomillo_whisky_desc": "Filet de porc dans une sauce à l’ail et au whisky.",
   "dish_solomillo_pimienta_desc": "Filet de porc avec sauce crémeuse au poivre.",
   "dish_solomillo_roquefort_desc": "Filet de porc avec sauce au roquefort.",
   "dish_lagartito_desc": "Échine ibérique grillée, juteuse et pleine de saveur.",
   "dish_presa_iberica_desc": "Presa ibérique grillée, tendre et très savoureuse.",
-
   "dish_melva_desc": "Melva avec poivrons del piquillo, un classique doux et équilibré.",
   "dish_salmon_queso_desc": "Saumon avec fromage frais, une combinaison douce et juteuse.",
   "dish_piripi_desc": "Sandwich de longe, fromage, bacon et aïoli, juteux et savoureux.",
@@ -245,26 +197,91 @@
   "dish_pringa_desc": "Pringá traditionnelle, fondante et pleine de saveur authentique.",
   "dish_bao_curry_desc": "Bao moelleux garni de poulet au curry doux.",
   "dish_bao_carrilla_desc": "Bao garni de joue de porc fondante dans sa sauce.",
-
   "dish_mejillones_desc": "Pain grillé garni d’un moule.",
   "dish_anchoas_desc": "Regañá avec guacamole et un anchois dessus.",
   "dish_sardinas_desc": "Pain grillé avec confiture et sardine.",
   "dish_lomo_orza_desc": "Pain grillé avec sauce espagnole et longe de porc en graisse.",
   "dish_tosta_chicharron_desc": "Pain grillé avec manteca colorá et tranches de chicharrón de Cadix.",
-
   "dish_hamburguesa_pollo_desc": "Burger de poulet avec pain moelleux, idéal pour les enfants.",
   "dish_lagrimitas_desc": "Lanières de poulet croustillantes et juteuses.",
-
   "dish_chocos_desc": ".",
   "dish_twister_desc": "Crevette croustillante enveloppée dans une pâte fine.",
   "dish_pavia_desc": "Gambon en beignet traditionnel type pavía.",
   "dish_gambas_ajillo_desc": "Crevettes sautées à l’ail et à l’huile chaude.",
-
   "dish_espinacas_desc": "Recette traditionnelle d’épinards aux pois chiches, douce et maison.",
   "dish_gyozas_desc": "Gyozas avec sauce soja et mayonnaise par-dessus.",
-
   "1/2": "Demi",
   "/ud": "à l’unité",
-  "unitario": "Unité"
-
+  "unitario": "Unité",
+  "ui_book": "Réserver une table",
+  "ui_dishes_short": "Plats",
+  "ui_about_short": "Contact",
+  "ui_explore": "Explorer",
+  "ui_social_text": "Un aperçu de notre cuisine et de notre quotidien.",
+  "ui_made_with_care": "Fait avec amour à Lora del Río.",
+  "ui_hero_eyebrow": "LORA DEL RÍO · SÉVILLE",
+  "ui_hero_title": "Venez pour savourer.",
+  "ui_hero_desc": "Une table à partager, des saveurs authentiques et ces instants qu’on voudrait prolonger. Bienvenue à La Revirá.",
+  "ui_view_menu": "Découvrir la carte",
+  "ui_hero_note": "Cuisine andalouse, moments à partager.",
+  "ui_values_eyebrow": "CE QUI NOUS ANIME",
+  "ui_values_title": "La bonne cuisine, sans se presser.",
+  "ui_values_intro": "Pas besoin d’une occasion spéciale pour transformer une journée en beau souvenir.",
+  "ui_value1_title": "Saveurs authentiques",
+  "ui_value1_desc": "Des recettes préparées avec soin et un vrai esprit andalou.",
+  "ui_value2_title": "À partager",
+  "ui_value2_desc": "Tapas, petits sandwichs et tant de choses à goûter.",
+  "ui_value3_title": "Des moments inoubliables",
+  "ui_value3_desc": "De longues discussions, de la bonne compagnie et l’envie de revenir.",
+  "ui_gallery_eyebrow": "NOTRE UNIVERS",
+  "ui_gallery_title": "La vie à La Revirá.",
+  "ui_gallery_intro": "Nos gens, notre lieu et les petits instants qui le rendent unique.",
+  "ui_gallery_caption": "Chaque visite a son histoire.",
+  "ui_see_dishes": "Voir nos plats",
+  "ui_banner_eyebrow": "UNE PLACE VOUS ATTEND",
+  "ui_banner_title": "Les meilleurs moments se passent autour d’une table.",
+  "ui_banner_desc": "Vous venez ce soir ? Appelez-nous pour vérifier les disponibilités.",
+  "ui_call": "Appelez-nous",
+  "ui_visit_eyebrow": "VENEZ NOUS VOIR",
+  "ui_visit_desc": "Nous sommes à Lora del Río. Voici comment nous trouver.",
+  "ui_schedule_label": "HORAIRES",
+  "ui_directions": "Itinéraire",
+  "ui_menu_eyebrow": "LES SAVEURS DE LA REVIRÁ",
+  "ui_menu_title": "La carte à votre goût.",
+  "ui_menu_desc": "Trouvez vos plats préférés : tapas, sandwichs, viandes, poissons et bien plus.",
+  "ui_search_placeholder": "Rechercher un plat ou un ingrédient…",
+  "ui_search_hint": "Explorez les catégories ou recherchez par nom.",
+  "ui_search_results": "plats trouvés",
+  "ui_search_one": "plat trouvé",
+  "ui_no_results": "Aucun plat ne correspond à votre recherche.",
+  "ui_no_results_desc": "Essayez un autre mot ou parcourez nos catégories.",
+  "ui_dishes_eyebrow": "UN PEU DE TOUT",
+  "ui_dishes_title": "De quoi se régaler.",
+  "ui_dishes_desc": "Découvrez en images quelques spécialités de notre cuisine.",
+  "ui_prices": "Carte et prix",
+  "ui_gallery_page_title": "Des plats à savourer.",
+  "ui_gallery_page_desc": "Les bonnes choses se partagent.",
+  "alergeno_crustaceo": "Crustacés",
+  "alergeno_molusco": "Mollusques",
+  "ui_feature_kicker": "UN GOÛT DE LA REVIRÁ",
+  "ui_feature_title": "Des plats qui donnent envie.",
+  "ui_feature_intro": "D’un bon sandwich à une petite douceur. Commencez ici, puis découvrez toute notre carte.",
+  "ui_feature_label": "POUR VOUS INSPIRER",
+  "ui_feature_from": "Dès",
+  "ui_feature_action": "Voir sur la carte",
+  "ui_feature_all": "Découvrir toute la carte",
+  "ui_favorites": "Mes favoris",
+  "ui_fav_hint": "Touchez le cœur d’un plat pour enregistrer votre sélection.",
+  "ui_fav_share": "Partager ma sélection",
+  "ui_fav_empty_title": "Aucun favori pour le moment.",
+  "ui_fav_empty_desc": "Touchez un cœur sur la carte pour retrouver les plats ici.",
+  "ui_fav_add": "Ajouter aux favoris",
+  "ui_fav_remove": "Retirer des favoris",
+  "ui_fav_share_title": "Mes favoris de La Revirá",
+  "ui_fav_copied": "Sélection copiée !",
+  "ui_fav_none": "Enregistrez d’abord un plat",
+  "ui_fav_all": "Tout afficher",
+  "ui_feature_price_note": "Prix variables selon les portions. Consultez la carte.",
+  "hours_mon": "Fermé",
+  "ui_download_pdf": "Télécharger le PDF"
 }

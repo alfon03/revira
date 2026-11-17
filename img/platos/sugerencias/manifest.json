@@ -20,9 +20,7 @@
     "i18n_key": "dish_delicias_queso_viejo",
     "nombre": "Delicias de Queso Viejo",
     "descripcion": "Crujientes bolitas de queso viejo fundido.",
-    "imgs": [
-      "10.webp"
-    ],
+    "imgs": [],
     "alergenos": [
       "lacteos",
       "gluten",
@@ -97,9 +95,7 @@
     "i18n_key": "suggestion_boquerones_fritos",
     "nombre": "Boquerones Fritos",
     "descripcion": "",
-    "imgs": [
-      "5.webp"
-    ],
+    "imgs": [],
     "alergenos": [
       "pescado",
       "gluten"
@@ -118,7 +114,10 @@
     "imgs": [
       "12.webp"
     ],
-    "alergenos": ["lacteos", "sulfitos"],
+    "alergenos": [
+      "lacteos",
+      "sulfitos"
+    ],
     "precios": [
       {
         "cantidad": "7,00 €",
@@ -132,10 +131,13 @@
     "descripcion": "Patatas con queso nata, queso chedar, bacon y queso viejo.",
     "imgs": [
       "13.webp",
-      "14.webp",
-      "15.webp"
+      "14.webp"
     ],
-    "alergenos": ["moluscos","gluten","sulfitos"],
+    "alergenos": [
+      "moluscos",
+      "gluten",
+      "sulfitos"
+    ],
     "precios": [
       {
         "cantidad": "7,00 €",

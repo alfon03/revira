@@ -1,477 +1,275 @@
 <!DOCTYPE html>
+
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Carta - La Revirá</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Google Material Symbols -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
-
-    <!-- Favicon (PC / Navegadores) -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/revira/img/icons/logo-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/revira/img/icons/logo-16.png">
-
-    <!-- Apple Touch Icon (iPhone / iPad) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/revira/img/icons/apple-icon.png">
-
-    <!-- Android / PWA -->
-    <link rel="manifest" href="/revira/manifest.json">
-    <link rel="icon" type="image/png" sizes="192x192" href="/revira/img/icons/icon-192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/revira/img/icons/icon-512.png">
-
-    <!-- PWA Meta -->
-    <meta name="theme-color" content="#D4AF37">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <!-- Playball font -->
-    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
-
-    <!-- Inter + Playfair -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="styles.css">
-</head>
+<meta charset="utf-8"/>
+<title>Carta y precios | La Revirá Cerveceros</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
 
-<body>
+<link href="img/icons/logo-32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="img/icons/logo-16.png" rel="icon" sizes="16x16" type="image/png"/>
 
-    <!-- NAV -->
+<link href="img/icons/apple-icon.png" rel="apple-touch-icon" sizes="180x180"/>
 
-    <header>
+<link href="manifest.json" rel="manifest"/>
+<link href="img/icons/logo-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="img/icons/logo-512.png" rel="icon" sizes="512x512" type="image/png"/>
 
-        <nav id="navMenu">
-            <a data-i18n="menu_home" href="index.html">Inicio</a>
-            <a data-i18n="menu_dishes" href="platos.html">Nuestros platos</a>
-            <a data-i18n="menu_menu" href="carta.html">Carta</a>
-
-            <a data-i18n="menu_about" href="#info">Sobre nosotros</a>
-        </nav>
-
-        <button id="theme-toggle">
-            <span id="theme-icon" class="material-symbols-outlined">dark_mode</span>
-        </button>
+<meta content="#F6F1E7" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
 
 
 
-        <div id="language-switcher">
-            <div class="flag" data-lang="es">
-                <img src="https://flagcdn.com/es.svg" alt="ES">
-            </div>
-            <div class="flag" data-lang="en">
-                <img src="https://flagcdn.com/gb.svg" alt="EN">
-            </div>
-            <div class="flag" data-lang="fr">
-                <img src="https://flagcdn.com/fr.svg" alt="FR">
-            </div>
-            <div class="flag" data-lang="de">
-                <img src="https://flagcdn.com/de.svg" alt="DE">
-            </div>
-        </div>
-    </header>
-    <!-- NAV BOTTOM (solo móvil) -->
-    <div class="bottom-nav" id="bottomNav">
-        <a href="index.html">
-            <span class="material-symbols-outlined">home</span>
-            <small data-i18n="menu_home">Inicio</small>
-        </a>
 
-        <a href="platos.html">
-            <span class="material-symbols-outlined">restaurant_menu</span>
-            <small data-i18n="menu_dishes">Platos</small>
-        </a>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
 
-        <a href="carta.html">
-            <span class="material-symbols-outlined">menu_book</span>
-            <small data-i18n="menu_menu">Carta</small>
-        </a>
+<meta content="Consulta la carta de La Revirá Cerveceros en Lora del Río: tapas, montaditos, carnes, pescados, bebidas y precios. Busca platos y guarda favoritos." name="description"/><meta content="light dark" name="color-scheme"/><meta content="website" property="og:type"/><meta content="es_ES" property="og:locale"/><meta content="Carta y precios | La Revirá Cerveceros" property="og:title"/><meta content="Consulta la carta de La Revirá Cerveceros en Lora del Río: tapas, montaditos, carnes, pescados, bebidas y precios. Busca platos y guarda favoritos." property="og:description"/><meta content="img/platos/tapas-calientes/1.webp" property="og:image"/><meta content="summary_large_image" name="twitter:card"/>
+<link href="site.css?v=13" rel="stylesheet"/></head>
+<body class="page-carta light-mode"><script>try{if(localStorage.getItem("theme")==="dark")document.body.classList.remove("light-mode")}catch(e){}</script><a class="skip-link" href="#main-content">Saltar al contenido</a>
 
-        <a href="#info">
-            <span class="material-symbols-outlined">info</span>
-            <small data-i18n="menu_about">Nosotros</small>
-        </a>
-    </div>
-    <!-- BREADCRUMB -->
-    <div class="breadcrumb">
-        <span data-i18n="breadcrumb">Estás en:</span>
-        <span class="breadcrumb-label" data-i18n="breadcrumb_label_menu">Carta</span>
-    </div>
+<header class="site-header" id="siteHeader">
+<div class="header-inner">
+<a aria-label="La Revirá — Inicio" class="brand" href="index.html"><img alt="La Revirá Cerveceros" height="74" src="img/logo3.png" width="148"/></a>
+<nav aria-label="Navegación principal" class="primary-nav" id="navMenu">
+<a data-i18n="menu_home" href="index.html">Inicio</a>
+<a data-i18n="menu_dishes" href="platos.html">Nuestros platos</a>
+<a aria-current="page" data-i18n="menu_menu" href="carta.html">Carta</a>
+<a data-i18n="menu_about" href="#info">Contacto</a>
+</nav>
+<div class="header-actions">
+<div aria-label="Idioma / Language" class="language-switcher" id="language-switcher" role="group">
+<button aria-label="Español" class="flag" data-lang="es" title="Español" type="button">ES</button>
+<button aria-label="English" class="flag" data-lang="en" title="English" type="button">EN</button>
+<button aria-label="Français" class="flag" data-lang="fr" title="Français" type="button">FR</button>
+<button aria-label="Deutsch" class="flag" data-lang="de" title="Deutsch" type="button">DE</button>
+</div>
+<button aria-label="Cambiar tema" class="theme-toggle" id="theme-toggle" title="Cambiar tema" type="button"><svg aria-hidden="true" class="ui-icon" focusable="false" id="theme-icon" viewbox="0 0 24 24"><path d="M20.985 12.486A9 9 0 1 1 11.514 3.015a7 7 0 0 0 9.47 9.47Z"></path></svg></button>
+<a class="header-book" aria-label="Llamar para reservar una mesa" href="tel:+34645740200"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 2.09 4.18 2 2 0 0 1 4.08 2h3a2 2 0 0 1 2 1.72c.13.96.32 1.91.57 2.83a2 2 0 0 1-.45 2.11L7.1 10.9a16 16 0 0 0 6 6l2.24-2.2a2 2 0 0 1 2.11-.45c.92.25 1.87.44 2.83.57A2 2 0 0 1 22 16.92Z"></path></svg><span data-i18n="ui_book">Reservar mesa</span></a>
+</div>
+</div>
+</header>
 
+<nav aria-label="Navegación móvil" class="bottom-nav" id="bottomNav">
+<a href="index.html"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"></path></svg><small data-i18n="menu_home">Inicio</small></a>
+<a href="platos.html"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M4 3v7m4-7v7M2 3v4a4 4 0 0 0 8 0V3M6 11v10M16 12V6a3 3 0 0 1 6 0v15m-6-8h6"></path></svg><small data-i18n="ui_dishes_short">Platos</small></a>
+<a aria-current="page" href="carta.html"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M12 7c-2.1-1.9-5.5-2.3-9-1v14c3.5-1.2 6.9-.8 9 1 2.1-1.8 5.5-2.2 9-1V6c-3.5-1.3-6.9-.9-9 1Zm0 0v14"></path></svg><small data-i18n="menu_menu">Carta</small></a>
+<a href="#info"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 11v6m0-10h.01"></path></svg><small data-i18n="ui_about_short">Contacto</small></a>
+</nav>
 
-    <!-- ANCLAS CATEGORÍAS -->
-    <div class="anchors-row">
-        <div class="anchors">
-            <a data-i18n="bebida" href="#bebida">Bebida</a>
-            <a data-i18n="bodega" href="#bodega">Bodega</a>
-            <a data-i18n="chacinas" href="#chacinas">Chacinas</a>
-            <a data-i18n="tapas_frias" href="#tapas-frias">Tapas frías</a>
-            <a data-i18n="tapas_calientes" href="#tapas-calientes">Tapas calientes</a>
-            <a data-i18n="panes" href="#panes">Panes de la casa</a>
-            <a data-i18n="montaditos" href="#montaditos">Montaditos</a>
-            <a data-i18n="carnes" href="#carnes">Carnes</a>
-            <a data-i18n="peques" href="#peques">Para los peques</a>
-            <a data-i18n="pescados" href="#pescados">Pescados</a>
-            <a data-i18n="postres" href="#postres">Postres</a>
-        </div>
-        <!--  
-         -->
-    </div>
+<section class="inner-hero menu-page-hero" id="main-content"><div class="inner-hero-copy"><span class="eyebrow" data-i18n="ui_menu_eyebrow">EL SABOR DE LA REVIRÁ</span><h1 data-i18n="ui_menu_title">Nuestra carta, a tu gusto.</h1><p data-i18n="ui_menu_desc">Busca lo que te apetece y encuentra tus próximos favoritos. Tapas, montaditos, carnes, pescados y mucho más.</p></div><div class="inner-hero-photo"><img alt="Solomillo a la Revirá" height="375" loading="eager" src="img/platos/carnes/3.webp" width="560"/></div></section>
+<section aria-label="Buscar en la carta" class="menu-tools"><div class="menu-search-wrap"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><circle cx="10.7" cy="10.7" r="7"></circle><path d="m16 16 5 5"></path></svg><input aria-label="Buscar platos en la carta" autocomplete="off" data-i18n-placeholder="ui_search_placeholder" id="menuSearch" inputmode="search" placeholder="Busca un plato o ingrediente..." type="search"/><button aria-label="Borrar búsqueda" hidden="" id="menuSearchClear" type="button"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"></path></svg></button></div><p aria-live="polite" class="search-caption" data-i18n="ui_search_hint" id="menuSearchCount">Explora por categorías o busca por nombre.</p></section>
+<div class="menu-empty" hidden="" id="menuEmpty" role="status"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><circle cx="10" cy="10" r="6"></circle><path d="m15 15 6 6M3 3l18 18"></path></svg><h2 data-i18n="ui_no_results">No encontramos platos con esa búsqueda.</h2><p data-i18n="ui_no_results_desc">Prueba con otra palabra o consulta las categorías de la carta.</p></div>
+<div aria-label="Opciones de la carta" class="favorites-toolbar">
+<button aria-pressed="false" class="favorites-filter" id="favoritesFilter" type="button"><svg aria-hidden="true" class="ui-icon" viewbox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"></path></svg><span data-i18n="ui_favorites">Mis favoritos</span><span aria-live="polite" class="favorites-count" id="favoritesCount">0</span></button>
+<button class="favorites-share" disabled="" id="favoritesShare" type="button"><svg aria-hidden="true" class="ui-icon" viewbox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.7 10.6 6.6-4.2M8.7 13.4l6.6 4.2"></path></svg><span data-i18n="ui_fav_share">Compartir mi selección</span></button>
+<p class="favorites-hint" data-i18n="ui_fav_hint">Toca el corazón de los platos que te gusten para guardar tu selección.</p>
+</div>
+<div class="favorites-empty" hidden="" id="favoritesEmpty" role="status"><svg aria-hidden="true" class="ui-icon" viewbox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"></path></svg><h2 data-i18n="ui_fav_empty_title">Aún no tienes platos favoritos.</h2><p data-i18n="ui_fav_empty_desc">Marca algún corazón de la carta y aparecerá aquí.</p><button class="btn btn-outline" data-i18n="ui_fav_all" id="favoritesShowAll" type="button">Ver todos</button></div>
+<div aria-live="polite" class="toast-feedback" id="favoritesToast" role="status"></div>
 
+<div class="anchors-row">
+<div class="anchors">
+<a data-i18n="bebida" href="#bebida">Bebida</a>
+<a data-i18n="bodega" href="#bodega">Bodega</a>
+<a data-i18n="chacinas" href="#chacinas">Chacinas</a>
+<a data-i18n="tapas_frias" href="#tapas-frias">Tapas frías</a>
+<a data-i18n="tapas_calientes" href="#tapas-calientes">Tapas calientes</a>
+<a data-i18n="panes" href="#panes">Panes de la casa</a>
+<a data-i18n="montaditos" href="#montaditos">Montaditos</a>
+<a data-i18n="carnes" href="#carnes">Carnes</a>
+<a data-i18n="peques" href="#peques">Para los peques</a>
+<a data-i18n="pescados" href="#pescados">Pescados</a>
+<a data-i18n="postres" href="#postres">Postres</a>
+</div>
+
+</div>
 <div class="pdf-section">
 
-    <div class="pdf-divider">
-        <span class="pdf-icon">
-            <img src="img/svg/bandeja.svg" alt="">
-        </span>
-    </div>
+<div class="pdf-actions">
+<a aria-label="Abrir carta en PDF" class="btn-download" href="pdf/carta-la-revira.pdf" rel="noopener" target="_blank" type="application/pdf">
+<span class="pdf-icon">
+<img alt="" src="img/svg/pdf.svg"/>
+</span>
+<span data-i18n="btn_ver_pdf">Ver carta en PDF</span>
+</a>
+<a class="pdf-download-direct" data-i18n="ui_download_pdf" download="Carta-La-Revira.pdf" href="pdf/carta-la-revira.pdf" type="application/pdf">Descargar PDF</a>
+<button class="btn-suggestions" id="btnSuggestions">
+<span class="pdf-icon">
+<img alt="" src="img/svg/bandeja.svg"/>
+</span>
+<span data-i18n="ver_sugerencias">Ver sugerencias</span>
+</button>
+</div>
+</div>
+<div class="carta-grid">
 
-    <div class="pdf-actions">
-        <a href="pdf/Carta La Revirá Cerveceros.pdf"
-           class="btn-download"
-           target="_blank">
-            <span class="pdf-icon">
-                <img src="img/svg/pdf.svg" alt="">
-            </span>
-            <span data-i18n="btn_ver_pdf">Ver carta en PDF</span>
-        </a>
+<section class="platos-section" data-menu-category="true" id="bebida">
+<h2 data-i18n="bebida">Bebida</h2>
+<div class="menu-list"></div>
+</section>
 
-        <button id="btnSuggestions" class="btn-suggestions">
-            <span class="pdf-icon">
-                <img src="img/svg/bandeja.svg" alt="">
-            </span>
-            <span data-i18n="ver_sugerencias">Ver sugerencias</span>
-        </button>
-    </div>
+<section class="platos-section" data-menu-category="true" id="bodega">
+<h2 data-i18n="bodega">Bodega</h2>
+<div class="menu-list"></div>
+</section>
+</div>
+<div class="carta-grid">
 
+<section class="platos-section" data-menu-category="true" id="chacinas">
+<h2 data-i18n="chacinas">Chacinas</h2>
+<div class="menu-list"></div>
+</section>
+
+<section class="platos-section" data-menu-category="true" id="tapas-frias">
+<h2 data-i18n="tapas_frias">Tapas frías</h2>
+<div class="menu-list"></div>
+</section>
+</div>
+
+<div class="carta-grid">
+
+<section class="platos-section" data-menu-category="true" id="tapas-calientes">
+<h2 data-i18n="tapas_calientes">Tapas calientes</h2>
+<div class="menu-list"></div>
+</section>
+
+<section class="platos-section" data-menu-category="true" id="panes">
+<h2 data-i18n="panes">Panes de la casa</h2>
+<div class="menu-list"></div>
+</section>
+</div>
+
+<div class="carta-grid">
+
+<section class="platos-section" data-menu-category="true" id="montaditos">
+<h2 data-i18n="montaditos">Montaditos</h2>
+<div class="menu-list"></div>
+</section>
+
+<section class="platos-section" data-menu-category="true" id="carnes">
+<h2 data-i18n="carnes">Carnes</h2>
+<div class="menu-list"></div>
+</section>
+</div>
+
+<div class="carta-grid">
+
+<section class="platos-section" data-menu-category="true" id="peques">
+<h2 data-i18n="peques">Para los peques</h2>
+<div class="menu-list"></div>
+</section>
+
+<section class="platos-section" data-menu-category="true" id="pescados">
+<h2 data-i18n="pescados">Pescados</h2>
+<div class="menu-list"></div>
+</section>
 </div>
 
 
-
-
-    <div class="carta-grid">
-
-        <!-- BEBIDA -->
-        <section id="bebida" class="platos-section">
-            <h2 data-i18n="bebida">Bebida</h2>
-            <div class="menu-list"></div>
-        </section>
-
-        <!-- BODEGA -->
-        <section id="bodega" class="platos-section">
-            <h2 data-i18n="bodega">Bodega</h2>
-            <div class="menu-list"></div>
-        </section>
-
-    </div>
-
-    <div class="carta-grid">
-
-        <!-- CHACINAS -->
-        <section id="chacinas" class="platos-section">
-            <h2 data-i18n="chacinas">Chacinas</h2>
-            <div class="menu-list"></div>
-        </section>
-
-        <!-- TAPAS FRÍAS -->
-        <section id="tapas-frias" class="platos-section">
-            <h2 data-i18n="tapas_frias">Tapas frías</h2>
-            <div class="menu-list"></div>
-        </section>
-
-    </div>
-
-
-    <div class="pdf-section">
-
-        <div class="pdf-divider">
-            <span class="pdf-icon">
-                <img src="img/svg/cubiertos.svg" alt="">
-            </span>
-        </div>
-
-    </div>
-
-    <div class="carta-grid">
-
-        <!-- TAPAS CALIENTES -->
-        <section id="tapas-calientes" class="platos-section">
-            <h2 data-i18n="tapas_calientes">Tapas calientes</h2>
-            <div class="menu-list"></div>
-        </section>
-
-        <!-- PANES DE LA CASA -->
-        <section id="panes" class="platos-section">
-            <h2 data-i18n="panes">Panes de la casa</h2>
-            <div class="menu-list"></div>
-        </section>
-
-    </div>
-
-
-
-    <div class="pdf-section">
-
-        <div class="pdf-divider">
-            <span class="pdf-icon">
-                <img src="img/svg/cubiertos2.svg" alt="">
-            </span>
-        </div>
-
-    </div>
-
-    <div class="carta-grid">
-
-        <!-- MONTADITOS -->
-        <section id="montaditos" class="platos-section">
-            <h2 data-i18n="montaditos">Montaditos</h2>
-            <div class="menu-list"></div>
-        </section>
-
-        <!-- CARNES -->
-        <section id="carnes" class="platos-section">
-            <h2 data-i18n="carnes">Carnes</h2>
-            <div class="menu-list"></div>
-        </section>
-
-    </div>
-
-
-    <div class="pdf-section">
-
-        <div class="pdf-divider">
-            <span class="pdf-icon">
-                <img src="img/svg/bandeja2.svg" alt="">
-            </span>
-        </div>
-
-    </div>
-
-    <div class="carta-grid">
-
-        <!-- PARA LOS PEQUES -->
-        <section id="peques" class="platos-section">
-            <h2 data-i18n="peques">Para los peques</h2>
-            <div class="menu-list"></div>
-        </section>
-
-        <!-- PESCADOS -->
-        <section id="pescados" class="platos-section">
-            <h2 data-i18n="pescados">Pescados</h2>
-            <div class="menu-list"></div>
-        </section>
-
-    </div>
-
-
-    <div class="pdf-section">
-
-        <div class="pdf-divider">
-            <span class="pdf-icon">
-                <img src="img/svg/cubiertos3.svg" alt="">
-            </span>
-        </div>
-
-    </div>
-
-    <!-- POSTRES -->
-    <section id="postres" class="platos-section">
-        <h2 data-i18n="postres">Postres</h2>
-        <div class="menu-list"></div>
-    </section>
-
-
-
-    <div class="allergen-legend">
-        <h3 data-i18n="alergenos_title">Alérgenos</h3>
-
-        <div class="allergen-grid">
-            <div><span class="icon gluten"></span> <span data-i18n="alergeno_gluten">Gluten</span></div>
-            <div><span class="icon huevo"></span> <span data-i18n="alergeno_huevo">Huevo</span></div>
-            <div><span class="icon lacteos"></span> <span data-i18n="alergeno_lacteos">Lácteos</span></div>
-            <div><span class="icon pescado"></span> <span data-i18n="alergeno_pescado">Pescado</span></div>
-            <div><span class="icon cacahuetes"></span> <span data-i18n="alergeno_cacahuetes">Cacahuetes / Frutos
+<section class="platos-section" data-menu-category="true" id="postres">
+<h2 data-i18n="postres">Postres</h2>
+<div class="menu-list"></div>
+</section>
+<div class="allergen-legend">
+<h3 data-i18n="alergenos_title">Alérgenos</h3>
+<div class="allergen-grid">
+<div><span class="icon gluten"></span> <span data-i18n="alergeno_gluten">Gluten</span></div>
+<div><span class="icon huevo"></span> <span data-i18n="alergeno_huevo">Huevo</span></div>
+<div><span class="icon lacteos"></span> <span data-i18n="alergeno_lacteos">Lácteos</span></div>
+<div><span class="icon pescado"></span> <span data-i18n="alergeno_pescado">Pescado</span></div>
+<div><span class="icon cacahuetes"></span> <span data-i18n="alergeno_cacahuetes">Cacahuetes / Frutos
                     secos</span></div>
-            <div><span class="icon soja"></span> <span data-i18n="alergeno_soja">Soja</span></div>
-            <div><span class="icon mostaza"></span> <span data-i18n="alergeno_mostaza">Mostaza</span></div>
-            <div><span class="icon sesamo"></span> <span data-i18n="alergeno_sesamo">Sésamo</span></div>
-            <div><span class="icon sulfitos"></span> <span data-i18n="alergeno_sulfitos">Sulfitos</span></div>
-            <div><span class="icon crustaceo"></span> <span data-i18n="alergeno_crustaceo">Crustaceo</span></div>
-            <div><span class="icon moluscos"></span> <span data-i18n="alergeno_molusco">Molusco</span></div>
-
-
-        </div>
-    </div>
-
-    <p class="allergen-note" data-i18n="alergenos_nota">
+<div><span class="icon soja"></span> <span data-i18n="alergeno_soja">Soja</span></div>
+<div><span class="icon mostaza"></span> <span data-i18n="alergeno_mostaza">Mostaza</span></div>
+<div><span class="icon sesamo"></span> <span data-i18n="alergeno_sesamo">Sésamo</span></div>
+<div><span class="icon sulfitos"></span> <span data-i18n="alergeno_sulfitos">Sulfitos</span></div>
+<div><span class="icon crustaceo"></span> <span data-i18n="alergeno_crustaceo">Crustaceo</span></div>
+<div><span class="icon moluscos"></span> <span data-i18n="alergeno_molusco">Molusco</span></div>
+</div>
+</div>
+<p class="allergen-note" data-i18n="alergenos_nota">
         Por las características de instalación, manipulación y elaboración del establecimiento, todos nuestros productos
         son susceptibles de contener de manera directa o a través de contaminación cruzada algún tipo de alérgeno.
         Diríjase a nuestro personal si desea más información al respecto.
     </p>
 
-    <!-- BOTÓN FLOTANTE IR ARRIBA -->
-    <button id="btnTop" class="btn-top">
-        <span class="material-symbols-outlined">arrow_upward</span>
-    </button>
+<button aria-label="Volver arriba" class="btn-top" id="btnTop" title="Volver arriba" type="button">
+<svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M12 20V4m-7 7 7-7 7 7"></path></svg>
+</button>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div id="info" class="footer-container">
-
-            <div class="footer-col">
-                <h3 data-i18n="footer_about_title">La Revirá</h3>
-                <p data-i18n="footer_about_text">
-                    Tradición andaluza reinterpretada con cariño.
-                    Productos frescos, recetas de siempre y un ambiente que invita a quedarse.
-                    Somos un rincón donde la buena mesa y la buena compañía se encuentran.
-                </p>
-            </div>
-
-            <div class="footer-col">
-                <h3 data-i18n="footer_info_title">Información</h3>
-                <ul>
-                    <li><strong data-i18n="footer_address">Dirección:</strong> <span data-i18n="footer_address_text">Av.
-                            la Cruz, 41440 Lora del Río, Sevilla</span></li>
-                    <li><strong data-i18n="footer_phone">Teléfono:</strong> <span data-i18n="footer_phone_text">645 74
-                            02 00</span></li>
-                    <li><strong data-i18n="footer_email">Email:</strong> <span
-                            data-i18n="footer_email_text">eventsbacchanalia@gmail.com</span></li>
-                    <li><strong data-i18n="footer_reservas">Reservas:</strong> <span
-                            data-i18n="footer_reservas_text">Disponible por teléfono</span></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h3 data-i18n="footer_follow">Síguenos</h3>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/la_revira_cerveceros/" target="_blank" aria-label="Instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                    <a href="https://www.facebook.com/p/La-Revirá-Cerveceros-61552801625227/" target="_blank"
-                        aria-label="Facebook">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="footer-bottom">
-            <p data-i18n="footer_copy">© 2026 La Revirá — Todos los derechos reservados</p>
-        </div>
-    </footer>
-
-    <div id="suggestionsModal" class="modal hidden">
-
-        <div class="modal-content">
-
-            <button class="modal-close" id="closeModal">✕</button>
-
-            <h2 class="suggestions-title">
-                <span class="material-symbols-outlined">restaurant_menu</span>
-                <span data-i18n="suggestions_title"></span>
-            </h2>
-
-            <ul id="suggestionsList"></ul>
-            <div id="suggestionsPagination" class="modal-pagination"></div>
-
-            <button class="modal-btn" id="closeModalBtn" data-i18n="close">
+<footer class="footer" id="info">
+<div class="footer-container">
+<div class="footer-col footer-brand"><img alt="La Revirá Cerveceros" height="106" loading="lazy" src="img/logo3.png" width="192"/><p data-i18n="footer_about_text">Tradición andaluza reinterpretada con cariño. Productos frescos, recetas de siempre y un ambiente que invita a quedarse.</p></div>
+<div class="footer-col"><h3 data-i18n="footer_info_title">Información</h3><ul class="footer-links"><li><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></svg><a data-i18n="footer_address_text" href="https://www.google.com/maps/search/?api=1&amp;query=Av.+la+Cruz%2C+41440+Lora+del+R%C3%ADo%2C+Sevilla" rel="noopener noreferrer" target="_blank">Av. la Cruz, 41440 Lora del Río, Sevilla</a></li><li><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 2.09 4.18 2 2 0 0 1 4.08 2h3a2 2 0 0 1 2 1.72c.13.96.32 1.91.57 2.83a2 2 0 0 1-.45 2.11L7.1 10.9a16 16 0 0 0 6 6l2.24-2.2a2 2 0 0 1 2.11-.45c.92.25 1.87.44 2.83.57A2 2 0 0 1 22 16.92Z"></path></svg><a href="tel:+34645740200">645 74 02 00</a></li><li><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m2 6 10 7 10-7"></path></svg><a href="mailto:eventsbacchanalia@gmail.com">eventsbacchanalia@gmail.com</a></li></ul></div>
+<div class="footer-col"><h3 data-i18n="ui_explore">Explora</h3><ul class="footer-nav"><li><a data-i18n="menu_home" href="index.html">Inicio</a></li><li><a data-i18n="menu_dishes" href="platos.html">Nuestros platos</a></li><li><a data-i18n="menu_menu" href="carta.html">Carta</a></li><li><a data-i18n="ui_book" href="tel:+34645740200">Reservar mesa</a></li></ul></div>
+<div class="footer-col"><h3 data-i18n="footer_follow">Síguenos</h3><p data-i18n="ui_social_text">Un poquito de nuestra cocina y de lo que pasa por aquí.</p><div class="footer-social"><a aria-label="Instagram" href="https://www.instagram.com/la_revira_cerveceros/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><rect height="20" rx="5" width="20" x="2" y="2"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" fill="currentColor" r=".6" stroke="none"></circle></svg></a><a aria-label="Facebook" href="https://www.facebook.com/p/La-Revir%C3%A1-Cerveceros-61552801625227/" rel="noopener noreferrer" target="_blank"><svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M15 21v-8h3l.5-4H15V7c0-1.2.5-2 2-2h2V2h-3c-4 0-5 2-5 5v2H8v4h3v8"></path></svg></a></div></div>
+</div>
+<div class="footer-bottom"><p data-i18n="footer_copy">© 2026 La Revirá — Todos los derechos reservados</p><span data-i18n="ui_made_with_care">Hecho con cariño, en Lora del Río.</span></div>
+</footer>
+<div aria-hidden="true" aria-label="Sugerencias del día" aria-modal="true" class="modal" id="suggestionsModal" role="dialog">
+<div class="modal-content">
+<button aria-label="Cerrar sugerencias" class="modal-close" id="closeModal" tabindex="0">✕</button>
+<h2 class="suggestions-title">
+<svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M4 3v7m4-7v7M2 3v4a4 4 0 0 0 8 0V3M6 11v10M16 12V6a3 3 0 0 1 6 0v15m-6-8h6"></path></svg>
+<span data-i18n="suggestions_title"></span>
+</h2>
+<ul id="suggestionsList"></ul>
+<div class="modal-pagination" id="suggestionsPagination"></div>
+<button class="modal-btn" data-i18n="close" id="closeModalBtn">
                 Continuar
             </button>
-
-        </div>
-
-    </div>
-
-
-    <div id="plato-modal" class="plato-modal">
-
-        <div class="plato-modal-panel">
-
-            <button id="modal-back" class="plato-modal-back">
-                <span class="material-symbols-outlined">arrow_back</span>
-                <span data-i18n="volver"></span>
-            </button>
-
-
-
-            <div class="modal-image-container">
-
-                <img id="modal-img" class="modal-img" src="" alt="Plato">
-
-                <button id="modal-prev" class="nav-btn nav-left">
-                    <span class="material-symbols-outlined">
-                        chevron_left
-                    </span>
-                </button>
-
-                <button id="modal-next" class="nav-btn nav-right">
-                    <span class="material-symbols-outlined">
-                        chevron_right
-                    </span>
-                </button>
-
-            </div>
-
-            <h2 id="modal-title"></h2>
-
-            <p id="modal-desc"></p>
-
-            <div id="modal-alergenos" class="modal-alergenos"></div>
-
-            <div id="modal-precios" class="modal-precios"></div>
-
-        </div>
-
-    </div>
-
-<!-- LIGHTBOX -->
-<div id="lightbox" class="lightbox">
-
-    <div class="lightbox-content">
-
-        <!-- TOP BAR -->
-        <div class="lightbox-top">
-            <div id="lightboxTitle" class="lightbox-title"></div>
-
-            <button class="lightbox-close" id="lightboxClose">&times;</button>
-        </div>
-
-        <!-- MEDIA WRAPPER -->
-        <div class="lightbox-media-wrapper">
-
-            <img id="lightboxImg" class="lightbox-media" style="display:none;">
-            <video id="lightboxVideo" class="lightbox-media" style="display:none;" controls></video>
-
-            <!-- SHARE BUTTON (correct position) -->
-            <button id="lightboxShare" class="lightbox-share">
-                <span class="material-symbols-outlined">share</span>
-            </button>
-
-            <div id="lightboxCounter"></div>
-        </div>
-
-        <!-- NAV -->
-        <span class="lightbox-prev" id="lightboxPrev">&#10094;</span>
-        <span class="lightbox-next" id="lightboxNext">&#10095;</span>
-
-        <!-- THUMBS -->
-        <div id="lightboxThumbs"></div>
-
-    </div>
+</div>
+</div>
+<div aria-hidden="true" aria-label="Detalle del plato" aria-modal="true" class="plato-modal" id="plato-modal" role="dialog">
+<div class="plato-modal-panel">
+<button aria-label="Cerrar detalle del plato" class="plato-modal-back" id="modal-back" tabindex="0">
+<svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="M20 12H4m7 7-7-7 7-7"></path></svg>
+<span data-i18n="volver"></span>
+</button>
+<div class="modal-image-container">
+<img alt="Plato" class="modal-img" id="modal-img" src=""/>
+<button aria-label="Imagen anterior" class="nav-btn nav-left" id="modal-prev" tabindex="0">
+<svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg>
+</button>
+<button aria-label="Imagen siguiente" class="nav-btn nav-right" id="modal-next" tabindex="0">
+<svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><path d="m9 18 6-6-6-6"></path></svg>
+</button>
+</div>
+<h2 id="modal-title"></h2>
+<p id="modal-desc"></p>
+<div class="modal-alergenos" id="modal-alergenos"></div>
+<div class="modal-precios" id="modal-precios"></div>
+</div>
 </div>
 
+<div aria-hidden="true" aria-label="Galería de fotografías" aria-modal="true" class="lightbox" id="lightbox" role="dialog">
+<div class="lightbox-content">
 
+<div class="lightbox-top">
+<div class="lightbox-title" id="lightboxTitle"></div>
+<button aria-label="Cerrar galería" class="lightbox-close" id="lightboxClose" tabindex="0">×</button>
+</div>
 
+<div class="lightbox-media-wrapper">
+<img class="lightbox-media" id="lightboxImg" style="display:none;"/>
+<video class="lightbox-media" controls="" id="lightboxVideo" style="display:none;"></video>
 
-    <script src="script.js"></script>
+<button aria-label="Compartir imagen" class="lightbox-share" id="lightboxShare" tabindex="0">
+<svg aria-hidden="true" class="ui-icon" focusable="false" viewbox="0 0 24 24"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><path d="m8.7 10.6 6.6-4.2M8.7 13.4l6.6 4.2"></path></svg>
+</button>
+<div id="lightboxCounter"></div>
+</div>
 
-</body>
+<button aria-label="Imagen anterior" class="lightbox-prev" id="lightboxPrev" type="button">❮</button>
+<button aria-label="Imagen siguiente" class="lightbox-next" id="lightboxNext" type="button">❯</button>
 
+<div id="lightboxThumbs"></div>
+</div>
+</div>
+
+<script src="site-data.js?v=13"></script><script src="core.js?v=13"></script><script src="ui.js?v=13"></script></body>
 </html>
